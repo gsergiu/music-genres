@@ -1,0 +1,8 @@
+dismarc_eu_label;dbpedia_genreLabel;dbpedia_genre;dbpedia_freebaseUri;mid;comment
+Martial music;Martial music;http://dbpedia.org/resource/Martial_music;http://rdf.freebase.com/ns/m.075bdw;/m/075bdw;same as military music
+Children's music;Children's music;http://dbpedia.org/resource/Children's_music;http://rdf.freebase.com/ns/m.05fw6t;/m/05fw6t;
+Art music;Art music;http://dbpedia.org/resource/Art_music;http://rdf.freebase.com/ns/m.02p19y6;/m/02p19y6;western clasical + descendants
+Traditional folk music;Folk music;http://dbpedia.org/resource/Folk_music;http://rdf.freebase.com/ns/m.02w4v;/m/02w4v;
+Popular music;Popular music;http://dbpedia.org/resource/Popular_music;http://rdf.freebase.com/ns/m.05r9t;/m/05r9t;
+Religious music;Religious music;http://dbpedia.org/resource/Religious_music;http://rdf.freebase.com/ns/m.0138g2;/m/0138g2;
+Fusion music;Fusion (music);http://dbpedia.org/resource/Fusion_(music);http://rdf.freebase.com/ns/m.05rwlj;/m/05rwlj;
