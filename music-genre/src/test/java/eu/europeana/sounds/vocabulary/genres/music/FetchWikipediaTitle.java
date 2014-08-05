@@ -1,22 +1,13 @@
 package eu.europeana.sounds.vocabulary.genres.music;
 
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
-import java.net.URLEncoder;
-import java.util.HashMap;
-import java.util.Map;
 
 import org.junit.Test;
 
 import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
@@ -30,7 +21,7 @@ public class FetchWikipediaTitle {
 
 	FreebaseApiClient apiClient = new FreebaseApiClient(
 			FreebaseApiClient.DEFAULT_FREEBASE_MQLREAD_URI,
-			FreebaseApiClient.DEFAULT_API_KEY);
+			null);
 	
 	BufferedWriter outFileWriter = null;
 

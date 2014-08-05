@@ -27,7 +27,7 @@ public class FetchFreebaseLabelAndDescription {
 	
 	FreebaseApiClient apiClient = new FreebaseApiClient(
 			FreebaseApiClient.DEFAULT_FREEBASE_TOPIC_URI,
-			FreebaseApiClient.DEFAULT_API_KEY);
+			null);
 	String MUSIC_GENRE = "/music/genre";
 
 	BufferedWriter outFileWriter = null;

@@ -34,7 +34,7 @@ public class FreebaseApiClient {
 	String NAME_FILTER = "?filter=/type/object/name&lang=en";
 	String DESCRIPTION_FILTER = "?filter=/common/topic/description&lang=en";
 
-	public static final String DEFAULT_API_KEY = "AIzaSyAR4umlcC5NGRQhzP52XbuHYeSeXywnqkk";
+	//public static String DEFAULT_API_KEY = "";
 	private String freebaseApiUri = "";
 	private HttpConnector http = new HttpConnector();
 
@@ -54,11 +54,15 @@ public class FreebaseApiClient {
 	 */
 	public FreebaseApiClient(String apiUri, String apiKey) {
 		this.apiKey = apiKey;
-		this.setApiUri(apiUri);
+		if(apiKey != null)
+			this.setApiUri(apiUri);
+		else 
+			setApiKey(getDefaultApiKey());
 	}
 
 	public FreebaseApiClient() {
-		this(DEFAULT_FREEBASE_SEARCH_URI, DEFAULT_API_KEY);
+		this(DEFAULT_FREEBASE_SEARCH_URI, null);
+		setApiKey(getDefaultApiKey());
 
 	}
 
@@ -124,6 +128,13 @@ public class FreebaseApiClient {
 		return apiKey;
 	}
 
+	/**
+	 * @return the Europeana apiKey
+	 */
+	public String getDefaultApiKey() {
+		return FreebaseClientConfiguration.getInstance().getApiKey();
+	}
+	
 	/**
 	 * @param apiKey
 	 *            the Europeana apiKey to set

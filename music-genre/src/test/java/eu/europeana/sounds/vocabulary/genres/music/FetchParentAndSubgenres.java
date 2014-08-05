@@ -27,7 +27,7 @@ public class FetchParentAndSubgenres {
 
 	FreebaseApiClient apiClient = new FreebaseApiClient(
 			FreebaseApiClient.DEFAULT_FREEBASE_MQLREAD_URI,
-			FreebaseApiClient.DEFAULT_API_KEY);
+			null);
 	String MUSIC_GENRE = "/music/genre";
 
 	BufferedWriter outFileWriter = null;

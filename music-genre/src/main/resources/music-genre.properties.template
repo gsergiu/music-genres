@@ -1,0 +1,4 @@
+#Properties used for runtime configuration
+
+#the key required for authentication in freebase api requests
+freebase.apiKey = 

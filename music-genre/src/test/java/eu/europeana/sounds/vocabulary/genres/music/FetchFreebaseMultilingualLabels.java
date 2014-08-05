@@ -52,7 +52,7 @@ public class FetchFreebaseMultilingualLabels {
 
 	FreebaseApiClient apiClient = new FreebaseApiClient(
 			FreebaseApiClient.DEFAULT_FREEBASE_TOPIC_URI,
-			FreebaseApiClient.DEFAULT_API_KEY);
+			null);
 
 	BufferedWriter outFileWriter = null;
 
