@@ -222,4 +222,17 @@ public class AnnotationSkosTest {
     }
 
     
+    /**
+     * This test performs enrichment of an Europeana Annotation Concept collection.
+     */
+    @Test
+    public void testEnrichConcept() {
+    	
+    	List<Concept> concepts = getSkosUtils().parseSkosRdfXmlToConceptCollection(TEST_RDF_COLLECTION_FILE_PATH);    	
+    	assertTrue(concepts.size() == 430);
+    	String freebaseId = getSkosUtils().extractFreebaseIdFromConceptCloseMatch(concepts.get(0));
+    	System.out.println(freebaseId);
+    }
+
+    
 }

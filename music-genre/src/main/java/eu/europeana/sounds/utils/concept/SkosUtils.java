@@ -205,6 +205,27 @@ public class SkosUtils {
 
 	
 	/**
+	 * This method extracts FreebaseId from a Concept field 'closeMatch'.
+	 * It takes first valid value from the closeMatch map.
+	 * @param concept
+	 * @return FreebaseId
+	 */
+	public String extractFreebaseIdFromConceptCloseMatch(Concept concept) {	
+		String closeMatch = "";
+		for (Object value : concept.getCloseMatch().values()) {
+			closeMatch = (String) value;
+			break;
+		}
+		String freebaseId = "";
+		if (closeMatch != null && closeMatch.contains("/")) {
+			String[] chunks = closeMatch.split("/");
+			freebaseId = chunks[chunks.length-1];
+		}
+		return freebaseId;
+	}
+
+	
+	/**
 	 * This method retrieves concepts from a model.
 	 * @param model
 	 * @return
