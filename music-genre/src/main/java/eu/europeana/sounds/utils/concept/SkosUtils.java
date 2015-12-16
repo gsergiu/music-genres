@@ -212,9 +212,11 @@ public class SkosUtils {
 	 */
 	public String extractFreebaseIdFromConceptCloseMatch(Concept concept) {	
 		String closeMatch = "";
-		for (Object value : concept.getCloseMatch().values()) {
-			closeMatch = (String) value;
-			break;
+		if (concept != null && concept.getCloseMatch() != null && concept.getCloseMatch().size() > 0) {
+			for (Object value : concept.getCloseMatch().values()) {
+				closeMatch = (String) value;
+				break;
+			}
 		}
 		String freebaseId = "";
 		if (closeMatch != null && closeMatch.contains("/")) {
@@ -222,6 +224,19 @@ public class SkosUtils {
 			freebaseId = chunks[chunks.length-1];
 		}
 		return freebaseId;
+	}
+	
+	
+	/**
+	 * This method queries Wikidata by given FreebaseId and returns Wikidata ID.
+	 *     e.g. https://wdq.wmflabs.org/api?q=string[646:%27/m/0557q%27]
+	 *     where 646 is a number of Freebase ID property in Wikidata namespace.
+	 * @param freebaseId
+	 * @return Wikidata ID
+	 */
+	public String queryWikidataIdByFreebaseId(String freebaseId) {
+		String wikidataId = "";
+		return wikidataId;
 	}
 
 	

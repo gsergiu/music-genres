@@ -21,17 +21,14 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 
 import eu.europeana.sounds.definitions.model.concept.Concept;
-import eu.europeana.sounds.utils.concept.SkosUtils;
 
 /**
  * This class implements different SKOS testing scenarios.
  */
-public class AnnotationSkosTest {
+public class AnnotationSkosTest extends BaseSkosTest {
 
 	public final String ALT_LABEL_KEY       = "http://www.w3.org/2004/02/skos/core#altLabel1_altLabel";
 	public final String ALT_LABEL_VALUE     = "\"canal bends\"";
@@ -114,28 +111,6 @@ public class AnnotationSkosTest {
 	public final String TEST_RDF_COLLECTION_I18N_FILE_PATH  = "D:/git/annotation/annotation-web/src/test/resources/Music-Genres-i18n.rdf";
 
 	
-	private SkosUtils skosUtils = null;
-
-    
-	@Before
-    public void setUp() throws Exception {
-		setSkosUtils(new SkosUtils());
-    }
-
-    @After
-    public void tearDown() throws Exception {
-    }
-
-        	    
-	public SkosUtils getSkosUtils() {
-		return skosUtils;
-	}
-
-	public void setSkosUtils(SkosUtils skosUtils) {
-		this.skosUtils = skosUtils;
-	}
-	
-
 	/**
      * This test performs parsing of the SKOS RDF in XML format to Europeana Annotation Concept object using Jena library.
      */
@@ -232,6 +207,7 @@ public class AnnotationSkosTest {
     	assertTrue(concepts.size() == 430);
     	String freebaseId = getSkosUtils().extractFreebaseIdFromConceptCloseMatch(concepts.get(0));
     	System.out.println(freebaseId);
+    	assertTrue(!freebaseId.equals(""));
     }
 
     
