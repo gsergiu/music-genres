@@ -36,6 +36,9 @@ public class SkosUtils {
 	
 	private static Logger log = Logger.getRootLogger();
 
+	String REGULAR_FREEBASE_PREFIX = "/m/";
+	String FILE_FORM_FREEBASE_PREFIX = "m.";
+	
 	
     /**
      * This method performs parsing of the SKOS RDF in XML format to Europeana Annotation Concept object using Jena library.
@@ -224,6 +227,28 @@ public class SkosUtils {
 			freebaseId = chunks[chunks.length-1];
 		}
 		return freebaseId;
+	}
+	
+	
+	/**
+	 * This method converts Freebase ID from the file name form e.g. 'm.xyz'
+	 * into a regular Freebase ID form e.g. '/m/xyz'.
+	 * @param freebaseId
+	 * @return normalized Freebase ID
+	 */
+	public String normalizeFreebaseId(String freebaseId) {
+		return freebaseId.replace(FILE_FORM_FREEBASE_PREFIX, REGULAR_FREEBASE_PREFIX);
+	}
+	
+
+	/**
+	 * This method converts Freebase ID from a regular Freebase ID form e.g. '/m/xyz' 
+	 * into the file name form e.g. 'm.xyz'.
+	 * @param freebaseId
+	 * @return file name Freebase ID
+	 */
+	public String freebaseIdToFileName(String freebaseId) {
+		return freebaseId.replace(REGULAR_FREEBASE_PREFIX, FILE_FORM_FREEBASE_PREFIX);
 	}
 	
 	

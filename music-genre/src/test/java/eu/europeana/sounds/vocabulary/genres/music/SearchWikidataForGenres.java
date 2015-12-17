@@ -35,9 +35,10 @@ public class SearchWikidataForGenres extends BaseSkosTest {
 
 	/**
 	 * This method reads XML entries from a file in a given folder TEST_RDF_VOCABULARY_FILE_PATH.
+	 * For example, we use Music-Genres.rdf file in folder 'src/test/resources'.
 	 * From result Freebase ID is extracted and normalized.
 	 * Using extracted Freebase ID we search in Wikidata repository and store related JSON objects 
-	 * in files in SEARCH_RESULTS_FOLDER.
+	 * in files in SEARCH_RESULTS_FOLDER. 
 	 */
 	@Test
 	public void saveSearchResults() {
@@ -46,16 +47,24 @@ public class SearchWikidataForGenres extends BaseSkosTest {
     	while (itrConcept.hasNext()) {
 			try {
 		    	String freebaseId = getSkosUtils().extractFreebaseIdFromConceptCloseMatch(itrConcept.next());
-		    	freebaseId = freebaseId.replace("m.", "/m/");
 		    	System.out.println(freebaseId);
-				apiClient.saveSearchResults(freebaseId, WikidataApiClient.SEARCH_RESULTS_FOLDER);
+				apiClient.saveSearchResults(
+						getSkosUtils().normalizeFreebaseId(freebaseId)
+						, WikidataApiClient.SEARCH_RESULTS_FOLDER
+				        , freebaseId);
 			} catch (IOException e) {
 				System.out.println(e.getMessage());
 			}
 		}
 	}
 
-	// parse search results
+
+	/**
+	 * This method reads XML entries from RDF file. Also it extracts Wikidata IDs from 
+	 * JSON files in the search results folder and maps them to related Freebase IDs.
+	 * In the next step we enrich original XML files by extracted Wikidata IDs and 
+	 * store the result in new RDF file in folder 'src/test/resources'.
+	 */
 //	@Test
 	public void parseSearchResults() {
 		String json = null;

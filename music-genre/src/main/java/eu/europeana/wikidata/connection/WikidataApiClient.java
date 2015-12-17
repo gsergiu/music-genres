@@ -113,9 +113,17 @@ public class WikidataApiClient {
 	}
 
 
-	public void saveSearchResults(String query, String folder)
+	/**
+	 * This method stores Wikidata JSON data for related Freebase ID (query) 
+	 * in JSON files for given fileName.
+	 * @param query
+	 * @param folder
+	 * @param fileName
+	 * @throws IOException
+	 */
+	public void saveSearchResults(String query, String folder, String fileName)
 			throws IOException {
-		File queryResultsFile = new File(folder, query + ".json");
+		File queryResultsFile = new File(folder, fileName + ".json");
 		// create parent dirs
 		queryResultsFile.getParentFile().mkdirs();
 		BufferedWriter writer = null;
