@@ -18,6 +18,13 @@ import org.apache.commons.logging.LogFactory;
 
 import eu.europeana.api.client.connection.HttpConnector;
 
+import org.codehaus.jackson.JsonParseException;
+import org.codehaus.jackson.map.JsonMappingException;
+import org.codehaus.jackson.map.ObjectMapper;
+import org.codehaus.jackson.map.ObjectWriter;
+
+
+
 public class WikidataApiClient {
 
 	private static final Log log = LogFactory.getLog(WikidataApiClient.class);
@@ -114,6 +121,32 @@ public class WikidataApiClient {
 
 
 	/**
+	 * To indent JSON string, bind it as Object and write it output with indentation.
+	 * @param input The input JSON string
+	 * @return indented JSON string
+	 */
+	public String convertJsonStringToPrettyPrintJsonOutput(String input) {
+
+		String res = input;
+		try {
+			ObjectMapper mapper = new ObjectMapper();
+			Object json = mapper.readValue(input, Object.class);
+			res = mapper.defaultPrettyPrintingWriter().writeValueAsString(json);
+		} catch (JsonParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JsonMappingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return res;
+	}
+	
+	
+	/**
 	 * This method stores Wikidata JSON data for related Freebase ID (query) 
 	 * in JSON files for given fileName.
 	 * @param query
@@ -123,21 +156,25 @@ public class WikidataApiClient {
 	 */
 	public void saveSearchResults(String query, String folder, String fileName)
 			throws IOException {
-		File queryResultsFile = new File(folder, fileName + ".json");
-		// create parent dirs
-		queryResultsFile.getParentFile().mkdirs();
-		BufferedWriter writer = null;
-		try {
-			writer = new BufferedWriter(new FileWriter(queryResultsFile));
-			String searchUrl = getWikidataSearchUrl(query);
-			String searchResult = getJSONResult(searchUrl);
-			writer.write(searchResult);
-		} finally {
+		
+		if (fileName.startsWith("m.")) {
+			File queryResultsFile = new File(folder, fileName + ".json");
+			// create parent dirs
+			queryResultsFile.getParentFile().mkdirs();
+			BufferedWriter writer = null;
 			try {
-				writer.close();
-			} catch (IOException e) {
-				log.warn("cannot close results writer for file: "
-						+ queryResultsFile);
+				writer = new BufferedWriter(new FileWriter(queryResultsFile));
+				String searchUrl = getWikidataSearchUrl(query);
+				String searchResult = getJSONResult(searchUrl);
+				String indentedSearchResult = convertJsonStringToPrettyPrintJsonOutput(searchResult);
+				writer.write(indentedSearchResult);
+			} finally {
+				try {
+					writer.close();
+				} catch (IOException e) {
+					log.warn("cannot close results writer for file: "
+							+ queryResultsFile);
+				}
 			}
 		}
 	}
