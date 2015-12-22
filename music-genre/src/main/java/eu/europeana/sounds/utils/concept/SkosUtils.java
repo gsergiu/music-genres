@@ -1,9 +1,12 @@
 package eu.europeana.sounds.utils.concept;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -18,6 +21,7 @@ import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.Property;
 import com.hp.hpl.jena.rdf.model.ResIterator;
 import com.hp.hpl.jena.rdf.model.Resource;
+import com.hp.hpl.jena.rdf.model.ResourceFactory;
 import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.rdf.model.StmtIterator;
 import com.hp.hpl.jena.util.FileManager;
@@ -38,6 +42,10 @@ public class SkosUtils {
 
 	String REGULAR_FREEBASE_PREFIX = "/m/";
 	String FILE_FORM_FREEBASE_PREFIX = "m.";
+	String WIKIDATA_ID_CLOSE_MATCH_KEY = "wikidataId_closeMatch";
+	String WIKIDATA_BASE_URL = "https://www.wikidata.org/wiki/Q";
+	String CLOSE_MATCH_PREDICATE_URL = "http://www.w3.org/2004/02/skos/core#closeMatch";
+	String RDF_RES_FILE_NAME = "model.rdf";
 	
 	
     /**
@@ -47,19 +55,7 @@ public class SkosUtils {
      */
     public Concept parseSkosRdfXmlToConcept(String inputFileName) {
     	
-    	// create an empty model
-   	    Model model = ModelFactory.createDefaultModel();
-
-    	// use the FileManager to find the input file
-    	InputStream in = FileManager.get().open( inputFileName );
-    	
-    	if (in == null) {
-    	    throw new IllegalArgumentException(
-    	                                 "File: " + inputFileName + " not found");
-    	}
-
-    	// read the RDF/XML file
-    	model.read(in, null);
+    	Model model = createModelFromRdfFile(inputFileName);
 
     	// write it to standard out
     	model.write(System.out);    
@@ -76,19 +72,7 @@ public class SkosUtils {
      */
     public List<Concept> parseSkosRdfXmlToConceptCollection(String inputFileName) {
     	
-    	// create an empty model
-   	    Model model = ModelFactory.createDefaultModel();
-
-    	// use the FileManager to find the input file
-    	InputStream in = FileManager.get().open( inputFileName );
-    	
-    	if (in == null) {
-    	    throw new IllegalArgumentException(
-    	                                 "File: " + inputFileName + " not found");
-    	}
-
-    	// read the RDF/XML file
-    	model.read(in, null);
+    	Model model = createModelFromRdfFile(inputFileName);
 
     	// write it to standard out
     	model.write(System.out);    
@@ -228,7 +212,7 @@ public class SkosUtils {
 		}
 		return freebaseId;
 	}
-	
+		
 	
 	/**
 	 * This method converts Freebase ID from the file name form e.g. 'm.xyz'
@@ -303,6 +287,116 @@ public class SkosUtils {
 	    	res.add(concept);
 		}
 		return res;
+	}
+
+	
+	/**
+	 * This method finds a concept by it's URL.
+	 * @param concepts The list of concepts
+	 * @param url The query URL
+	 * @return concept object
+	 */
+	private Concept getConceptByUrl(List<Concept> concepts, String url) {
+		Concept res = null;
+		Iterator<Concept> itr = concepts.iterator();
+		while (itr.hasNext()) {
+			Concept concept = itr.next();
+			if (concept.getUri().equals(url)) {
+				res = concept;
+			    break;
+			}
+		}
+		return res;
+	}
+	
+	
+	/**
+	 * This method adds concepts to a model retrieved from original RDF file 
+	 * and stores it in enriched RDF file.
+	 * @param concepts The list of concepts
+	 * @param inputFileName The original RDF file
+	 * @param pathToAnalysisFolder The location for enriched RDF file
+	 */
+	public void writeConceptsToRdf(List<Concept> concepts, String inputFileName, String pathToAnalysisFolder) {
+
+    	Model model = createModelFromRdfFile(inputFileName);
+		
+		ResIterator itrConcepts = model.listSubjects();
+		while (itrConcepts.hasNext()) {
+			Resource rdfNode = itrConcepts.next();
+        	System.out.println("rdfNode: " + rdfNode.toString());
+        	Property p = null;
+        	String object = null;
+			StmtIterator itr = model.listStatements(rdfNode, p, object);
+	    	
+	    	while (itr.hasNext()) {
+	    		Statement statement = itr.next();
+	        	Triple triple = statement.asTriple();
+	        	Concept curConcept = getConceptByUrl(concepts, triple.getSubject().toString());
+		        if (curConcept.getCloseMatch() != null 
+		        		&& StringUtils.isNotEmpty(curConcept.getCloseMatch().get(WIKIDATA_ID_CLOSE_MATCH_KEY))) {
+    				// set subject, predicate, object
+	        		Resource subject = statement.getSubject();
+	        		Property predicate = ResourceFactory.createProperty(CLOSE_MATCH_PREDICATE_URL);
+	        		Resource rdfObject = ResourceFactory.createResource(
+	        				WIKIDATA_BASE_URL +
+	        				curConcept.getCloseMatch().get(WIKIDATA_ID_CLOSE_MATCH_KEY));
+	        		Statement newStatement = ResourceFactory.createStatement(subject, predicate, rdfObject);
+       				model.add(newStatement);
+       				break;
+	        	}	
+	    	}
+		}
+		
+    	// write model to standard out
+//    	model.write(System.out);
+		writeModelToFile(model, RDF_RES_FILE_NAME);
+	}
+
+
+	/**
+	 * This method saves updated Jena Model to a file
+	 * @param model
+	 * @param fileName
+	 */
+	public void writeModelToFile(Model model, String fileName) {
+		FileWriter out = null;
+		try {
+			out = new FileWriter( fileName );
+		    model.write( out, "RDF/XML-ABBREV" );
+		} catch (IOException closeException) {
+		       // ignore
+		} finally {
+		    try {
+				out.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}	
+	}
+	
+	
+	/**
+	 * This method loads data from given RDF file in a model.
+	 * @param inputFileName The path to the RDF file
+	 * @return model
+	 */
+	private Model createModelFromRdfFile(String inputFileName) {
+		// create an empty model
+   	    Model model = ModelFactory.createDefaultModel();
+
+    	// use the FileManager to find the input file
+    	InputStream in = FileManager.get().open(inputFileName);
+    	
+    	if (in == null) {
+    	    throw new IllegalArgumentException(
+    	                                 "File: " + inputFileName + " not found");
+    	}
+
+    	// read the RDF/XML file
+    	model.read(in, null);
+		return model;
 	}
 
 	

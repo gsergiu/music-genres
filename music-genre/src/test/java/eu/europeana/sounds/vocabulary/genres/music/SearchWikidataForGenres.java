@@ -77,7 +77,7 @@ public class SearchWikidataForGenres extends BaseSkosTest {
 				System.out.println(e.getMessage());
 			}
 		}
-//    	getSkosUtils().writeToRdf(searchAnalysisFodler, concepts);
+    	getSkosUtils().writeConceptsToRdf(concepts, TEST_RDF_VOCABULARY_FILE_PATH, searchAnalysisFodler);
 	}
 
 	
