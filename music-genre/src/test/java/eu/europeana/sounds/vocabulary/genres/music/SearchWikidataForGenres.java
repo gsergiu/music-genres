@@ -10,6 +10,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
+import eu.europeana.dbpedia.connection.DBPediaApiClient;
 import eu.europeana.sounds.definitions.model.concept.Concept;
 import eu.europeana.sounds.skos.BaseSkosTest;
 import eu.europeana.wikidata.connection.WikidataApiClient;
@@ -21,6 +22,7 @@ public class SearchWikidataForGenres extends BaseSkosTest {
 	String WIKIDATA_ID_KEY = "wikidataId";
 
 	WikidataApiClient apiClient = new WikidataApiClient();
+	DBPediaApiClient dbpediaApiClient = new DBPediaApiClient();
 
 	
 
@@ -43,6 +45,32 @@ public class SearchWikidataForGenres extends BaseSkosTest {
 						getSkosUtils().normalizeFreebaseId(freebaseId)
 						, WikidataApiClient.SEARCH_RESULTS_FOLDER
 				        , freebaseId);
+			} catch (IOException e) {
+				System.out.println(e.getMessage());
+			}
+		}
+	}
+
+
+	/**
+	 * This method reads XML entries from a file in a given folder TEST_RDF_VOCABULARY_FILE_PATH.
+	 * For example, we use Music-Genres.rdf file in folder 'src/test/resources'.
+	 * From result DBPedia ID is extracted and normalized.
+	 * Using extracted DBPedia ID we search in DBPedia repository and store related JSON objects 
+	 * in files in SEARCH_RESULTS_FOLDER. 
+	 */
+	@Test
+	public void saveDBPediaSearchResults() {
+    	List<Concept> concepts = getSkosUtils().parseSkosRdfXmlToConceptCollection(TEST_RDF_VOCABULARY_FILE_PATH); 
+    	Iterator<Concept> itrConcept = concepts.iterator();
+    	while (itrConcept.hasNext()) {
+			try {
+		    	String dbpediaId = getSkosUtils().extractDBPediaIdFromConceptExactMatch(itrConcept.next());
+		    	System.out.println(dbpediaId);
+				dbpediaApiClient.saveSearchResults(
+						dbpediaId
+						, DBPediaApiClient.SEARCH_RESULTS_FOLDER
+				        , getSkosUtils().getLastChunk(dbpediaId, "/"));
 			} catch (IOException e) {
 				System.out.println(e.getMessage());
 			}

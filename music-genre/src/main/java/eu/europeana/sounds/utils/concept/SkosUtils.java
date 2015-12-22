@@ -215,6 +215,45 @@ public class SkosUtils {
 		
 	
 	/**
+	 * This method extracts DBPedia ID from a Concept field 'exactMatch'.
+	 * It takes first valid value from the closeMatch map.
+	 * @param concept
+	 * @return dbpediaId
+	 */
+	public String extractDBPediaIdFromConceptExactMatch(Concept concept) {	
+		String exactMatch = "";
+		if (concept != null && concept.getExactMatch() != null && concept.getExactMatch().size() > 0) {
+			for (Object value : concept.getCloseMatch().values()) {
+				exactMatch = (String) value;
+				break;
+			}
+		}
+		String dbpediaId = "";
+		if (exactMatch != null && exactMatch.contains("/")) {
+			String[] chunks = exactMatch.split("/");
+			dbpediaId = chunks[chunks.length-1];
+		}
+		return dbpediaId;
+	}
+	
+	
+	/**
+	 * Text is separated by given splitter string.
+	 * @param text
+	 * @param splitter
+	 * @return last chunk
+	 */
+	public String getLastChunk(String text, String splitter) {
+		String lastChunk = "";
+		if (text != null && text.contains(splitter)) {
+			String[] chunks = text.split(splitter);
+			lastChunk = chunks[chunks.length-1];
+		}
+        return lastChunk;
+	}
+		
+	
+	/**
 	 * This method converts Freebase ID from the file name form e.g. 'm.xyz'
 	 * into a regular Freebase ID form e.g. '/m/xyz'.
 	 * @param freebaseId
