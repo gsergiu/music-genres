@@ -3,10 +3,12 @@ package eu.europeana.sounds.vocabulary.genres.music;
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map.Entry;
 
 import org.junit.Test;
 
 import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
@@ -19,6 +21,7 @@ public class SearchWikidataForGenres extends BaseSkosTest {
 
 
 	String searchAnalysisFodler = "./src/test/resources/analysis";
+	String searchDBPediaAnalysisFodler = "./src/test/resources/dbpedia-analysis/";
 	String WIKIDATA_ID_KEY = "wikidataId";
 
 	WikidataApiClient apiClient = new WikidataApiClient();
@@ -59,7 +62,7 @@ public class SearchWikidataForGenres extends BaseSkosTest {
 	 * Using extracted DBPedia ID we search in DBPedia repository and store related JSON objects 
 	 * in files in SEARCH_RESULTS_FOLDER. 
 	 */
-	@Test
+//	@Test
 	public void saveDBPediaSearchResults() {
     	List<Concept> concepts = getSkosUtils().parseSkosRdfXmlToConceptCollection(TEST_RDF_VOCABULARY_FILE_PATH); 
     	Iterator<Concept> itrConcept = concepts.iterator();
@@ -67,10 +70,11 @@ public class SearchWikidataForGenres extends BaseSkosTest {
 			try {
 		    	String dbpediaId = getSkosUtils().extractDBPediaIdFromConceptExactMatch(itrConcept.next());
 		    	System.out.println(dbpediaId);
+		    	String fileName = getSkosUtils().getLastChunk(dbpediaId, "/");
 				dbpediaApiClient.saveSearchResults(
 						dbpediaId
 						, DBPediaApiClient.SEARCH_RESULTS_FOLDER
-				        , getSkosUtils().getLastChunk(dbpediaId, "/"));
+				        , fileName);
 			} catch (IOException e) {
 				System.out.println(e.getMessage());
 			}
@@ -110,6 +114,38 @@ public class SearchWikidataForGenres extends BaseSkosTest {
 
 	
 	/**
+	 * This method reads XML entries from RDF file. Also it extracts Wikidata IDs from 
+	 * JSON files in the DBPedia search results folder and maps them to related DBPedia IDs.
+	 * In the next step we enrich original XML files by extracted Wikidata IDs and 
+	 * store the result in new RDF file in folder 'src/test/resources/analysis'.
+	 */
+	@Test
+	public void parseDBPediaSearchResults() {
+		String json = null;
+    	List<Concept> concepts = getSkosUtils().parseSkosRdfXmlToConceptCollection(TEST_RDF_VOCABULARY_FILE_PATH); 
+    	Iterator<Concept> itrConcept = concepts.iterator();
+    	while (itrConcept.hasNext()) {
+			try {
+				Concept concept = itrConcept.next();
+		    	String dbpediaId = getSkosUtils().extractDBPediaIdFromConceptExactMatch(concept);
+		    	System.out.println(dbpediaId);
+		    	String fileName = getSkosUtils().getLastChunk(dbpediaId, "/");
+				json = dbpediaApiClient.getSearchResultFromFile(fileName);
+				String wikidataId = parseDBPediaResult(json);
+				if(wikidataId != null && wikidataId.length() > 0)
+					concept.addCloseMatchInMapping(WIKIDATA_ID_KEY, wikidataId);
+				else{
+					System.out.println("NOT FOUND: " + dbpediaId);
+				}
+			} catch (IOException e) {
+				System.out.println(e.getMessage());
+			}
+		}
+    	getSkosUtils().writeConceptsToRdf(concepts, TEST_RDF_VOCABULARY_FILE_PATH, searchDBPediaAnalysisFodler);
+	}
+
+	
+	/**
 	 * This method extracts Wikidata ID from JSON file looking up in
 	 * field 'items'
 	 * @param json The JSON string
@@ -123,6 +159,27 @@ public class SearchWikidataForGenres extends BaseSkosTest {
 		JsonArray results = (JsonArray) json_data.getAsJsonArray("items");
 		if (results.size() > 0) {
 			res = results.get(0).toString();
+		}
+		return res;
+	}
+
+
+	/**
+	 * This method extracts Wikidata ID from JSON file looking up in
+	 * field 'entities'
+	 * @param json The JSON string
+	 * @return Wikidata ID string
+	 */
+	private String parseDBPediaResult(String json) {
+		String res = "";
+		JsonParser parser = new JsonParser();
+		JsonObject json_data = (JsonObject) parser.parse(json);
+
+		JsonObject results = (JsonObject) json_data.get("entities");
+		if (results != null) {
+			Iterator<Entry<String, JsonElement>> itr = results.entrySet().iterator();
+			Entry<String, JsonElement> elem = itr.next();
+			res = elem.getKey().substring(1);
 		}
 		return res;
 	}

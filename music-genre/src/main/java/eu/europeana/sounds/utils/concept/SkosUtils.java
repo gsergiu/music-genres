@@ -223,17 +223,22 @@ public class SkosUtils {
 	public String extractDBPediaIdFromConceptExactMatch(Concept concept) {	
 		String exactMatch = "";
 		if (concept != null && concept.getExactMatch() != null && concept.getExactMatch().size() > 0) {
-			for (Object value : concept.getCloseMatch().values()) {
+			for (Object value : concept.getExactMatch().values()) {
 				exactMatch = (String) value;
 				break;
 			}
 		}
 		String dbpediaId = "";
-		if (exactMatch != null && exactMatch.contains("/")) {
-			String[] chunks = exactMatch.split("/");
-			dbpediaId = chunks[chunks.length-1];
+//		if (exactMatch != null && exactMatch.contains("/")) {
+//			String[] chunks = exactMatch.split("/");
+//			dbpediaId = chunks[chunks.length-1];
+//		}
+		if (exactMatch != null && exactMatch.contains("@")) {
+			String[] chunks = exactMatch.split("@");
+			dbpediaId = chunks[0].replace("\"", "");
 		}
 		return dbpediaId;
+//		return exactMatch;
 	}
 	
 	
@@ -389,7 +394,7 @@ public class SkosUtils {
 		
     	// write model to standard out
 //    	model.write(System.out);
-		writeModelToFile(model, RDF_RES_FILE_NAME);
+		writeModelToFile(model, pathToAnalysisFolder + RDF_RES_FILE_NAME);
 	}
 
 

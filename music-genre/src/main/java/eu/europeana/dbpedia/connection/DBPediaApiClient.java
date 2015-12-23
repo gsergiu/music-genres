@@ -10,6 +10,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -34,7 +36,7 @@ public class DBPediaApiClient {
 	private static final Log log = LogFactory.getLog(DBPediaApiClient.class);
 
 	private String apiKey;
-	public static final String DEFAULT_DBPEDIA_SEARCH_URI = "https://wdq.wmflabs.org/api?";
+	public static final String DEFAULT_DBPEDIA_SEARCH_URI = "https://www.wikidata.org/w/api.php?"; //"https://wdq.wmflabs.org/api?";
 
 	private String wikidataApiUri = "";
 	private HttpConnector http = new HttpConnector();
@@ -71,16 +73,22 @@ public class DBPediaApiClient {
 
 	/**
 	 * Returns the DBPedia API URI for JSON calls
-	 * e.g. https://wdq.wmflabs.org/api?q=string[1709:%27http://dbpedia.org/ontology/Musical%27]
+	 * e.g. https://www.wikidata.org/w/api.php?action=wbgetentities&sites=enwiki&titles=Musical%20theatre&normalize=&props=info|sitelinks/urls&sitefilter=enwiki
+	 * e.g. https://www.wikidata.org/w/api.php?action=wbgetentities&sites=enwiki&titles=Musical%20theatre&normalize=&props=info|sitelinks/urls&sitefilter=enwiki&format=json
 	 * @param searchString
 	 * @return search URL
 	 * @throws UnsupportedEncodingException 
 	 */
-//	public String getDBPediaSearchUrl(String searchString) throws UnsupportedEncodingException {
-//		String searchUrl = getApiUri();
-//		searchUrl += "q=" + URLEncoder.encode("string[1709:'" + searchString + "']", "UTF-8");
-//		return searchUrl;
-//	}
+	public String getDBPediaSearchUrl(String searchString) throws UnsupportedEncodingException {
+		String searchUrl = getApiUri();
+		searchUrl += "action=wbgetentities&sites=enwiki&titles=" 
+//				+ URLEncoder.encode(searchString.replace("_", " ") 
+//				+ "&normalize=&props=info|sitelinks/urls&sitefilter=enwiki", "UTF-8");
+				+ URLEncoder.encode(searchString.replace("_", " "), "UTF-8")
+				+ "&normalize=&props=sitelinks&sitefilter=enwiki&format=json";
+//		        + "&normalize=&props=info|sitelinks/urls&sitefilter=enwiki&format=json";
+		return searchUrl;
+	}
 
 	
     /**
@@ -195,27 +203,27 @@ public class DBPediaApiClient {
 	public void saveSearchResults(String query, String folder, String fileName)
 			throws IOException {
 		
-//		if (fileName.startsWith("m.")) {
-			File queryResultsFile = new File(folder, fileName + ".json");
-			// create parent dirs
-			queryResultsFile.getParentFile().mkdirs();
-			BufferedWriter writer = null;
+		File queryResultsFile = new File(folder, fileName + ".json");
+		// create parent dirs
+		queryResultsFile.getParentFile().mkdirs();
+		BufferedWriter writer = null;
+		try {
+			writer = new BufferedWriter(new FileWriter(queryResultsFile));
+			String normalizedQuery = fileName.replace("_", " ");
+//			String searchResult = queryDBPedia(normalizedQuery);
+//			String indentedSearchResult = convertJsonStringToPrettyPrintJsonOutput(searchResult);
+			String searchUrl = getDBPediaSearchUrl(normalizedQuery);
+			String searchResult = getJSONResult(searchUrl);
+			String indentedSearchResult = convertJsonStringToPrettyPrintJsonOutput(searchResult);
+			writer.write(indentedSearchResult);
+		} finally {
 			try {
-				writer = new BufferedWriter(new FileWriter(queryResultsFile));
-//				String searchUrl = getDBPediaSearchUrl(query);
-//				String searchResult = getJSONResult(searchUrl);
-				String searchResult = queryDBPedia(query);
-				String indentedSearchResult = convertJsonStringToPrettyPrintJsonOutput(searchResult);
-				writer.write(indentedSearchResult);
-			} finally {
-				try {
-					writer.close();
-				} catch (IOException e) {
-					log.warn("cannot close results writer for file: "
-							+ queryResultsFile);
-				}
+				writer.close();
+			} catch (IOException e) {
+				log.warn("cannot close results writer for file: "
+						+ queryResultsFile);
 			}
-//		}
+		}
 	}
 
 	public String getSearchResultFromFile(String query) throws IOException {
