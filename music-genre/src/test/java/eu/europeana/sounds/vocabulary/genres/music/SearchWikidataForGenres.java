@@ -1,5 +1,6 @@
 package eu.europeana.sounds.vocabulary.genres.music;
 
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
@@ -23,6 +24,7 @@ public class SearchWikidataForGenres extends BaseSkosTest {
 	String searchAnalysisFodler = "./src/test/resources/analysis";
 	String searchDBPediaAnalysisFodler = "./src/test/resources/dbpedia-analysis/";
 	String WIKIDATA_ID_KEY = "wikidataId";
+	String MAPPING_FILE = "mapping.csv";
 
 	WikidataApiClient apiClient = new WikidataApiClient();
 	DBPediaApiClient dbpediaApiClient = new DBPediaApiClient();
@@ -183,5 +185,55 @@ public class SearchWikidataForGenres extends BaseSkosTest {
 		}
 		return res;
 	}
+	
+	
+	@Test
+	public void writeMappingsInCsvFile()
+	   {
+		try
+		{
+		    FileWriter writer = new FileWriter(searchAnalysisFodler + "/" + MAPPING_FILE);
+			 
+		    writer.append("WIKIDATA ID");
+		    writer.append(',');
+		    writer.append("FREEBASE ID");
+		    writer.append(',');
+		    writer.append("DBPEDIA ID");
+		    writer.append('\n');
+
+			String json = null;
+	    	List<Concept> concepts = getSkosUtils().parseSkosRdfXmlToConceptCollection(TEST_RDF_VOCABULARY_FILE_PATH); 
+	    	Iterator<Concept> itrConcept = concepts.iterator();
+	    	while (itrConcept.hasNext()) {
+				try {
+					Concept concept = itrConcept.next();
+			    	String freebaseId = getSkosUtils().extractFreebaseIdFromConceptCloseMatch(concept);
+			    	String dbpediaId = getSkosUtils().extractDBPediaIdFromConceptExactMatch(concept);
+					json = apiClient.getSearchResultFromFile(freebaseId);
+					String wikidataId = parseResult(json);
+					if(wikidataId == null || wikidataId.length() == 0) {
+				    	String fileName = getSkosUtils().getLastChunk(dbpediaId, "/");
+						json = dbpediaApiClient.getSearchResultFromFile(fileName);
+						wikidataId = parseDBPediaResult(json);
+					}
+				    writer.append(wikidataId);
+				    writer.append(',');
+				    writer.append(freebaseId);
+				    writer.append(',');
+				    writer.append(dbpediaId);
+				    writer.append('\n');
+				} catch (IOException e) {
+					System.out.println(e.getMessage());
+				}
+			}
+
+	    	writer.flush();
+		    writer.close();
+		}
+		catch(IOException e)
+		{
+		     e.printStackTrace();
+		} 
+	}	
 
 }
