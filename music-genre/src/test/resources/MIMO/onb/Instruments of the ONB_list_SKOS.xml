@@ -2,7 +2,6 @@
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:skos="http://www.w3.org/2004/02/skos/core#">
 	<skos:Concept rdf:about="basso+viola">	
 	<skos:prefLabel>basso viola</skos:prefLabel>	
-	<skos:altLabel></skos:altLabel>	
 	</skos:Concept>
 	<skos:Concept rdf:about="Bass-Trombone">	
 	<skos:prefLabel>Bass-Trombone</skos:prefLabel>	
@@ -11,7 +10,6 @@
 	</skos:Concept>
 	<skos:Concept rdf:about="Basstuba">	
 	<skos:prefLabel>Basstuba </skos:prefLabel>	
-	<skos:altLabel></skos:altLabel>	
 	</skos:Concept>
 	<skos:Concept rdf:about="Cello">	
 	<skos:prefLabel>Cello</skos:prefLabel>	
@@ -20,11 +18,9 @@
 	</skos:Concept>
 	<skos:Concept rdf:about="Cembalo">	
 	<skos:prefLabel>Cembalo</skos:prefLabel>	
-	<skos:altLabel></skos:altLabel>	
 	</skos:Concept>
 	<skos:Concept rdf:about="Chaloumaux">	
 	<skos:prefLabel>Chaloumaux</skos:prefLabel>	
-	<skos:altLabel></skos:altLabel>	
 	</skos:Concept>
 	<skos:Concept rdf:about="Clarinette">	
 	<skos:prefLabel>Clarinette</skos:prefLabel>	
@@ -36,15 +32,12 @@
 	</skos:Concept>
 	<skos:Concept rdf:about="Clavicembalo">	
 	<skos:prefLabel>Clavicembalo</skos:prefLabel>	
-	<skos:altLabel></skos:altLabel>	
 	</skos:Concept>
 	<skos:Concept rdf:about="Clavichord">	
 	<skos:prefLabel>Clavichord</skos:prefLabel>	
-	<skos:altLabel></skos:altLabel>	
 	</skos:Concept>
 	<skos:Concept rdf:about="Contrabasso">	
 	<skos:prefLabel>Contrabasso</skos:prefLabel>	
-	<skos:altLabel></skos:altLabel>	
 	</skos:Concept>
 	<skos:Concept rdf:about="Contrabass-Tuba">	
 	<skos:prefLabel>Contrabass-Tuba</skos:prefLabel>	
