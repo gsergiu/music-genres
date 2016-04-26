@@ -1,176 +1,173 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:skos="http://www.w3.org/2004/02/skos/core#">
-	<skos:Concept>	
+	<skos:Concept rdf:about="basso+viola">	
 	<skos:prefLabel>basso viola</skos:prefLabel>	
 	<skos:altLabel></skos:altLabel>	
 	</skos:Concept>
-	<skos:Concept>	
+	<skos:Concept rdf:about="Bass-Trombone">	
 	<skos:prefLabel>Bass-Trombone</skos:prefLabel>	
 	<skos:altLabel>Baßposaune</skos:altLabel>	
 	<skos:altLabel>Bassposaune</skos:altLabel>	
 	</skos:Concept>
-	<skos:Concept>	
+	<skos:Concept rdf:about="Basstuba">	
 	<skos:prefLabel>Basstuba </skos:prefLabel>	
 	<skos:altLabel></skos:altLabel>	
 	</skos:Concept>
-	<skos:Concept>	
+	<skos:Concept rdf:about="Cello">	
 	<skos:prefLabel>Cello</skos:prefLabel>	
 	<skos:altLabel>Violoncell</skos:altLabel>	
 	<skos:altLabel>Violoncello</skos:altLabel>	
 	</skos:Concept>
-	<skos:Concept>	
+	<skos:Concept rdf:about="Cembalo">	
 	<skos:prefLabel>Cembalo</skos:prefLabel>	
 	<skos:altLabel></skos:altLabel>	
 	</skos:Concept>
-	<skos:Concept>	
+	<skos:Concept rdf:about="Chaloumaux">	
 	<skos:prefLabel>Chaloumaux</skos:prefLabel>	
 	<skos:altLabel></skos:altLabel>	
 	</skos:Concept>
-	<skos:Concept>	
+	<skos:Concept rdf:about="Clarinette">	
 	<skos:prefLabel>Clarinette</skos:prefLabel>	
 	<skos:altLabel>Klarinette</skos:altLabel>	
 	</skos:Concept>
-	<skos:Concept>	
+	<skos:Concept rdf:about="Clarino">	
 	<skos:prefLabel>Clarino</skos:prefLabel>	
 	<skos:altLabel>Barocktrompete</skos:altLabel>	
 	</skos:Concept>
-	<skos:Concept>	
+	<skos:Concept rdf:about="Clavicembalo">	
 	<skos:prefLabel>Clavicembalo</skos:prefLabel>	
 	<skos:altLabel></skos:altLabel>	
 	</skos:Concept>
-	<skos:Concept>	
+	<skos:Concept rdf:about="Clavichord">	
 	<skos:prefLabel>Clavichord</skos:prefLabel>	
 	<skos:altLabel></skos:altLabel>	
 	</skos:Concept>
-	<skos:Concept>	
+	<skos:Concept rdf:about="Contrabasso">	
 	<skos:prefLabel>Contrabasso</skos:prefLabel>	
 	<skos:altLabel></skos:altLabel>	
 	</skos:Concept>
-	<skos:Concept>	
+	<skos:Concept rdf:about="Contrabass-Tuba">	
 	<skos:prefLabel>Contrabass-Tuba</skos:prefLabel>	
 	<skos:altLabel>Kontrabass-Tuba</skos:altLabel>	
 	</skos:Concept>
-	<skos:Concept>	
+	<skos:Concept rdf:about="Cornetto">	
 	<skos:prefLabel>Cornetto</skos:prefLabel>	
-	<skos:altLabel></skos:altLabel>	
 	</skos:Concept>
-	<skos:Concept><skos:prefLabel>Corno</skos:prefLabel>	
+	<skos:Concept rdf:about="Corno">
+	<skos:prefLabel>Corno</skos:prefLabel>	
 	<skos:altLabel>Horn</skos:altLabel>	
 	</skos:Concept>
-	<skos:Concept><skos:prefLabel>Corno inglese</skos:prefLabel>	
+	<skos:Concept rdf:about="Corno+inglese">
+	<skos:prefLabel>Corno inglese</skos:prefLabel>	
 	<skos:altLabel>Englisches Horn</skos:altLabel>	
 	</skos:Concept>
-	<skos:Concept>	
+	<skos:Concept rdf:about="Fagott">	
 	<skos:prefLabel>Fagott</skos:prefLabel>	
 	<skos:altLabel>Fagotte</skos:altLabel>	
 	<skos:altLabel>Fagotto</skos:altLabel>	
 	</skos:Concept>
-	<skos:Concept>	
+	<skos:Concept rdf:about="Flauto">	
 	<skos:prefLabel>Flauto</skos:prefLabel>	
 	<skos:altLabel>Flöte</skos:altLabel>	
 	</skos:Concept>
-	<skos:Concept>	
+	<skos:Concept rdf:about="Flauto+dAmore">	
 	<skos:prefLabel>Flauto d'Amore</skos:prefLabel>	
 	<skos:altLabel>Liebesflöte</skos:altLabel>	
 	</skos:Concept>
-	<skos:Concept>	
+	<skos:Concept rdf:about="Flauto+traverso">	
 	<skos:prefLabel>Flauto traverso </skos:prefLabel>	
-	<skos:altLabel></skos:altLabel>	
 	</skos:Concept>
-	<skos:Concept>	
+	<skos:Concept rdf:about="Glockenspiel">	
 	<skos:prefLabel>Glockenspiel</skos:prefLabel>	
-	<skos:altLabel></skos:altLabel>	
 	</skos:Concept>
-	<skos:Concept>	
+	<skos:Concept rdf:about="Harp">	
 	<skos:prefLabel>Harp</skos:prefLabel>	
 	<skos:altLabel>Harfe</skos:altLabel>	
 	</skos:Concept>
-	<skos:Concept>	
+	<skos:Concept rdf:about="Lute">	
 	<skos:prefLabel>Lute</skos:prefLabel>	
 	<skos:altLabel>Laute</skos:altLabel>	
 	</skos:Concept>
-	<skos:Concept>	
+	<skos:Concept rdf:about="Lyra">	
 	<skos:prefLabel>Lyra</skos:prefLabel>	
 	<skos:altLabel>lyre</skos:altLabel>	
 	</skos:Concept>
-	<skos:Concept>	
+	<skos:Concept rdf:about="Mandolin">	
 	<skos:prefLabel>Mandolin</skos:prefLabel>	
 	<skos:altLabel>Mandoline</skos:altLabel>	
 	</skos:Concept>
-	<skos:Concept>	
+	<skos:Concept rdf:about="Oboe">	
 	<skos:prefLabel>Oboe</skos:prefLabel>	
 	<skos:altLabel>Oboi</skos:altLabel>	
 	</skos:Concept>
-	<skos:Concept>	
+	<skos:Concept rdf:about="Organo">	
 	<skos:prefLabel>Organo </skos:prefLabel>	
 	<skos:altLabel>Organ </skos:altLabel>	
 	</skos:Concept>
-	<skos:Concept>	
+	<skos:Concept rdf:about="Orgue">	
 	<skos:prefLabel>Orgue</skos:prefLabel>	
 	<skos:altLabel>Orgel</skos:altLabel>	
 	</skos:Concept>
-	<skos:Concept>	
+	<skos:Concept rdf:about="Piano">	
 	<skos:prefLabel>Piano </skos:prefLabel>	
 	<skos:altLabel>Klavier</skos:altLabel>	
 	<skos:altLabel>Clavier</skos:altLabel>	
 	</skos:Concept>
-	<skos:Concept>	
+	<skos:Concept rdf:about="Pianoforte">	
 	<skos:prefLabel>Pianoforte</skos:prefLabel>	
 	</skos:Concept>
-	<skos:Concept>	
+	<skos:Concept rdf:about="Piccolo+Flauto">	
 	<skos:prefLabel>Piccolo Flauto </skos:prefLabel>	
 	</skos:Concept>
-	<skos:Concept>	
+	<skos:Concept rdf:about="Tenor-Trombone">	
 	<skos:prefLabel>Tenor-Trombone</skos:prefLabel>	
 	<skos:altLabel>Tenor-Posaune</skos:altLabel>	
 	</skos:Concept>
-	<skos:Concept>	
+	<skos:Concept rdf:about="Tenortuba">	
 	<skos:prefLabel>Tenortuba</skos:prefLabel>	
 	</skos:Concept>
-	<skos:Concept>	
+	<skos:Concept rdf:about="Timpano">	
 	<skos:prefLabel>Timpano</skos:prefLabel>	
 	<skos:altLabel>Pauke </skos:altLabel>	
+	<skos:altLabel>Tympano</skos:altLabel>
+	<skos:altLabel>kettledrum</skos:altLabel>	
 	</skos:Concept>
-	<skos:Concept>	
-	<skos:prefLabel>Timpano</skos:prefLabel>	
-	<skos:altLabel>Tympanokettledrum</skos:altLabel>	
-	</skos:Concept>
-	<skos:Concept>	
+	<skos:Concept rdf:about="Tiorba">	
 	<skos:prefLabel>Tiorba</skos:prefLabel>	
 	<skos:altLabel>Theorbe</skos:altLabel>	
 	</skos:Concept>
-	<skos:Concept>	
+	<skos:Concept rdf:about="Trombe+di+Caccia">	
 	<skos:prefLabel>Trombe di Caccia</skos:prefLabel>	
 	</skos:Concept>
-	<skos:Concept>	
+	<skos:Concept rdf:about="Trombone">	
 	<skos:prefLabel>Trombone </skos:prefLabel>	
 	<skos:altLabel>Posaunen</skos:altLabel>	
 	</skos:Concept>
-	<skos:Concept>	
+	<skos:Concept rdf:about="Trompete">	
 	<skos:prefLabel>Trompete</skos:prefLabel>	
 	</skos:Concept>
-	<skos:Concept>	
+	<skos:Concept rdf:about="Viola">	
 	<skos:prefLabel>Viola</skos:prefLabel>	
 	<skos:altLabel>Bratsche</skos:altLabel>	
 	</skos:Concept>
-	<skos:Concept>	
+	<skos:Concept rdf:about="Viola+da+braccio">	
 	<skos:prefLabel>Viola da braccio</skos:prefLabel>	
 	<skos:altLabel>Armgeige</skos:altLabel>	
 	</skos:Concept>
-	<skos:Concept>	
-	<skos:prefLabel>Viola da gamba </skos:prefLabel>	
+	<skos:Concept rdf:about="Viola+da+gamba">	
+	<skos:prefLabel>Viola da gamba</skos:prefLabel>	
 	<skos:altLabel>Viol</skos:altLabel>	
 	<skos:altLabel>Bass Viol</skos:altLabel>	
 	</skos:Concept>
-	<skos:Concept>	
+	<skos:Concept rdf:about="Viola+damore">	
 	<skos:prefLabel>Viola d'amore</skos:prefLabel>	
 	<skos:altLabel>love viol</skos:altLabel>	
 	</skos:Concept>
-	<skos:Concept>	
-	<skos:prefLabel>Violetta </skos:prefLabel>	
+	<skos:Concept rdf:about="Violetta">	
+	<skos:prefLabel>Violetta</skos:prefLabel>	
 	</skos:Concept>
-	<skos:Concept>	
-	<skos:prefLabel>Violin </skos:prefLabel>	
+	<skos:Concept rdf:about="Violin">	
+	<skos:prefLabel>Violin</skos:prefLabel>	
 	<skos:altLabel>Violine</skos:altLabel>	
 	<skos:altLabel>Violino</skos:altLabel>	
 	<skos:altLabel>Violon</skos:altLabel>	
