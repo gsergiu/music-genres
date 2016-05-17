@@ -108,7 +108,7 @@ public class AnnotationSkosTest extends BaseSkosTest {
 	public final String TEST_PREV_LABEL_I18N_KEY_33 = "http://www.w3.org/2004/02/skos/core#prefLabel33_prefLabel";
 	public final String TEST_PREV_LABEL_I18N_VALUE_33 = "\"뮤지컬\"@ko";
 
-	public final String TEST_RDF_COLLECTION_I18N_FILE_PATH  = "D:/git/annotation/annotation-web/src/test/resources/Music-Genres-i18n.rdf";
+	public final String TEST_RDF_COLLECTION_I18N_FILE_PATH = "D:/git/annotation/annotation-web/src/test/resources/Music-Genres-i18n.rdf";
 
 	
 	/**
