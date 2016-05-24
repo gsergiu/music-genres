@@ -21,15 +21,15 @@ import eu.europeana.api.client.model.search.EuropeanaApi2Item;
 import eu.europeana.api.client.search.query.Api2QueryBuilder;
 import eu.europeana.api.client.search.query.Api2QueryInterface;
 import eu.europeana.sounds.definitions.model.concept.Concept;
-import eu.europeana.sounds.definitions.model.concept.impl.BaseConcept;
+import eu.europeana.sounds.definitions.model.concept.impl.MimoMappingView;
 
 public class EuropeanaSearchApiClient {
 
 	private static final Log log = LogFactory.getLog(EuropeanaSearchApiClient.class);
 
-	public static final String TITLE_KEY = "title";
-	public static final String DESCRIPTION_KEY = "description";
-	public static final String EUROPEANA_ID_KEY = "europeanaId";
+//	public static final String TITLE_KEY = "title";
+//	public static final String DESCRIPTION_KEY = "description";
+//	public static final String EUROPEANA_ID_KEY = "europeanaId";
 
 	public final static String ONB_INSTRUMENTS_FOLDER = "./src/test/resources/MIMO/onb";
 	
@@ -82,23 +82,23 @@ public class EuropeanaSearchApiClient {
 	 */
 	private List<Concept> parseEuropeanaSearchApiResultsToConcept(Concept queryConcept, String query)
 			throws UnsupportedEncodingException, MalformedURLException, IOException, EuropeanaApiProblem {
-		EuropeanaApi2Results results = queryEuropeanaSearchApiByTitle(query);
+		EuropeanaApi2Results results = searchMimoTermInEuropeanaCollection(query);
 		
     	List<Concept> conceptList = new ArrayList<Concept>();
 
     	// parse results into concept objects
         for (EuropeanaApi2Item item : results.getAllItems()) {
-        	BaseConcept concept = new BaseConcept();
+        	MimoMappingView concept = new MimoMappingView();
         	concept.setUri(queryConcept.getUri());
         	concept.setPrefLabel(queryConcept.getPrefLabel());
         	concept.setAltLabel(queryConcept.getAltLabel());
         	
         	if (StringUtils.isNotEmpty(item.getTitle().get(0)))
-        		concept.addNoteInMapping(TITLE_KEY, item.getTitle().get(0));
-        	if (StringUtils.isNotEmpty(item.getTitle().get(0)))
-        		concept.addNoteInMapping(DESCRIPTION_KEY, item.getTitle().get(0));
+        		concept.setTitle(item.getTitle());
+        	if (StringUtils.isNotEmpty(item.getDcDescription().get(0)))
+        		concept.setDcDescription(item.getDcDescription());
         	if (StringUtils.isNotEmpty(item.getId()))
-        		concept.addNoteInMapping(EUROPEANA_ID_KEY, item.getId());
+        		concept.setEuropeanaId(item.getId());
             conceptList.add(concept);
 		}
         return conceptList;
@@ -113,16 +113,19 @@ public class EuropeanaSearchApiClient {
 	 * @throws IOException
 	 * @throws EuropeanaApiProblem
 	 */
-	private EuropeanaApi2Results queryEuropeanaSearchApiByTitle(String query)
+	private EuropeanaApi2Results searchMimoTermInEuropeanaCollection(String query)
 			throws UnsupportedEncodingException, MalformedURLException, IOException, EuropeanaApiProblem {
 		//create the query object
         EuropeanaApi2Client europeanaClient = new EuropeanaApi2Client();
 		Api2QueryBuilder queryBuilder = europeanaClient.getQueryBuilder();
-		String portalUrl = "http://www.europeana.eu/portal/search?q=(europeana_collectionName:(2059216_Ag_EU_eSOUNDS_1001_ONB) AND (title:\"" 
-				+ URLEncoder.encode(query, "UTF-8") + "\" OR proxy_dc_description:\"" 
-				+ URLEncoder.encode(query, "UTF-8") + "\"))";		
+		String portalUrl = "http://www.europeana.eu/portal/search?q=";
+				
+		String toEncode ="(europeana_collectionName:(2059216_Ag_EU_eSOUNDS_1001_ONB) AND (title:\"" 
+				+ query+ "\" OR proxy_dc_description:\"" + query+ "\"))";
+		
+		portalUrl += URLEncoder.encode(toEncode, "UTF-8");
 		Api2QueryInterface apiQuery = queryBuilder.buildQuery(portalUrl);
-		apiQuery.setProfile("minimal");
+		apiQuery.setProfile("rich");
 		
 		EuropeanaApi2Results results = europeanaClient.searchApi2(apiQuery, 0, -1);
 		return results;
@@ -152,16 +155,19 @@ public class EuropeanaSearchApiClient {
 
     		Iterator<Concept> itr = conceptList.iterator();
     		while (itr.hasNext()) {
-    			Concept concept = itr.next();
+    			MimoMappingView concept = (MimoMappingView) itr.next();
     			writer.append(concept.getPrefLabel().values().toString());
         		writer.append(CSV_DELIMITER);
     			writer.append(concept.getUri());
         		writer.append(CSV_DELIMITER);
-    			writer.append(concept.getNote().get(TITLE_KEY));
+        		writer.append(StringUtils.join(concept.getTitle(), ','));
+//    			writer.append(concept.getNote().get(TITLE_KEY));
         		writer.append(CSV_DELIMITER);
-    			writer.append(concept.getNote().get(DESCRIPTION_KEY));
+        		writer.append(StringUtils.join(concept.getDcDescription(), ','));
+//    			writer.append(concept.getNote().get(DESCRIPTION_KEY));
         		writer.append(CSV_DELIMITER);
-    			writer.append(concept.getNote().get(EUROPEANA_ID_KEY));
+        		writer.append(concept.getEuropeanaId());
+//    			writer.append(concept.getNote().get(EUROPEANA_ID_KEY));
     			writer.append('\n');
     		}
     		writer.flush();
