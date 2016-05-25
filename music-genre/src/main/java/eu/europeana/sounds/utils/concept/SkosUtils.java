@@ -322,7 +322,13 @@ public class SkosUtils {
 	        	String predicate = triple.getPredicate().toString();
 	        	String conceptFieldName = setPredicate(predicate);
 	        	
-	        	String value = triple.getObject().toString();
+	        	String value; 
+	        	
+	        	if(triple.getObject().isLiteral())
+	        		value = (String) triple.getObject().getLiteralValue();
+	        	else 
+	        		value = triple.getObject().toString(false);
+	        	
 	        	log.info("Statement: " + predicate + " = " + value);
 	        	System.out.println("Statement: " + predicate + " = " + value);
 	        	

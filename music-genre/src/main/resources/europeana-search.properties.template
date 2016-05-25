@@ -1,0 +1,4 @@
+#Properties used for runtime configuration
+
+#the europeana search collection required for search requests
+search.collection = 

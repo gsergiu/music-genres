@@ -12,13 +12,28 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
+import java.lang.reflect.Type;
 import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.reflect.TypeToken;
+
 import eu.europeana.api.client.connection.EuropeanaConnection;
 import eu.europeana.api.client.connection.HttpConnector;
+import eu.europeana.api.client.model.EuropeanaApi2Results;
+import eu.europeana.api.client.search.query.EuropeanaQueryInterface;
+import eu.europeana.sounds.definitions.model.concept.Instrument;
+import eu.europeana.sounds.definitions.model.concept.impl.BaseInstrument;
 
 public class FreebaseApiClient {
 
@@ -45,6 +60,14 @@ public class FreebaseApiClient {
 	public final static String SEARCH_I18N_FOLDER = "./src/test/resources/search/i18n";
 	public final static String SEARCH_PARENT_SUBGENRES_FOLDER = "./src/test/resources/search/parentandsubgerens";
 	public final static String SEARCH_WIKIPEDIATITLE_FOLDER = "./src/test/resources/search/wikipediatitle";
+	public final static String ONB_INSTRUMENTS_FOLDER = "./src/test/resources/MIMO/onb";
+	public final static String ONB_INSTRUMENTS_JSON_FOLDER = "./src/test/resources/MIMO/onb/json";
+	
+	public final static String ONB_INSTRUMENTS_FILE = "Instruments of the ONB_list.csv";
+	public final static String INSTRUMENTS_FILE_EXTENDED = "Enriched instruments of the ONB list.csv";
+	
+	public final static String CSV_DELIMITER = ";";
+	 
 
 	/**
 	 * Create a new connection to the Freebase API.
@@ -476,4 +499,216 @@ public class FreebaseApiClient {
 				+ ".json");
 		return queryResultsFile;
 	}
+
+
+	/*****************************
+	 * MUSIC INSTRUMENTS MAPPING *
+	 ****************************/
+	
+	/**
+	 * This method is used to access ONB music instruments CSV file.
+	 * @param filename
+	 * @return
+	 */
+	private File getONBInstrumentsFile(String filename) {
+		File queryResultsFile = new File(ONB_INSTRUMENTS_FOLDER, filename);
+		return queryResultsFile;
+	}
+
+
+	/**
+	 * This method prepares file for storing music instrument JSON data from Freebase.
+	 * @param filename
+	 * @return
+	 */
+	private File getInstrumentJsonFile(String filename) {
+		File queryResultsFile = new File(ONB_INSTRUMENTS_JSON_FOLDER, filename + ".json");
+		return queryResultsFile;
+	}
+
+
+	public EuropeanaApi2Results search(EuropeanaQueryInterface search, long offset) 
+			throws IOException {
+		
+	    String json = this.searchJsonPage(search, 12, offset);
+	
+	    // Load results object from JSON
+	    Gson gson = new Gson();
+	    EuropeanaApi2Results res = gson.fromJson(json,
+	    EuropeanaApi2Results.class);
+	
+	    return res;
+	}
+	
+
+	private Instrument saveInstrumentToJsonFile(File queryResultsFile, String url)
+			throws IOException {
+		
+		Instrument instrument = new BaseInstrument();
+		BufferedWriter writer = null;
+		try {
+			writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(queryResultsFile), "UTF-8"));
+			String jsonResult = getJSONResult(url);
+			writer.write(jsonResult);
+
+			// Load results object from JSON
+			if (!jsonResult.contains("error") && !jsonResult.contains("\"result\": []")) {
+			    Gson gson = new Gson();
+	//		    instrument = gson.fromJson(jsonResult, BaseInstrument.class);
+				JsonElement element = gson.fromJson (jsonResult, JsonElement.class);
+				JsonObject jsonObj = element.getAsJsonObject();		
+				JsonArray resultJsonArray = jsonObj.get("result").getAsJsonArray();
+				JsonObject resultJsonObject = resultJsonArray.get(0).getAsJsonObject();
+				String mid = resultJsonObject.get("mid").getAsString();
+				instrument.setMid(mid);
+				Type listType = new TypeToken<List<String>>() {}.getType();
+				List<String> familyList = new Gson().fromJson(resultJsonObject.get("/music/instrument/family"), listType);
+				instrument.setInstrumentFamily(familyList);
+				String name = resultJsonObject.get("key").getAsJsonArray().get(0)
+						.getAsJsonObject().get("value").getAsString();
+				instrument.setName(name);
+			}
+		} finally {
+			try {
+				writer.close();
+			} catch (IOException e) {
+				log.warn("cannot close results writer for file: "
+						+ queryResultsFile);
+			}
+		}
+		
+		return instrument;
+	}
+
+	
+	/**
+	 * Execute a query to Europeana and return one results page as JSON
+	 *
+	 * @param search
+	 * @param limit
+	 * @param offset
+	 * @return The results as a JSON string
+	 * @throws IOException
+	 */
+	public String searchJsonPage(EuropeanaQueryInterface search, long limit, long offset) 
+			throws IOException {
+		
+	    String url = "";//search.getQueryUrl(this, limit, offset);
+	    return this.getJSONResult(url);
+	}
+	
+	
+    public List<Instrument> readFromCsvFile(File csvFile) throws Exception {
+    	
+    	List<Instrument> instrumentList = new ArrayList<Instrument>();
+        String splitBy = ";";
+        FileReader fr = new FileReader(csvFile);
+		BufferedReader br = new BufferedReader(fr);
+		String line = br.readLine();
+		while ((line = br.readLine()) !=null) {
+		     String[] b = line.split(splitBy);
+		     System.out.println(b[0]);
+		     BaseInstrument instrument = new BaseInstrument();
+		     instrument.setName(b[0]);
+		     instrumentList.add(instrument);		     
+		}
+		br.close();	
+		return instrumentList;
+	}
+    
+    
+    public Instrument saveInstrumentFreebaseFile(String instrumentName) throws IOException {
+
+		File queryResultsFile = getInstrumentJsonFile(instrumentName);
+		// do not read the file multiple times
+//		if (queryResultsFile.exists())
+//			return;
+
+		// create parent dirs
+		queryResultsFile.getParentFile().mkdirs();
+    	
+    	String url = DEFAULT_FREEBASE_MQLREAD_URI;
+		
+		String query = "[{\"mid\":null," 
+		        + "\"id\":null,"
+				+ "\"type\":\"/music/instrument\", "
+				+ "\"/music/instrument/family\":[], "
+				+ "\"key\": [{\"namespace\": null,"
+				+ "\"value\": \"" + instrumentName + "\"}] " + "}]";
+		url += URLEncoder.encode(query, "UTF-8");
+		url += "&key=";
+		url += getApiKey();
+
+		return saveInstrumentToJsonFile(queryResultsFile, url);    
+    }
+    
+    
+    public void generateInstrumentCsvFile(List<Instrument> instrumentList, String sFileName) {
+
+    	try {
+    		FileWriter writer = new FileWriter(ONB_INSTRUMENTS_FOLDER + "/" + sFileName);
+
+    		writer.append("Name");
+    		writer.append(CSV_DELIMITER);
+    		writer.append("MID");
+    		writer.append(CSV_DELIMITER);
+    		writer.append("Family");
+    		writer.append('\n');
+
+    		Iterator<Instrument> itr = instrumentList.iterator();
+    		while (itr.hasNext()) {
+    			Instrument instrument = itr.next();
+    			writer.append(instrument.getName());
+        		writer.append(CSV_DELIMITER);
+    			writer.append(instrument.getMid());
+        		writer.append(CSV_DELIMITER);
+    			writer.append(instrument.getInstrumentFamily().toString());
+    			writer.append('\n');
+    		}
+    		writer.flush();
+    		writer.close();
+    	} catch (IOException e) {
+    		e.printStackTrace();
+    	}
+    }
+    
+    
+	/**
+	 * This method maps ONB music instrument terms to Freebase.
+	 * @throws IOException
+	 */
+	public int mapONBInstruments() throws IOException {
+		
+		int mappedInstrumetCount = 0;
+		
+		List<Instrument> enrichedInstrumentList = new ArrayList<Instrument>();
+
+		// read ONB instrument list
+		File queryResultsFile = getONBInstrumentsFile(ONB_INSTRUMENTS_FILE);
+		
+		// create parent dirs
+		queryResultsFile.getParentFile().mkdirs();
+
+		// load Freebase instrument data and store it in JSON files
+	    try {
+	    	List<Instrument> instrumentList = readFromCsvFile(queryResultsFile);
+	    	Iterator<Instrument> itr = instrumentList.iterator();
+	    	while (itr.hasNext()) {
+	    		Instrument enrichedInstrument = saveInstrumentFreebaseFile(itr.next().getName());
+	    		if (StringUtils.isNotEmpty(enrichedInstrument.getName()))
+	    			enrichedInstrumentList.add(enrichedInstrument);
+	    	}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	    // parse mid and instrument family and store it in CSV comma separated files
+	    generateInstrumentCsvFile(enrichedInstrumentList, INSTRUMENTS_FILE_EXTENDED);
+
+    	mappedInstrumetCount = enrichedInstrumentList.size();
+
+	    return mappedInstrumetCount;
+	}
+
 }
