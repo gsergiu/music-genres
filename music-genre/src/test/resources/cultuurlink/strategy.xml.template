@@ -1,0 +1,760 @@
+<?xml version="1.0" encoding="UTF-8"?><package>
+  <strategy version="2.0">
+    <properties lastSaved="2016-04-29T15:23:41+02:00" name="temp" title=""/>
+    <composition>
+      <blockinstance buildingblock="resultblock" name="result" type="com.spinque.strategy.definition.ResultBuildingBlockInstance">
+        <input name="input" type="[OBJ,OBJ]">
+          <connection block="generator_exact_match_str" point="RESULT"/>
+        </input>
+      </blockinstance>
+      <blockinstance block="evaluationSource" name="evaluationSource" type="com.spinque.strategy.definition.BasicBuildingBlockInstance" x="0.0" y="0.0"/>
+      <blockinstance block="rank_text_BM25_embedded_terms" name="rank_text_BM25_embedded_terms" type="com.spinque.strategy.definition.BasicBuildingBlockInstance" x="0.0" y="0.0"/>
+      <blockinstance block="str_distinct_literals" name="str_distinct_literals" type="com.spinque.strategy.definition.BasicBuildingBlockInstance" x="0.0" y="0.0"/>
+      <blockinstance block="distinct_objects" name="distinct_objects" type="com.spinque.strategy.definition.BasicBuildingBlockInstance" x="0.0" y="0.0"/>
+      <blockinstance block="export_mix" name="export_mix" type="com.spinque.strategy.definition.BasicBuildingBlockInstance" x="0.0" y="0.0">
+        <input name="EVAL" type="[STRING,STRING,STRING]">
+          <connection block="evaluationSource" point="RESULT"/>
+        </input>
+      </blockinstance>
+      <blockinstance block="mapping_stats" name="mapping_stats" type="com.spinque.strategy.definition.BasicBuildingBlockInstance" x="0.0" y="0.0"/>
+      <blockinstance block="source_mapping_stats" name="source_mapping_stats" type="com.spinque.strategy.definition.BasicBuildingBlockInstance" x="0.0" y="0.0"/>
+      <blockinstance block="ontologySource" name="ontologySource" type="com.spinque.strategy.definition.BasicBuildingBlockInstance" x="99.0" y="68.0"/>
+      <blockinstance block="ontologySourceMIMO" name="ontologySourceMIMO" type="com.spinque.strategy.definition.BasicBuildingBlockInstance" x="615.0" y="83.0"/>
+      <blockinstance block="generator_exact_match_str" name="generator_exact_match_str" type="com.spinque.strategy.definition.BasicBuildingBlockInstance" x="349.0" y="165.0">
+        <input name="A" type="[OBJ]">
+          <connection block="ontologySource" point="RESULT"/>
+        </input>
+        <input name="B" type="[OBJ]">
+          <connection block="ontologySourceMIMO" point="RESULT"/>
+        </input>
+      </blockinstance>
+    </composition>
+    <parameters>
+      <constantparameter bbi="generator_exact_match_str" control="LANGUAGE_B" type="constant">
+        <primitive type="string" value="ANY"/>
+      </constantparameter>
+      <constantparameter bbi="ontologySource" control="CLASS" type="constant">
+        <primitive type="string" value="http://www.w3.org/2004/02/skos/core#Concept"/>
+      </constantparameter>
+      <constantparameter bbi="generator_exact_match_str" control="COMPARISON" type="constant">
+        <primitive type="string" value="equals"/>
+      </constantparameter>
+      <constantparameter bbi="generator_exact_match_str" control="ATTRIBUTE_A" type="constant">
+        <primitive type="string" value="http://www.w3.org/2000/01/rdf-schema#label"/>
+      </constantparameter>
+      <constantparameter bbi="ontologySource" control="CHUNK" type="constant">
+        <primitive type="string" value="c1461936479609"/>
+      </constantparameter>
+      <constantparameter bbi="generator_exact_match_str" control="USE_SUBPROPERTIES" type="constant">
+        <primitive type="boolean" value="true"/>
+      </constantparameter>
+      <constantparameter bbi="ontologySource" control="USE_SUBCLASSES" type="constant">
+        <primitive type="boolean" value="true"/>
+      </constantparameter>
+      <constantparameter bbi="ontologySourceMIMO" control="CLASS" type="constant">
+        <primitive type="string" value="http://www.w3.org/2004/02/skos/core#Concept"/>
+      </constantparameter>
+      <constantparameter bbi="generator_exact_match_str" control="LANGUAGE_A" type="constant">
+        <primitive type="string" value="ANY"/>
+      </constantparameter>
+      <constantparameter bbi="generator_exact_match_str" control="ATTRIBUTE_B" type="constant">
+        <primitive type="string" value="http://www.w3.org/2000/01/rdf-schema#label"/>
+      </constantparameter>
+      <constantparameter bbi="generator_exact_match_str" control="CASESENSITIVE" type="constant">
+        <primitive type="boolean" value="false"/>
+      </constantparameter>
+      <constantparameter bbi="generator_exact_match_str" control="STEMMING" type="constant">
+        <primitive type="string" value="none"/>
+      </constantparameter>
+      <constantparameter bbi="ontologySourceMIMO" control="USE_SUBCLASSES" type="constant">
+        <primitive type="boolean" value="true"/>
+      </constantparameter>
+    </parameters>
+  </strategy>
+  <blocks>
+    <resultblock/>
+    <buildingblock class="com.spinque.strategy.blocks.ScriptBlock">
+      <meta name="evaluationSource">
+        <description>
+         This Building Block provides a basic filter on attributes for objects.
+      </description>
+      </meta>
+      <io>
+        <outputs>
+          <connectionpoint name="RESULT" type="[STRING,STRING,STRING]"/>
+        </outputs>
+        <inputs/>
+        <parameters>
+          <control format="NONE" name="EVALDATA" type="TUPLE_LIST"/>
+        </parameters>
+      </io>
+      <scripts>
+        <script language="PRA">
+%INSTANCE%_data = 
+  PROJECT[$2, $3, $4] ( 
+    SELECT[$1="%INSTANCE%_EVALDATA"] (
+      params_tuple
+    )
+  );
+
+%INSTANCE%_RESULT_result  = PROJECT[$1,$2,$3] (%INSTANCE%_data);
+      </script>
+      </scripts>
+    </buildingblock>
+    <buildingblock class="com.spinque.strategy.blocks.ScriptBlock">
+      <meta name="rank_text_BM25_embedded_terms"/>
+      <io>
+        <outputs>
+          <connectionpoint name="RETRIEVE" type="[OBJ]">
+            <reference column="1" to="SOURCE:1"/>
+          </connectionpoint>
+        </outputs>
+        <inputs>
+          <connectionpoint name="SOURCE" type="[OBJ]"/>
+        </inputs>
+        <parameters>
+          <control format="TOKENIZED" name="QTERMS" type="STRING"/>
+          <control default="unstemmed" format="NONE" name="STEMMING" type="STRING">
+            <listgenerator method="fixed">
+              <valuedescription>unstemmed|snowball-dutch</valuedescription>
+            </listgenerator>
+          </control>
+        </parameters>
+      </io>
+      <scripts>
+        <script language="PRA">
+_if (%STEMMING% = "unstemmed") {
+  %INSTANCE%_termdict = %REF:SOURCE:1:all_termdict_unstemmed%;
+  %INSTANCE%_tf = %REF:SOURCE:1:all_tf_bm25_unstemmed%;
+  %INSTANCE%_idf = %REF:SOURCE:1:all_idf_bm25_unstemmed%;
+  %INSTANCE%_qtuples = 
+    PROJECT[$2] ( 
+      SELECT[$1="%INSTANCE%_QTERMS"] (
+        params_str
+      )
+    );
+} _else {
+  %INSTANCE%_termdict = %REF:SOURCE:1:all_termdict_snowball%;
+  %INSTANCE%_tf = %REF:SOURCE:1:all_tf_bm25_snowball%;
+  %INSTANCE%_idf = %REF:SOURCE:1:all_idf_bm25_snowball%;
+  %INSTANCE%_qtuples = 
+    PROJECT[stem($2,%STEMMING%)] ( 
+      SELECT[$1="%INSTANCE%_QTERMS"] (
+        params_str
+      )
+    );
+}
+
+%INSTANCE%_qterm = PROJECT[$1] (JOIN[$2=$1](%INSTANCE%_termdict, %INSTANCE%_qtuples));
+
+%INSTANCE%_weighted_qterm 
+  = PROJECT[$1](
+      JOIN[$1=$1](
+        %INSTANCE%_qterm,
+        %INSTANCE%_idf
+      )
+    );
+
+%INSTANCE%_norm_weighted_qterm = PROJECT[$1](%INSTANCE%_weighted_qterm);
+
+%INSTANCE%_scores = PROJECT SUM[$3](JOIN[$1=$1](%INSTANCE%_norm_weighted_qterm,%INSTANCE%_tf));
+
+%INSTANCE%_filtered_scores = PROJECT [$1] (JOIN[$1=$1](%INSTANCE%_scores, %INSTANCE:SOURCE%));
+
+# we need numbers between 0 and 1..
+%INSTANCE%_RETRIEVE_result = BAYES MAX[](%INSTANCE%_filtered_scores);
+      </script>
+      </scripts>
+    </buildingblock>
+    <buildingblock class="com.spinque.strategy.blocks.ScriptBlock">
+      <meta name="str_distinct_literals"/>
+      <io>
+        <outputs>
+          <connectionpoint name="RESULT" type="[STRING]"/>
+        </outputs>
+        <inputs>
+          <connectionpoint name="SOURCE" type="[OBJ]"/>
+        </inputs>
+        <parameters>
+          <control format="NONE" name="ATTRIBUTE" type="STRING">
+            <listgenerator method="fixed">
+              <valuedescription>http://purl.org/dc/elements/1.1/title|http://vocab.getty.edu/ontology#prefLabelGVP|http://vocab.getty.edu/ontology#prefLabelLoC|http://www.w3.org/2000/01/rdf-schema#label|http://www.w3.org/2004/02/skos/core#altLabel|http://www.w3.org/2004/02/skos/core#changeNote|http://www.w3.org/2004/02/skos/core#definition|http://www.w3.org/2004/02/skos/core#editorialNote|http://www.w3.org/2004/02/skos/core#example|http://www.w3.org/2004/02/skos/core#hiddenLabel|http://www.w3.org/2004/02/skos/core#historyNote|http://www.w3.org/2004/02/skos/core#notation|http://www.w3.org/2004/02/skos/core#note|http://www.w3.org/2004/02/skos/core#prefLabel|http://www.w3.org/2004/02/skos/core#scopeNote|http://www.w3.org/2008/05/skos-xl#altLabel|http://www.w3.org/2008/05/skos-xl#hiddenLabel|http://www.w3.org/2008/05/skos-xl#labelRelation|http://www.w3.org/2008/05/skos-xl#prefLabel|http://xmlns.com/foaf/0.1/name</valuedescription>
+            </listgenerator>
+          </control>
+          <control default="true" format="RAW" name="CASESENSITIVE" type="BOOLEAN">
+            <listgenerator method="fixed">
+              <valuedescription>true|false</valuedescription>
+            </listgenerator>
+          </control>
+        </parameters>
+      </io>
+      <scripts>
+        <script language="PRA">
+
+%INSTANCE%_attrID = 
+  PROJECT [$2] (
+    JOIN [$1=$2] (
+      %REF:SOURCE:1:obj_dict%,
+      SELECT[$1="%INSTANCE%_ATTRIBUTE"] (params_str)
+    )
+  );
+
+%INSTANCE%_selected_values = 
+  PROJECT[$3] (
+    JOIN [$1=$1] (
+      JOIN [$2=$1] (
+        PROJECT [$1,$2,$3] (%REF:SOURCE:1:obj_string%),
+        %INSTANCE%_attrID 
+      ),
+      %INSTANCE:SOURCE%
+    )
+  );
+
+_if (%CASESENSITIVE%) {
+  %INSTANCE%_RESULT_result = 
+    PROJECT DISTINCT [$1] (
+      %INSTANCE%_selected_values
+    );
+} _else {
+  %INSTANCE%_RESULT_result = 
+    PROJECT DISTINCT [$1] (
+      PROJECT [lcase($1)] (
+        %INSTANCE%_selected_values
+      )
+    );
+}
+
+      </script>
+      </scripts>
+    </buildingblock>
+    <buildingblock class="com.spinque.strategy.blocks.ScriptBlock">
+      <meta name="distinct_objects"/>
+      <io>
+        <outputs>
+          <connectionpoint name="RESULT" type="[OBJ]">
+            <reference column="1" to="SOURCE:1"/>
+          </connectionpoint>
+        </outputs>
+        <inputs>
+          <connectionpoint name="SOURCE" type="[OBJ]"/>
+        </inputs>
+        <parameters>
+          <control format="NONE" name="PROPERTY" type="STRING"/>
+        </parameters>
+      </io>
+      <scripts>
+        <script language="PRA">
+
+%INSTANCE%_propID = 
+  PROJECT [$2] (
+    JOIN [$1=$2] (
+      %REF:SOURCE:1:obj_dict%,
+      SELECT[$1="%INSTANCE%_PROPERTY"] (params_str)
+    )
+  );
+
+%INSTANCE%_RESULT_result = 
+  PROJECT DISTINCT [$3] (
+    JOIN [$1=$1] (
+      JOIN [$2=$1] (
+        %REF:SOURCE:1:obj_relation%,
+        %INSTANCE%_propID 
+      ),
+      %INSTANCE:SOURCE%
+    )
+  );
+    
+      </script>
+      </scripts>
+    </buildingblock>
+    <buildingblock class="com.spinque.strategy.blocks.ScriptBlock">
+      <meta name="export_mix">
+        <description>
+      </description>
+      </meta>
+      <io>
+        <outputs>
+          <connectionpoint name="RESULT" type="[STRING,STRING,STRING]"/>
+          <connectionpoint name="CONFLICTS" type="[STRING,STRING,STRING]"/>
+        </outputs>
+        <inputs>
+          <connectionpoint name="EVAL" type="[STRING,STRING,STRING]"/>
+          <connectionpoint array="true" name="SOURCE" type="[STRING,STRING,STRING]"/>
+        </inputs>
+        <parameters/>
+      </io>
+      <scripts>
+        <script language="PRA">
+# TODO: A = combine all the SOURCES 
+# TODO: NA = remove all ambiguous mappings from A (subject and object the same, and more than 1 distinct predicates)
+# TODO: %INSTANCE%_RESULT_result = NA + EVAL
+# TODO: %INSTANCE%_CONFLICTS_result = A - NA - EVAL
+
+_if ("%SOURCE%" = "[]") {
+%INSTANCE%_RESULT_result = %INSTANCE:EVAL%;
+_createTable(%INSTANCE%_empty, "(string,string,string)");
+%INSTANCE%_CONFLICTS_result = %INSTANCE%_empty;
+} 
+_else {
+%INSTANCE%_all_unique = PROJECT {1} (PROJECT DISTINCT (UNITE (_forEach @1 %SOURCE% { %INSTANCE%_aSOURCE_@1 })));
+
+%INSTANCE%_all_counts = PROJECT SUM [$1,$3](%INSTANCE%_all_unique);
+
+%INSTANCE%_unambiguous_sel = SELECT [$0 = 1](%INSTANCE%_all_counts);
+%INSTANCE%_ambiguous_sel = SELECT [$0 &gt; 1](%INSTANCE%_all_counts);
+
+%INSTANCE%_unambiguous =
+  PROJECT [$1,$2,$3] (
+    JOIN [$1=$1 and $3=$2] (
+      %INSTANCE%_all_unique,
+      %INSTANCE%_unambiguous_sel
+    )
+  );
+
+%INSTANCE%_ambiguous =
+  PROJECT [$1,$2,$3] (
+    JOIN [$1=$1 and $3=$2] (
+      %INSTANCE%_all_unique,
+      %INSTANCE%_ambiguous_sel
+    )
+  );
+
+%INSTANCE%_RESULT_result =
+  PROJECT DISTINCT (
+    UNITE (
+      %INSTANCE%_unambiguous,
+      %INSTANCE:EVAL%
+    )
+  );
+
+%INSTANCE%_CONFLICTS_result =
+  SUBTRACT STRICT (
+    %INSTANCE%_ambiguous,
+    %INSTANCE:EVAL%
+  );
+}  
+      </script>
+      </scripts>
+    </buildingblock>
+    <buildingblock class="com.spinque.strategy.blocks.ScriptBlock">
+      <meta name="mapping_stats">
+        <description>
+      </description>
+      </meta>
+      <io>
+        <outputs>
+          <connectionpoint name="RESULT" type="[OBJ,OBJ]">
+            <reference column="1" to="SOURCE:1"/>
+            <reference column="2" to="SOURCE:2"/>
+          </connectionpoint>
+          <connectionpoint name="NOT" type="[OBJ,OBJ]">
+            <reference column="1" to="SOURCE:1"/>
+            <reference column="2" to="SOURCE:2"/>
+          </connectionpoint>
+        </outputs>
+        <inputs>
+          <connectionpoint name="SOURCE" type="[OBJ,OBJ]"/>
+          <connectionpoint name="EVAL" type="[STRING,STRING,STRING]"/>
+        </inputs>
+        <parameters/>
+      </io>
+      <scripts>
+        <script language="PRA">
+
+%INSTANCE%_eval_subj_obj = 
+  PROJECT DISTINCT [$5,$8] (
+    JOIN [$3 = $1] (
+      JOIN [$1 = $1] ( 
+        %INSTANCE:EVAL%,
+        %REF:SOURCE:1:obj_dict%
+      ),
+      %REF:SOURCE:2:obj_dict%
+    )  
+  );
+  
+  
+%INSTANCE%_RESULT_result = 
+  PROJECT DISTINCT [$1,$2] (
+    JOIN [$1 = $1 and $2 = $2] (
+      %INSTANCE:SOURCE%,
+      %INSTANCE%_eval_subj_obj
+    )
+  );
+
+%INSTANCE%_NOT_result = SUBTRACT STRICT (%INSTANCE:SOURCE%, %INSTANCE%_RESULT_result);
+
+      </script>
+      </scripts>
+    </buildingblock>
+    <buildingblock class="com.spinque.strategy.blocks.ScriptBlock">
+      <meta name="source_mapping_stats">
+        <description>
+      </description>
+      </meta>
+      <io>
+        <outputs>
+          <connectionpoint name="RESULT" type="[OBJ]">
+            <reference column="1" to="SOURCE:1"/>
+          </connectionpoint>
+          <connectionpoint name="NOT" type="[OBJ]">
+            <reference column="1" to="SOURCE:1"/>
+          </connectionpoint>
+        </outputs>
+        <inputs>
+          <connectionpoint name="SOURCE" type="[OBJ]"/>
+          <connectionpoint name="MAPPINGS" type="[STRING,STRING,STRING]"/>
+        </inputs>
+        <parameters/>
+      </io>
+      <scripts>
+        <script language="PRA">
+
+%INSTANCE%_source_idstr_id = 
+  PROJECT [$2,$3] (
+    JOIN [$1 = $2] ( 
+      %INSTANCE:SOURCE%,
+      %REF:SOURCE:1:obj_dict%
+    )
+  );
+  
+  
+%INSTANCE%_RESULT_result = 
+  PROJECT DISTINCT [$2] (
+    JOIN [$1 = $1 or $1 = $3] (
+      %INSTANCE%_source_idstr_id,
+      %INSTANCE:MAPPINGS%
+    )
+  );
+
+%INSTANCE%_NOT_result = SUBTRACT STRICT (%INSTANCE:SOURCE%, %INSTANCE%_RESULT_result);
+
+      </script>
+      </scripts>
+    </buildingblock>
+    <buildingblock class="com.spinque.strategy.blocks.ScriptBlock">
+      <meta name="ontologySource">
+        <description>
+         Provides all data from a source
+      </description>
+      </meta>
+      <io>
+        <outputs>
+          <connectionpoint name="RESULT" type="[OBJ]">
+            <chunk column="1" name="%CHUNK%" ref="BASE"/>
+          </connectionpoint>
+        </outputs>
+        <inputs/>
+        <parameters>
+          <control format="NONE" name="CHUNK" type="STRING"/>
+          <control default="http://www.w3.org/2004/02/skos/core#Concept" format="NONE" name="CLASS" type="STRING"/>
+          <control default="true" format="RAW" name="USE_SUBCLASSES" type="BOOLEAN"/>
+        </parameters>
+      </io>
+      <scripts>
+        <script language="PRA">
+_if (%CLASS% = "") {
+%INSTANCE%_RESULT_result  = PROJECT[$2] (%ORIGINAL:BASE:obj_dict%);
+} _else {
+%INSTANCE%_cl =
+    PROJECT DISTINCT [$2] (
+      JOIN[$3=$2] (
+        %ORIGINAL:BASE:obj_type%,
+        SELECT[$1="%INSTANCE%_CLASS"] (params_str)
+      )
+    );
+_if(%USE_SUBCLASSES%) {
+  %INSTANCE%_candtree = SELECT [$1="RDF_classes"] (%ORIGINAL:BASE:obj_tree%);
+  %INSTANCE%_sourcetree = 
+    PROJECT [$1,$2,$3,$4,$5,$6] (
+      JOIN [$2 = $1] (
+        %INSTANCE%_candtree, 
+        %INSTANCE%_cl
+      )
+    );
+  %INSTANCE%_subClassesSelf =
+    PROJECT DISTINCT [$2] (
+      JOIN [$3 &gt;= $3 and $3 &lt;= ($3+$5)] (
+        %INSTANCE%_candtree,
+        %INSTANCE%_sourcetree
+      )
+    );
+  %INSTANCE%_classes 
+    = PROJECT DISTINCT[$1] (
+        UNITE(
+          %INSTANCE%_cl,
+          %INSTANCE%_subClassesSelf
+        )
+      );
+} _else {
+  %INSTANCE%_classes = %INSTANCE%_cl;
+}
+
+%INSTANCE%_RESULT_result
+  = PROJECT DISTINCT [$1] (
+      JOIN [$2=$1] (
+        %ORIGINAL:BASE:obj_type%,
+        %INSTANCE%_classes
+      )
+    );
+}
+      </script>
+      </scripts>
+    </buildingblock>
+    <buildingblock class="com.spinque.strategy.blocks.ScriptBlock">
+      <meta name="ontologySourceMIMO">
+        <description>
+         This Building Block provides a basic filter on attributes for objects.
+      </description>
+      </meta>
+      <io>
+        <outputs>
+          <connectionpoint name="RESULT" type="[OBJ]">
+            <chunk column="1" name="mimo" ref="BASE"/>
+          </connectionpoint>
+        </outputs>
+        <inputs/>
+        <parameters>
+          <control default="http://www.w3.org/2004/02/skos/core#Concept" format="NONE" name="CLASS" type="STRING"/>
+          <control default="true" format="RAW" name="USE_SUBCLASSES" type="BOOLEAN"/>
+        </parameters>
+      </io>
+      <scripts>
+        <script language="PRA">
+_if (%CLASS% = "") {
+%INSTANCE%_RESULT_result  = PROJECT[$2] (%ORIGINAL:BASE:obj_dict%);
+} _else {
+%INSTANCE%_cl =
+    PROJECT DISTINCT [$2] (
+      JOIN[$3=$2] (
+        %ORIGINAL:BASE:obj_type%,
+        SELECT[$1="%INSTANCE%_CLASS"] (params_str)
+      )
+    );
+_if(%USE_SUBCLASSES%) {
+  %INSTANCE%_candtree = SELECT [$1="RDF_classes"] (%ORIGINAL:BASE:obj_tree%);
+  %INSTANCE%_sourcetree = 
+    PROJECT [$1,$2,$3,$4,$5,$6] (
+      JOIN [$2 = $1] (
+        %INSTANCE%_candtree, 
+        %INSTANCE%_cl
+      )
+    );
+  %INSTANCE%_subClassesSelf =
+    PROJECT DISTINCT [$2] (
+      JOIN [$3 &gt;= $3 and $3 &lt;= ($3+$5)] (
+        %INSTANCE%_candtree,
+        %INSTANCE%_sourcetree
+      )
+    );
+  %INSTANCE%_classes 
+    = PROJECT DISTINCT[$1] (
+        UNITE(
+          %INSTANCE%_cl,
+          %INSTANCE%_subClassesSelf
+        )
+      );
+} _else {
+  %INSTANCE%_classes = %INSTANCE%_cl;
+}
+
+%INSTANCE%_RESULT_result
+  = PROJECT DISTINCT [$1] (
+      JOIN [$2=$1] (
+        %ORIGINAL:BASE:obj_type%,
+        %INSTANCE%_classes
+      )
+    );
+}
+      </script>
+      </scripts>
+    </buildingblock>
+    <buildingblock class="com.spinque.strategy.blocks.ScriptBlock">
+      <meta name="generator_exact_match_str">
+        <description>
+      </description>
+      </meta>
+      <io>
+        <outputs>
+          <connectionpoint name="RESULT" type="[OBJ,OBJ]">
+            <reference column="1" to="A:1"/>
+            <reference column="2" to="B:1"/>
+          </connectionpoint>
+          <connectionpoint name="NOTB" type="[OBJ]">
+            <reference column="1" to="B:1"/>
+          </connectionpoint>
+          <connectionpoint name="NOTA" type="[OBJ]">
+            <reference column="1" to="A:1"/>
+          </connectionpoint>
+        </outputs>
+        <inputs>
+          <connectionpoint name="A" type="[OBJ]"/>
+          <connectionpoint name="B" type="[OBJ]"/>
+        </inputs>
+        <parameters>
+          <control format="NONE" name="ATTRIBUTE_A" type="STRING">
+            <listgenerator method="fixed">
+              <valuedescription>http://purl.org/dc/elements/1.1/title|http://vocab.getty.edu/ontology#prefLabelGVP|http://vocab.getty.edu/ontology#prefLabelLoC|http://www.w3.org/2000/01/rdf-schema#label|http://www.w3.org/2004/02/skos/core#altLabel|http://www.w3.org/2004/02/skos/core#changeNote|http://www.w3.org/2004/02/skos/core#definition|http://www.w3.org/2004/02/skos/core#editorialNote|http://www.w3.org/2004/02/skos/core#example|http://www.w3.org/2004/02/skos/core#hiddenLabel|http://www.w3.org/2004/02/skos/core#historyNote|http://www.w3.org/2004/02/skos/core#notation|http://www.w3.org/2004/02/skos/core#note|http://www.w3.org/2004/02/skos/core#prefLabel|http://www.w3.org/2004/02/skos/core#scopeNote|http://www.w3.org/2008/05/skos-xl#altLabel|http://www.w3.org/2008/05/skos-xl#hiddenLabel|http://www.w3.org/2008/05/skos-xl#labelRelation|http://www.w3.org/2008/05/skos-xl#prefLabel|http://xmlns.com/foaf/0.1/name</valuedescription>
+            </listgenerator>
+          </control>
+          <control format="NONE" name="ATTRIBUTE_B" type="STRING">
+            <listgenerator method="fixed">
+              <valuedescription>http://purl.org/dc/elements/1.1/title|http://vocab.getty.edu/ontology#prefLabelGVP|http://vocab.getty.edu/ontology#prefLabelLoC|http://www.w3.org/2000/01/rdf-schema#label|http://www.w3.org/2004/02/skos/core#altLabel|http://www.w3.org/2004/02/skos/core#changeNote|http://www.w3.org/2004/02/skos/core#definition|http://www.w3.org/2004/02/skos/core#editorialNote|http://www.w3.org/2004/02/skos/core#example|http://www.w3.org/2004/02/skos/core#hiddenLabel|http://www.w3.org/2004/02/skos/core#historyNote|http://www.w3.org/2004/02/skos/core#notation|http://www.w3.org/2004/02/skos/core#note|http://www.w3.org/2004/02/skos/core#prefLabel|http://www.w3.org/2004/02/skos/core#scopeNote|http://www.w3.org/2008/05/skos-xl#altLabel|http://www.w3.org/2008/05/skos-xl#hiddenLabel|http://www.w3.org/2008/05/skos-xl#labelRelation|http://www.w3.org/2008/05/skos-xl#prefLabel|http://xmlns.com/foaf/0.1/name</valuedescription>
+            </listgenerator>
+          </control>
+          <control default="true" format="RAW" name="USE_SUBPROPERTIES" type="BOOLEAN"/>
+          <control default="false" format="RAW" name="CASESENSITIVE" type="BOOLEAN"/>
+          <control default="ANY" format="NONE" name="LANGUAGE_A" type="STRING">
+            <listgenerator method="fixed">
+              <valuedescription>ANY|en|nl|es|it|fr|de</valuedescription>
+            </listgenerator>
+          </control>
+          <control default="ANY" format="NONE" name="LANGUAGE_B" type="STRING">
+            <listgenerator method="fixed">
+              <valuedescription>ANY|en|nl|es|it|fr|de</valuedescription>
+            </listgenerator>
+          </control>
+          <control default="none" format="NONE" name="STEMMING" type="STRING">
+            <listgenerator method="fixed">
+              <valuedescription>none|snowball-english|snowball-dutch</valuedescription>
+            </listgenerator>
+          </control>
+          <control default="equals" format="RAW" name="COMPARISON" type="STRING">
+            <listgenerator method="fixed">
+              <valuedescription>equals|contains|startsWith|endsWith</valuedescription>
+            </listgenerator>
+          </control>
+        </parameters>
+      </io>
+      <scripts>
+        <script language="PRA">
+# Gather property A and all subProperties of it
+%INSTANCE%_prop_A
+  = PROJECT [$2] (
+      JOIN[$1=$2] (
+        %REF:A:1:obj_dict%,
+        SELECT[$1="%INSTANCE%_ATTRIBUTE_A"] (params_str)
+      )
+    );
+%INSTANCE%_candtree_A = 
+    SELECT [$1="RDF_properties"] (%REF:A:1:obj_tree%);
+%INSTANCE%_sourcetree_A = 
+  PROJECT [$1,$2,$3,$4,$5,$6] (
+    JOIN [$2 = $1] (
+      %INSTANCE%_candtree_A, 
+      %INSTANCE%_prop_A
+    )
+  );
+%INSTANCE%_subPropsSelf_A =
+  PROJECT DISTINCT [$1](
+    UNITE(
+      %INSTANCE%_prop_A,
+      PROJECT [$2] (
+        JOIN [$3 &gt;= $3 and $3 &lt;= ($3+$5)] (
+          %INSTANCE%_candtree_A,
+          %INSTANCE%_sourcetree_A
+        )
+      )
+    )
+  );
+  
+  
+# Gather property B and all subProperties of it
+%INSTANCE%_prop_B
+  = PROJECT [$2] (
+      JOIN[$1=$2] (
+        %REF:B:1:obj_dict%,
+        SELECT[$1="%INSTANCE%_ATTRIBUTE_B"] (params_str)
+      )
+    );
+%INSTANCE%_candtree_B = 
+    SELECT [$1="RDF_properties"] (%REF:B:1:obj_tree%);
+%INSTANCE%_sourcetree_B = 
+  PROJECT [$1,$2,$3,$4,$5,$6] (
+    JOIN [$2 = $1] (
+      %INSTANCE%_candtree_B, 
+      %INSTANCE%_prop_B
+    )
+  );
+%INSTANCE%_subPropsSelf_B =
+  PROJECT DISTINCT [$1](
+    UNITE(
+      %INSTANCE%_prop_B,
+      PROJECT [$2] (
+        JOIN [$3 &gt;= $3 and $3 &lt;= ($3+$5)] (
+          %INSTANCE%_candtree_B,
+          %INSTANCE%_sourcetree_B
+        )
+      )
+    )
+  );
+
+_if(%USE_SUBPROPERTIES%) {
+%INSTANCE%_properties_A = %INSTANCE%_subPropsSelf_A;
+%INSTANCE%_properties_B = %INSTANCE%_subPropsSelf_B;
+} _else {
+%INSTANCE%_properties_A = %INSTANCE%_prop_A;
+%INSTANCE%_properties_B = %INSTANCE%_prop_B;
+}
+
+# Select language for A
+_if (%LANGUAGE_A% = "ANY") {
+  %INSTANCE%_obj_string_A = %REF:A:1:obj_string%;
+} _else {
+  %INSTANCE%_obj_string_A = SELECT [$4 = %LANGUAGE_A%](%REF:A:1:obj_string%);
+}
+# Select language for B
+_if (%LANGUAGE_B% = "ANY") {
+  %INSTANCE%_obj_string_B = %REF:B:1:obj_string%;
+} _else {
+  %INSTANCE%_obj_string_B = SELECT [$4 = %LANGUAGE_B%](%REF:B:1:obj_string%);
+}
+
+# Prepare all qualifying attribute values for A
+%INSTANCE%_A 
+  = PROJECT [$1,$3] (
+      JOIN[$1=$1] (
+        JOIN[$2=$1] (
+          PROJECT [$1,$2,$3] (%INSTANCE%_obj_string_A),
+          %INSTANCE%_properties_A
+        ),
+        %INSTANCE:A%
+      )
+    );
+        
+# Prepare all qualifying attribute values for B
+%INSTANCE%_B 
+  = PROJECT [$1,$3] (
+      JOIN[$1=$1] (
+        JOIN[$2=$1] (
+          PROJECT [$1,$2,$3] (%INSTANCE%_obj_string_B),
+          %INSTANCE%_properties_B
+        ),
+        %INSTANCE:B%
+      )
+    );
+
+_if(%STEMMING% = "none") {
+  # The match        
+  %INSTANCE%_RESULT_result 
+    = PROJECT DISTINCT [$1, $3] (
+        JOIN[%COMPARISON%($2, $4, %CASESENSITIVE%)] (%INSTANCE%_A, %INSTANCE%_B)
+      );
+} _else {
+  %INSTANCE%_transformation1_A = PROJECT [$1, stem($2,%STEMMING%)] (%INSTANCE%_A);
+  %INSTANCE%_transformation1_B = PROJECT [$1, stem($2,%STEMMING%)] (%INSTANCE%_B);
+
+  # The match        
+  %INSTANCE%_RESULT_result 
+    = PROJECT DISTINCT [$1, $3] (
+        JOIN[%COMPARISON%($2, $4, %CASESENSITIVE%)] (%INSTANCE%_transformation1_A, %INSTANCE%_transformation1_B)
+      );
+}
+
+
+%INSTANCE%_NOTA_result = SUBTRACT STRICT (%INSTANCE:A%, PROJECT [$1] (%INSTANCE%_RESULT_result));
+%INSTANCE%_NOTB_result = SUBTRACT STRICT (%INSTANCE:B%, PROJECT [$2] (%INSTANCE%_RESULT_result));
+            </script>
+      </scripts>
+    </buildingblock>
+  </blocks>
+</package>
