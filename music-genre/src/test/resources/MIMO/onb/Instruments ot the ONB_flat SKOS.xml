@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:skos="http://www.w3.org/2004/02/skos/core#">
+	<skos:Concept rdf:about="http://localhost/DDB/music+genres/Armgeige">	
+	<skos:prefLabel>Armgeige</skos:prefLabel>	
+	</skos:Concept>
+	<skos:Concept rdf:about="http://localhost/DDB/music+genres/Barocktrompete">	
+	<skos:prefLabel>Barocktrompete</skos:prefLabel>	
+	</skos:Concept>
+	<skos:Concept rdf:about="http://localhost/DDB/music+genres/Bass+Viol">	
+	<skos:prefLabel>Bass Viol</skos:prefLabel>	
+	</skos:Concept>
+	<skos:Concept rdf:about="http://localhost/DDB/music+genres/basso+viola">	
+	<skos:prefLabel>basso viola</skos:prefLabel>	
+	</skos:Concept>
+	<skos:Concept rdf:about="http://localhost/DDB/music+genres/Baßposaune">	
+	<skos:prefLabel>Baßposaune</skos:prefLabel>	
+	</skos:Concept>
+	<skos:Concept rdf:about="http://localhost/DDB/music+genres/Bassposaune">	
+	<skos:prefLabel>Bassposaune</skos:prefLabel>	
+	</skos:Concept>
+	<skos:Concept rdf:about="http://localhost/DDB/music+genres/Bass-Trombone">	
+	<skos:prefLabel>Bass-Trombone</skos:prefLabel>	
+	</skos:Concept>
+	<skos:Concept rdf:about="http://localhost/DDB/music+genres/Basstuba">	
+	<skos:prefLabel>Basstuba</skos:prefLabel>	
+	</skos:Concept> 
+	<skos:Concept rdf:about="http://localhost/DDB/music+genres/Bratsche">	
+	<skos:prefLabel>Bratsche</skos:prefLabel>	
+	</skos:Concept>
+	<skos:Concept rdf:about="http://localhost/DDB/music+genres/Cello">	
+	<skos:prefLabel>Cello</skos:prefLabel>	
+	</skos:Concept>
+	<skos:Concept rdf:about="http://localhost/DDB/music+genres/Cembalo">	
+	<skos:prefLabel>Cembalo</skos:prefLabel>	
+	</skos:Concept>
+	<skos:Concept rdf:about="http://localhost/DDB/music+genres/Chaloumaux">	
+	<skos:prefLabel>Chaloumaux</skos:prefLabel>	
+	</skos:Concept>
+	<skos:Concept rdf:about="http://localhost/DDB/music+genres/Clarinette">	
+	<skos:prefLabel>Clarinette</skos:prefLabel>	
+	</skos:Concept>
+	<skos:Concept rdf:about="http://localhost/DDB/music+genres/Clarino">	
+	<skos:prefLabel>Clarino</skos:prefLabel>	
+	</skos:Concept>
+	<skos:Concept rdf:about="http://localhost/DDB/music+genres/Clavicembalo">	
+	<skos:prefLabel>Clavicembalo</skos:prefLabel>	
+	</skos:Concept>
+	<skos:Concept rdf:about="http://localhost/DDB/music+genres/Clavichord">	
+	<skos:prefLabel>Clavichord</skos:prefLabel>	
+	</skos:Concept>
+	<skos:Concept rdf:about="http://localhost/DDB/music+genres/Clavier">	
+	<skos:prefLabel>Clavier</skos:prefLabel>	
+	</skos:Concept>
+	<skos:Concept rdf:about="http://localhost/DDB/music+genres/Contrabasso">	
+	<skos:prefLabel>Contrabasso</skos:prefLabel>	
+	</skos:Concept>
+	<skos:Concept rdf:about="http://localhost/DDB/music+genres/Cornetto">	
+	<skos:prefLabel>Cornetto</skos:prefLabel>	
+	</skos:Concept>
+	<skos:Concept rdf:about="http://localhost/DDB/music+genres/Corno">	
+	<skos:prefLabel>Corno</skos:prefLabel>	
+	</skos:Concept>
+	<skos:Concept rdf:about="http://localhost/DDB/music+genres/Corno+inglese">	
+	<skos:prefLabel>Corno inglese</skos:prefLabel>	
+	</skos:Concept>
+	<skos:Concept rdf:about="http://localhost/DDB/music+genres/Englisches+Horn">	
+	<skos:prefLabel>Englisches Horn</skos:prefLabel>	
+	</skos:Concept>
+	<skos:Concept rdf:about="http://localhost/DDB/music+genres/Fagott">	
+	<skos:prefLabel>Fagott</skos:prefLabel>	
+	</skos:Concept>
+	<skos:Concept rdf:about="http://localhost/DDB/music+genres/Fagotte">	
+	<skos:prefLabel>Fagotte</skos:prefLabel>	
+	</skos:Concept>
+	<skos:Concept rdf:about="http://localhost/DDB/music+genres/Fagotto">	
+	<skos:prefLabel>Fagotto</skos:prefLabel>	
+	</skos:Concept>
+	<skos:Concept rdf:about="http://localhost/DDB/music+genres/Flauto">	
+	<skos:prefLabel>Flauto</skos:prefLabel>	
+	</skos:Concept>
+	<skos:Concept rdf:about="http://localhost/DDB/music+genres/Flauto+dAmore">	
+	<skos:prefLabel>Flauto d'Amore</skos:prefLabel>	
+	</skos:Concept>
+	<skos:Concept rdf:about="http://localhost/DDB/music+genres/Flauto+traverso">	
+	<skos:prefLabel>Flauto traverso</skos:prefLabel>	
+	</skos:Concept> 
+	<skos:Concept rdf:about="http://localhost/DDB/music+genres/Flöte">	
+	<skos:prefLabel>Flöte</skos:prefLabel>	
+	</skos:Concept>
+	<skos:Concept rdf:about="http://localhost/DDB/music+genres/Glockenspiel">	
+	<skos:prefLabel>Glockenspiel</skos:prefLabel>	
+	</skos:Concept>
+	<skos:Concept rdf:about="http://localhost/DDB/music+genres/Harfe">	
+	<skos:prefLabel>Harfe</skos:prefLabel>	
+	</skos:Concept>
+	<skos:Concept rdf:about="http://localhost/DDB/music+genres/Harp">	
+	<skos:prefLabel>Harp</skos:prefLabel>	
+	</skos:Concept>
+	<skos:Concept rdf:about="http://localhost/DDB/music+genres/Horn">	
+	<skos:prefLabel>Horn</skos:prefLabel>	
+	</skos:Concept>
+	<skos:Concept rdf:about="http://localhost/DDB/music+genres/kettledrum">	
+	<skos:prefLabel>kettledrum</skos:prefLabel>	
+	</skos:Concept>
+	<skos:Concept rdf:about="http://localhost/DDB/music+genres/Klarinette">	
+	<skos:prefLabel>Klarinette</skos:prefLabel>	
+	</skos:Concept>
+	<skos:Concept rdf:about="http://localhost/DDB/music+genres/Klavier">	
+	<skos:prefLabel>Klavier</skos:prefLabel>	
+	</skos:Concept>
+	<skos:Concept rdf:about="http://localhost/DDB/music+genres/Kontrabass-Tuba">	
+	<skos:prefLabel>Kontrabass-Tuba</skos:prefLabel>	
+	</skos:Concept>
+	<skos:Concept rdf:about="http://localhost/DDB/music+genres/Laute">	
+	<skos:prefLabel>Laute</skos:prefLabel>	
+	</skos:Concept>
+	<skos:Concept rdf:about="http://localhost/DDB/music+genres/Liebesflöte">	
+	<skos:prefLabel>Liebesflöte</skos:prefLabel>	
+	</skos:Concept>
+	<skos:Concept rdf:about="http://localhost/DDB/music+genres/love+viol">	
+	<skos:prefLabel>love viol</skos:prefLabel>	
+	</skos:Concept>
+	<skos:Concept rdf:about="http://localhost/DDB/music+genres/lyre">	
+	<skos:prefLabel>lyre</skos:prefLabel>	
+	</skos:Concept>
+	<skos:Concept rdf:about="http://localhost/DDB/music+genres/Mandoline">	
+	<skos:prefLabel>Mandoline</skos:prefLabel>	
+	</skos:Concept>
+	<skos:Concept rdf:about="http://localhost/DDB/music+genres/Oboe">	
+	<skos:prefLabel>Oboe</skos:prefLabel>	
+	</skos:Concept>
+	<skos:Concept rdf:about="http://localhost/DDB/music+genres/Oboi">	
+	<skos:prefLabel>Oboi</skos:prefLabel>	
+	</skos:Concept>
+	<skos:Concept rdf:about="http://localhost/DDB/music+genres/Organ">	
+	<skos:prefLabel>Organ</skos:prefLabel>	
+	</skos:Concept> 
+	<skos:Concept rdf:about="http://localhost/DDB/music+genres/Organo">	
+	<skos:prefLabel>Organo</skos:prefLabel>	
+	</skos:Concept>
+	<skos:Concept rdf:about="http://localhost/DDB/music+genres/Orgel">	
+	<skos:prefLabel>Orgel</skos:prefLabel>	
+	</skos:Concept>
+	<skos:Concept rdf:about="http://localhost/DDB/music+genres/Orgue">	
+	<skos:prefLabel>Orgue</skos:prefLabel>	
+	</skos:Concept>
+	<skos:Concept rdf:about="http://localhost/DDB/music+genres/Pauke">	
+	<skos:prefLabel>Pauke</skos:prefLabel>	
+	</skos:Concept> 
+	<skos:Concept rdf:about="http://localhost/DDB/music+genres/Piano">	
+	<skos:prefLabel>Piano</skos:prefLabel>	
+	</skos:Concept>
+	<skos:Concept rdf:about="http://localhost/DDB/music+genres/Pianoforte">	
+	<skos:prefLabel>Pianoforte</skos:prefLabel>	
+	</skos:Concept>
+	<skos:Concept rdf:about="http://localhost/DDB/music+genres/Posaunen">	
+	<skos:prefLabel>Posaunen</skos:prefLabel>	
+	</skos:Concept>
+	<skos:Concept rdf:about="http://localhost/DDB/music+genres/Tenor-Posaune">	
+	<skos:prefLabel>Tenor-Posaune</skos:prefLabel>	
+	</skos:Concept>
+	<skos:Concept rdf:about="http://localhost/DDB/music+genres/Theorbe">	
+	<skos:prefLabel>Theorbe</skos:prefLabel>	
+	</skos:Concept>
+	<skos:Concept rdf:about="http://localhost/DDB/music+genres/Timpano">	
+	<skos:prefLabel>Timpano</skos:prefLabel>	
+	</skos:Concept>
+	<skos:Concept rdf:about="http://localhost/DDB/music+genres/Trombone">	
+	<skos:prefLabel>Trombone</skos:prefLabel>	
+	</skos:Concept> 
+	<skos:Concept rdf:about="http://localhost/DDB/music+genres/Trompete">	
+	<skos:prefLabel>Trompete</skos:prefLabel>	
+	</skos:Concept>
+	<skos:Concept rdf:about="http://localhost/DDB/music+genres/Tympano">	
+	<skos:prefLabel>Tympano</skos:prefLabel>	
+	</skos:Concept>
+	<skos:Concept rdf:about="http://localhost/DDB/music+genres/Viol">	
+	<skos:prefLabel>Viol</skos:prefLabel>	
+	</skos:Concept>
+	<skos:Concept rdf:about="http://localhost/DDB/music+genres/Viola">	
+	<skos:prefLabel>Viola</skos:prefLabel>	
+	</skos:Concept>
+	<skos:Concept rdf:about="http://localhost/DDB/music+genres/Violetta">	
+	<skos:prefLabel>Violetta</skos:prefLabel>	
+	</skos:Concept> 
+	<skos:Concept rdf:about="http://localhost/DDB/music+genres/Violin">	
+	<skos:prefLabel>Violin</skos:prefLabel>	
+	</skos:Concept> 
+	<skos:Concept rdf:about="http://localhost/DDB/music+genres/Violine">	
+	<skos:prefLabel>Violine</skos:prefLabel>	
+	</skos:Concept>
+	<skos:Concept rdf:about="http://localhost/DDB/music+genres/Violino">	
+	<skos:prefLabel>Violino</skos:prefLabel>	
+	</skos:Concept>
+	<skos:Concept rdf:about="http://localhost/DDB/music+genres/Violon">	
+	<skos:prefLabel>Violon</skos:prefLabel>	
+	</skos:Concept>
+	<skos:Concept rdf:about="http://localhost/DDB/music+genres/Violoncell">	
+	<skos:prefLabel>Violoncell</skos:prefLabel>	
+	</skos:Concept>
+	<skos:Concept rdf:about="http://localhost/DDB/music+genres/Violoncello">	
+	<skos:prefLabel>Violoncello</skos:prefLabel>	
+	</skos:Concept>
+</rdf:RDF>
