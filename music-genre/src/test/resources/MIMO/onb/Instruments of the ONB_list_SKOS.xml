@@ -25,10 +25,13 @@
 	<skos:Concept rdf:about="http://localhost/DDB/music+genres/Clarinette">	
 	<skos:prefLabel>Clarinette</skos:prefLabel>	
 	<skos:altLabel>Klarinette</skos:altLabel>	
+	<skos:altLabel>Klarinetten</skos:altLabel>	
+	<skos:altLabel>Clarinetti</skos:altLabel>	
 	</skos:Concept>
 	<skos:Concept rdf:about="http://localhost/DDB/music+genres/Clarino">	
 	<skos:prefLabel>Clarino</skos:prefLabel>	
 	<skos:altLabel>Barocktrompete</skos:altLabel>	
+	<skos:altLabel>Clarini</skos:altLabel>	
 	</skos:Concept>
 	<skos:Concept rdf:about="http://localhost/DDB/music+genres/Clavicembalo">	
 	<skos:prefLabel>Clavicembalo</skos:prefLabel>	
@@ -49,6 +52,9 @@
 	<skos:Concept rdf:about="http://localhost/DDB/music+genres/Corno">
 	<skos:prefLabel>Corno</skos:prefLabel>	
 	<skos:altLabel>Horn</skos:altLabel>	
+	<skos:altLabel>Hörne</skos:altLabel>	
+	<skos:altLabel>Hörner</skos:altLabel>	
+	<skos:altLabel>Corni</skos:altLabel>	
 	</skos:Concept>
 	<skos:Concept rdf:about="http://localhost/DDB/music+genres/Corno+inglese">
 	<skos:prefLabel>Corno inglese</skos:prefLabel>	
@@ -57,11 +63,15 @@
 	<skos:Concept rdf:about="http://localhost/DDB/music+genres/Fagott">	
 	<skos:prefLabel>Fagott</skos:prefLabel>	
 	<skos:altLabel>Fagotte</skos:altLabel>	
+	<skos:altLabel>Fagotti</skos:altLabel>	
 	<skos:altLabel>Fagotto</skos:altLabel>	
+	<skos:altLabel>Fagotten</skos:altLabel>	
 	</skos:Concept>
 	<skos:Concept rdf:about="http://localhost/DDB/music+genres/Flauto">	
 	<skos:prefLabel>Flauto</skos:prefLabel>	
 	<skos:altLabel>Flöte</skos:altLabel>	
+	<skos:altLabel>Flöten</skos:altLabel>	
+	<skos:altLabel>Flauti</skos:altLabel>	
 	</skos:Concept>
 	<skos:Concept rdf:about="http://localhost/DDB/music+genres/Flauto+dAmore">	
 	<skos:prefLabel>Flauto d'Amore</skos:prefLabel>	
@@ -88,10 +98,12 @@
 	<skos:Concept rdf:about="http://localhost/DDB/music+genres/Mandolin">	
 	<skos:prefLabel>Mandolin</skos:prefLabel>	
 	<skos:altLabel>Mandoline</skos:altLabel>	
+	<skos:altLabel>Mandolinen</skos:altLabel>	
 	</skos:Concept>
 	<skos:Concept rdf:about="http://localhost/DDB/music+genres/Oboe">	
 	<skos:prefLabel>Oboe</skos:prefLabel>	
 	<skos:altLabel>Oboi</skos:altLabel>	
+	<skos:altLabel>Oboen</skos:altLabel>	
 	</skos:Concept>
 	<skos:Concept rdf:about="http://localhost/DDB/music+genres/Organo">	
 	<skos:prefLabel>Organo</skos:prefLabel>	
@@ -105,6 +117,8 @@
 	<skos:prefLabel>Piano</skos:prefLabel>	
 	<skos:altLabel>Klavier</skos:altLabel>	
 	<skos:altLabel>Clavier</skos:altLabel>	
+	<skos:altLabel>Claviers</skos:altLabel>	
+	<skos:altLabel>Klaviere</skos:altLabel>	
 	</skos:Concept>
 	<skos:Concept rdf:about="http://localhost/DDB/music+genres/Pianoforte">	
 	<skos:prefLabel>Pianoforte</skos:prefLabel>	
@@ -124,6 +138,8 @@
 	<skos:altLabel>Pauke</skos:altLabel>	
 	<skos:altLabel>Tympano</skos:altLabel>
 	<skos:altLabel>kettledrum</skos:altLabel>	
+	<skos:altLabel>Pauken</skos:altLabel>	
+	<skos:altLabel>Tympani</skos:altLabel>
 	</skos:Concept>
 	<skos:Concept rdf:about="http://localhost/DDB/music+genres/Tiorba">	
 	<skos:prefLabel>Tiorba</skos:prefLabel>	
@@ -135,9 +151,12 @@
 	<skos:Concept rdf:about="http://localhost/DDB/music+genres/Trombone">	
 	<skos:prefLabel>Trombone</skos:prefLabel>	
 	<skos:altLabel>Posaunen</skos:altLabel>	
+	<skos:altLabel>Tromboni</skos:altLabel>	
+	<skos:altLabel>Tromben</skos:altLabel>	
 	</skos:Concept>
 	<skos:Concept rdf:about="http://localhost/DDB/music+genres/Trompete">	
 	<skos:prefLabel>Trompete</skos:prefLabel>	
+	<skos:altLabel>Trompeten</skos:altLabel>	
 	</skos:Concept>
 	<skos:Concept rdf:about="http://localhost/DDB/music+genres/Viola">	
 	<skos:prefLabel>Viola</skos:prefLabel>	
@@ -164,5 +183,9 @@
 	<skos:altLabel>Violine</skos:altLabel>	
 	<skos:altLabel>Violino</skos:altLabel>	
 	<skos:altLabel>Violon</skos:altLabel>	
+	<skos:altLabel>Violinen</skos:altLabel>	
+	<skos:altLabel>Violini</skos:altLabel>	
+	<skos:altLabel>Violoncelli</skos:altLabel>	
+	<skos:altLabel>Violons</skos:altLabel>	
 	</skos:Concept>
 </rdf:RDF>
