@@ -6,6 +6,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -16,8 +17,8 @@ import org.apache.commons.logging.LogFactory;
 
 import eu.europeana.api.client.EuropeanaApi2Client;
 import eu.europeana.api.client.exception.EuropeanaApiProblem;
-import eu.europeana.api.client.model.EuropeanaApi2Results;
-import eu.europeana.api.client.model.search.EuropeanaApi2Item;
+import eu.europeana.api.client.metadata.MetadataAccessor;
+import eu.europeana.api.client.model.search.CommonMetadata;
 import eu.europeana.api.client.search.query.Api2QueryBuilder;
 import eu.europeana.api.client.search.query.Api2QueryInterface;
 import eu.europeana.sounds.definitions.model.concept.Concept;
@@ -26,10 +27,6 @@ import eu.europeana.sounds.definitions.model.concept.impl.MimoMappingView;
 public class EuropeanaSearchApiClient {
 
 	private static final Log log = LogFactory.getLog(EuropeanaSearchApiClient.class);
-
-//	public static final String TITLE_KEY = "title";
-//	public static final String DESCRIPTION_KEY = "description";
-//	public static final String EUROPEANA_ID_KEY = "europeanaId";
 
 	public final static String ONB_INSTRUMENTS_FOLDER = "./src/test/resources/MIMO/onb";
 	
@@ -47,26 +44,31 @@ public class EuropeanaSearchApiClient {
     public List<Concept> loadConceptFromEuropeanaSearchApi(Concept queryConcept) throws IOException, EuropeanaApiProblem {
 
     	List<Concept> conceptList = new ArrayList<Concept>();
-    	
-    	String prefLabel = (String)queryConcept.getPrefLabel().values().toArray()[0];
-    	
-    	//		.replace("\"", "").replace(" ", "");
-     	
+    	    	
 		List<Concept> europeanaSearchApiResultsToConceptList = null;
-		if (StringUtils.isNotEmpty(prefLabel)){
-			europeanaSearchApiResultsToConceptList = parseEuropeanaSearchApiResultsToConcept(queryConcept, prefLabel);
-    		conceptList.addAll(europeanaSearchApiResultsToConceptList);
-		}
-	    Iterator<Map.Entry<String,String>> it = queryConcept.getAltLabel().entrySet().iterator();
-	    while (it.hasNext()) {
-	        Map.Entry<String,String> pair = (Map.Entry<String,String>) it.next();
-//	        System.out.println(pair.getKey() + " = " + pair.getValue());
-			if (StringUtils.isNotEmpty(pair.getValue()))
+		if (queryConcept.getPrefLabel() != null && queryConcept.getPrefLabel().values() != null 
+				&& queryConcept.getPrefLabel().values().toArray() != null) {
+	    	String prefLabel = (String)queryConcept.getPrefLabel().values().toArray()[0];
+			if (StringUtils.isNotEmpty(prefLabel)){
 				europeanaSearchApiResultsToConceptList = parseEuropeanaSearchApiResultsToConcept(queryConcept, prefLabel);
-    		
-				conceptList.addAll(europeanaSearchApiResultsToConceptList);
-	        it.remove(); 
-	    }
+				if (europeanaSearchApiResultsToConceptList != null && europeanaSearchApiResultsToConceptList.size() > 0) {
+					conceptList.addAll(europeanaSearchApiResultsToConceptList);
+					log.debug("loaded prev label count: " + conceptList.size());
+				}
+			}
+		}
+		
+		if (queryConcept.getAltLabel() != null) {
+			for (Map.Entry<String, String> altLabelEntry : queryConcept.getAltLabel().entrySet()) {
+		
+				europeanaSearchApiResultsToConceptList = parseEuropeanaSearchApiResultsToConcept(queryConcept, altLabelEntry.getValue());
+				if (europeanaSearchApiResultsToConceptList != null && europeanaSearchApiResultsToConceptList.size() > 0) {
+		    		conceptList.addAll(europeanaSearchApiResultsToConceptList);
+		    		log.debug("loaded alt label count: " + conceptList.size());
+				}
+			}
+		}
+		
         return conceptList;
     }
 
@@ -82,42 +84,12 @@ public class EuropeanaSearchApiClient {
 	 */
 	private List<Concept> parseEuropeanaSearchApiResultsToConcept(Concept queryConcept, String query)
 			throws UnsupportedEncodingException, MalformedURLException, IOException, EuropeanaApiProblem {
-		EuropeanaApi2Results results = searchMimoTermInEuropeanaCollection(query);
 		
     	List<Concept> conceptList = new ArrayList<Concept>();
-
-    	// parse results into concept objects
-        for (EuropeanaApi2Item item : results.getAllItems()) {
-        	MimoMappingView concept = new MimoMappingView();
-        	concept.setUri(queryConcept.getUri());
-        	concept.setPrefLabel(queryConcept.getPrefLabel());
-        	concept.setAltLabel(queryConcept.getAltLabel());
-        	
-        	if (StringUtils.isNotEmpty(item.getTitle().get(0)))
-        		concept.setTitle(item.getTitle());
-        	if (StringUtils.isNotEmpty(item.getDcDescription().get(0)))
-        		concept.setDcDescription(item.getDcDescription());
-        	if (StringUtils.isNotEmpty(item.getId()))
-        		concept.setEuropeanaId(item.getId());
-            conceptList.add(concept);
-		}
-        return conceptList;
-	}
-
-    
-	/**
-	 * @param query
-	 * @return
-	 * @throws UnsupportedEncodingException
-	 * @throws MalformedURLException
-	 * @throws IOException
-	 * @throws EuropeanaApiProblem
-	 */
-	private EuropeanaApi2Results searchMimoTermInEuropeanaCollection(String query)
-			throws UnsupportedEncodingException, MalformedURLException, IOException, EuropeanaApiProblem {
-		//create the query object
-        EuropeanaApi2Client europeanaClient = new EuropeanaApi2Client();
-		Api2QueryBuilder queryBuilder = europeanaClient.getQueryBuilder();
+        
+        //create the query object
+        EuropeanaApi2Client europeanaClient = new EuropeanaApi2Client();		
+        Api2QueryBuilder queryBuilder = europeanaClient.getQueryBuilder();
 		String portalUrl = "http://www.europeana.eu/portal/search?q=";
 				
 		String toEncode ="(europeana_collectionName:(2059216_Ag_EU_eSOUNDS_1001_ONB) AND (title:\"" 
@@ -127,11 +99,41 @@ public class EuropeanaSearchApiClient {
 		Api2QueryInterface apiQuery = queryBuilder.buildQuery(portalUrl);
 		apiQuery.setProfile("rich");
 		
-		EuropeanaApi2Results results = europeanaClient.searchApi2(apiQuery, 0, -1);
-		return results;
+		MetadataAccessor ma = new MetadataAccessor(apiQuery, null);
+		ma.setStoreItemsAsJson(true);
+		ma.setBlockSize(100);
+		Map<String, String> contentMapTitle = ma.getContentMap(CommonMetadata.FIELD_TITLE, 1, 1002,
+				MetadataAccessor.ERROR_POLICY_CONTINUE);
+		for (Map.Entry<String, String> pair : contentMapTitle.entrySet()) {
+	    	String europeanaId = pair.getKey();
+	    	
+	    	MimoMappingView concept = new MimoMappingView();
+	    	concept.setUri(queryConcept.getUri());
+	    	concept.setPrefLabel(queryConcept.getPrefLabel());
+	    	concept.setAltLabel(queryConcept.getAltLabel());
+	    	List<String> titleList = new ArrayList<String>(Arrays.asList(pair.getValue().split(";")));
+	    	if (titleList != null && titleList.size() > 0)
+	    		concept.setTitle(titleList);
+	    	if (StringUtils.isNotEmpty(europeanaId))
+	    		concept.setEuropeanaId(europeanaId);
+	        conceptList.add(concept);
+    	}		
+
+		Map<String, String> contentMapDcDescription = ma.getContentMap(CommonMetadata.FIELD_DC_DESCRIPTION, 1, 1002,
+				MetadataAccessor.ERROR_POLICY_CONTINUE);
+
+		for (Concept concept : conceptList) {
+			List<String> dcDescriptionList = new ArrayList<String>(
+			Arrays.asList(contentMapDcDescription.get(((MimoMappingView) concept).getEuropeanaId()).split(";")));
+			if (dcDescriptionList != null && dcDescriptionList.size() > 0)
+				((MimoMappingView) concept).setDcDescription(dcDescriptionList);
+		}
+		
+        System.out.println("query: " + query + ", added len: " + conceptList.size());
+        return conceptList;
 	}
     
-    
+	
     /**
      * Headers: Searched label; Skos_resource;title; description;europeanaId;
      * @param conceptList
@@ -161,13 +163,10 @@ public class EuropeanaSearchApiClient {
     			writer.append(concept.getUri());
         		writer.append(CSV_DELIMITER);
         		writer.append(StringUtils.join(concept.getTitle(), ','));
-//    			writer.append(concept.getNote().get(TITLE_KEY));
         		writer.append(CSV_DELIMITER);
         		writer.append(StringUtils.join(concept.getDcDescription(), ','));
-//    			writer.append(concept.getNote().get(DESCRIPTION_KEY));
         		writer.append(CSV_DELIMITER);
         		writer.append(concept.getEuropeanaId());
-//    			writer.append(concept.getNote().get(EUROPEANA_ID_KEY));
     			writer.append('\n');
     		}
     		writer.flush();
@@ -194,7 +193,9 @@ public class EuropeanaSearchApiClient {
 	    for (Concept concept : conceptList) {
 		    try {
 		    	List<Concept> enrichedConcept = loadConceptFromEuropeanaSearchApi(concept);
-    			enrichedConceptList.addAll(enrichedConcept);
+		    	if (enrichedConcept != null && enrichedConcept.size() > 0)
+		    		enrichedConceptList.addAll(enrichedConcept);
+		    	log.debug("Current enriched concept count: " + enrichedConceptList.size());
 			} catch (Exception e) {
 				log.error("Error by mapping ONB - MIMO using Europeana Search API" + e.getMessage());
 			}
