@@ -29,9 +29,7 @@ public class EuropeanaSearchApiClient {
 	private static final Log log = LogFactory.getLog(EuropeanaSearchApiClient.class);
 
 	public final static String ONB_INSTRUMENTS_FOLDER = "./src/test/resources/MIMO/onb";
-	
-	public final static String CONCEPTS_FILE_EXTENDED = "Linked instruments of the ONB-MIMO list.csv";
-	
+		
 	public final static String CSV_DELIMITER = ";";
 	 
 
@@ -142,7 +140,8 @@ public class EuropeanaSearchApiClient {
     public void generateSearchConceptCsvFile(List<Concept> conceptList, String sFileName) {
 
     	try {
-    		FileWriter writer = new FileWriter(ONB_INSTRUMENTS_FOLDER + "/" + sFileName);
+    		FileWriter writer = new FileWriter(sFileName);
+//    		FileWriter writer = new FileWriter(ONB_INSTRUMENTS_FOLDER + "/" + sFileName);
 
     		writer.append("Searched label");
     		writer.append(CSV_DELIMITER);
@@ -180,10 +179,11 @@ public class EuropeanaSearchApiClient {
 	/**
 	 * This method maps ONB items to Europeana search API.
 	 * @param conceptList
+	 * @param outputFileName
 	 * @return Number of mapped concepts
 	 * @throws IOException
 	 */
-	public int mapOnbMimo(List<Concept> conceptList) throws IOException {
+	public int mapOnbMimo(List<Concept> conceptList, String outputFileName) throws IOException {
 		
 		int mappedConceptCount = 0;
 		
@@ -202,7 +202,7 @@ public class EuropeanaSearchApiClient {
 	    }
 	
 	    // parse mid and Concept family and store it in CSV comma separated files
-	    generateSearchConceptCsvFile(enrichedConceptList, CONCEPTS_FILE_EXTENDED);
+	    generateSearchConceptCsvFile(enrichedConceptList, outputFileName);
 
     	mappedConceptCount = enrichedConceptList.size();
 

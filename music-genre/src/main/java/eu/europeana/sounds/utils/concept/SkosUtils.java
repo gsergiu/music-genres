@@ -1,5 +1,8 @@
 package eu.europeana.sounds.utils.concept;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
@@ -81,6 +84,50 @@ public class SkosUtils {
     	return retrieveConcepts(model);
     }
 	
+    
+    /**
+     * This method performs parsing of the SKOS flat file in CSV format to 
+     * Europeana Annotation Concept collection.
+     * @param inputFileName
+     * @return A collection of the Concept objects
+     */
+    public List<Concept> retrieveConceptsFromCsv(String inputFileName) {
+	        
+		List<Concept> res = new ArrayList<Concept>();
+		
+		int ID_POS = 1; 
+		int LABEL_POS = 0; 
+    	String splitBy = ";";
+	    
+	    BufferedReader br;
+		try {
+			br = new BufferedReader(new FileReader(inputFileName));
+			String line = "";
+			while ((line = br.readLine()) !=null) {
+		    	BaseConcept concept = new BaseConcept();
+		    	concept.addType(ConceptTypes.SKOS_CONCEPT.name());
+			    String[] b = line.split(splitBy);
+			    if (b.length >= 2 && StringUtils.isNotEmpty(b[ID_POS]) && StringUtils.isNotEmpty(b[LABEL_POS])) {
+			    	String uri = b[ID_POS];
+			    	concept.setUri(uri);
+			    	String[] chunks = uri.split("/");
+			    	String id = chunks[chunks.length-1];
+				    concept.addPrefLabelInMapping(id, b[LABEL_POS]);
+				    res.add(concept);
+			    }
+			}
+		    br.close();
+		} catch (FileNotFoundException e1) {
+			log.error("File not found. " + e1.getMessage());
+			e1.printStackTrace();
+		} catch (IOException e) {
+			log.error("IO error. " + e.getMessage());
+			e.printStackTrace();
+		}
+
+		return res;
+	}    
+
     
 	/**
 	 * @param orig

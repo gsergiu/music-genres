@@ -33,8 +33,34 @@ public class OnbMimoLinkingSkosTest extends BaseSkosTest {
 
 	public final String ONB_INSTRUMENTS_SKOS_FILE_PATH = 
 			"C:/git/music-genres/music-genre/src/test/resources/MIMO/onb/Instruments of the ONB_list_SKOS.xml";
+	public final static String CONCEPTS_FILE_EXTENDED = "Linked instruments of the ONB-MIMO list.csv";
+
+	public final String ONB_INSTRUMENTS_SET_FLAT_ALL_CSV_FILE_PATH = 
+			"C:/git/music-genres/music-genre/src/test/resources/MIMO/onb/Instrument_set_flat_all.csv";
+	public final String ENRICHED_ONB_INSTRUMENTS_SET_FLAT_ALL_CSV_FILE_PATH = 
+			"C:/git/music-genres/music-genre/src/test/resources/MIMO/onb/Enriched_instrument_set_flat_all.csv";
+
 
 	EuropeanaSearchApiClient apiClient = new EuropeanaSearchApiClient();
+	
+	
+	/**
+	 * Having an ONB all flat instrument list in CSV format, we query Europeana Search API 
+	 * for additional instrument data, store this data and create instrument list in CSV format, 
+	 * enriched by Title, Description and Europeana ID. 
+	 * This test employs Europeana search API to find ONB items that match the SKOS labels 
+     * (preffered and alternative) in Title or Description (title and dcDescription).
+	 * @throws IOException
+	 */
+	@Test
+	public void mapONBFlatAllMusicInstrumentsToEuropeanaSerachApi() throws IOException {
+		
+    	List<Concept> concepts = getSkosUtils().retrieveConceptsFromCsv(
+    			ONB_INSTRUMENTS_SET_FLAT_ALL_CSV_FILE_PATH);    	
+		int numberOfMappedInstruments = apiClient.mapOnbMimo(concepts, ENRICHED_ONB_INSTRUMENTS_SET_FLAT_ALL_CSV_FILE_PATH);
+		
+		assertTrue(numberOfMappedInstruments > 0);
+	}
 	
 	
 	/**
@@ -45,12 +71,12 @@ public class OnbMimoLinkingSkosTest extends BaseSkosTest {
      * (preffered and alternative) in Title or Description (title and dcDescription).
 	 * @throws IOException
 	 */
-	@Test
+//	@Test
 	public void mapONBMusicInstrumentsToEuropeanaSerachApi() throws IOException {
 		
     	List<Concept> concepts = getSkosUtils().parseSkosRdfXmlToConceptCollection(
     			ONB_INSTRUMENTS_SKOS_FILE_PATH);    	
-		int numberOfMappedInstruments = apiClient.mapOnbMimo(concepts);
+		int numberOfMappedInstruments = apiClient.mapOnbMimo(concepts, CONCEPTS_FILE_EXTENDED);
 		
 		assertTrue(numberOfMappedInstruments > 0);
 	}
