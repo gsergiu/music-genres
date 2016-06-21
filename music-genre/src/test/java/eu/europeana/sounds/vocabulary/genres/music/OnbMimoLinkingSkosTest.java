@@ -36,9 +36,9 @@ public class OnbMimoLinkingSkosTest extends BaseSkosTest {
 	public final static String CONCEPTS_FILE_EXTENDED = "Linked instruments of the ONB-MIMO list.csv";
 
 	public final String ONB_INSTRUMENTS_SET_FLAT_ALL_CSV_FILE_PATH = 
-			"C:/git/music-genres/music-genre/src/test/resources/MIMO/onb/Instrument_set_flat_all.csv";
+			"C:/git/music-genres/music-genre/src/test/resources/MIMO/onb/Instrument_set_flat_all_with_stamm.csv";
 	public final String ENRICHED_ONB_INSTRUMENTS_SET_FLAT_ALL_CSV_FILE_PATH = 
-			"C:/git/music-genres/music-genre/src/test/resources/MIMO/onb/Enriched_instrument_set_flat_all.csv";
+			"C:/git/music-genres/music-genre/src/test/resources/MIMO/onb/Enriched_instrument_set_flat_all_with_stamm.csv";
 
 
 	EuropeanaSearchApiClient apiClient = new EuropeanaSearchApiClient();

@@ -1,16 +1,25 @@
-Armgeige*;http://localhost/DDB/music+genres/Viola+da+braccio
-Barocktrompete*;http://localhost/DDB/music+genres/Clarino
+Armgeig*;http://localhost/DDB/music+genres/Viola+da+braccio
+Armgeige;http://localhost/DDB/music+genres/Viola+da+braccio
+Barocktrompet*;http://localhost/DDB/music+genres/Clarino
+Barocktrompette;http://localhost/DDB/music+genres/Clarino
 Bass Viol;http://localhost/DDB/music+genres/Viola+da+gamba
 basso viola;http://localhost/DDB/music+genres/basso+viola
-BaÃŸposaune*;http://localhost/DDB/music+genres/Bass-Trombone
-Bass-Trombone*;http://localhost/DDB/music+genres/Bass-Trombone
+Bassposaun*;http://localhost/DDB/music+genres/Bass-Trombone
+Bassposaune;http://localhost/DDB/music+genres/Bass-Trombone
+Bass-Trombon*;http://localhost/DDB/music+genres/Bass-Trombone
+Bass-Trombone;http://localhost/DDB/music+genres/Bass-Trombone
 Basstuba*;http://localhost/DDB/music+genres/Basstuba 
-Bratsche*;http://localhost/DDB/music+genres/Viola
+Basstuba;http://localhost/DDB/music+genres/Basstuba 
+Bratsch*;http://localhost/DDB/music+genres/Viola
+Bratsche;http://localhost/DDB/music+genres/Viola
 Bratschen;http://localhost/DDB/music+genres/Viola 
+Cello*;http://localhost/DDB/music+genres/Cello
 Cello;http://localhost/DDB/music+genres/Cello
+Cembalo*;http://localhost/DDB/music+genres/Cembalo
 Cembalo;http://localhost/DDB/music+genres/Cembalo
 Chaloumaux;http://localhost/DDB/music+genres/Chaloumaux
-Clarinette*;http://localhost/DDB/music+genres/Clarinette
+Clarinett*;http://localhost/DDB/music+genres/Clarinette
+Clarinette;http://localhost/DDB/music+genres/Clarinette
 Clarinetti;http://localhost/DDB/music+genres/Clarinette
 Clarini;http://localhost/DDB/music+genres/Clarino
 Clarino;http://localhost/DDB/music+genres/Clarino
@@ -21,78 +30,106 @@ Clavier;http://localhost/DDB/music+genres/Piano
 Claviers;http://localhost/DDB/music+genres/Piano
 Contrabasso;http://localhost/DDB/music+genres/Contrabasso
 Contrabass-Tuba*;http://localhost/DDB/music+genres/Contrabass-Tuba
+Contrabass-Tuba;http://localhost/DDB/music+genres/Contrabass-Tuba
 Cornetto;http://localhost/DDB/music+genres/Cornetto
 Corni;http://localhost/DDB/music+genres/Corno
 Corno;http://localhost/DDB/music+genres/Corno
 Corno inglese;http://localhost/DDB/music+genres/Corno+inglese
 d'orgue;http://localhost/DDB/music+genres/Orgue
 Englisches Horn*;http://localhost/DDB/music+genres/Corno+inglese
-Fagott;http://localhost/DDB/music+genres/Fagott
-Fagotte*;http://localhost/DDB/music+genres/Fagott
+Englisches Horn;http://localhost/DDB/music+genres/Corno+inglese
+Fagott*;http://localhost/DDB/music+genres/Fagott
+Fagotte;http://localhost/DDB/music+genres/Fagott
 Fagotten;http://localhost/DDB/music+genres/Fagott
+Fagott;http://localhost/DDB/music+genres/Fagott
 Fagotti;http://localhost/DDB/music+genres/Fagott
 fagotto;http://localhost/DDB/music+genres/Fagott
 Flauti;http://localhost/DDB/music+genres/Flauto
 Flauto;http://localhost/DDB/music+genres/Flauto
 Flauto d'Amore;http://localhost/DDB/music+genres/Flauto+dAmore
 Flauto traverso;http://localhost/DDB/music+genres/Flauto+traverso
-FlÃ¶te*;http://localhost/DDB/music+genres/Flauto
-FlÃ¶ten;http://localhost/DDB/music+genres/Flauto 
+Flot*;http://localhost/DDB/music+genres/Flauto
+Flöte;http://localhost/DDB/music+genres/Flauto 
+Flöten;http://localhost/DDB/music+genres/Flauto 
 Glockenspiel*;http://localhost/DDB/music+genres/Glockenspiel
-Harfe*;http://localhost/DDB/music+genres/Harp
+Glockenspiel;http://localhost/DDB/music+genres/Glockenspiel
+Harf*;http://localhost/DDB/music+genres/Harp
+Harfe;http://localhost/DDB/music+genres/Harp
 Harp;http://localhost/DDB/music+genres/Harp
 Horn*;http://localhost/DDB/music+genres/Corno
-HÃ¶rner;http://localhost/DDB/music+genres/Corno
-HÃ¶rnern;http://localhost/DDB/music+genres/Corno
+Horn;http://localhost/DDB/music+genres/Corno
+Hörner;http://localhost/DDB/music+genres/Corno
+Hörnern;http://localhost/DDB/music+genres/Corno
 kettledrum;http://localhost/DDB/music+genres/Timpano
-Klarinette*;http://localhost/DDB/music+genres/Clarinette
+Klarinett*;http://localhost/DDB/music+genres/Clarinette
+Klarinette;http://localhost/DDB/music+genres/Clarinette
 Klarinetten;http://localhost/DDB/music+genres/Clarinette
 Klavier*;http://localhost/DDB/music+genres/Piano
+Klavier;http://localhost/DDB/music+genres/Piano
 Klaviere;http://localhost/DDB/music+genres/Piano
 Kontrabass*;http://localhost/DDB/music+genres/Contrabasso
+Kontrabass;http://localhost/DDB/music+genres/Contrabasso
 Kontrabass-Tuba*;http://localhost/DDB/music+genres/Contrabass-Tuba
-Laute*;http://localhost/DDB/music+genres/Lute
-LiebesflÃ¶te*;http://localhost/DDB/music+genres/Flauto+dAmore
+Kontrabass-Tuba;http://localhost/DDB/music+genres/Contrabass-Tuba
+Laut*;http://localhost/DDB/music+genres/Lute
+Laute;http://localhost/DDB/music+genres/Lute
+Liebesflot*;http://localhost/DDB/music+genres/Flauto+dAmore
+Liebesflöte;http://localhost/DDB/music+genres/Flauto+dAmore
 love viol;http://localhost/DDB/music+genres/Viola+damore
-Lute*;http://localhost/DDB/music+genres/Lute
+Lut*;http://localhost/DDB/music+genres/Lute
+Lute;http://localhost/DDB/music+genres/Lute
 Lyra*;http://localhost/DDB/music+genres/Lyra
+Lyra;http://localhost/DDB/music+genres/Lyra
 lyre;http://localhost/DDB/music+genres/Lyra
 Mandolin;http://localhost/DDB/music+genres/Mandolin
-Mandoline*;http://localhost/DDB/music+genres/Mandolin
+Mandolin*;http://localhost/DDB/music+genres/Mandolin
+Mandoline;http://localhost/DDB/music+genres/Mandolin
 Mandolinen ;http://localhost/DDB/music+genres/Mandolin
 Oboe;http://localhost/DDB/music+genres/Oboe
 Oboen;http://localhost/DDB/music+genres/Oboe
 Oboi;http://localhost/DDB/music+genres/Oboe
 Organ*;http://localhost/DDB/music+genres/Organo
+Organ;http://localhost/DDB/music+genres/Organo
 Organo;http://localhost/DDB/music+genres/Organo
 Orgel*;http://localhost/DDB/music+genres/Orgue
+Orgel;http://localhost/DDB/music+genres/Orgue
 Orgue;http://localhost/DDB/music+genres/Orgue
-Pauke*;http://localhost/DDB/music+genres/Timpano
+Pauk*;http://localhost/DDB/music+genres/Timpano
+Pauke;http://localhost/DDB/music+genres/Timpano
 Pauken;http://localhost/DDB/music+genres/Timpano
 Piano;http://localhost/DDB/music+genres/Piano
 piano forte;http://localhost/DDB/music+genres/Pianoforte
 Pianoforte;http://localhost/DDB/music+genres/Pianoforte
 Piano-forte;http://localhost/DDB/music+genres/Pianoforte
 Piccolo Flauto;http://localhost/DDB/music+genres/Piccolo+Flauto
+Posaun*;http://localhost/DDB/music+genres/Trombone
+Posaune;http://localhost/DDB/music+genres/Trombone
 Posaunen;http://localhost/DDB/music+genres/Trombone
+Tenor-Posaun*;http://localhost/DDB/music+genres/Tenor-Trombone
 Tenor-Posaune;http://localhost/DDB/music+genres/Tenor-Trombone
-Tenor-Trombone*;http://localhost/DDB/music+genres/Tenor-Trombone
+Tenor-Trombon*;http://localhost/DDB/music+genres/Tenor-Trombone
+Tenor-Trombone;http://localhost/DDB/music+genres/Tenor-Trombone
 Tenortuba;http://localhost/DDB/music+genres/Tenortuba
+Theorb*;http://localhost/DDB/music+genres/Tiorba
 Theorbe;http://localhost/DDB/music+genres/Tiorba
 Timpani;http://localhost/DDB/music+genres/Timpano
 Timpano;http://localhost/DDB/music+genres/Timpano
 Tiorba;http://localhost/DDB/music+genres/Tiorba
 tromba;http://localhost/DDB/music+genres/Trombone
-Trombe*;http://localhost/DDB/music+genres/Trombone
+Tromb*;http://localhost/DDB/music+genres/Trombone
+Trombe;http://localhost/DDB/music+genres/Trombone
 Trombe di Caccia;http://localhost/DDB/music+genres/Trombe+di+Caccia
 Tromben;http://localhost/DDB/music+genres/Trombone
 trombone;http://localhost/DDB/music+genres/Trombone
-Trombone*;http://localhost/DDB/music+genres/Trombone
+Trombon*;http://localhost/DDB/music+genres/Trombone
+Trombone;http://localhost/DDB/music+genres/Trombone
 Tromboni;http://localhost/DDB/music+genres/Trombone
-Trompete*;http://localhost/DDB/music+genres/Trompete
+Trompet*;http://localhost/DDB/music+genres/Trompete
+Trompete;http://localhost/DDB/music+genres/Trompete
 Trompeten;http://localhost/DDB/music+genres/Trompete
 Tympano;http://localhost/DDB/music+genres/Timpano
 Viol;http://localhost/DDB/music+genres/Viola+da+gamba
+Viola*;http://localhost/DDB/music+genres/Viola+da+gamba
 Viola;http://localhost/DDB/music+genres/Viola+da+gamba
 Viola da braccio;http://localhost/DDB/music+genres/Viola+da+braccio
 Viola da gamba;http://localhost/DDB/music+genres/Viola+da+gamba
@@ -100,9 +137,12 @@ Viola d'Amore;http://localhost/DDB/music+genres/Viola+damore
 Viole;http://localhost/DDB/music+genres/Viola+da+braccio
 viole da braccio;http://localhost/DDB/music+genres/Viola+da+braccio
 viole de gambe;http://localhost/DDB/music+genres/Viola+da+gamba
+Violen*;http://localhost/DDB/music+genres/Viola+da+braccio
 Violen;http://localhost/DDB/music+genres/Viola+da+braccio
 Violetta;http://localhost/DDB/music+genres/Violetta 
+Violett*;http://localhost/DDB/music+genres/Violetta
 Violette;http://localhost/DDB/music+genres/Violetta
+Violin*;http://localhost/DDB/music+genres/Violin
 Violin;http://localhost/DDB/music+genres/Violin
 Violine;http://localhost/DDB/music+genres/Violin
 Violinen;http://localhost/DDB/music+genres/Violin
@@ -110,9 +150,10 @@ Violini;http://localhost/DDB/music+genres/Violin
 Violino;http://localhost/DDB/music+genres/Violin
 Violo;http://localhost/DDB/music+genres/Violin
 Violon;http://localhost/DDB/music+genres/Violin
-Violoncell;http://localhost/DDB/music+genres/Violin
-Violoncelle;http://localhost/DDB/music+genres/Violin
-Violoncelli;http://localhost/DDB/music+genres/Violin
-Violoncello;http://localhost/DDB/music+genres/Violin
+Violoncell;http://localhost/DDB/music+genres/Violoncello
+Violoncelle;http://localhost/DDB/music+genres/Violoncello
+Violoncelli;http://localhost/DDB/music+genres/Violoncello
+Violoncello*;http://localhost/DDB/music+genres/Violoncello
+Violoncello;http://localhost/DDB/music+genres/Violoncello
 Violone;http://localhost/DDB/music+genres/Violin
 Violons;http://localhost/DDB/music+genres/Violin

@@ -22,6 +22,7 @@ import eu.europeana.api.client.model.search.CommonMetadata;
 import eu.europeana.api.client.search.query.Api2QueryBuilder;
 import eu.europeana.api.client.search.query.Api2QueryInterface;
 import eu.europeana.sounds.definitions.model.concept.Concept;
+import eu.europeana.sounds.definitions.model.concept.impl.BaseConcept;
 import eu.europeana.sounds.definitions.model.concept.impl.MimoMappingView;
 
 public class EuropeanaSearchApiClient {
@@ -176,6 +177,35 @@ public class EuropeanaSearchApiClient {
     }
     
     
+    /**
+     * Headers: Prev label; 
+     * @param conceptList
+     * @param sFileName
+     */
+    public void generateNotFoundConceptCsvFile(List<Concept> conceptList, String sFileName) {
+
+    	try {
+    		FileWriter writer = new FileWriter(sFileName);
+
+    		writer.append("Prev label");
+    		writer.append(CSV_DELIMITER);
+    		writer.append('\n');
+
+    		Iterator<Concept> itr = conceptList.iterator();
+    		while (itr.hasNext()) {
+    			BaseConcept concept = (BaseConcept) itr.next();
+    			writer.append(concept.getPrefLabel().values().toString());
+        		writer.append(CSV_DELIMITER);
+    			writer.append('\n');
+    		}
+    		writer.flush();
+    		writer.close();
+    	} catch (IOException e) {
+    		e.printStackTrace();
+    	}
+    }
+    
+    
 	/**
 	 * This method maps ONB items to Europeana search API.
 	 * @param conceptList
@@ -188,23 +218,35 @@ public class EuropeanaSearchApiClient {
 		int mappedConceptCount = 0;
 		
 		List<Concept> enrichedConceptList = new ArrayList<Concept>();
+		List<Concept> notEnrichedConceptList = new ArrayList<Concept>();
 
 		// load Europeana Search API Concept data and store it in CSV file
 	    for (Concept concept : conceptList) {
 		    try {
 		    	List<Concept> enrichedConcept = loadConceptFromEuropeanaSearchApi(concept);
-		    	if (enrichedConcept != null && enrichedConcept.size() > 0)
+		    	if (enrichedConcept != null && enrichedConcept.size() > 0) {
 		    		enrichedConceptList.addAll(enrichedConcept);
-		    	log.debug("Current enriched concept count: " + enrichedConceptList.size());
+		    		log.debug("Current enriched concept count: " + enrichedConceptList.size());
+		    	} else {
+		    		notEnrichedConceptList.add(concept);
+		    	}
 			} catch (Exception e) {
 				log.error("Error by mapping ONB - MIMO using Europeana Search API" + e.getMessage());
+	    		notEnrichedConceptList.add(concept);
 			}
 	    }
 	
 	    // parse mid and Concept family and store it in CSV comma separated files
 	    generateSearchConceptCsvFile(enrichedConceptList, outputFileName);
+	    generateNotFoundConceptCsvFile(notEnrichedConceptList, outputFileName.replace("Enriched", "NotEnriched"));
 
     	mappedConceptCount = enrichedConceptList.size();
+
+    	int notEnrichedConceptCount = notEnrichedConceptList.size();
+    	log.debug("Not enriched concept count: " + notEnrichedConceptCount);
+    	for (Concept concept : notEnrichedConceptList) {
+    		log.debug("Concept: " + concept.getUri() + " could not be enriched!");
+    	}
 
 	    return mappedConceptCount;
 	}
