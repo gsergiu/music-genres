@@ -39,9 +39,35 @@ public class OnbMimoLinkingSkosTest extends BaseSkosTest {
 			"C:/git/music-genres/music-genre/src/test/resources/MIMO/onb/Instrument_set_flat_all_with_stamm.csv";
 	public final String ENRICHED_ONB_INSTRUMENTS_SET_FLAT_ALL_CSV_FILE_PATH = 
 			"C:/git/music-genres/music-genre/src/test/resources/MIMO/onb/Enriched_instrument_set_flat_all_with_stamm.csv";
+	public final String ONB_MIMO_MATCH_INSTRUMENTS_CSV_FILE_PATH = 
+			"C:/git/music-genres/music-genre/src/test/resources/MIMO/onb/ONB_MIMO_match_instrument_set.csv";
+	public final String ONB_MIMO_MAPPING_CSV_FILE_PATH =
+			"C:/git/music-genres/music-genre/src/test/resources/MIMO/onb/ONB-MIMO-mapping.csv";
 
 
 	EuropeanaSearchApiClient apiClient = new EuropeanaSearchApiClient();
+	
+	
+	/**
+	 * Having an ONB all flat instrument list and file with matches (exact, close, narrow) in CSV format, 
+	 * we match instrument data by music genre DDB IDs, and enrich instrument list in CSV format, 
+	 * enriched matches. 
+	 * @throws IOException
+	 */
+	@Test
+	public void matchONBFlatAllStemMusicInstruments() throws IOException {
+		
+		List<Concept> mimoConceptList = getSkosUtils().retrieveMatchesFromCsv(ONB_MIMO_MAPPING_CSV_FILE_PATH);
+		
+		
+		int numberOfMappedInstruments = apiClient.matchOnbMimo(
+				ENRICHED_ONB_INSTRUMENTS_SET_FLAT_ALL_CSV_FILE_PATH
+				, mimoConceptList
+				, ONB_MIMO_MATCH_INSTRUMENTS_CSV_FILE_PATH
+				);
+		
+		assertTrue(numberOfMappedInstruments > 0);
+	}
 	
 	
 	/**
@@ -52,7 +78,7 @@ public class OnbMimoLinkingSkosTest extends BaseSkosTest {
      * (preffered and alternative) in Title or Description (title and dcDescription).
 	 * @throws IOException
 	 */
-	@Test
+//	@Test
 	public void mapONBFlatAllMusicInstrumentsToEuropeanaSerachApi() throws IOException {
 		
     	List<Concept> concepts = getSkosUtils().retrieveConceptsFromCsv(

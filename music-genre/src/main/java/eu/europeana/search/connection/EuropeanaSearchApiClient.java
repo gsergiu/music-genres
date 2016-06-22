@@ -1,5 +1,9 @@
 package eu.europeana.search.connection;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -206,6 +210,34 @@ public class EuropeanaSearchApiClient {
     }
     
     
+    /**
+     * Headers: URI; 
+     * @param conceptList
+     * @param sFileName
+     */
+    public void generateNotFoundUriCsvFile(List<String> uriList, String sFileName) {
+
+    	try {
+    		FileWriter writer = new FileWriter(sFileName);
+
+    		writer.append("URI");
+    		writer.append(CSV_DELIMITER);
+    		writer.append('\n');
+
+    		Iterator<String> itr = uriList.iterator();
+    		while (itr.hasNext()) {
+    			writer.append(itr.next());
+        		writer.append(CSV_DELIMITER);
+    			writer.append('\n');
+    		}
+    		writer.flush();
+    		writer.close();
+    	} catch (IOException e) {
+    		e.printStackTrace();
+    	}
+    }
+    
+    
 	/**
 	 * This method maps ONB items to Europeana search API.
 	 * @param conceptList
@@ -251,4 +283,90 @@ public class EuropeanaSearchApiClient {
 	    return mappedConceptCount;
 	}
 
+
+	/**
+	 * This method returns MIMO match by passed URI
+	 * @param uri
+	 * @param matching type e.g. exact match
+	 * @param conceptList
+	 * @return match value
+	 */
+	public String getMatch(String uri, String matchType, List<Concept> conceptList) {
+
+        String res = "";
+	    for (Concept concept : conceptList) {
+	    	if (concept.getExactMatch() != null && concept.getExactMatch().size() > 0) {
+	    		String conceptUri = concept.getUri();
+	    		if (conceptUri.equals(uri)) {
+	    			res = concept.getExactMatch().get(uri + matchType);
+	    			break;
+	    		}
+	    	}
+	    }
+        return res;
+	}
+
+	
+	/**
+	 * This method matches ONB items to MIMO and produces a list where matching did not work.
+	 * @param inputONBFileName
+	 * @param mimoConceptList
+	 * @param outputFileName
+	 * @return Number of mapped instruments
+	 * @throws IOException
+	 */
+	public int matchOnbMimo(String inputONBFileName, List<Concept> mimoConceptList, String outputFileName) 
+			throws IOException {
+		
+		int mappedConceptCount = 0;
+		
+	    BufferedReader br=null;
+	    BufferedWriter bw=null;
+	    final String lineSep=System.getProperty("line.separator");
+		List<String> onbNotMatchList = new ArrayList<String>();
+		
+		int ID_POS = 1; 
+    	String splitBy = ";";
+	    
+		try {
+			br = new BufferedReader(new FileReader(inputONBFileName));
+			bw = new BufferedWriter(new FileWriter(outputFileName));
+			String line = br.readLine();
+	    	bw.write(line + splitBy + "Added Match" + lineSep);
+			while ((line = br.readLine()) !=null) {
+			    String[] b = line.split(splitBy);
+			    if (b.length >= 2 && StringUtils.isNotEmpty(b[ID_POS])) {
+			    	String uri = b[ID_POS];
+			    	String addedMatch = getMatch(uri, "_exactMatch", mimoConceptList);
+			    	if (!StringUtils.isNotEmpty(addedMatch))
+			    		if (!onbNotMatchList.contains(uri))
+			    			onbNotMatchList.add(uri);
+			    	else
+			    		mappedConceptCount++;
+			    	bw.write(line + splitBy + addedMatch + lineSep);
+			    }
+			}
+	        if(br!=null)
+	            br.close();
+	        if(bw!=null)
+	            bw.close();
+		} catch (FileNotFoundException e1) {
+			log.error("File not found. " + e1.getMessage());
+			e1.printStackTrace();
+		} catch (IOException e) {
+			log.error("IO error. " + e.getMessage());
+			e.printStackTrace();
+		}
+	
+		generateNotFoundUriCsvFile(onbNotMatchList, outputFileName.replace("match", "not_match"));
+
+    	log.debug("Not matching instruments count: " + onbNotMatchList.size());
+    	for (String instrument : onbNotMatchList) {
+    		log.debug("Instrument URI: " + instrument + " could not be matched!");
+    	}
+
+	    return mappedConceptCount;
+	}
+
+	
 }

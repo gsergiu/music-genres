@@ -128,6 +128,99 @@ public class SkosUtils {
 		return res;
 	}    
 
+
+	/**
+	 * This method returns concept object if already in the list
+	 * or creates new object if not exists.
+	 * @param uri
+	 * @param conceptList
+	 * @return concept object
+	 */
+	Concept getConcept(String uri, List<Concept> conceptList) {
+		
+		BaseConcept concept = new BaseConcept();
+		
+		for (Concept curConcept : conceptList) {
+			if (curConcept.getUri().equals(uri))
+				return curConcept;
+		}
+		
+    	concept.addType(ConceptTypes.SKOS_CONCEPT.name());
+		return concept;
+	}
+
+	
+	/**
+	 * This method checks whether a given concept already exists in a passed list.
+	 * @param concept
+	 * @param conceptList
+	 * @return true if exists, false if not
+	 */
+	boolean conceptExists(Concept concept, List<Concept> conceptList) {
+		
+		for (Concept curConcept : conceptList) {
+			if (curConcept.getUri().equals(concept.getUri()))
+				return true;
+		}
+		return false;
+	}
+
+	
+    /**
+     * This method performs parsing of the MIMO matches file in CSV format to 
+     * Europeana Annotation Concept collection.
+     * @param inputFileName
+     * @return A collection of the Concept objects
+     */
+    public List<Concept> retrieveMatchesFromCsv(String inputFileName) {
+	        
+		List<Concept> res = new ArrayList<Concept>();
+		
+		int URI_POS = 0; 
+		int EXACT_POS = 1; 
+		int CLOSE_POS = 2; 
+		int BROAD_POS = 3; 
+		int NARROW_POS = 4; 
+    	String splitBy = ";";
+	    
+	    BufferedReader br;
+		try {
+			br = new BufferedReader(new FileReader(inputFileName));
+			String line = br.readLine();			
+			while ((line = br.readLine()) !=null) {
+			    String[] b = line.split(splitBy);
+			    if (b.length >= 1 && StringUtils.isNotEmpty(b[URI_POS])) {
+			    	String uri = b[URI_POS];
+			    	uri = uri.replace("#", "").replace(" ", "+");
+			    	Concept concept = getConcept(uri, res);
+			    	concept.setUri(uri);
+//			    	String[] chunks = uri.split("/");
+//			    	String id = chunks[chunks.length-1];
+			    	String id = uri;
+				    if (b.length > EXACT_POS && StringUtils.isNotEmpty(b[EXACT_POS]))
+				    	concept.addExactMatchInMapping(id, b[EXACT_POS]);
+				    if (b.length > CLOSE_POS && StringUtils.isNotEmpty(b[CLOSE_POS]))
+				    	concept.addExactMatchInMapping(id, b[CLOSE_POS]);
+				    if (b.length > BROAD_POS && StringUtils.isNotEmpty(b[BROAD_POS]))
+				    	concept.addExactMatchInMapping(id, b[BROAD_POS]);
+				    if (b.length > NARROW_POS && StringUtils.isNotEmpty(b[NARROW_POS]))
+				    	concept.addExactMatchInMapping(id, b[NARROW_POS]);
+				    if (!conceptExists(concept, res))
+				    		res.add(concept);
+			    }
+			}
+		    br.close();
+		} catch (FileNotFoundException e1) {
+			log.error("File not found. " + e1.getMessage());
+			e1.printStackTrace();
+		} catch (IOException e) {
+			log.error("IO error. " + e.getMessage());
+			e.printStackTrace();
+		}
+
+		return res;
+	}    
+
     
 	/**
 	 * @param orig

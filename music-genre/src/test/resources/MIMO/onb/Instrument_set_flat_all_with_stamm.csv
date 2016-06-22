@@ -35,7 +35,7 @@ Cornetto;http://localhost/DDB/music+genres/Cornetto
 Corni;http://localhost/DDB/music+genres/Corno
 Corno;http://localhost/DDB/music+genres/Corno
 Corno inglese;http://localhost/DDB/music+genres/Corno+inglese
-d'orgue;http://localhost/DDB/music+genres/Orgue
+d'orgue;http://localhost/DDB/music+genres/Organo
 Englisches Horn*;http://localhost/DDB/music+genres/Corno+inglese
 Englisches Horn;http://localhost/DDB/music+genres/Corno+inglese
 Fagott*;http://localhost/DDB/music+genres/Fagott
@@ -91,9 +91,9 @@ Oboi;http://localhost/DDB/music+genres/Oboe
 Organ*;http://localhost/DDB/music+genres/Organo
 Organ;http://localhost/DDB/music+genres/Organo
 Organo;http://localhost/DDB/music+genres/Organo
-Orgel*;http://localhost/DDB/music+genres/Orgue
-Orgel;http://localhost/DDB/music+genres/Orgue
-Orgue;http://localhost/DDB/music+genres/Orgue
+Orgel*;http://localhost/DDB/music+genres/Organo
+Orgel;http://localhost/DDB/music+genres/Organo
+Orgue;http://localhost/DDB/music+genres/Organo
 Pauk*;http://localhost/DDB/music+genres/Timpano
 Pauke;http://localhost/DDB/music+genres/Timpano
 Pauken;http://localhost/DDB/music+genres/Timpano
