@@ -2,8 +2,10 @@ Description;exactMatch;closeMatch;broadMatch;narrowMatch
 http://localhost/DDB/music genres/#Glockenspiel;http://www.mimo-db.eu/InstrumentsKeywords/2387;;;
 http://localhost/DDB/music genres/#Glockenspiel;;http://www.mimo-db.eu/InstrumentsKeywords/2968;;
 http://localhost/DDB/music genres/#Basstuba;http://www.mimo-db.eu/InstrumentsKeywords/4459;;;
+http://localhost/DDB/music genres/#basso viola;http://www.mimo-db.eu/InstrumentsKeywords/3604 ;;;
 http://localhost/DDB/music genres/#Clarino;;;http://www.mimo-db.eu/InstrumentsKeywords/4187;
 http://localhost/DDB/music genres/#Clarino;;;http://www.mimo-db.eu/InstrumentsKeywords/3836;
+http://localhost/DDB/music genres/#Contrabasso;http://www.mimo-db.eu/InstrumentsKeywords/3111 ;;;
 http://localhost/DDB/music genres/#Violin;http://www.mimo-db.eu/InstrumentsKeywords/3573;;;
 http://localhost/DDB/music genres/#Violin;;;;http://www.mimo-db.eu/InstrumentsKeywords/3564
 http://localhost/DDB/music genres/#Organo;http://www.mimo-db.eu/InstrumentsKeywords/2266;;;
@@ -49,3 +51,5 @@ http://localhost/DDB/music genres/#Fagott;;;;http://www.mimo-db.eu/InstrumentsKe
 http://localhost/DDB/music genres/#Harp;http://www.mimo-db.eu/InstrumentsKeywords/3285;;;
 http://localhost/DDB/music genres/#Cembalo;http://www.mimo-db.eu/InstrumentsKeywords/2251;;;
 http://localhost/DDB/music genres/#Cembalo;;http://www.mimo-db.eu/InstrumentsKeywords/3633;;
+http://localhost/DDB/music genres/#Trombe di Caccia;http://www.mimo-db.eu/InstrumentsKeywords/4138;;;
+http://localhost/DDB/music genres/#Viola da braccio;http://www.mimo-db.eu/InstrumentsKeywords/4967;;;
