@@ -338,12 +338,12 @@ public class EuropeanaSearchApiClient {
 			    if (b.length >= 2 && StringUtils.isNotEmpty(b[ID_POS])) {
 			    	String uri = b[ID_POS];
 			    	String addedMatch = getMatch(uri, "_exactMatch", mimoConceptList);
-			    	if (!StringUtils.isNotEmpty(addedMatch))
+			    	if (!StringUtils.isNotEmpty(addedMatch)) {
 			    		if (!onbNotMatchList.contains(uri))
 			    			onbNotMatchList.add(uri);
-			    	else
-			    		mappedConceptCount++;
+			    	}
 			    	bw.write(line + splitBy + addedMatch + lineSep);
+		    		mappedConceptCount = mappedConceptCount + 1;
 			    }
 			}
 	        if(br!=null)
@@ -360,6 +360,7 @@ public class EuropeanaSearchApiClient {
 	
 		generateNotFoundUriCsvFile(onbNotMatchList, outputFileName.replace("match", "not_match"));
 
+    	log.debug("Matched instruments count: " + mappedConceptCount);
     	log.debug("Not matching instruments count: " + onbNotMatchList.size());
     	for (String instrument : onbNotMatchList) {
     		log.debug("Instrument URI: " + instrument + " could not be matched!");
