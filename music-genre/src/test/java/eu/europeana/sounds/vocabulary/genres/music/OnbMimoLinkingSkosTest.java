@@ -24,6 +24,7 @@ import org.junit.Test;
 
 import eu.europeana.search.connection.EuropeanaSearchApiClient;
 import eu.europeana.sounds.definitions.model.concept.Concept;
+import eu.europeana.sounds.definitions.model.vocabulary.MatchTypes;
 import eu.europeana.sounds.skos.BaseSkosTest;
 
 /**
@@ -43,7 +44,7 @@ public class OnbMimoLinkingSkosTest extends BaseSkosTest {
 			"C:/git/music-genres/music-genre/src/test/resources/MIMO/onb/ONB_MIMO_match_instrument_set.csv";
 	public final String ONB_MIMO_MAPPING_CSV_FILE_PATH =
 			"C:/git/music-genres/music-genre/src/test/resources/MIMO/onb/ONB-MIMO-mapping.csv";
-
+	
 
 	EuropeanaSearchApiClient apiClient = new EuropeanaSearchApiClient();
 	
@@ -64,6 +65,7 @@ public class OnbMimoLinkingSkosTest extends BaseSkosTest {
 				ENRICHED_ONB_INSTRUMENTS_SET_FLAT_ALL_CSV_FILE_PATH
 				, mimoConceptList
 				, ONB_MIMO_MATCH_INSTRUMENTS_CSV_FILE_PATH
+				, MatchTypes.BROAD.name()
 				);
 		
 		assertTrue(numberOfMappedInstruments > 0);

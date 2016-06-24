@@ -28,6 +28,7 @@ import eu.europeana.api.client.search.query.Api2QueryInterface;
 import eu.europeana.sounds.definitions.model.concept.Concept;
 import eu.europeana.sounds.definitions.model.concept.impl.BaseConcept;
 import eu.europeana.sounds.definitions.model.concept.impl.MimoMappingView;
+import eu.europeana.sounds.definitions.model.vocabulary.MatchTypes;
 
 public class EuropeanaSearchApiClient {
 
@@ -295,10 +296,20 @@ public class EuropeanaSearchApiClient {
 
         String res = "";
 	    for (Concept concept : conceptList) {
-	    	if (concept.getExactMatch() != null && concept.getExactMatch().size() > 0) {
+	    	Map<String, String> matchMap = null;
+	    	if (matchType.equals(MatchTypes.EXACT.name()))
+	    		matchMap = concept.getExactMatch(); 
+	    	if (matchType.equals(MatchTypes.BROAD.name())) {
+	    		matchMap = concept.getBroadMatch();
+	    		if (uri.contains("Clarino"))
+	    			res = "";
+	    		if (matchMap != null)
+	    			res = "";
+	    	}
+	    	if (matchMap != null && matchMap.size() > 0) {
 	    		String conceptUri = concept.getUri();
 	    		if (conceptUri.equals(uri)) {
-	    			res = concept.getExactMatch().get(uri + matchType);
+	    			res = matchMap.get(uri + "_" + matchType.toLowerCase() + "Match");
 	    			break;
 	    		}
 	    	}
@@ -312,10 +323,11 @@ public class EuropeanaSearchApiClient {
 	 * @param inputONBFileName
 	 * @param mimoConceptList
 	 * @param outputFileName
+	 * @param matchType Describes which types of matches should be taken for analysis
 	 * @return Number of mapped instruments
 	 * @throws IOException
 	 */
-	public int matchOnbMimo(String inputONBFileName, List<Concept> mimoConceptList, String outputFileName) 
+	public int matchOnbMimo(String inputONBFileName, List<Concept> mimoConceptList, String outputFileName, String matchType) 
 			throws IOException {
 		
 		int mappedConceptCount = 0;
@@ -332,17 +344,20 @@ public class EuropeanaSearchApiClient {
 			br = new BufferedReader(new FileReader(inputONBFileName));
 			bw = new BufferedWriter(new FileWriter(outputFileName));
 			String line = br.readLine();
-	    	bw.write(line + splitBy + "Added Match" + lineSep);
+	    	bw.write(line + splitBy + MatchTypes.EXACT.name() + splitBy + MatchTypes.BROAD.name() + lineSep);
 			while ((line = br.readLine()) !=null) {
 			    String[] b = line.split(splitBy);
 			    if (b.length >= 2 && StringUtils.isNotEmpty(b[ID_POS])) {
 			    	String uri = b[ID_POS];
-			    	String addedMatch = getMatch(uri, "_exactMatch", mimoConceptList);
+			    	String addedMatch = getMatch(uri, MatchTypes.EXACT.name(), mimoConceptList);
+			    	String addedBroadMatch = "";
 			    	if (!StringUtils.isNotEmpty(addedMatch)) {
 			    		if (!onbNotMatchList.contains(uri))
 			    			onbNotMatchList.add(uri);
 			    	}
-			    	bw.write(line + splitBy + addedMatch + lineSep);
+			    	if (matchType.equals(MatchTypes.BROAD.name())) 
+			    		addedBroadMatch = getMatch(uri, MatchTypes.BROAD.name(), mimoConceptList);
+			    	bw.write(line + splitBy + addedMatch + splitBy + addedBroadMatch + lineSep);
 		    		mappedConceptCount = mappedConceptCount + 1;
 			    }
 			}

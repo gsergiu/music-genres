@@ -200,11 +200,11 @@ public class SkosUtils {
 				    if (b.length > EXACT_POS && StringUtils.isNotEmpty(b[EXACT_POS]))
 				    	concept.addExactMatchInMapping(id, b[EXACT_POS]);
 				    if (b.length > CLOSE_POS && StringUtils.isNotEmpty(b[CLOSE_POS]))
-				    	concept.addExactMatchInMapping(id, b[CLOSE_POS]);
+				    	concept.addCloseMatchInMapping(id, b[CLOSE_POS]);
 				    if (b.length > BROAD_POS && StringUtils.isNotEmpty(b[BROAD_POS]))
-				    	concept.addExactMatchInMapping(id, b[BROAD_POS]);
+				    	concept.addBroadMatchInMapping(id, b[BROAD_POS]);
 				    if (b.length > NARROW_POS && StringUtils.isNotEmpty(b[NARROW_POS]))
-				    	concept.addExactMatchInMapping(id, b[NARROW_POS]);
+				    	concept.addNarrowMatchInMapping(id, b[NARROW_POS]);
 				    if (!conceptExists(concept, res))
 				    		res.add(concept);
 			    }
