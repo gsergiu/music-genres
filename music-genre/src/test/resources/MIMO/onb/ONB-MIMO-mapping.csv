@@ -1,57 +1,40 @@
 Description;exactMatch;closeMatch;broadMatch;narrowMatch
-http://localhost/DDB/music genres/#Glockenspiel;http://www.mimo-db.eu/InstrumentsKeywords/2387;;;
-http://localhost/DDB/music genres/#Glockenspiel;;http://www.mimo-db.eu/InstrumentsKeywords/2968;;
-http://localhost/DDB/music genres/#Basstuba;http://www.mimo-db.eu/InstrumentsKeywords/4459;;;
-http://localhost/DDB/music genres/#basso viola;http://www.mimo-db.eu/InstrumentsKeywords/3604 ;;;
-http://localhost/DDB/music genres/#Clarino;;;http://www.mimo-db.eu/InstrumentsKeywords/4187;
-http://localhost/DDB/music genres/#Clarino;;;http://www.mimo-db.eu/InstrumentsKeywords/3836;
-http://localhost/DDB/music genres/#Contrabasso;http://www.mimo-db.eu/InstrumentsKeywords/3111 ;;;
-http://localhost/DDB/music genres/#Violin;http://www.mimo-db.eu/InstrumentsKeywords/3573;;;
-http://localhost/DDB/music genres/#Violin;;;;http://www.mimo-db.eu/InstrumentsKeywords/3564
-http://localhost/DDB/music genres/#Organo;http://www.mimo-db.eu/InstrumentsKeywords/2266;;;
-http://localhost/DDB/music genres/#Piano;;http://www.mimo-db.eu/InstrumentsKeywords/2299;;
-http://localhost/DDB/music genres/#Piano;;;;http://www.mimo-db.eu/InstrumentsKeywords/2273
-http://localhost/DDB/music genres/#Corno inglese;http://www.mimo-db.eu/InstrumentsKeywords/4197;;;
-http://localhost/DDB/music genres/#Oboe;http://www.mimo-db.eu/InstrumentsKeywords/4232;;;
-http://localhost/DDB/music genres/#Oboe;;;;http://www.mimo-db.eu/InstrumentsKeywords/4164
-http://localhost/DDB/music genres/#Pianoforte;http://www.mimo-db.eu/InstrumentsKeywords/2299;;;
-http://localhost/DDB/music genres/#Clavichord;http://www.mimo-db.eu/InstrumentsKeywords/2232;;;
-http://localhost/DDB/music genres/#Viola da gamba;http://www.mimo-db.eu/InstrumentsKeywords/3597;;;
-http://localhost/DDB/music genres/#Viola da gamba;;http://www.mimo-db.eu/InstrumentsKeywords/3604;;
-http://localhost/DDB/music genres/#Trombone;http://www.mimo-db.eu/InstrumentsKeywords/4369;;;
-http://localhost/DDB/music genres/#Trombone;;;;http://www.mimo-db.eu/InstrumentsKeywords/4360
-http://localhost/DDB/music genres/#Viola;http://www.mimo-db.eu/InstrumentsKeywords/3561;;;
+http://localhost/DDB/music genres/#Glockenspiel;http://www.mimo-db.eu/InstrumentsKeywords/2387;http://www.mimo-db.eu/InstrumentsKeywords/2968;http://www.mimo-db.eu/InstrumentsKeywords/2965;
+http://localhost/DDB/music genres/#Basstuba;http://www.mimo-db.eu/InstrumentsKeywords/4459;;http://www.mimo-db.eu/InstrumentsKeywords/4455;
+http://localhost/DDB/music genres/#basso viola;http://www.mimo-db.eu/InstrumentsKeywords/3604 ;;http://www.mimo-db.eu/InstrumentsKeywords/3558;
+http://localhost/DDB/music genres/#Clarino;;http://www.mimo-db.eu/InstrumentsKeywords/3836;http://www.mimo-db.eu/InstrumentsKeywords/3827;
+http://localhost/DDB/music genres/#Contrabasso;http://www.mimo-db.eu/InstrumentsKeywords/3111 ;;http://www.mimo-db.eu/InstrumentsKeywords/4455;
+http://localhost/DDB/music genres/#Violin;http://www.mimo-db.eu/InstrumentsKeywords/3573;;http://www.mimo-db.eu/InstrumentsKeywords/3564;http://www.mimo-db.eu/InstrumentsKeywords/3564
+http://localhost/DDB/music genres/#Organo;http://www.mimo-db.eu/InstrumentsKeywords/2266;;http://www.mimo-db.eu/InstrumentsKeywords/2273;
+http://localhost/DDB/music genres/#Piano;;http://www.mimo-db.eu/InstrumentsKeywords/2299;http://www.mimo-db.eu/InstrumentsKeywords/2270;http://www.mimo-db.eu/InstrumentsKeywords/2273
+http://localhost/DDB/music genres/#Corno inglese;http://www.mimo-db.eu/InstrumentsKeywords/4197;;http://www.mimo-db.eu/InstrumentsKeywords/3827;
+http://localhost/DDB/music genres/#Oboe;http://www.mimo-db.eu/InstrumentsKeywords/4232;;http://www.mimo-db.eu/InstrumentsKeywords/4164;http://www.mimo-db.eu/InstrumentsKeywords/4164
+http://localhost/DDB/music genres/#Pianoforte;http://www.mimo-db.eu/InstrumentsKeywords/2299;;http://www.mimo-db.eu/InstrumentsKeywords/2273;
+http://localhost/DDB/music genres/#Clavichord;http://www.mimo-db.eu/InstrumentsKeywords/2232;;http://www.mimo-db.eu/InstrumentsKeywords/2231;
+http://localhost/DDB/music genres/#Viola da gamba;http://www.mimo-db.eu/InstrumentsKeywords/3597;http://www.mimo-db.eu/InstrumentsKeywords/3604;http://www.mimo-db.eu/InstrumentsKeywords/3584;
+http://localhost/DDB/music genres/#Trombone;http://www.mimo-db.eu/InstrumentsKeywords/4369;;http://www.mimo-db.eu/InstrumentsKeywords/4360;http://www.mimo-db.eu/InstrumentsKeywords/4360
+http://localhost/DDB/music genres/#Viola;http://www.mimo-db.eu/InstrumentsKeywords/3561;http://www.mimo-db.eu/InstrumentsKeywords/5717;http://www.mimo-db.eu/InstrumentsKeywords/3558;
 http://localhost/DDB/music genres/#Viola;;http://www.mimo-db.eu/InstrumentsKeywords/3559;;
-http://localhost/DDB/music genres/#Viola;;http://www.mimo-db.eu/InstrumentsKeywords/5717;;
-http://localhost/DDB/music genres/#Clarinette;http://www.mimo-db.eu/InstrumentsKeywords/3836;;;
-http://localhost/DDB/music genres/#Clarinette;;;;http://www.mimo-db.eu/InstrumentsKeywords/3827
-http://localhost/DDB/music genres/#Corno;http://www.mimo-db.eu/InstrumentsKeywords/4118;;;
-http://localhost/DDB/music genres/#Corno;;;;http://www.mimo-db.eu/InstrumentsKeywords/4116
-http://localhost/DDB/music genres/#Lute;http://www.mimo-db.eu/InstrumentsKeywords/3394;;;
-http://localhost/DDB/music genres/#Lyra;http://www.mimo-db.eu/InstrumentsKeywords/3186;;;
-http://localhost/DDB/music genres/#Lyra;;http://www.mimo-db.eu/InstrumentsKeywords/3501;;
-http://localhost/DDB/music genres/#Flauto;http://www.mimo-db.eu/InstrumentsKeywords/3955;;;
-http://localhost/DDB/music genres/#Flauto;;;;http://www.mimo-db.eu/InstrumentsKeywords/3883
-http://localhost/DDB/music genres/#Viola damore;http://www.mimo-db.eu/InstrumentsKeywords/3608;;;
-http://localhost/DDB/music genres/#Flauto traverso;http://www.mimo-db.eu/InstrumentsKeywords/4093;;;
-http://localhost/DDB/music genres/#Flauto dAmore;http://www.mimo-db.eu/InstrumentsKeywords/3960;;;
-http://localhost/DDB/music genres/#Tiorba;http://www.mimo-db.eu/InstrumentsKeywords/3473;;;
-http://localhost/DDB/music genres/#Mandolin;http://www.mimo-db.eu/InstrumentsKeywords/3510;;;
-http://localhost/DDB/music genres/#Mandolin;;;;http://www.mimo-db.eu/InstrumentsKeywords/3509
-http://localhost/DDB/music genres/#Cornetto;http://www.mimo-db.eu/InstrumentsKeywords/3868;;;
-http://localhost/DDB/music genres/#Clavicembalo;http://www.mimo-db.eu/InstrumentsKeywords/2251;;;
-http://localhost/DDB/music genres/#Trompete;http://www.mimo-db.eu/InstrumentsKeywords/4446;;;
-http://localhost/DDB/music genres/#Trompete;;;;http://www.mimo-db.eu/InstrumentsKeywords/4370
-http://localhost/DDB/music genres/#Bass-Trombone;http://www.mimo-db.eu/InstrumentsKeywords/4362;;;
-http://localhost/DDB/music genres/#Timpano;http://www.mimo-db.eu/InstrumentsKeywords/2887;;;
-http://localhost/DDB/music genres/#Cello;http://www.mimo-db.eu/InstrumentsKeywords/3582;;;
-http://localhost/DDB/music genres/#Cello;http://www.mimo-db.eu/InstrumentsKeywords/2371;;;
-http://localhost/DDB/music genres/#Cello;;;;http://www.mimo-db.eu/InstrumentsKeywords/3575
-http://localhost/DDB/music genres/#Fagott;http://www.mimo-db.eu/InstrumentsKeywords/3795;;;
-http://localhost/DDB/music genres/#Fagott;;;;http://www.mimo-db.eu/InstrumentsKeywords/3786
-http://localhost/DDB/music genres/#Harp;http://www.mimo-db.eu/InstrumentsKeywords/3285;;;
-http://localhost/DDB/music genres/#Cembalo;http://www.mimo-db.eu/InstrumentsKeywords/2251;;;
-http://localhost/DDB/music genres/#Cembalo;;http://www.mimo-db.eu/InstrumentsKeywords/3633;;
-http://localhost/DDB/music genres/#Trombe di Caccia;http://www.mimo-db.eu/InstrumentsKeywords/4138;;;
-http://localhost/DDB/music genres/#Viola da braccio;http://www.mimo-db.eu/InstrumentsKeywords/4967;;;
-http://localhost/DDB/music genres/#Violetta;http://www.mimo-db.eu/InstrumentsKeywords/5717;;;
+http://localhost/DDB/music genres/#Clarinette;http://www.mimo-db.eu/InstrumentsKeywords/3836;;http://www.mimo-db.eu/InstrumentsKeywords/3827;http://www.mimo-db.eu/InstrumentsKeywords/3827
+http://localhost/DDB/music genres/#Corno;http://www.mimo-db.eu/InstrumentsKeywords/4118;;http://www.mimo-db.eu/InstrumentsKeywords/4116;http://www.mimo-db.eu/InstrumentsKeywords/4116
+http://localhost/DDB/music genres/#Lute;http://www.mimo-db.eu/InstrumentsKeywords/3394;;http://www.mimo-db.eu/InstrumentsKeywords/3313;
+http://localhost/DDB/music genres/#Lyra;http://www.mimo-db.eu/InstrumentsKeywords/3186;http://www.mimo-db.eu/InstrumentsKeywords/3501;http://www.mimo-db.eu/InstrumentsKeywords/3486;
+http://localhost/DDB/music genres/#Flauto;http://www.mimo-db.eu/InstrumentsKeywords/3955;;http://www.mimo-db.eu/InstrumentsKeywords/3883;http://www.mimo-db.eu/InstrumentsKeywords/3883
+http://localhost/DDB/music genres/#Viola damore;http://www.mimo-db.eu/InstrumentsKeywords/3608;;http://www.mimo-db.eu/InstrumentsKeywords/3558;
+http://localhost/DDB/music genres/#Flauto traverso;http://www.mimo-db.eu/InstrumentsKeywords/4093;;http://www.mimo-db.eu/InstrumentsKeywords/3883;
+http://localhost/DDB/music genres/#Flauto dAmore;http://www.mimo-db.eu/InstrumentsKeywords/3960;;http://www.mimo-db.eu/InstrumentsKeywords/3883;
+http://localhost/DDB/music genres/#Tiorba;http://www.mimo-db.eu/InstrumentsKeywords/3473;;http://www.mimo-db.eu/InstrumentsKeywords/3313;
+http://localhost/DDB/music genres/#Mandolin;http://www.mimo-db.eu/InstrumentsKeywords/3510;;http://www.mimo-db.eu/InstrumentsKeywords/3509;http://www.mimo-db.eu/InstrumentsKeywords/3509
+http://localhost/DDB/music genres/#Cornetto;http://www.mimo-db.eu/InstrumentsKeywords/3868;;http://www.mimo-db.eu/InstrumentsKeywords/3866;
+http://localhost/DDB/music genres/#Clavicembalo;http://www.mimo-db.eu/InstrumentsKeywords/2251;;http://www.mimo-db.eu/InstrumentsKeywords/2239;
+http://localhost/DDB/music genres/#Trompete;http://www.mimo-db.eu/InstrumentsKeywords/4446;;http://www.mimo-db.eu/InstrumentsKeywords/4370;http://www.mimo-db.eu/InstrumentsKeywords/4370
+http://localhost/DDB/music genres/#Bass-Trombone;http://www.mimo-db.eu/InstrumentsKeywords/4362;;http://www.mimo-db.eu/InstrumentsKeywords/4360;
+http://localhost/DDB/music genres/#Timpano;http://www.mimo-db.eu/InstrumentsKeywords/2887;;http://www.mimo-db.eu/InstrumentsKeywords/2879;
+http://localhost/DDB/music genres/#Cello;http://www.mimo-db.eu/InstrumentsKeywords/3582;;http://www.mimo-db.eu/InstrumentsKeywords/3575;
+http://localhost/DDB/music genres/#Cello;http://www.mimo-db.eu/InstrumentsKeywords/2371;;http://www.mimo-db.eu/InstrumentsKeywords/3575;http://www.mimo-db.eu/InstrumentsKeywords/3575
+http://localhost/DDB/music genres/#Fagott;http://www.mimo-db.eu/InstrumentsKeywords/3795;;http://www.mimo-db.eu/InstrumentsKeywords/3786;http://www.mimo-db.eu/InstrumentsKeywords/3786
+http://localhost/DDB/music genres/#Harp;http://www.mimo-db.eu/InstrumentsKeywords/3285;;http://www.mimo-db.eu/InstrumentsKeywords/3265;
+http://localhost/DDB/music genres/#Cembalo;http://www.mimo-db.eu/InstrumentsKeywords/2251;http://www.mimo-db.eu/InstrumentsKeywords/3633;http://www.mimo-db.eu/InstrumentsKeywords/2239;
+http://localhost/DDB/music genres/#Trombe di Caccia;http://www.mimo-db.eu/InstrumentsKeywords/4138;;http://www.mimo-db.eu/InstrumentsKeywords/3730;
+http://localhost/DDB/music genres/#Viola da braccio;http://www.mimo-db.eu/InstrumentsKeywords/4967;;http://www.mimo-db.eu/InstrumentsKeywords/3584;
+http://localhost/DDB/music genres/#Violetta;http://www.mimo-db.eu/InstrumentsKeywords/5717;;http://www.mimo-db.eu/InstrumentsKeywords/3584;
