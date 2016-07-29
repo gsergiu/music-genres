@@ -1,6 +1,8 @@
 package eu.europeana.sounds.utils.concept;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -49,6 +51,8 @@ public class SkosUtils {
 	String WIKIDATA_BASE_URL = "https://www.wikidata.org/wiki/Q";
 	String CLOSE_MATCH_PREDICATE_URL = "http://www.w3.org/2004/02/skos/core#closeMatch";
 	String RDF_RES_FILE_NAME = "model.rdf";
+	public String WIKIDATA_ID_KEY = "wikidataId";
+	public String EN = "en";
 	
 	
     /**
@@ -207,6 +211,65 @@ public class SkosUtils {
 				    	concept.addNarrowMatchInMapping(id, b[NARROW_POS]);
 				    if (!conceptExists(concept, res))
 				    		res.add(concept);
+			    }
+			}
+		    br.close();
+		} catch (FileNotFoundException e1) {
+			log.error("File not found. " + e1.getMessage());
+			e1.printStackTrace();
+		} catch (IOException e) {
+			log.error("IO error. " + e.getMessage());
+			e.printStackTrace();
+		}
+
+		return res;
+	}    
+
+    
+    /**
+     * This method performs parsing of the MIMO matches file in CSV format to 
+     * Europeana Annotation Concept collection.
+     * @param inputFileName
+     * @return A collection of the Concept objects
+     */
+    public List<Concept> retrieveCompositionConceptsFromCsv(String inputFileName) {
+	        
+		List<Concept> res = new ArrayList<Concept>();
+		
+		int MID_POS = 0; 
+		int NAME_POS = 2; 
+		int IS_CLASSIC_POS = 3; 
+		int TYPE_POS = 6; 
+		int SUBTYPE_POS = 7; 
+    	String splitBy = ";";
+	    
+	    BufferedReader br;
+		try {
+			br = new BufferedReader(new FileReader(inputFileName));
+			String line = br.readLine();			
+			while ((line = br.readLine()) !=null) {
+			    String[] b = line.split(splitBy);
+			    if (b.length >= 1 && StringUtils.isNotEmpty(b[MID_POS])) {
+			    	String mid = b[MID_POS];
+				    if (b.length > IS_CLASSIC_POS && StringUtils.isNotEmpty(b[IS_CLASSIC_POS]) 
+				    		&& b[IS_CLASSIC_POS].equals("yes")) {
+				    	String uri = "";
+					    if (b.length > NAME_POS && StringUtils.isNotEmpty(b[NAME_POS]))
+					    	uri = mid; 
+				    	Concept concept = getConcept(uri, res);
+				    	concept.setUri(uri);
+				    	List<String> types = new ArrayList<String>();
+					    if (b.length > TYPE_POS && StringUtils.isNotEmpty(b[TYPE_POS])) {
+					    	types.add(b[TYPE_POS]);
+					    }
+					    if (b.length > SUBTYPE_POS && StringUtils.isNotEmpty(b[SUBTYPE_POS])) {
+					    	types.add(b[SUBTYPE_POS]);
+					    }
+					    if (types.size() > 0)
+					    	concept.setType(types);
+					    if (!conceptExists(concept, res))
+				    		res.add(concept);
+				    }
 			    }
 			}
 		    br.close();
@@ -501,14 +564,104 @@ public class SkosUtils {
 	
 	
 	/**
+	 * @param source
+	 * @param description_begin_str
+	 * @param description_end_str
+	 * @return
+	 */
+	public String parseHtmlField(String source, String description_begin_str, String description_end_str) {
+		
+		String description = "";
+		int descriptionIndex = source.indexOf(description_begin_str);
+		if (descriptionIndex > -1) {
+			int description_begin_pos = descriptionIndex + description_begin_str.length();
+			int description_end_pos = source.substring(description_begin_pos).indexOf(description_end_str);
+			description = source.substring(
+					description_begin_pos
+					, description_end_pos + description_begin_pos);
+		}
+		return description;
+	}
+	
+
+	/**
+	 * This method generates initial RDF file for given concepts.
+	 * @param concepts The list of concepts
+	 * @param inputFilePath The original RDF file
+	 */
+	public boolean generateRdfForConcepts(List<Concept> concepts, String inputFileName, String pathToAnalysisFolder) 
+				throws IOException {
+			
+		boolean res = false;
+		
+		File queryResultsFile = new File(pathToAnalysisFolder, inputFileName);
+		// create parent dirs
+		queryResultsFile.getParentFile().mkdirs();
+		BufferedWriter writer = null;
+		try {
+			writer = new BufferedWriter(new FileWriter(queryResultsFile));
+			String header = "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n" 
+							+ "<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
+							+ "\t\txmlns:skos=\"http://www.w3.org/2004/02/skos/core#\">\n\n";
+			writer.write(header);
+			for (Concept concept : concepts) {
+				BaseConcept currentConcept = (BaseConcept) concept;
+				String prefLabelRdf = "";
+				if (currentConcept.getPrefLabel() != null) {
+					for (Map.Entry<String, String> prefLabel : currentConcept.getPrefLabel().entrySet()) {
+						prefLabelRdf = prefLabelRdf + "\t\t<skos:prefLabel xml:lang=\"" 
+							+ prefLabel.getKey() + "\">" + prefLabel.getValue() + "</skos:prefLabel>\n";
+					}
+				}
+				String closeMatchRdf = "";
+				if (currentConcept.getCloseMatch() != null) 
+					closeMatchRdf = "\t\t<skos:closeMatch rdf:resource=\"http://www.wikidata.org/entity/Q" 
+						+ currentConcept.getCloseMatch().get(WIKIDATA_ID_KEY + "_" + WebAnnotationFields.CLOSE_MATCH) +"/>\n";
+				String definitionRdf = "";
+				if (currentConcept.getDefinition() != null) 
+					definitionRdf = "\t\t<skos:definition xml:lang=\"en\">" 
+						+ currentConcept.getDefinition().get(EN + "_" + WebAnnotationFields.DEFINITION) + "</skos:definition>\n";
+				String inSchemeRdf = "";
+				if (currentConcept.getType() != null) {
+					for (String type : currentConcept.getType())
+						inSchemeRdf = "\t\t<skos:inScheme rdf:resource=\"" + type + "\"/>\n";
+				}
+				
+				String conceptRdf = "\t<skos:Concept rdf:about=\"http://rdf.freebase.com/ns/" 
+						+ currentConcept.getUri() + "\">\n"						
+						+ prefLabelRdf
+						+ closeMatchRdf
+						+ definitionRdf
+						+ inSchemeRdf
+    					+ "\t\t</skos:Concept>\n\n";
+				writer.write(conceptRdf);
+			}
+			String end = "\n\n</rdf:RDF>";
+			writer.write(end);
+		} finally {
+			try {
+				writer.close();
+			} catch (IOException e) {
+				log.warn("cannot close results writer for file: "
+						+ queryResultsFile);
+			}
+			res = true;
+		}
+		return res;
+	}
+	
+	
+	/**
 	 * This method adds concepts to a model retrieved from original RDF file 
 	 * and stores it in enriched RDF file.
 	 * @param concepts The list of concepts
 	 * @param inputFileName The original RDF file
 	 * @param pathToAnalysisFolder The location for enriched RDF file
 	 */
-	public void writeConceptsToRdf(List<Concept> concepts, String inputFileName, String pathToAnalysisFolder) {
+	public boolean writeConceptsToRdf(List<Concept> concepts, String inputFileName, String pathToAnalysisFolder) {
 
+		boolean res = false;
+		
     	Model model = createModelFromRdfFile(inputFileName);
 		
 		ResIterator itrConcepts = model.listSubjects();
@@ -540,7 +693,9 @@ public class SkosUtils {
 		
     	// write model to standard out
 //    	model.write(System.out);
-		writeModelToFile(model, pathToAnalysisFolder + RDF_RES_FILE_NAME);
+		res = writeModelToFile(model, pathToAnalysisFolder + RDF_RES_FILE_NAME);
+		
+		return res;
 	}
 
 
@@ -549,11 +704,15 @@ public class SkosUtils {
 	 * @param model
 	 * @param fileName
 	 */
-	public void writeModelToFile(Model model, String fileName) {
+	public boolean writeModelToFile(Model model, String fileName) {
+		
+		boolean res = false;
+		
 		FileWriter out = null;
 		try {
 			out = new FileWriter( fileName );
 		    model.write( out, "RDF/XML-ABBREV" );
+		    res = true;
 		} catch (IOException closeException) {
 		       // ignore
 		} finally {
@@ -564,6 +723,8 @@ public class SkosUtils {
 				e.printStackTrace();
 			}
 		}	
+		
+		return res;
 	}
 	
 	

@@ -1,5 +1,7 @@
 package eu.europeana.sounds.vocabulary.genres.music;
 
+import static org.junit.Assert.assertTrue;
+
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Iterator;
@@ -21,10 +23,16 @@ import eu.europeana.wikidata.connection.WikidataApiClient;
 public class SearchWikidataForGenres extends BaseSkosTest {
 
 
+	private static final String DESCRIPTIONS = "descriptions";
+	private static final String HTML_BRACE = "\\\\\"";
+	private static final String SINGLE_HTML_BRACE = "\\\"";
 	String searchAnalysisFodler = "./src/test/resources/analysis";
 	String searchDBPediaAnalysisFodler = "./src/test/resources/dbpedia-analysis/";
-	String WIKIDATA_ID_KEY = "wikidataId";
 	String MAPPING_FILE = "mapping.csv";
+
+	public final String COMPOSITIONS_CSV_FILE_PATH = "/classical_composition_types.csv";
+	public final String COMPOSITIONS_SKOS_FILE_PATH = "/compositions_SKOS.xml";
+	public final String DUMP_FILE = "/fb2w.nt";
 
 	WikidataApiClient apiClient = new WikidataApiClient();
 	DBPediaApiClient dbpediaApiClient = new DBPediaApiClient();
@@ -90,7 +98,7 @@ public class SearchWikidataForGenres extends BaseSkosTest {
 	 * In the next step we enrich original XML files by extracted Wikidata IDs and 
 	 * store the result in new RDF file in folder 'src/test/resources/analysis'.
 	 */
-	@Test
+//	@Test
 	public void parseSearchResults() {
 		String json = null;
     	List<Concept> concepts = getSkosUtils().parseSkosRdfXmlToConceptCollection(TEST_RDF_VOCABULARY_FILE_PATH); 
@@ -103,7 +111,7 @@ public class SearchWikidataForGenres extends BaseSkosTest {
 				json = apiClient.getSearchResultFromFile(freebaseId);
 				String wikidataId = parseResult(json);
 				if(wikidataId != null && wikidataId.length() > 0)
-					concept.addCloseMatchInMapping(WIKIDATA_ID_KEY, wikidataId);
+					concept.addCloseMatchInMapping(getSkosUtils().WIKIDATA_ID_KEY, wikidataId);
 				else{
 					System.out.println("NOT FOUND: " + freebaseId);
 				}
@@ -121,7 +129,7 @@ public class SearchWikidataForGenres extends BaseSkosTest {
 	 * In the next step we enrich original XML files by extracted Wikidata IDs and 
 	 * store the result in new RDF file in folder 'src/test/resources/analysis'.
 	 */
-	@Test
+//	@Test
 	public void parseDBPediaSearchResults() {
 		String json = null;
     	List<Concept> concepts = getSkosUtils().parseSkosRdfXmlToConceptCollection(TEST_RDF_VOCABULARY_FILE_PATH); 
@@ -135,7 +143,7 @@ public class SearchWikidataForGenres extends BaseSkosTest {
 				json = dbpediaApiClient.getSearchResultFromFile(fileName);
 				String wikidataId = parseDBPediaResult(json);
 				if(wikidataId != null && wikidataId.length() > 0)
-					concept.addCloseMatchInMapping(WIKIDATA_ID_KEY, wikidataId);
+					concept.addCloseMatchInMapping(getSkosUtils().WIKIDATA_ID_KEY, wikidataId);
 				else{
 					System.out.println("NOT FOUND: " + dbpediaId);
 				}
@@ -187,7 +195,7 @@ public class SearchWikidataForGenres extends BaseSkosTest {
 	}
 	
 	
-	@Test
+//	@Test
 	public void writeMappingsInCsvFile()
 	   {
 		try
@@ -236,4 +244,66 @@ public class SearchWikidataForGenres extends BaseSkosTest {
 		} 
 	}	
 
+	
+	/**
+	 * Having a classical composition list in CSV format, we query Wikidata API 
+	 * for additional data, store this data and create composition list in SKOS RDF format, 
+	 * enriched by Description and Wikidata ID and preferred labels in different languages. 
+	 * @throws IOException
+	 */
+	@Test
+	public void createSkosRdfFromCompositionCsvByWikidata() throws IOException {
+		
+    	List<Concept> concepts = getSkosUtils().retrieveCompositionConceptsFromCsv(
+    			searchAnalysisFodler + COMPOSITIONS_CSV_FILE_PATH);    	
+    	Iterator<Concept> itrConcepts = concepts.iterator();
+    	while (itrConcepts.hasNext()) {
+			try {
+				Concept concept = itrConcepts.next();
+				String freebaseId = concept.getUri();
+		    	
+				String wikidataId = apiClient.queryWikidataIdFromDump(freebaseId, searchAnalysisFodler + DUMP_FILE);		    	
+				if(wikidataId != null && wikidataId.length() > 0) {
+					concept.addCloseMatchInMapping(getSkosUtils().WIKIDATA_ID_KEY, wikidataId);
+					String htmlResponse = apiClient.getHtmlContent(wikidataId);
+					String descriptionsFlag = SINGLE_HTML_BRACE + DESCRIPTIONS + SINGLE_HTML_BRACE;
+					if (htmlResponse.contains(descriptionsFlag)) {
+						String[] parts = htmlResponse.split(HTML_BRACE + DESCRIPTIONS + HTML_BRACE); 
+						int LABELS_PART = 0;
+						int DESCRIPTION_PART = 1;
+						String description_begin_str = ":{" + SINGLE_HTML_BRACE + "en" + SINGLE_HTML_BRACE + ":{" + SINGLE_HTML_BRACE 
+								+ "language" + SINGLE_HTML_BRACE + ":" + SINGLE_HTML_BRACE + "en" + SINGLE_HTML_BRACE + "," + SINGLE_HTML_BRACE 
+								+ "value" + SINGLE_HTML_BRACE + ":" + SINGLE_HTML_BRACE;
+						String description_end_str = SINGLE_HTML_BRACE + "}";
+						String description = getSkosUtils().parseHtmlField(
+								parts[DESCRIPTION_PART], description_begin_str, description_end_str);
+						concept.addDefinitionInMapping(getSkosUtils().EN, description);
+						htmlResponse = parts[LABELS_PART];
+					}
+					String titlesStr = "language" +  HTML_BRACE + ":"; 
+					String labelsStr = htmlResponse.split(HTML_BRACE + "labels" + HTML_BRACE)[1];
+					String[] titles = labelsStr.split(titlesStr);
+					for (String titleElem : titles) {    
+						if (titleElem.startsWith(SINGLE_HTML_BRACE)) {
+							String[] data = titleElem.split(HTML_BRACE);
+							int LANGUAGE_POS = 1;
+							int LABEL_POS = 5;
+							String language = data[LANGUAGE_POS];
+							String label = data[LABEL_POS];
+							concept.addPrefLabelInMapping(language, label);
+						}
+				    }
+				}
+			} catch (IOException e) {
+				System.out.println(e.getMessage());
+			}
+		}
+    	
+    	boolean res = getSkosUtils().generateRdfForConcepts(concepts, COMPOSITIONS_SKOS_FILE_PATH, searchAnalysisFodler);	    	
+    	
+		assertTrue(res);
+	}
+	
+	
+	
 }

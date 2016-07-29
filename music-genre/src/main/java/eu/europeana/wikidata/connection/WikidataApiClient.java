@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -15,13 +16,11 @@ import java.net.URLEncoder;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-
-import eu.europeana.api.client.connection.HttpConnector;
-
 import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
-import org.codehaus.jackson.map.ObjectWriter;
+
+import eu.europeana.api.client.connection.HttpConnector;
 
 
 
@@ -178,6 +177,62 @@ public class WikidataApiClient {
 			}
 		}
 	}
+
+
+	public String queryWikidata(String query)
+			throws IOException {
+		
+		String searchUrl = getWikidataSearchUrl(query);
+		String searchResult = getJSONResult(searchUrl);
+		return convertJsonStringToPrettyPrintJsonOutput(searchResult);
+	}
+	
+	
+	public String queryWikidataIdFromDump(String query, String dumpFile)
+			throws IOException {
+		
+		String res = "";
+		
+		if (query.startsWith("/"))
+			query = query.substring(1);
+		query = query.replace("/", ".");
+		
+		int FREEBASE_POS = 0;
+		int WIKIDATA_POS = 2;
+    	String splitBy = "\t";	    
+	    BufferedReader br;
+		try {
+			br = new BufferedReader(new FileReader(dumpFile));
+			String line = br.readLine();			
+			while ((line = br.readLine()) !=null) {
+			    String[] b = line.split(splitBy);
+			    if (b[FREEBASE_POS].contains(query)) {
+			    	String[] wikidata_path = b[WIKIDATA_POS].split("/");
+			    	res = wikidata_path[wikidata_path.length - 1].substring(1).replace("> .", ""); // to remove starting 'Q'
+			    	break;
+			    }
+			}
+		    br.close();
+		} catch (FileNotFoundException e1) {
+			log.error("File not found. " + e1.getMessage());
+			e1.printStackTrace();
+		} catch (IOException e) {
+			log.error("IO error. " + e.getMessage());
+			e.printStackTrace();
+		}
+		
+		return res;
+	}
+	
+	
+    public String getHtmlContent(String query) throws IOException {
+
+    	HttpConnector httpConnection = new HttpConnector();
+    	String url = "https://www.wikidata.org/wiki/Q" + query;
+    	return httpConnection.getURLContent(url);
+    }
+	
+
 
 	public String getSearchResultFromFile(String query) throws IOException {
 		String localFolder = SEARCH_RESULTS_FOLDER;
