@@ -616,7 +616,7 @@ public class SkosUtils {
 				String closeMatchRdf = "";
 				if (currentConcept.getCloseMatch() != null) 
 					closeMatchRdf = "\t\t<skos:closeMatch rdf:resource=\"http://www.wikidata.org/entity/Q" 
-						+ currentConcept.getCloseMatch().get(WIKIDATA_ID_KEY + "_" + WebAnnotationFields.CLOSE_MATCH) +"/>\n";
+						+ currentConcept.getCloseMatch().get(WIKIDATA_ID_KEY + "_" + WebAnnotationFields.CLOSE_MATCH) +"\"/>\n";
 				String definitionRdf = "";
 				if (currentConcept.getDefinition() != null) 
 					definitionRdf = "\t\t<skos:definition xml:lang=\"en\">" 
@@ -627,7 +627,7 @@ public class SkosUtils {
 						inSchemeRdf = "\t\t<skos:inScheme rdf:resource=\"" + type + "\"/>\n";
 				}
 				
-				String conceptRdf = "\t<skos:Concept rdf:about=\"http://rdf.freebase.com/ns/" 
+				String conceptRdf = "\t<skos:Concept rdf:about=\"http://rdf.freebase.com/ns" 
 						+ currentConcept.getUri() + "\">\n"						
 						+ prefLabelRdf
 						+ closeMatchRdf
@@ -638,6 +638,85 @@ public class SkosUtils {
 			}
 			String end = "\n\n</rdf:RDF>";
 			writer.write(end);
+		} finally {
+			try {
+				writer.close();
+			} catch (IOException e) {
+				log.warn("cannot close results writer for file: "
+						+ queryResultsFile);
+			}
+			res = true;
+		}
+		return res;
+	}
+	
+	
+	/**
+	 * This method extends existing composition CSV file by description and Wikidata ID.
+	 * @param concepts The list of concepts
+	 * @param inputFilePath The original CSV file
+	 */
+	public boolean generateCsvForConcepts(List<Concept> concepts, String inputFileName, String outputFileName, String pathToAnalysisFolder) 
+				throws IOException {
+			
+		boolean res = false;
+		
+    	String splitBy = ";";
+	    
+    	List<String> originalLines = new ArrayList<String>();
+	    BufferedReader br;
+		try {
+			br = new BufferedReader(new FileReader(pathToAnalysisFolder + inputFileName));
+			String headerLine = br.readLine();	
+			originalLines.add(headerLine);
+			String line = "";
+			while ((line = br.readLine()) !=null) {
+				originalLines.add(line);
+			}
+		    br.close();
+		} catch (FileNotFoundException e1) {
+			log.error("File not found. " + e1.getMessage());
+			e1.printStackTrace();
+		} catch (IOException e) {
+			log.error("IO error. " + e.getMessage());
+			e.printStackTrace();
+		}
+
+		
+		File queryResultsFile = new File(pathToAnalysisFolder, outputFileName);
+		// create parent dirs
+		queryResultsFile.getParentFile().mkdirs();
+		BufferedWriter writer = null;
+		try {
+			writer = new BufferedWriter(new FileWriter(queryResultsFile));
+			Iterator<String> itrOrigLines = originalLines.iterator();
+			int MID_POS = 0; 
+			int count = 0;
+			while (itrOrigLines.hasNext()) {
+				String line = itrOrigLines.next();
+				if (count == 0) {
+					writer.write(line + ";Wikidata ID;Description;\n");
+					count = count + 1;
+				} else {
+				    String description = "";
+				    String wikidataId = "";
+					for (Concept concept : concepts) {
+						BaseConcept currentConcept = (BaseConcept) concept;
+					    String[] b = line.split(splitBy);
+					    String freebaseId = "";
+					    if (b.length >= 1 && StringUtils.isNotEmpty(b[MID_POS])) {
+					    	freebaseId = b[MID_POS];
+							if (currentConcept.getUri().equals(freebaseId)) {
+								if (currentConcept.getDefinition() != null) 
+									description = currentConcept.getDefinition().get(EN + "_" + WebAnnotationFields.DEFINITION);
+								if (currentConcept.getCloseMatch() != null) 
+									wikidataId = currentConcept.getCloseMatch().get(WIKIDATA_ID_KEY + "_" + WebAnnotationFields.CLOSE_MATCH);
+							}
+					    }
+					}
+					writer.write(line + ";" + wikidataId + ";" + description + ";\n");
+				}
+			}
 		} finally {
 			try {
 				writer.close();

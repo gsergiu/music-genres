@@ -31,6 +31,7 @@ public class SearchWikidataForGenres extends BaseSkosTest {
 	String MAPPING_FILE = "mapping.csv";
 
 	public final String COMPOSITIONS_CSV_FILE_PATH = "/classical_composition_types.csv";
+	public final String ENRICHED_COMPOSITIONS_CSV_FILE_PATH = "/enriched_classical_composition_types.csv";
 	public final String COMPOSITIONS_SKOS_FILE_PATH = "/compositions_SKOS.xml";
 	public final String DUMP_FILE = "/fb2w.nt";
 
@@ -300,7 +301,10 @@ public class SearchWikidataForGenres extends BaseSkosTest {
 		}
     	
     	boolean res = getSkosUtils().generateRdfForConcepts(concepts, COMPOSITIONS_SKOS_FILE_PATH, searchAnalysisFodler);	    	
-    	
+		assertTrue(res);
+
+		res = getSkosUtils().generateCsvForConcepts(concepts, COMPOSITIONS_CSV_FILE_PATH,
+    			ENRICHED_COMPOSITIONS_CSV_FILE_PATH, searchAnalysisFodler);	    	    	
 		assertTrue(res);
 	}
 	

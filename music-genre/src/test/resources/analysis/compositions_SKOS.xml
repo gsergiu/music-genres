@@ -2,7 +2,7 @@
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 		xmlns:skos="http://www.w3.org/2004/02/skos/core#">
 
-	<skos:Concept rdf:about="http://rdf.freebase.com/ns//m/01b3zl">
+	<skos:Concept rdf:about="http://rdf.freebase.com/ns/m/01b3zl">
 		<skos:prefLabel xml:lang="nn_prefLabel">Allemande</skos:prefLabel>
 		<skos:prefLabel xml:lang="de_prefLabel">Allemande</skos:prefLabel>
 		<skos:prefLabel xml:lang="pt_prefLabel">Allemande</skos:prefLabel>
@@ -38,11 +38,11 @@
 		<skos:prefLabel xml:lang="el_prefLabel">\\u0391\\u03bb\\u03b5\\u03bc\\u03ac\\u03bd\\u03c4</skos:prefLabel>
 		<skos:prefLabel xml:lang="hu_prefLabel">Allemande</skos:prefLabel>
 		<skos:prefLabel xml:lang="zh-hk_prefLabel">\\u963f\\u52d2\\u8292\\u5fb7</skos:prefLabel>
-		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q214305/>
+		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q214305"/>
 		<skos:inScheme rdf:resource="SKOS_CONCEPT"/>
 		</skos:Concept>
 
-	<skos:Concept rdf:about="http://rdf.freebase.com/ns//m/0p966">
+	<skos:Concept rdf:about="http://rdf.freebase.com/ns/m/0p966">
 		<skos:prefLabel xml:lang="nn_prefLabel">antifon</skos:prefLabel>
 		<skos:prefLabel xml:lang="de_prefLabel">Antiphon (Musik)</skos:prefLabel>
 		<skos:prefLabel xml:lang="io_prefLabel">Antifono</skos:prefLabel>
@@ -74,12 +74,12 @@
 		<skos:prefLabel xml:lang="sk_prefLabel">Antif\\u00f3na</skos:prefLabel>
 		<skos:prefLabel xml:lang="ro_prefLabel">Antifon</skos:prefLabel>
 		<skos:prefLabel xml:lang="hu_prefLabel">Antifon\\u00e1le</skos:prefLabel>
-		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q582093/>
+		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q582093"/>
 		<skos:definition xml:lang="en">call and response, especially in Christian music and ritual</skos:definition>
 		<skos:inScheme rdf:resource="Marian antiphon"/>
 		</skos:Concept>
 
-	<skos:Concept rdf:about="http://rdf.freebase.com/ns//m/0c5sm">
+	<skos:Concept rdf:about="http://rdf.freebase.com/ns/m/0c5sm">
 		<skos:prefLabel xml:lang="de_prefLabel">Han Myung-sook</skos:prefLabel>
 		<skos:prefLabel xml:lang="io_prefLabel">Han Myung-sook</skos:prefLabel>
 		<skos:prefLabel xml:lang="id_prefLabel">Han Myung-sook</skos:prefLabel>
@@ -112,12 +112,12 @@
 		<skos:prefLabel xml:lang="en-gb_prefLabel">Han Myeong-sook</skos:prefLabel>
 		<skos:prefLabel xml:lang="hu_prefLabel">Han Myeong-sook</skos:prefLabel>
 		<skos:prefLabel xml:lang="zh-hk_prefLabel">\\u97d3\\u660e\\u6dd1</skos:prefLabel>
-		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q236485/>
+		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q236485"/>
 		<skos:definition xml:lang="en"></skos:definition>
 		<skos:inScheme rdf:resource="Song,Vocal music"/>
 		</skos:Concept>
 
-	<skos:Concept rdf:about="http://rdf.freebase.com/ns//m/0c12_">
+	<skos:Concept rdf:about="http://rdf.freebase.com/ns/m/0c12_">
 		<skos:prefLabel xml:lang="sr-el_prefLabel">Kantata</skos:prefLabel>
 		<skos:prefLabel xml:lang="nn_prefLabel">kantate</skos:prefLabel>
 		<skos:prefLabel xml:lang="de_prefLabel">Kantate</skos:prefLabel>
@@ -186,16 +186,16 @@
 		<skos:prefLabel xml:lang="ro_prefLabel">Cantat\\u0103</skos:prefLabel>
 		<skos:prefLabel xml:lang="ka_prefLabel">\\u10d9\\u10d0\\u10dc\\u10e2\\u10d0\\u10e2\\u10d0</skos:prefLabel>
 		<skos:prefLabel xml:lang="kk_prefLabel">\\u041a\\u0430\\u043d\\u0442\\u0430\\u0442\\u0430</skos:prefLabel>
-		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q174873/>
+		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q174873"/>
 		<skos:definition xml:lang="en"></skos:definition>
 		<skos:inScheme rdf:resource="Passion cantata,Bach cantata,Christmas cantata,Chorale cantata"/>
 		</skos:Concept>
 
-	<skos:Concept rdf:about="http://rdf.freebase.com/ns//m/02v2h2">
+	<skos:Concept rdf:about="http://rdf.freebase.com/ns/m/02v2h2">
 		<skos:inScheme rdf:resource="Song,Vocal music"/>
 		</skos:Concept>
 
-	<skos:Concept rdf:about="http://rdf.freebase.com/ns//m/0199p1">
+	<skos:Concept rdf:about="http://rdf.freebase.com/ns/m/0199p1">
 		<skos:prefLabel xml:lang="nn_prefLabel">Chaconne</skos:prefLabel>
 		<skos:prefLabel xml:lang="de_prefLabel">Chaconne</skos:prefLabel>
 		<skos:prefLabel xml:lang="pt_prefLabel">Chacona</skos:prefLabel>
@@ -223,12 +223,12 @@
 		<skos:prefLabel xml:lang="sk_prefLabel">Ciaccona</skos:prefLabel>
 		<skos:prefLabel xml:lang="hu_prefLabel">Chaconne</skos:prefLabel>
 		<skos:prefLabel xml:lang="zh-hk_prefLabel">\\u590f\\u5eb7\\u821e\\u66f2</skos:prefLabel>
-		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q841238/>
+		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q841238"/>
 		<skos:definition xml:lang="en"></skos:definition>
 		<skos:inScheme rdf:resource="SKOS_CONCEPT"/>
 		</skos:Concept>
 
-	<skos:Concept rdf:about="http://rdf.freebase.com/ns//m/0pdc8">
+	<skos:Concept rdf:about="http://rdf.freebase.com/ns/m/0pdc8">
 		<skos:prefLabel xml:lang="mk_prefLabel">\\u0445\\u043e\\u0440\\u0430\\u043b</skos:prefLabel>
 		<skos:prefLabel xml:lang="nn_prefLabel">koral</skos:prefLabel>
 		<skos:prefLabel xml:lang="de_prefLabel">Choral</skos:prefLabel>
@@ -259,12 +259,12 @@
 		<skos:prefLabel xml:lang="ro_prefLabel">Coral</skos:prefLabel>
 		<skos:prefLabel xml:lang="hu_prefLabel">Kor\\u00e1l</skos:prefLabel>
 		<skos:prefLabel xml:lang="zh-hk_prefLabel">\\u773e\\u8b9a\\u6b4c</skos:prefLabel>
-		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q724473/>
+		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q724473"/>
 		<skos:definition xml:lang="en"></skos:definition>
 		<skos:inScheme rdf:resource="SKOS_CONCEPT"/>
 		</skos:Concept>
 
-	<skos:Concept rdf:about="http://rdf.freebase.com/ns//m/0c0y7">
+	<skos:Concept rdf:about="http://rdf.freebase.com/ns/m/0c0y7">
 		<skos:prefLabel xml:lang="nn_prefLabel">solokonsert</skos:prefLabel>
 		<skos:prefLabel xml:lang="de_prefLabel">Instrumentalkonzert</skos:prefLabel>
 		<skos:prefLabel xml:lang="pt_prefLabel">Concerto</skos:prefLabel>
@@ -305,12 +305,12 @@
 		<skos:prefLabel xml:lang="ga_prefLabel">Coins\\u00e9art\\u00f3</skos:prefLabel>
 		<skos:prefLabel xml:lang="hu_prefLabel">versenym\\u0171</skos:prefLabel>
 		<skos:prefLabel xml:lang="li_prefLabel">Concert</skos:prefLabel>
-		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q9748/>
+		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q9748"/>
 		<skos:definition xml:lang="en"></skos:definition>
 		<skos:inScheme rdf:resource="Flute concerto,Oboe concerto,Double concerto,Concerto grosso,Horn concerto,Concerto for Orchestra,Triple concerto,Clarinet concerto,Viola concerto,Piano concerto,Harpsichord concerto,Violin concerto,Bassoon concerto,Cello concerto,Harp concerto,Concertino,Solo concerto,Ripieno concerto,Sinfonia concertante,Trumpet concerto,Timpani concerto,Double bass concerto"/>
 		</skos:Concept>
 
-	<skos:Concept rdf:about="http://rdf.freebase.com/ns//m/016tk6">
+	<skos:Concept rdf:about="http://rdf.freebase.com/ns/m/016tk6">
 		<skos:prefLabel xml:lang="mk_prefLabel">\\u041a\\u043e\\u043d\\u0447\\u0435\\u0440\\u0442\\u043e \\u0433\\u0440\\u043e\\u0441\\u043e</skos:prefLabel>
 		<skos:prefLabel xml:lang="nn_prefLabel">Concerto grosso</skos:prefLabel>
 		<skos:prefLabel xml:lang="de_prefLabel">Concerto grosso</skos:prefLabel>
@@ -358,12 +358,12 @@
 		<skos:prefLabel xml:lang="hu_prefLabel">Concerto grosso</skos:prefLabel>
 		<skos:prefLabel xml:lang="zh-hk_prefLabel">\\u5927\\u5354\\u594f\\u66f2</skos:prefLabel>
 		<skos:prefLabel xml:lang="kk_prefLabel">\\u041a\\u043e\\u043d\\u0447\\u0435\\u0440\\u0442\\u043e \\u0433\\u0440\\u043e\\u0441\\u0441\\u043e</skos:prefLabel>
-		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q210216/>
+		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q210216"/>
 		<skos:definition xml:lang="en">form of baroque music</skos:definition>
 		<skos:inScheme rdf:resource="Concerto"/>
 		</skos:Concept>
 
-	<skos:Concept rdf:about="http://rdf.freebase.com/ns//m/03234b">
+	<skos:Concept rdf:about="http://rdf.freebase.com/ns/m/03234b">
 		<skos:prefLabel xml:lang="nn_prefLabel">Divertimento</skos:prefLabel>
 		<skos:prefLabel xml:lang="kk-cyrl_prefLabel">\\u0414\\u0438\\u0432\\u0435\\u0440\\u0442\\u0438\\u0441\\u043c\\u0435\\u043d\\u0442</skos:prefLabel>
 		<skos:prefLabel xml:lang="de_prefLabel">Divertimento</skos:prefLabel>
@@ -403,12 +403,12 @@
 		<skos:prefLabel xml:lang="hu_prefLabel">Divertimento</skos:prefLabel>
 		<skos:prefLabel xml:lang="zh-hk_prefLabel">\\u5b09\\u904a\\u66f2</skos:prefLabel>
 		<skos:prefLabel xml:lang="kk_prefLabel">\\u0414\\u0438\\u0432\\u0435\\u0440\\u0442\\u0438\\u0441\\u043c\\u0435\\u043d\\u0442</skos:prefLabel>
-		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q647653/>
+		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q647653"/>
 		<skos:definition xml:lang="en"></skos:definition>
 		<skos:inScheme rdf:resource="SKOS_CONCEPT"/>
 		</skos:Concept>
 
-	<skos:Concept rdf:about="http://rdf.freebase.com/ns//m/0390z7">
+	<skos:Concept rdf:about="http://rdf.freebase.com/ns/m/0390z7">
 		<skos:prefLabel xml:lang="ja_prefLabel">\\u30a8\\u30b3\\u30bb\\u30fc\\u30ba</skos:prefLabel>
 		<skos:prefLabel xml:lang="de_prefLabel">Ecossaise</skos:prefLabel>
 		<skos:prefLabel xml:lang="pl_prefLabel">\\u00c9cossaise</skos:prefLabel>
@@ -428,12 +428,12 @@
 		<skos:prefLabel xml:lang="sv_prefLabel">Ecoss\\u00e4s</skos:prefLabel>
 		<skos:prefLabel xml:lang="pt-br_prefLabel">Escocesa</skos:prefLabel>
 		<skos:prefLabel xml:lang="nb_prefLabel">Ecossaise</skos:prefLabel>
-		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q1202801/>
+		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q1202801"/>
 		<skos:definition xml:lang="en">dance</skos:definition>
 		<skos:inScheme rdf:resource="SKOS_CONCEPT"/>
 		</skos:Concept>
 
-	<skos:Concept rdf:about="http://rdf.freebase.com/ns//m/0140jy">
+	<skos:Concept rdf:about="http://rdf.freebase.com/ns/m/0140jy">
 		<skos:prefLabel xml:lang="sr-el_prefLabel">Elegija</skos:prefLabel>
 		<skos:prefLabel xml:lang="nn_prefLabel">elegi</skos:prefLabel>
 		<skos:prefLabel xml:lang="de_prefLabel">Elegie</skos:prefLabel>
@@ -495,12 +495,12 @@
 		<skos:prefLabel xml:lang="be-tarask_prefLabel">\\u042d\\u043b\\u0435\\u0433\\u0456\\u044f</skos:prefLabel>
 		<skos:prefLabel xml:lang="ka_prefLabel">\\u10d4\\u10da\\u10d4\\u10d2\\u10d8\\u10d0</skos:prefLabel>
 		<skos:prefLabel xml:lang="kk_prefLabel">\\u0416\\u043e\\u049b\\u0442\\u0430\\u0443</skos:prefLabel>
-		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q174864/>
+		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q174864"/>
 		<skos:definition xml:lang="en"></skos:definition>
 		<skos:inScheme rdf:resource="SKOS_CONCEPT"/>
 		</skos:Concept>
 
-	<skos:Concept rdf:about="http://rdf.freebase.com/ns//m/01h5xb">
+	<skos:Concept rdf:about="http://rdf.freebase.com/ns/m/01h5xb">
 		<skos:prefLabel xml:lang="sr-el_prefLabel">Etida</skos:prefLabel>
 		<skos:prefLabel xml:lang="nn_prefLabel">etyde</skos:prefLabel>
 		<skos:prefLabel xml:lang="de_prefLabel">Et\\u00fcde</skos:prefLabel>
@@ -543,16 +543,16 @@
 		<skos:prefLabel xml:lang="el_prefLabel">\\u03c3\\u03c0\\u03bf\\u03c5\\u03b4\\u03ae</skos:prefLabel>
 		<skos:prefLabel xml:lang="sk_prefLabel">Etuda</skos:prefLabel>
 		<skos:prefLabel xml:lang="zh-hk_prefLabel">\\u7df4\\u7fd2\\u66f2</skos:prefLabel>
-		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q207841/>
+		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q207841"/>
 		<skos:definition xml:lang="en"></skos:definition>
 		<skos:inScheme rdf:resource="Cello Etude"/>
 		</skos:Concept>
 
-	<skos:Concept rdf:about="http://rdf.freebase.com/ns//m/01tbhf">
+	<skos:Concept rdf:about="http://rdf.freebase.com/ns/m/01tbhf">
 		<skos:inScheme rdf:resource="Overture"/>
 		</skos:Concept>
 
-	<skos:Concept rdf:about="http://rdf.freebase.com/ns//m/02yb7">
+	<skos:Concept rdf:about="http://rdf.freebase.com/ns/m/02yb7">
 		<skos:prefLabel xml:lang="sr-el_prefLabel">fuga</skos:prefLabel>
 		<skos:prefLabel xml:lang="nn_prefLabel">fuge</skos:prefLabel>
 		<skos:prefLabel xml:lang="de_prefLabel">Fuge</skos:prefLabel>
@@ -615,12 +615,12 @@
 		<skos:prefLabel xml:lang="ro_prefLabel">Fug\\u0103</skos:prefLabel>
 		<skos:prefLabel xml:lang="ka_prefLabel">\\u10e4\\u10e3\\u10d2\\u10d0</skos:prefLabel>
 		<skos:prefLabel xml:lang="kk_prefLabel">\\u0424\\u0443\\u0433\\u0430</skos:prefLabel>
-		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q181014/>
+		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q181014"/>
 		<skos:definition xml:lang="en"></skos:definition>
 		<skos:inScheme rdf:resource="SKOS_CONCEPT"/>
 		</skos:Concept>
 
-	<skos:Concept rdf:about="http://rdf.freebase.com/ns//m/0395x">
+	<skos:Concept rdf:about="http://rdf.freebase.com/ns/m/0395x">
 		<skos:prefLabel xml:lang="vi_prefLabel">Galliard</skos:prefLabel>
 		<skos:prefLabel xml:lang="ja_prefLabel">\\u30ac\\u30a4\\u30e4\\u30eb\\u30c9</skos:prefLabel>
 		<skos:prefLabel xml:lang="de_prefLabel">Gaillarde</skos:prefLabel>
@@ -642,12 +642,12 @@
 		<skos:prefLabel xml:lang="fi_prefLabel">Gaillarde</skos:prefLabel>
 		<skos:prefLabel xml:lang="sv_prefLabel">Galliard</skos:prefLabel>
 		<skos:prefLabel xml:lang="nb_prefLabel">galliard</skos:prefLabel>
-		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q288824/>
+		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q288824"/>
 		<skos:definition xml:lang="en">form of Renaissance dance</skos:definition>
 		<skos:inScheme rdf:resource="SKOS_CONCEPT"/>
 		</skos:Concept>
 
-	<skos:Concept rdf:about="http://rdf.freebase.com/ns//m/014cc4">
+	<skos:Concept rdf:about="http://rdf.freebase.com/ns/m/014cc4">
 		<skos:prefLabel xml:lang="vec_prefLabel">Canto gregorian</skos:prefLabel>
 		<skos:prefLabel xml:lang="nn_prefLabel">Gregoriansk song</skos:prefLabel>
 		<skos:prefLabel xml:lang="mwl_prefLabel">Canto gregoriano</skos:prefLabel>
@@ -694,12 +694,12 @@
 		<skos:prefLabel xml:lang="be-tarask_prefLabel">\\u0433\\u0440\\u044d\\u0433\\u0430\\u0440\\u044b\\u044f\\u043d\\u0441\\u043a\\u0456 \\u0441\\u044c\\u043f\\u0435\\u045e</skos:prefLabel>
 		<skos:prefLabel xml:lang="hu_prefLabel">Gregori\\u00e1n \\u00e9nek</skos:prefLabel>
 		<skos:prefLabel xml:lang="tl_prefLabel">Awiting Gregoriano</skos:prefLabel>
-		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q26473/>
+		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q26473"/>
 		<skos:definition xml:lang="en"></skos:definition>
 		<skos:inScheme rdf:resource="Vocal music"/>
 		</skos:Concept>
 
-	<skos:Concept rdf:about="http://rdf.freebase.com/ns//m/03ky6">
+	<skos:Concept rdf:about="http://rdf.freebase.com/ns/m/03ky6">
 		<skos:prefLabel xml:lang="ca_prefLabel">I\\u014d Kuroda</skos:prefLabel>
 		<skos:prefLabel xml:lang="ja_prefLabel">\\u9ed2\\u7530\\u786b\\u9ec4</skos:prefLabel>
 		<skos:prefLabel xml:lang="de_prefLabel">I\\u014d Kuroda</skos:prefLabel>
@@ -710,12 +710,12 @@
 		<skos:prefLabel xml:lang="es_prefLabel">I\\u014d Kuroda</skos:prefLabel>
 		<skos:prefLabel xml:lang="sv_prefLabel">I\\u014d Kuroda</skos:prefLabel>
 		<skos:prefLabel xml:lang="ru_prefLabel">\\u041a\\u0443\\u0440\\u043e\\u0434\\u0430, \\u0418\\u043e</skos:prefLabel>
-		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q1188657/>
+		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q1188657"/>
 		<skos:definition xml:lang="en"></skos:definition>
 		<skos:inScheme rdf:resource="Ilahi"/>
 		</skos:Concept>
 
-	<skos:Concept rdf:about="http://rdf.freebase.com/ns//m/02clks">
+	<skos:Concept rdf:about="http://rdf.freebase.com/ns/m/02clks">
 		<skos:prefLabel xml:lang="ca_prefLabel">Impromptu</skos:prefLabel>
 		<skos:prefLabel xml:lang="ja_prefLabel">\\u5373\\u8208\\u66f2</skos:prefLabel>
 		<skos:prefLabel xml:lang="zh-hant_prefLabel">\\u5373\\u8208\\u66f2</skos:prefLabel>
@@ -739,12 +739,12 @@
 		<skos:prefLabel xml:lang="sv_prefLabel">Impromptu</skos:prefLabel>
 		<skos:prefLabel xml:lang="zh-cn_prefLabel">\\u5373\\u5174\\u66f2</skos:prefLabel>
 		<skos:prefLabel xml:lang="nb_prefLabel">impromptu</skos:prefLabel>
-		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q852027/>
+		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q852027"/>
 		<skos:definition xml:lang="en"></skos:definition>
 		<skos:inScheme rdf:resource="SKOS_CONCEPT"/>
 		</skos:Concept>
 
-	<skos:Concept rdf:about="http://rdf.freebase.com/ns//m/014m9r">
+	<skos:Concept rdf:about="http://rdf.freebase.com/ns/m/014m9r">
 		<skos:prefLabel xml:lang="vi_prefLabel">Incidental music</skos:prefLabel>
 		<skos:prefLabel xml:lang="ja_prefLabel">\\u4ed8\\u968f\\u97f3\\u697d</skos:prefLabel>
 		<skos:prefLabel xml:lang="de_prefLabel">Schauspielmusik</skos:prefLabel>
@@ -764,12 +764,12 @@
 		<skos:prefLabel xml:lang="la_prefLabel">Musica fortuita</skos:prefLabel>
 		<skos:prefLabel xml:lang="ko_prefLabel">\\ubd80\\uc218 \\uc74c\\uc545</skos:prefLabel>
 		<skos:prefLabel xml:lang="nl_prefLabel">Toneelmuziek</skos:prefLabel>
-		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q1147752/>
+		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q1147752"/>
 		<skos:definition xml:lang="en"></skos:definition>
 		<skos:inScheme rdf:resource="SKOS_CONCEPT"/>
 		</skos:Concept>
 
-	<skos:Concept rdf:about="http://rdf.freebase.com/ns//m/01vr1p">
+	<skos:Concept rdf:about="http://rdf.freebase.com/ns/m/01vr1p">
 		<skos:prefLabel xml:lang="ca_prefLabel">Obertura italiana</skos:prefLabel>
 		<skos:prefLabel xml:lang="ja_prefLabel">\\u30a4\\u30bf\\u30ea\\u30a2\\u5f0f\\u5e8f\\u66f2</skos:prefLabel>
 		<skos:prefLabel xml:lang="pl_prefLabel">Uwertura w\\u0142oska</skos:prefLabel>
@@ -777,11 +777,11 @@
 		<skos:prefLabel xml:lang="fr_prefLabel">Ouverture \\u00e0 l\\u2019italienne</skos:prefLabel>
 		<skos:prefLabel xml:lang="en_prefLabel">Italian overture</skos:prefLabel>
 		<skos:prefLabel xml:lang="es_prefLabel">Obertura italiana</skos:prefLabel>
-		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q2713930/>
+		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q2713930"/>
 		<skos:inScheme rdf:resource="Overture"/>
 		</skos:Concept>
 
-	<skos:Concept rdf:about="http://rdf.freebase.com/ns//m/0kv42">
+	<skos:Concept rdf:about="http://rdf.freebase.com/ns/m/0kv42">
 		<skos:prefLabel xml:lang="mk_prefLabel">\\u041b\\u0438\\u0434</skos:prefLabel>
 		<skos:prefLabel xml:lang="nn_prefLabel">Lied</skos:prefLabel>
 		<skos:prefLabel xml:lang="de_prefLabel">Kunstlied</skos:prefLabel>
@@ -818,16 +818,16 @@
 		<skos:prefLabel xml:lang="ro_prefLabel">Lied</skos:prefLabel>
 		<skos:prefLabel xml:lang="zh-hk_prefLabel">\\u85dd\\u8853\\u6b4c\\u66f2</skos:prefLabel>
 		<skos:prefLabel xml:lang="lb_prefLabel">Lied</skos:prefLabel>
-		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q216860/>
+		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q216860"/>
 		<skos:definition xml:lang="en"></skos:definition>
 		<skos:inScheme rdf:resource="Song,Vocal music,Art song"/>
 		</skos:Concept>
 
-	<skos:Concept rdf:about="http://rdf.freebase.com/ns//m/01x2nx">
+	<skos:Concept rdf:about="http://rdf.freebase.com/ns/m/01x2nx">
 		<skos:inScheme rdf:resource="SKOS_CONCEPT"/>
 		</skos:Concept>
 
-	<skos:Concept rdf:about="http://rdf.freebase.com/ns//m/03d3tc">
+	<skos:Concept rdf:about="http://rdf.freebase.com/ns/m/03d3tc">
 		<skos:prefLabel xml:lang="vi_prefLabel">Madrigal comedy</skos:prefLabel>
 		<skos:prefLabel xml:lang="ja_prefLabel">\\u30de\\u30c9\\u30ea\\u30ac\\u30eb\\u30fb\\u30b3\\u30e1\\u30c7\\u30a3</skos:prefLabel>
 		<skos:prefLabel xml:lang="uk_prefLabel">\\u041c\\u0430\\u0434\\u0440\\u0438\\u0433\\u0430\\u043b\\u044c\\u043d\\u0430 \\u043a\\u043e\\u043c\\u0435\\u0434\\u0456\\u044f</skos:prefLabel>
@@ -837,12 +837,12 @@
 		<skos:prefLabel xml:lang="ru_prefLabel">\\u041c\\u0430\\u0434\\u0440\\u0438\\u0433\\u0430\\u043b\\u044c\\u043d\\u0430\\u044f \\u043a\\u043e\\u043c\\u0435\\u0434\\u0438\\u044f</skos:prefLabel>
 		<skos:prefLabel xml:lang="et_prefLabel">Madrigalikom\\u00f6\\u00f6dia</skos:prefLabel>
 		<skos:prefLabel xml:lang="nb_prefLabel">Madrigalkomedie</skos:prefLabel>
-		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q3267742/>
+		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q3267742"/>
 		<skos:definition xml:lang="en"></skos:definition>
 		<skos:inScheme rdf:resource="SKOS_CONCEPT"/>
 		</skos:Concept>
 
-	<skos:Concept rdf:about="http://rdf.freebase.com/ns//m/019csc">
+	<skos:Concept rdf:about="http://rdf.freebase.com/ns/m/019csc">
 		<skos:prefLabel xml:lang="nn_prefLabel">Marias lovsong</skos:prefLabel>
 		<skos:prefLabel xml:lang="de_prefLabel">Magnificat</skos:prefLabel>
 		<skos:prefLabel xml:lang="mt_prefLabel">Magnificat</skos:prefLabel>
@@ -883,12 +883,12 @@
 		<skos:prefLabel xml:lang="hu_prefLabel">Magnificat</skos:prefLabel>
 		<skos:prefLabel xml:lang="tl_prefLabel">Magnificat</skos:prefLabel>
 		<skos:prefLabel xml:lang="csb_prefLabel">Magnificat</skos:prefLabel>
-		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q200809/>
+		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q200809"/>
 		<skos:definition xml:lang="en">ancient hymn of Mary in the Christian tradition</skos:definition>
 		<skos:inScheme rdf:resource="Vocal music"/>
 		</skos:Concept>
 
-	<skos:Concept rdf:about="http://rdf.freebase.com/ns//m/01ggqj">
+	<skos:Concept rdf:about="http://rdf.freebase.com/ns/m/01ggqj">
 		<skos:prefLabel xml:lang="sr-el_prefLabel">Mazurka</skos:prefLabel>
 		<skos:prefLabel xml:lang="de_prefLabel">Mazurka</skos:prefLabel>
 		<skos:prefLabel xml:lang="io_prefLabel">Mazurko</skos:prefLabel>
@@ -942,12 +942,12 @@
 		<skos:prefLabel xml:lang="be-tarask_prefLabel">\\u041c\\u0430\\u0437\\u0443\\u0440\\u043a\\u0430</skos:prefLabel>
 		<skos:prefLabel xml:lang="ka_prefLabel">\\u10db\\u10d0\\u10d6\\u10e3\\u10e0\\u10d9\\u10d0</skos:prefLabel>
 		<skos:prefLabel xml:lang="kk_prefLabel">\\u041c\\u0430\\u0437\\u0443\\u0440\\u043a\\u0430</skos:prefLabel>
-		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q151942/>
+		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q151942"/>
 		<skos:definition xml:lang="en">Polish folk dance in triple meter, usually at a lively tempo, and with accent on the second or third beat</skos:definition>
 		<skos:inScheme rdf:resource="SKOS_CONCEPT"/>
 		</skos:Concept>
 
-	<skos:Concept rdf:about="http://rdf.freebase.com/ns//m/0c0vy">
+	<skos:Concept rdf:about="http://rdf.freebase.com/ns/m/0c0vy">
 		<skos:prefLabel xml:lang="sr-el_prefLabel">Menuet</skos:prefLabel>
 		<skos:prefLabel xml:lang="nn_prefLabel">menuett</skos:prefLabel>
 		<skos:prefLabel xml:lang="de_prefLabel">Menuett</skos:prefLabel>
@@ -999,12 +999,12 @@
 		<skos:prefLabel xml:lang="sr_prefLabel">\\u041c\\u0435\\u043d\\u0443\\u0435\\u0442</skos:prefLabel>
 		<skos:prefLabel xml:lang="et_prefLabel">Menuett</skos:prefLabel>
 		<skos:prefLabel xml:lang="ro_prefLabel">Menuet</skos:prefLabel>
-		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q205734/>
+		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q205734"/>
 		<skos:definition xml:lang="en"></skos:definition>
 		<skos:inScheme rdf:resource="SKOS_CONCEPT"/>
 		</skos:Concept>
 
-	<skos:Concept rdf:about="http://rdf.freebase.com/ns//m/0577x">
+	<skos:Concept rdf:about="http://rdf.freebase.com/ns/m/0577x">
 		<skos:prefLabel xml:lang="sr-el_prefLabel">Motet</skos:prefLabel>
 		<skos:prefLabel xml:lang="nn_prefLabel">motett</skos:prefLabel>
 		<skos:prefLabel xml:lang="de_prefLabel">Motette</skos:prefLabel>
@@ -1059,12 +1059,12 @@
 		<skos:prefLabel xml:lang="sk_prefLabel">Moteto</skos:prefLabel>
 		<skos:prefLabel xml:lang="ro_prefLabel">Motet</skos:prefLabel>
 		<skos:prefLabel xml:lang="ka_prefLabel">\\u10db\\u10dd\\u10e2\\u10d4\\u10e2\\u10d8</skos:prefLabel>
-		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q188285/>
+		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q188285"/>
 		<skos:definition xml:lang="en">choral musical composition</skos:definition>
 		<skos:inScheme rdf:resource="Motet-chanson,Petit motet,Chorale motet"/>
 		</skos:Concept>
 
-	<skos:Concept rdf:about="http://rdf.freebase.com/ns//m/0xv8h">
+	<skos:Concept rdf:about="http://rdf.freebase.com/ns/m/0xv8h">
 		<skos:prefLabel xml:lang="sr-el_prefLabel">Nokturno</skos:prefLabel>
 		<skos:prefLabel xml:lang="nn_prefLabel">nokturne</skos:prefLabel>
 		<skos:prefLabel xml:lang="de_prefLabel">Nocturne</skos:prefLabel>
@@ -1115,12 +1115,12 @@
 		<skos:prefLabel xml:lang="kk-kz_prefLabel">\\u041d\\u043e\\u043a\\u0442\\u044e\\u0440\\u043d</skos:prefLabel>
 		<skos:prefLabel xml:lang="sr_prefLabel">\\u043d\\u043e\\u043a\\u0442\\u0443\\u0440\\u043d\\u043e</skos:prefLabel>
 		<skos:prefLabel xml:lang="kk_prefLabel">\\u041d\\u043e\\u043a\\u0442\\u044e\\u0440\\u043d</skos:prefLabel>
-		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q194172/>
+		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q194172"/>
 		<skos:definition xml:lang="en"></skos:definition>
 		<skos:inScheme rdf:resource="SKOS_CONCEPT"/>
 		</skos:Concept>
 
-	<skos:Concept rdf:about="http://rdf.freebase.com/ns//m/09swn">
+	<skos:Concept rdf:about="http://rdf.freebase.com/ns/m/09swn">
 		<skos:prefLabel xml:lang="sr-el_prefLabel">Opereta</skos:prefLabel>
 		<skos:prefLabel xml:lang="sco_prefLabel">operetta</skos:prefLabel>
 		<skos:prefLabel xml:lang="de_prefLabel">Operette</skos:prefLabel>
@@ -1189,12 +1189,12 @@
 		<skos:prefLabel xml:lang="ro_prefLabel">operet\\u0103</skos:prefLabel>
 		<skos:prefLabel xml:lang="ka_prefLabel">\\u10dd\\u10de\\u10d4\\u10e0\\u10d4\\u10e2\\u10d0</skos:prefLabel>
 		<skos:prefLabel xml:lang="kk_prefLabel">\\u041e\\u043f\\u0435\\u0440\\u0435\\u0442\\u0442\\u0430</skos:prefLabel>
-		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q170384/>
+		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q170384"/>
 		<skos:definition xml:lang="en"></skos:definition>
 		<skos:inScheme rdf:resource="SKOS_CONCEPT"/>
 		</skos:Concept>
 
-	<skos:Concept rdf:about="http://rdf.freebase.com/ns//m/0knl9">
+	<skos:Concept rdf:about="http://rdf.freebase.com/ns/m/0knl9">
 		<skos:prefLabel xml:lang="nn_prefLabel">oratorium</skos:prefLabel>
 		<skos:prefLabel xml:lang="de_prefLabel">Oratorium</skos:prefLabel>
 		<skos:prefLabel xml:lang="io_prefLabel">Oratorio</skos:prefLabel>
@@ -1246,12 +1246,12 @@
 		<skos:prefLabel xml:lang="et_prefLabel">Oratoorium</skos:prefLabel>
 		<skos:prefLabel xml:lang="sk_prefLabel">Orat\\u00f3rium</skos:prefLabel>
 		<skos:prefLabel xml:lang="ro_prefLabel">Oratoriu</skos:prefLabel>
-		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q85477/>
+		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q85477"/>
 		<skos:definition xml:lang="en">a large musical composition including an orchestra, a choir, and soloists</skos:definition>
 		<skos:inScheme rdf:resource="Vocal music"/>
 		</skos:Concept>
 
-	<skos:Concept rdf:about="http://rdf.freebase.com/ns//m/0c121">
+	<skos:Concept rdf:about="http://rdf.freebase.com/ns/m/0c121">
 		<skos:prefLabel xml:lang="nn_prefLabel">ouverture</skos:prefLabel>
 		<skos:prefLabel xml:lang="de_prefLabel">Ouvert\\u00fcre</skos:prefLabel>
 		<skos:prefLabel xml:lang="pt_prefLabel">Abertura</skos:prefLabel>
@@ -1297,12 +1297,12 @@
 		<skos:prefLabel xml:lang="ro_prefLabel">Uvertur\\u0103</skos:prefLabel>
 		<skos:prefLabel xml:lang="hu_prefLabel">nyit\\u00e1ny</skos:prefLabel>
 		<skos:prefLabel xml:lang="zh-hk_prefLabel">\\u5e8f\\u66f2</skos:prefLabel>
-		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q202287/>
+		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q202287"/>
 		<skos:definition xml:lang="en"></skos:definition>
 		<skos:inScheme rdf:resource="French overture,Italian overture"/>
 		</skos:Concept>
 
-	<skos:Concept rdf:about="http://rdf.freebase.com/ns//m/01p10m">
+	<skos:Concept rdf:about="http://rdf.freebase.com/ns/m/01p10m">
 		<skos:prefLabel xml:lang="nn_prefLabel">Parodimesse</skos:prefLabel>
 		<skos:prefLabel xml:lang="ja_prefLabel">\\u30d1\\u30ed\\u30c7\\u30a3\\u30fb\\u30df\\u30b5</skos:prefLabel>
 		<skos:prefLabel xml:lang="de_prefLabel">Parodiemesse</skos:prefLabel>
@@ -1316,12 +1316,12 @@
 		<skos:prefLabel xml:lang="he_prefLabel">\\u05de\\u05d9\\u05e1\\u05d4 \\u05e4\\u05d0\\u05e8\\u05d5\\u05d3\\u05d9\\u05ea</skos:prefLabel>
 		<skos:prefLabel xml:lang="nl_prefLabel">Parodiemis</skos:prefLabel>
 		<skos:prefLabel xml:lang="nb_prefLabel">parodimesse</skos:prefLabel>
-		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q1468751/>
+		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q1468751"/>
 		<skos:definition xml:lang="en"></skos:definition>
 		<skos:inScheme rdf:resource="Mass"/>
 		</skos:Concept>
 
-	<skos:Concept rdf:about="http://rdf.freebase.com/ns//m/0199z5">
+	<skos:Concept rdf:about="http://rdf.freebase.com/ns/m/0199z5">
 		<skos:prefLabel xml:lang="mk_prefLabel">\\u041f\\u0430\\u0440\\u0442\\u0438\\u0442\\u0430</skos:prefLabel>
 		<skos:prefLabel xml:lang="ca_prefLabel">Partita</skos:prefLabel>
 		<skos:prefLabel xml:lang="nn_prefLabel">partita</skos:prefLabel>
@@ -1338,12 +1338,12 @@
 		<skos:prefLabel xml:lang="nl_prefLabel">partita</skos:prefLabel>
 		<skos:prefLabel xml:lang="hy_prefLabel">\\u054a\\u0561\\u0580\\u057f\\u056b\\u057f</skos:prefLabel>
 		<skos:prefLabel xml:lang="nb_prefLabel">partita</skos:prefLabel>
-		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q388383/>
+		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q388383"/>
 		<skos:definition xml:lang="en"></skos:definition>
 		<skos:inScheme rdf:resource="SKOS_CONCEPT"/>
 		</skos:Concept>
 
-	<skos:Concept rdf:about="http://rdf.freebase.com/ns//m/0199v5">
+	<skos:Concept rdf:about="http://rdf.freebase.com/ns/m/0199v5">
 		<skos:prefLabel xml:lang="sr-el_prefLabel">Pasakalja</skos:prefLabel>
 		<skos:prefLabel xml:lang="nn_prefLabel">Passacaglia</skos:prefLabel>
 		<skos:prefLabel xml:lang="sr-ec_prefLabel">\\u041f\\u0430\\u0441\\u0430\\u043a\\u0430\\u0459\\u0430</skos:prefLabel>
@@ -1374,12 +1374,12 @@
 		<skos:prefLabel xml:lang="el_prefLabel">\\u03a0\\u03b1\\u03c3\\u03c3\\u03b1\\u03ba\\u03ac\\u03bb\\u03b9\\u03b1</skos:prefLabel>
 		<skos:prefLabel xml:lang="an_prefLabel">Pasavilla</skos:prefLabel>
 		<skos:prefLabel xml:lang="hu_prefLabel">Passacaglia</skos:prefLabel>
-		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q752329/>
+		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q752329"/>
 		<skos:definition xml:lang="en">Musical form written in triple metre</skos:definition>
 		<skos:inScheme rdf:resource="SKOS_CONCEPT"/>
 		</skos:Concept>
 
-	<skos:Concept rdf:about="http://rdf.freebase.com/ns//m/05_nm">
+	<skos:Concept rdf:about="http://rdf.freebase.com/ns/m/05_nm">
 		<skos:prefLabel xml:lang="nn_prefLabel">Pavane</skos:prefLabel>
 		<skos:prefLabel xml:lang="de_prefLabel">Pavane</skos:prefLabel>
 		<skos:prefLabel xml:lang="io_prefLabel">Pavano</skos:prefLabel>
@@ -1409,12 +1409,12 @@
 		<skos:prefLabel xml:lang="et_prefLabel">Pavaan</skos:prefLabel>
 		<skos:prefLabel xml:lang="ro_prefLabel">Pavan\\u0103</skos:prefLabel>
 		<skos:prefLabel xml:lang="hu_prefLabel">Pavane</skos:prefLabel>
-		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q180853/>
+		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q180853"/>
 		<skos:definition xml:lang="en">slow processional dance common in Europe during the 16th century</skos:definition>
 		<skos:inScheme rdf:resource="SKOS_CONCEPT"/>
 		</skos:Concept>
 
-	<skos:Concept rdf:about="http://rdf.freebase.com/ns//m/01ggrd">
+	<skos:Concept rdf:about="http://rdf.freebase.com/ns/m/01ggrd">
 		<skos:prefLabel xml:lang="sr-el_prefLabel">Poloneza</skos:prefLabel>
 		<skos:prefLabel xml:lang="nn_prefLabel">polonese</skos:prefLabel>
 		<skos:prefLabel xml:lang="de_prefLabel">Polonaise</skos:prefLabel>
@@ -1468,12 +1468,12 @@
 		<skos:prefLabel xml:lang="be-tarask_prefLabel">\\u043f\\u0430\\u043b\\u044f\\u043d\\u044d\\u0437</skos:prefLabel>
 		<skos:prefLabel xml:lang="ka_prefLabel">\\u10de\\u10dd\\u10da\\u10dd\\u10dc\\u10d4\\u10d6\\u10d8</skos:prefLabel>
 		<skos:prefLabel xml:lang="kk_prefLabel">\\u041f\\u043e\\u043b\\u043e\\u043d\\u0435\\u0437</skos:prefLabel>
-		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q203478/>
+		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q203478"/>
 		<skos:definition xml:lang="en">A polish dance characterized by the rhythm of one eighth note, two sixteenth notes, and four eighth notes, in triple time</skos:definition>
 		<skos:inScheme rdf:resource="SKOS_CONCEPT"/>
 		</skos:Concept>
 
-	<skos:Concept rdf:about="http://rdf.freebase.com/ns//m/01gl8_">
+	<skos:Concept rdf:about="http://rdf.freebase.com/ns/m/01gl8_">
 		<skos:prefLabel xml:lang="nn_prefLabel">preludium</skos:prefLabel>
 		<skos:prefLabel xml:lang="de_prefLabel">Pr\\u00e4ludium</skos:prefLabel>
 		<skos:prefLabel xml:lang="pt_prefLabel">Prel\\u00fadio</skos:prefLabel>
@@ -1515,12 +1515,12 @@
 		<skos:prefLabel xml:lang="ro_prefLabel">Preludiu</skos:prefLabel>
 		<skos:prefLabel xml:lang="hu_prefLabel">prel\\u00fadium</skos:prefLabel>
 		<skos:prefLabel xml:lang="zh-hk_prefLabel">\\u524d\\u594f\\u66f2</skos:prefLabel>
-		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q212148/>
+		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q212148"/>
 		<skos:definition xml:lang="en"></skos:definition>
 		<skos:inScheme rdf:resource="Chorale prelude"/>
 		</skos:Concept>
 
-	<skos:Concept rdf:about="http://rdf.freebase.com/ns//m/0197d_">
+	<skos:Concept rdf:about="http://rdf.freebase.com/ns/m/0197d_">
 		<skos:prefLabel xml:lang="nn_prefLabel">rekviem</skos:prefLabel>
 		<skos:prefLabel xml:lang="de_prefLabel">Requiem</skos:prefLabel>
 		<skos:prefLabel xml:lang="id_prefLabel">Requiem</skos:prefLabel>
@@ -1570,12 +1570,12 @@
 		<skos:prefLabel xml:lang="et_prefLabel">Reekviem</skos:prefLabel>
 		<skos:prefLabel xml:lang="en-gb_prefLabel">requiem</skos:prefLabel>
 		<skos:prefLabel xml:lang="ro_prefLabel">Recviem</skos:prefLabel>
-		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q51616/>
+		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q51616"/>
 		<skos:definition xml:lang="en"></skos:definition>
 		<skos:inScheme rdf:resource="Sacred music"/>
 		</skos:Concept>
 
-	<skos:Concept rdf:about="http://rdf.freebase.com/ns//m/01s97y">
+	<skos:Concept rdf:about="http://rdf.freebase.com/ns/m/01s97y">
 		<skos:prefLabel xml:lang="sr-el_prefLabel">Rapsodija</skos:prefLabel>
 		<skos:prefLabel xml:lang="de_prefLabel">Rhapsodie</skos:prefLabel>
 		<skos:prefLabel xml:lang="sr-ec_prefLabel">\\u0420\\u0430\\u043f\\u0441\\u043e\\u0434\\u0438\\u0458\\u0430</skos:prefLabel>
@@ -1618,12 +1618,12 @@
 		<skos:prefLabel xml:lang="be-tarask_prefLabel">\\u0420\\u0430\\u043f\\u0441\\u043e\\u0434\\u044b\\u044f</skos:prefLabel>
 		<skos:prefLabel xml:lang="zh-hk_prefLabel">\\u72c2\\u60f3\\u66f2</skos:prefLabel>
 		<skos:prefLabel xml:lang="kk_prefLabel">\\u0420\\u0430\\u043f\\u0441\\u043e\\u0434\\u0438\\u044f</skos:prefLabel>
-		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q464769/>
+		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q464769"/>
 		<skos:definition xml:lang="en"></skos:definition>
 		<skos:inScheme rdf:resource="SKOS_CONCEPT"/>
 		</skos:Concept>
 
-	<skos:Concept rdf:about="http://rdf.freebase.com/ns//m/03dkm4">
+	<skos:Concept rdf:about="http://rdf.freebase.com/ns/m/03dkm4">
 		<skos:prefLabel xml:lang="nn_prefLabel">Ricercar</skos:prefLabel>
 		<skos:prefLabel xml:lang="de_prefLabel">Ricercar</skos:prefLabel>
 		<skos:prefLabel xml:lang="pt_prefLabel">Ricercar</skos:prefLabel>
@@ -1652,12 +1652,12 @@
 		<skos:prefLabel xml:lang="ro_prefLabel">Ricercar</skos:prefLabel>
 		<skos:prefLabel xml:lang="hu_prefLabel">Ricercar</skos:prefLabel>
 		<skos:prefLabel xml:lang="zh-hk_prefLabel">\\u91cc\\u5207\\u723e\\u5361</skos:prefLabel>
-		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q746743/>
+		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q746743"/>
 		<skos:definition xml:lang="en">musical composition exploring a motif or developing an etude</skos:definition>
 		<skos:inScheme rdf:resource="SKOS_CONCEPT"/>
 		</skos:Concept>
 
-	<skos:Concept rdf:about="http://rdf.freebase.com/ns//m/01cg2x">
+	<skos:Concept rdf:about="http://rdf.freebase.com/ns/m/01cg2x">
 		<skos:prefLabel xml:lang="nn_prefLabel">rondo</skos:prefLabel>
 		<skos:prefLabel xml:lang="de_prefLabel">Rondo</skos:prefLabel>
 		<skos:prefLabel xml:lang="pt_prefLabel">Rond\\u00f3</skos:prefLabel>
@@ -1699,12 +1699,12 @@
 		<skos:prefLabel xml:lang="hu_prefLabel">rond\\u00f3</skos:prefLabel>
 		<skos:prefLabel xml:lang="li_prefLabel">Rondeau</skos:prefLabel>
 		<skos:prefLabel xml:lang="kk_prefLabel">\\u0420\\u043e\\u043d\\u0434\\u043e</skos:prefLabel>
-		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q13323/>
+		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q13323"/>
 		<skos:definition xml:lang="en"></skos:definition>
 		<skos:inScheme rdf:resource="SKOS_CONCEPT"/>
 		</skos:Concept>
 
-	<skos:Concept rdf:about="http://rdf.freebase.com/ns//m/0pfgt">
+	<skos:Concept rdf:about="http://rdf.freebase.com/ns/m/0pfgt">
 		<skos:prefLabel xml:lang="sr-el_prefLabel">Skerco</skos:prefLabel>
 		<skos:prefLabel xml:lang="nn_prefLabel">scherzo</skos:prefLabel>
 		<skos:prefLabel xml:lang="de_prefLabel">Scherzo</skos:prefLabel>
@@ -1747,12 +1747,12 @@
 		<skos:prefLabel xml:lang="zh-hk_prefLabel">\\u8a7c\\u8ae7\\u66f2</skos:prefLabel>
 		<skos:prefLabel xml:lang="scn_prefLabel">Babb\\u00ecu</skos:prefLabel>
 		<skos:prefLabel xml:lang="kk_prefLabel">\\u0421\\u043a\\u0435\\u0440\\u0446\\u043e</skos:prefLabel>
-		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q209534/>
+		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q209534"/>
 		<skos:definition xml:lang="en"></skos:definition>
 		<skos:inScheme rdf:resource="SKOS_CONCEPT"/>
 		</skos:Concept>
 
-	<skos:Concept rdf:about="http://rdf.freebase.com/ns//m/02rs58">
+	<skos:Concept rdf:about="http://rdf.freebase.com/ns/m/02rs58">
 		<skos:prefLabel xml:lang="ca_prefLabel">Siciliana</skos:prefLabel>
 		<skos:prefLabel xml:lang="ja_prefLabel">\\u30b7\\u30c1\\u30ea\\u30a2\\u30fc\\u30ca</skos:prefLabel>
 		<skos:prefLabel xml:lang="de_prefLabel">Siciliano</skos:prefLabel>
@@ -1770,11 +1770,11 @@
 		<skos:prefLabel xml:lang="hu_prefLabel">Siciliano</skos:prefLabel>
 		<skos:prefLabel xml:lang="uk_prefLabel">\\u0421\\u0438\\u0446\\u0438\\u043b\\u0456\\u0430\\u043d\\u0430</skos:prefLabel>
 		<skos:prefLabel xml:lang="nl_prefLabel">Sicilienne</skos:prefLabel>
-		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q637696/>
+		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q637696"/>
 		<skos:inScheme rdf:resource="SKOS_CONCEPT"/>
 		</skos:Concept>
 
-	<skos:Concept rdf:about="http://rdf.freebase.com/ns//m/0c0yr">
+	<skos:Concept rdf:about="http://rdf.freebase.com/ns/m/0c0yr">
 		<skos:prefLabel xml:lang="sr-el_prefLabel">Sonata</skos:prefLabel>
 		<skos:prefLabel xml:lang="nn_prefLabel">sonate</skos:prefLabel>
 		<skos:prefLabel xml:lang="de_prefLabel">Sonate</skos:prefLabel>
@@ -1845,12 +1845,12 @@
 		<skos:prefLabel xml:lang="nan_prefLabel">Sonata</skos:prefLabel>
 		<skos:prefLabel xml:lang="ka_prefLabel">\\u10e1\\u10dd\\u10dc\\u10d0\\u10e2\\u10d0</skos:prefLabel>
 		<skos:prefLabel xml:lang="kk_prefLabel">\\u0421\\u043e\\u043d\\u0430\\u0442\\u0430</skos:prefLabel>
-		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q131269/>
+		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q131269"/>
 		<skos:definition xml:lang="en"></skos:definition>
 		<skos:inScheme rdf:resource="Sonata da camera,Sonata da chiesa,Sonatina,Cello sonata,Viola sonata,Clarinet sonata,Flute sonata,Bassoon sonata,Violin sonata,Piano sonata"/>
 		</skos:Concept>
 
-	<skos:Concept rdf:about="http://rdf.freebase.com/ns//m/02tf2r">
+	<skos:Concept rdf:about="http://rdf.freebase.com/ns/m/02tf2r">
 		<skos:prefLabel xml:lang="ca_prefLabel">Sonata da chiesa</skos:prefLabel>
 		<skos:prefLabel xml:lang="nn_prefLabel">Sonata da chiesa</skos:prefLabel>
 		<skos:prefLabel xml:lang="ja_prefLabel">\\u6559\\u4f1a\\u30bd\\u30ca\\u30bf</skos:prefLabel>
@@ -1864,11 +1864,11 @@
 		<skos:prefLabel xml:lang="ru_prefLabel">\\u0426\\u0435\\u0440\\u043a\\u043e\\u0432\\u043d\\u0430\\u044f \\u0441\\u043e\\u043d\\u0430\\u0442\\u0430</skos:prefLabel>
 		<skos:prefLabel xml:lang="hu_prefLabel">Sonata da chiesa</skos:prefLabel>
 		<skos:prefLabel xml:lang="nl_prefLabel">Sonata da chiesa</skos:prefLabel>
-		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q543020/>
+		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q543020"/>
 		<skos:inScheme rdf:resource="Sonata"/>
 		</skos:Concept>
 
-	<skos:Concept rdf:about="http://rdf.freebase.com/ns//m/01b0rq">
+	<skos:Concept rdf:about="http://rdf.freebase.com/ns/m/01b0rq">
 		<skos:prefLabel xml:lang="nn_prefLabel">suite</skos:prefLabel>
 		<skos:prefLabel xml:lang="de_prefLabel">Suite</skos:prefLabel>
 		<skos:prefLabel xml:lang="pt_prefLabel">Su\\u00edte</skos:prefLabel>
@@ -1923,12 +1923,12 @@
 		<skos:prefLabel xml:lang="ba_prefLabel">\\u0421\\u044e\\u0438\\u0442\\u0430</skos:prefLabel>
 		<skos:prefLabel xml:lang="ro_prefLabel">Suit\\u0103</skos:prefLabel>
 		<skos:prefLabel xml:lang="kk_prefLabel">\\u0421\\u044e\\u0438\\u0442\\u0430</skos:prefLabel>
-		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q203005/>
+		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q203005"/>
 		<skos:definition xml:lang="en"></skos:definition>
 		<skos:inScheme rdf:resource="Orchestral suite"/>
 		</skos:Concept>
 
-	<skos:Concept rdf:about="http://rdf.freebase.com/ns//m/0132rr">
+	<skos:Concept rdf:about="http://rdf.freebase.com/ns/m/0132rr">
 		<skos:prefLabel xml:lang="de_prefLabel">sinfonische Dichtung</skos:prefLabel>
 		<skos:prefLabel xml:lang="pt_prefLabel">Poema sinf\\u00f4nico</skos:prefLabel>
 		<skos:prefLabel xml:lang="it_prefLabel">poema sinfonico</skos:prefLabel>
@@ -1969,12 +1969,12 @@
 		<skos:prefLabel xml:lang="ba_prefLabel">\\u0421\\u0438\\u043c\\u0444\\u043e\\u043d\\u0438\\u043a \\u043f\\u043e\\u044d\\u043c\\u0430</skos:prefLabel>
 		<skos:prefLabel xml:lang="ro_prefLabel">Poem simfonic</skos:prefLabel>
 		<skos:prefLabel xml:lang="zh-hk_prefLabel">\\u4ea4\\u97ff\\u8a69</skos:prefLabel>
-		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q271802/>
+		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q271802"/>
 		<skos:definition xml:lang="en"></skos:definition>
 		<skos:inScheme rdf:resource="SKOS_CONCEPT"/>
 		</skos:Concept>
 
-	<skos:Concept rdf:about="http://rdf.freebase.com/ns//m/0c0xr">
+	<skos:Concept rdf:about="http://rdf.freebase.com/ns/m/0c0xr">
 		<skos:prefLabel xml:lang="nn_prefLabel">symfoni</skos:prefLabel>
 		<skos:prefLabel xml:lang="de_prefLabel">Sinfonie</skos:prefLabel>
 		<skos:prefLabel xml:lang="io_prefLabel">Simfonio</skos:prefLabel>
@@ -2063,12 +2063,12 @@
 		<skos:prefLabel xml:lang="be-tarask_prefLabel">\\u0441\\u044b\\u043c\\u0444\\u043e\\u043d\\u0456\\u044f</skos:prefLabel>
 		<skos:prefLabel xml:lang="ka_prefLabel">\\u10e1\\u10d8\\u10db\\u10e4\\u10dd\\u10dc\\u10d8\\u10d0</skos:prefLabel>
 		<skos:prefLabel xml:lang="kk_prefLabel">\\u0421\\u0438\\u043c\\u0444\\u043e\\u043d\\u0438\\u044f</skos:prefLabel>
-		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q9734/>
+		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q9734"/>
 		<skos:definition xml:lang="en"></skos:definition>
 		<skos:inScheme rdf:resource="Choral symphony"/>
 		</skos:Concept>
 
-	<skos:Concept rdf:about="http://rdf.freebase.com/ns//m/01tdct">
+	<skos:Concept rdf:about="http://rdf.freebase.com/ns/m/01tdct">
 		<skos:prefLabel xml:lang="nn_prefLabel">toccata</skos:prefLabel>
 		<skos:prefLabel xml:lang="de_prefLabel">Toccata</skos:prefLabel>
 		<skos:prefLabel xml:lang="pt_prefLabel">Tocata</skos:prefLabel>
@@ -2110,12 +2110,12 @@
 		<skos:prefLabel xml:lang="ro_prefLabel">Toccat\\u0103</skos:prefLabel>
 		<skos:prefLabel xml:lang="hu_prefLabel">Toccata</skos:prefLabel>
 		<skos:prefLabel xml:lang="zh-hk_prefLabel">\\u6258\\u5361\\u5854\\u66f2</skos:prefLabel>
-		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q140544/>
+		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q140544"/>
 		<skos:definition xml:lang="en"></skos:definition>
 		<skos:inScheme rdf:resource="SKOS_CONCEPT"/>
 		</skos:Concept>
 
-	<skos:Concept rdf:about="http://rdf.freebase.com/ns//m/029nqc">
+	<skos:Concept rdf:about="http://rdf.freebase.com/ns/m/029nqc">
 		<skos:prefLabel xml:lang="nn_prefLabel">Variasjon i musikk</skos:prefLabel>
 		<skos:prefLabel xml:lang="de_prefLabel">Variation</skos:prefLabel>
 		<skos:prefLabel xml:lang="pt_prefLabel">Varia\\u00e7\\u00e3o</skos:prefLabel>
@@ -2151,12 +2151,12 @@
 		<skos:prefLabel xml:lang="el_prefLabel">\\u03a0\\u03b1\\u03c1\\u03b1\\u03bb\\u03bb\\u03b1\\u03b3\\u03ae</skos:prefLabel>
 		<skos:prefLabel xml:lang="ka_prefLabel">\\u10d5\\u10d0\\u10e0\\u10d8\\u10d0\\u10ea\\u10d8\\u10d0</skos:prefLabel>
 		<skos:prefLabel xml:lang="zh-hk_prefLabel">\\u8b8a\\u594f\\u66f2</skos:prefLabel>
-		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q214981/>
+		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q214981"/>
 		<skos:definition xml:lang="en"></skos:definition>
 		<skos:inScheme rdf:resource="SKOS_CONCEPT"/>
 		</skos:Concept>
 
-	<skos:Concept rdf:about="http://rdf.freebase.com/ns//m/089gq">
+	<skos:Concept rdf:about="http://rdf.freebase.com/ns/m/089gq">
 		<skos:prefLabel xml:lang="de_prefLabel">Zarzuela</skos:prefLabel>
 		<skos:prefLabel xml:lang="id_prefLabel">Zarzuela</skos:prefLabel>
 		<skos:prefLabel xml:lang="pt_prefLabel">zarzuela</skos:prefLabel>
@@ -2191,12 +2191,12 @@
 		<skos:prefLabel xml:lang="ro_prefLabel">Zarzuela</skos:prefLabel>
 		<skos:prefLabel xml:lang="hu_prefLabel">Zarzuela</skos:prefLabel>
 		<skos:prefLabel xml:lang="tl_prefLabel">Sarsuwela</skos:prefLabel>
-		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q148163/>
+		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q148163"/>
 		<skos:definition xml:lang="en"></skos:definition>
 		<skos:inScheme rdf:resource="SKOS_CONCEPT"/>
 		</skos:Concept>
 
-	<skos:Concept rdf:about="http://rdf.freebase.com/ns//m/05lls">
+	<skos:Concept rdf:about="http://rdf.freebase.com/ns/m/05lls">
 		<skos:prefLabel xml:lang="szl_prefLabel">Uopera</skos:prefLabel>
 		<skos:prefLabel xml:lang="jam_prefLabel">Apra</skos:prefLabel>
 		<skos:prefLabel xml:lang="sco_prefLabel">opera</skos:prefLabel>
@@ -2321,12 +2321,12 @@
 		<skos:prefLabel xml:lang="su_prefLabel">Opera</skos:prefLabel>
 		<skos:prefLabel xml:lang="tg_prefLabel">\\u041e\\u043f\\u0435\\u0440\\u0430</skos:prefLabel>
 		<skos:prefLabel xml:lang="wuu_prefLabel">\\u6b4c\\u5267</skos:prefLabel>
-		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q1344/>
+		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q1344"/>
 		<skos:definition xml:lang="en"></skos:definition>
 		<skos:inScheme rdf:resource="Music drama,Opera seria,Singspiel,Opera semi-seria"/>
 		</skos:Concept>
 
-	<skos:Concept rdf:about="http://rdf.freebase.com/ns//m/0197_n">
+	<skos:Concept rdf:about="http://rdf.freebase.com/ns/m/0197_n">
 		<skos:prefLabel xml:lang="nn_prefLabel">Messe i musikk</skos:prefLabel>
 		<skos:prefLabel xml:lang="de_prefLabel">Messe</skos:prefLabel>
 		<skos:prefLabel xml:lang="pt_prefLabel">Missa</skos:prefLabel>
@@ -2364,12 +2364,12 @@
 		<skos:prefLabel xml:lang="ro_prefLabel">Mis\\u0103</skos:prefLabel>
 		<skos:prefLabel xml:lang="zh-hk_prefLabel">\\u5f4c\\u6492\\u66f2</skos:prefLabel>
 		<skos:prefLabel xml:lang="li_prefLabel">M\\u00e8s</skos:prefLabel>
-		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q217295/>
+		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q217295"/>
 		<skos:definition xml:lang="en"></skos:definition>
 		<skos:inScheme rdf:resource="Cyclic mass,Parody mass,Paraphrase mass"/>
 		</skos:Concept>
 
-	<skos:Concept rdf:about="http://rdf.freebase.com/ns//m/01lq2n">
+	<skos:Concept rdf:about="http://rdf.freebase.com/ns/m/01lq2n">
 		<skos:prefLabel xml:lang="sk_prefLabel">air</skos:prefLabel>
 		<skos:prefLabel xml:lang="nn_prefLabel">air</skos:prefLabel>
 		<skos:prefLabel xml:lang="ja_prefLabel">\\u30a8\\u30fc\\u30eb (\\u30af\\u30e9\\u30b7\\u30c3\\u30af\\u97f3\\u697d)</skos:prefLabel>
@@ -2381,22 +2381,22 @@
 		<skos:prefLabel xml:lang="es_prefLabel">aire</skos:prefLabel>
 		<skos:prefLabel xml:lang="sv_prefLabel">Air (musik)</skos:prefLabel>
 		<skos:prefLabel xml:lang="nb_prefLabel">air (musikk)</skos:prefLabel>
-		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q406714/>
+		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q406714"/>
 		<skos:definition xml:lang="en">various song-like vocal or instrumental compositions</skos:definition>
 		<skos:inScheme rdf:resource="SKOS_CONCEPT"/>
 		</skos:Concept>
 
-	<skos:Concept rdf:about="http://rdf.freebase.com/ns//m/01x2rm">
+	<skos:Concept rdf:about="http://rdf.freebase.com/ns/m/01x2rm">
 		<skos:prefLabel xml:lang="nn_prefLabel">Trecento-madrigal</skos:prefLabel>
 		<skos:prefLabel xml:lang="de_prefLabel">Trecento-Madrigal</skos:prefLabel>
 		<skos:prefLabel xml:lang="fr_prefLabel">Madrigal du Trecento</skos:prefLabel>
 		<skos:prefLabel xml:lang="en_prefLabel">Madrigal</skos:prefLabel>
 		<skos:prefLabel xml:lang="sv_prefLabel">Trecento-madrigal</skos:prefLabel>
-		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q1361883/>
+		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q1361883"/>
 		<skos:inScheme rdf:resource="SKOS_CONCEPT"/>
 		</skos:Concept>
 
-	<skos:Concept rdf:about="http://rdf.freebase.com/ns//m/021dvj">
+	<skos:Concept rdf:about="http://rdf.freebase.com/ns/m/021dvj">
 		<skos:prefLabel xml:lang="cv_prefLabel">\\u0411\\u0430\\u043b\\u0435\\u0442</skos:prefLabel>
 		<skos:prefLabel xml:lang="ja_prefLabel">\\u30d0\\u30ec\\u30a8\\u97f3\\u697d</skos:prefLabel>
 		<skos:prefLabel xml:lang="ko_prefLabel">\\ubc1c\\ub808 \\uc74c\\uc545</skos:prefLabel>
@@ -2405,7 +2405,7 @@
 		<skos:prefLabel xml:lang="en_prefLabel">ballet</skos:prefLabel>
 		<skos:prefLabel xml:lang="es_prefLabel">ballet</skos:prefLabel>
 		<skos:prefLabel xml:lang="ru_prefLabel">\\u0411\\u0430\\u043b\\u0435\\u0442 (\\u043c\\u0443\\u0437\\u044b\\u043a\\u0430\\u043b\\u044c\\u043d\\u043e\\u0435 \\u043f\\u0440\\u043e\\u0438\\u0437\\u0432\\u0435\\u0434\\u0435\\u043d\\u0438\\u0435)</skos:prefLabel>
-		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q4851628/>
+		<skos:closeMatch rdf:resource="http://www.wikidata.org/entity/Q4851628"/>
 		<skos:definition xml:lang="en"></skos:definition>
 		<skos:inScheme rdf:resource="SKOS_CONCEPT"/>
 		</skos:Concept>
