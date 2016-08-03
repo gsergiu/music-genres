@@ -254,9 +254,11 @@ public class SearchWikidataForGenres extends BaseSkosTest {
 	 */
 	@Test
 	public void createSkosRdfFromCompositionCsvByWikidata() throws IOException {
-		
+				
     	List<Concept> concepts = getSkosUtils().retrieveCompositionConceptsFromCsv(
     			searchAnalysisFodler + COMPOSITIONS_CSV_FILE_PATH);    	
+
+    	int count = 0;
     	Iterator<Concept> itrConcepts = concepts.iterator();
     	while (itrConcepts.hasNext()) {
 			try {
@@ -271,14 +273,14 @@ public class SearchWikidataForGenres extends BaseSkosTest {
 					if (htmlResponse.contains(descriptionsFlag)) {
 						String[] parts = htmlResponse.split(HTML_BRACE + DESCRIPTIONS + HTML_BRACE); 
 						int LABELS_PART = 0;
-						int DESCRIPTION_PART = 1;
-						String description_begin_str = ":{" + SINGLE_HTML_BRACE + "en" + SINGLE_HTML_BRACE + ":{" + SINGLE_HTML_BRACE 
-								+ "language" + SINGLE_HTML_BRACE + ":" + SINGLE_HTML_BRACE + "en" + SINGLE_HTML_BRACE + "," + SINGLE_HTML_BRACE 
-								+ "value" + SINGLE_HTML_BRACE + ":" + SINGLE_HTML_BRACE;
-						String description_end_str = SINGLE_HTML_BRACE + "}";
-						String description = getSkosUtils().parseHtmlField(
-								parts[DESCRIPTION_PART], description_begin_str, description_end_str);
-						concept.addDefinitionInMapping(getSkosUtils().EN, description);
+//						int DESCRIPTION_PART = 1;
+//						String description_begin_str = ":{" + SINGLE_HTML_BRACE + "en" + SINGLE_HTML_BRACE + ":{" + SINGLE_HTML_BRACE 
+//								+ "language" + SINGLE_HTML_BRACE + ":" + SINGLE_HTML_BRACE + "en" + SINGLE_HTML_BRACE + "," + SINGLE_HTML_BRACE 
+//								+ "value" + SINGLE_HTML_BRACE + ":" + SINGLE_HTML_BRACE;
+//						String description_end_str = SINGLE_HTML_BRACE + "}";
+//						String description = getSkosUtils().parseHtmlField(
+//								parts[DESCRIPTION_PART], description_begin_str, description_end_str);
+//						concept.addDefinitionInMapping(getSkosUtils().EN, description);
 						htmlResponse = parts[LABELS_PART];
 					}
 					String titlesStr = "language" +  HTML_BRACE + ":"; 
@@ -292,7 +294,14 @@ public class SearchWikidataForGenres extends BaseSkosTest {
 							String language = data[LANGUAGE_POS];
 							String label = data[LABEL_POS];
 							concept.addPrefLabelInMapping(language, label);
+							String description = dbpediaApiClient.queryDBPedia(label);
+							if (description.length() > 1) {
+								concept.addDefinitionInMapping(getSkosUtils().EN, description);
+								count = count + 1;
+								break;
+							}
 						}
+						System.out.println("Calculating concept number: " + count);
 				    }
 				}
 			} catch (IOException e) {

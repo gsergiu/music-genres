@@ -4,10 +4,12 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStreamWriter;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -688,14 +690,15 @@ public class SkosUtils {
 		queryResultsFile.getParentFile().mkdirs();
 		BufferedWriter writer = null;
 		try {
-			writer = new BufferedWriter(new FileWriter(queryResultsFile));
+			writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(pathToAnalysisFolder + outputFileName), "UTF-8"));            
+//		    writer = new BufferedWriter(new FileWriter(queryResultsFile));
 			Iterator<String> itrOrigLines = originalLines.iterator();
 			int MID_POS = 0; 
 			int count = 0;
 			while (itrOrigLines.hasNext()) {
 				String line = itrOrigLines.next();
 				if (count == 0) {
-					writer.write(line + ";Wikidata ID;Description;\n");
+					writer.write(line + ";Wikidata ID;DBPedia ID;Description;\n");
 					count = count + 1;
 				} else {
 				    String description = "";
@@ -714,7 +717,17 @@ public class SkosUtils {
 							}
 					    }
 					}
-					writer.write(line + ";" + wikidataId + ";" + description + ";\n");
+					String DBPediaId = "";
+					String descriptionStr = "";
+					if (description.contains("#") && description.length() > 1) {
+						String[] descriptionParts = description.split("#");
+						int DBPEDIA_ID = 0;
+						int DESCRIPTION = 1;
+						DBPediaId = descriptionParts[DBPEDIA_ID];
+						descriptionStr = descriptionParts[DESCRIPTION];
+					} 
+					writer.write(line + ";" + wikidataId + ";" 
+							+ DBPediaId + ";" + descriptionStr + ";\n");
 				}
 			}
 		} finally {

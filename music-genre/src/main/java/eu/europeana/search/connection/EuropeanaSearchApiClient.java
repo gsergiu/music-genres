@@ -95,7 +95,8 @@ public class EuropeanaSearchApiClient {
         EuropeanaApi2Client europeanaClient = new EuropeanaApi2Client();		
         Api2QueryBuilder queryBuilder = europeanaClient.getQueryBuilder();
 		String portalUrl = "http://www.europeana.eu/portal/search?q=";
-				
+		
+//		String toEncode ="europeana_collectionName:(2059216_Ag_EU_eSOUNDS_1001_ONB)";
 		String toEncode ="(europeana_collectionName:(2059216_Ag_EU_eSOUNDS_1001_ONB) AND (title:\"" 
 				+ query+ "\" OR proxy_dc_description:\"" + query+ "\"))";
 		
@@ -267,6 +268,7 @@ public class EuropeanaSearchApiClient {
 				log.error("Error by mapping ONB - MIMO using Europeana Search API" + e.getMessage());
 	    		notEnrichedConceptList.add(concept);
 			}
+//		    break;
 	    }
 	
 	    // parse mid and Concept family and store it in CSV comma separated files
