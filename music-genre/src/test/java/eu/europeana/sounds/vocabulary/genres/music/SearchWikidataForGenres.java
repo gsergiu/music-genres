@@ -16,6 +16,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import eu.europeana.dbpedia.connection.DBPediaApiClient;
+import eu.europeana.sounds.definitions.model.WebAnnotationFields;
 import eu.europeana.sounds.definitions.model.concept.Concept;
 import eu.europeana.sounds.skos.BaseSkosTest;
 import eu.europeana.wikidata.connection.WikidataApiClient;
@@ -244,7 +245,19 @@ public class SearchWikidataForGenres extends BaseSkosTest {
 		     e.printStackTrace();
 		} 
 	}	
-
+	
+    public String addDBPediaDescription(Concept concept, String description) {
+		String dbpediaKey = getSkosUtils().parseDescriptionKey(description);
+		String descriptionStr = getSkosUtils().parseDescriptionStr(description);
+		if (dbpediaKey.length() > 1) { 
+			concept.addCloseMatchInMapping(getSkosUtils().DBPEDIA_ID_KEY, dbpediaKey);
+			if (descriptionStr.length() > 1) {
+				concept.addDefinitionInMapping(getSkosUtils().EN, descriptionStr);
+			}
+		}
+		return descriptionStr;
+    }
+    
 	
 	/**
 	 * Having a classical composition list in CSV format, we query Wikidata API 
@@ -273,14 +286,6 @@ public class SearchWikidataForGenres extends BaseSkosTest {
 					if (htmlResponse.contains(descriptionsFlag)) {
 						String[] parts = htmlResponse.split(HTML_BRACE + DESCRIPTIONS + HTML_BRACE); 
 						int LABELS_PART = 0;
-//						int DESCRIPTION_PART = 1;
-//						String description_begin_str = ":{" + SINGLE_HTML_BRACE + "en" + SINGLE_HTML_BRACE + ":{" + SINGLE_HTML_BRACE 
-//								+ "language" + SINGLE_HTML_BRACE + ":" + SINGLE_HTML_BRACE + "en" + SINGLE_HTML_BRACE + "," + SINGLE_HTML_BRACE 
-//								+ "value" + SINGLE_HTML_BRACE + ":" + SINGLE_HTML_BRACE;
-//						String description_end_str = SINGLE_HTML_BRACE + "}";
-//						String description = getSkosUtils().parseHtmlField(
-//								parts[DESCRIPTION_PART], description_begin_str, description_end_str);
-//						concept.addDefinitionInMapping(getSkosUtils().EN, description);
 						htmlResponse = parts[LABELS_PART];
 					}
 					String titlesStr = "language" +  HTML_BRACE + ":"; 
@@ -295,14 +300,27 @@ public class SearchWikidataForGenres extends BaseSkosTest {
 							String label = data[LABEL_POS];
 							concept.addPrefLabelInMapping(language, label);
 							String description = dbpediaApiClient.queryDBPedia(label);
-							if (description.length() > 1) {
-								concept.addDefinitionInMapping(getSkosUtils().EN, description);
-								count = count + 1;
-								break;
+							String dbpediaKey = getSkosUtils().parseDescriptionKey(description);
+							String descriptionStr = getSkosUtils().parseDescriptionStr(description);
+							if (dbpediaKey.length() > 1) { 
+								concept.addCloseMatchInMapping(getSkosUtils().DBPEDIA_ID_KEY, dbpediaKey);
+								if (descriptionStr.length() > 1) {
+									concept.addDefinitionInMapping(getSkosUtils().EN, descriptionStr);
+									count = count + 1;
+									break;
+								}
 							}
 						}
 						System.out.println("Calculating concept number: " + count);
 				    }
+				    if (!concept.getCloseMatch().containsKey(
+				    		getSkosUtils().DBPEDIA_ID_KEY + "_" + WebAnnotationFields.CLOSE_MATCH)) {
+						String description = dbpediaApiClient.queryDBPedia(
+								getSkosUtils().getNameByFreebaseUriFromOrigCsv(
+										concept.getUri(), COMPOSITIONS_CSV_FILE_PATH, searchAnalysisFodler));
+						addDBPediaDescription(concept, description);
+				    }
+				    	
 				}
 			} catch (IOException e) {
 				System.out.println(e.getMessage());

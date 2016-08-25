@@ -54,6 +54,7 @@ public class SkosUtils {
 	String CLOSE_MATCH_PREDICATE_URL = "http://www.w3.org/2004/02/skos/core#closeMatch";
 	String RDF_RES_FILE_NAME = "model.rdf";
 	public String WIKIDATA_ID_KEY = "wikidataId";
+	public String DBPEDIA_ID_KEY = "dbpediaId";
 	public String EN = "en";
 	
 	
@@ -612,13 +613,18 @@ public class SkosUtils {
 				if (currentConcept.getPrefLabel() != null) {
 					for (Map.Entry<String, String> prefLabel : currentConcept.getPrefLabel().entrySet()) {
 						prefLabelRdf = prefLabelRdf + "\t\t<skos:prefLabel xml:lang=\"" 
-							+ prefLabel.getKey() + "\">" + prefLabel.getValue() + "</skos:prefLabel>\n";
+							+ prefLabel.getKey().replace("_prefLabel", "") + "\">" + prefLabel.getValue() + "</skos:prefLabel>\n";
 					}
 				}
 				String closeMatchRdf = "";
-				if (currentConcept.getCloseMatch() != null) 
+				if (currentConcept.getCloseMatch() != null) {
 					closeMatchRdf = "\t\t<skos:closeMatch rdf:resource=\"http://www.wikidata.org/entity/Q" 
-						+ currentConcept.getCloseMatch().get(WIKIDATA_ID_KEY + "_" + WebAnnotationFields.CLOSE_MATCH) +"\"/>\n";
+							+ currentConcept.getCloseMatch().get(WIKIDATA_ID_KEY + "_" + WebAnnotationFields.CLOSE_MATCH) +"\"/>\n";
+					String dbpediaKey = DBPEDIA_ID_KEY + "_" + WebAnnotationFields.CLOSE_MATCH;
+				    if (currentConcept.getCloseMatch().containsKey(dbpediaKey))
+				    	closeMatchRdf = closeMatchRdf + "\t\t<skos:closeMatch rdf:resource=\"" 
+				    			+ currentConcept.getCloseMatch().get(dbpediaKey) +"\"/>\n";
+				}
 				String definitionRdf = "";
 				if (currentConcept.getDefinition() != null) 
 					definitionRdf = "\t\t<skos:definition xml:lang=\"en\">" 
@@ -635,7 +641,7 @@ public class SkosUtils {
 						+ closeMatchRdf
 						+ definitionRdf
 						+ inSchemeRdf
-    					+ "\t\t</skos:Concept>\n\n";
+    					+ "\t</skos:Concept>\n\n";
 				writer.write(conceptRdf);
 			}
 			String end = "\n\n</rdf:RDF>";
@@ -653,12 +659,77 @@ public class SkosUtils {
 	}
 	
 	
+	public String parseDescriptionStr(String description) {
+		String descriptionStr = "";
+		if (description.length() > 1) {
+			if (description.contains("#") && description.length() > 1) {
+				String[] descriptionParts = description.split("#");
+				int DESCRIPTION_ID = 1;
+				descriptionStr = descriptionParts[DESCRIPTION_ID];
+			} else {
+				descriptionStr = description;
+			}
+		}
+		return descriptionStr;
+	}
+
+	
+	public String parseDescriptionKey(String description) {
+		String descriptionKey = "";
+		if (description.length() > 1) {
+			if (description.contains("#") && description.length() > 1) {
+				String[] descriptionParts = description.split("#");
+				int DBPEDIA_ID = 0;
+				descriptionKey = descriptionParts[DBPEDIA_ID];
+			}
+		}
+		return descriptionKey;
+	}
+	
+    
+	public String getNameByFreebaseUriFromOrigCsv(String freebaseUri, String inputFileName, String pathToAnalysisFolder) {
+
+		String name = "";
+		
+		int MID_POS = 0; 
+		int NAME_POS = 2; 
+		String splitBy = ";";
+
+		BufferedReader br;
+		try {
+			br = new BufferedReader(new FileReader(pathToAnalysisFolder + inputFileName));
+			br.readLine();	// header line
+			String line = "";
+			while ((line = br.readLine()) !=null) {
+			    String[] b = line.split(splitBy);
+			    String freebaseId = "";
+			    if (b.length >= 1 && StringUtils.isNotEmpty(b[MID_POS])) {
+			    	freebaseId = b[MID_POS];
+					if (freebaseUri.equals(freebaseId)) {
+						name = b[NAME_POS];
+						break;
+					}
+			    }
+			}
+		    br.close();
+		} catch (FileNotFoundException e1) {
+			log.error("File not found. " + e1.getMessage());
+			e1.printStackTrace();
+		} catch (IOException e) {
+			log.error("IO error. " + e.getMessage());
+			e.printStackTrace();
+		}
+		return name;
+	}
+	
+	
 	/**
 	 * This method extends existing composition CSV file by description and Wikidata ID.
 	 * @param concepts The list of concepts
 	 * @param inputFilePath The original CSV file
 	 */
-	public boolean generateCsvForConcepts(List<Concept> concepts, String inputFileName, String outputFileName, String pathToAnalysisFolder) 
+	public boolean generateCsvForConcepts(List<Concept> concepts, String inputFileName, String outputFileName
+											, String pathToAnalysisFolder) 
 				throws IOException {
 			
 		boolean res = false;
@@ -691,7 +762,6 @@ public class SkosUtils {
 		BufferedWriter writer = null;
 		try {
 			writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(pathToAnalysisFolder + outputFileName), "UTF-8"));            
-//		    writer = new BufferedWriter(new FileWriter(queryResultsFile));
 			Iterator<String> itrOrigLines = originalLines.iterator();
 			int MID_POS = 0; 
 			int count = 0;
@@ -717,17 +787,8 @@ public class SkosUtils {
 							}
 					    }
 					}
-					String DBPediaId = "";
-					String descriptionStr = "";
-					if (description.contains("#") && description.length() > 1) {
-						String[] descriptionParts = description.split("#");
-						int DBPEDIA_ID = 0;
-						int DESCRIPTION = 1;
-						DBPediaId = descriptionParts[DBPEDIA_ID];
-						descriptionStr = descriptionParts[DESCRIPTION];
-					} 
 					writer.write(line + ";" + wikidataId + ";" 
-							+ DBPediaId + ";" + descriptionStr + ";\n");
+							+ parseDescriptionKey(description) + ";" + parseDescriptionStr(description) + ";\n");
 				}
 			}
 		} finally {
