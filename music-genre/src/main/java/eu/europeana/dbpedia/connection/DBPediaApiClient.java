@@ -144,6 +144,58 @@ public class DBPediaApiClient {
     }
 	    
 	    
+    /**
+     * Sample query: "http://dbpedia.org/page/Chicago_blues"
+     * @param label
+     * @return DBPedia response
+     */
+    public String queryDBPediaByLanguage(String label, String language) {
+    	
+    	String res = "";
+    	
+        ParameterizedSparqlString qs = new ParameterizedSparqlString( "" +
+                "prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#>\n" +
+                "\n" +
+                "select ?resource ?description where {\n" +
+//                "	  ?resource rdfs:label \"" + label + "\"@en .\n" +
+				"     ?resource rdfs:label ?label .\n" +
+                "	  ?resource rdfs:comment ?description .\n" +
+                "	  FILTER (LANG(?description) = '" + language + "') .\n" + 
+//                "select ?resource where {\n" +
+//                "  ?resource rdfs:label ?label\n" +
+                "}" );
+
+        Literal labelLiteral = ResourceFactory.createLangLiteral( label, language );
+        qs.setParam("label", labelLiteral);
+
+        System.out.println( qs );
+
+        QueryExecution exec = QueryExecutionFactory.sparqlService("http://dbpedia.org/sparql", qs.asQuery());
+
+        // Normally you'd just do results = exec.execSelect(), but I want to 
+        // use this ResultSet twice, so I'm making a copy of it.  
+        ResultSet results = ResultSetFactory.copyResults( exec.execSelect() );
+
+        while ( results.hasNext() ) {
+            // As RobV pointed out, don't use the `?` in the variable
+            // name here. Use *just* the name of the variable.
+//            System.out.println( results.next().get( "resource" ));
+        	QuerySolution resQs = results.next();
+            res = res + resQs.get( "resource" ) + "#";
+            res = res + resQs.get( "description" );
+//            System.out.println( resQs.get( "resource" ));
+//            System.out.println( resQs.get( "description" ));
+        }
+
+        // A simpler way of printing the results.
+        ResultSetFormatter.out( results );
+//        return results.toString();
+        if (res.equals(""))
+        	res = "#";
+        return res;
+    }
+	    
+	    
 	/**
 	 * Modifies the DBPedia API URI for JSON calls. The default value points
 	 * to the "https://wdq.wmflabs.org/api?"

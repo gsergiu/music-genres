@@ -552,7 +552,7 @@ public class FreebaseApiClient {
 			writer.write(jsonResult);
 
 			// Load results object from JSON
-			if (!jsonResult.contains("error") && !jsonResult.contains("\"result\": []")) {
+			if (!jsonResult.contains("error") && !jsonResult.contains("Not Found") && !jsonResult.contains("\"result\": []")) {
 			    Gson gson = new Gson();
 	//		    instrument = gson.fromJson(jsonResult, BaseInstrument.class);
 				JsonElement element = gson.fromJson (jsonResult, JsonElement.class);
@@ -679,12 +679,22 @@ public class FreebaseApiClient {
 	 */
 	public int mapONBInstruments() throws IOException {
 		
+		return mapONBInstruments(ONB_INSTRUMENTS_FILE, INSTRUMENTS_FILE_EXTENDED);
+	}
+
+	
+	/**
+	 * This method maps ONB music instrument terms to Freebase.
+	 * @throws IOException
+	 */
+	public int mapONBInstruments(String inputFilePath, String outputFilePath) throws IOException {
+		
 		int mappedInstrumetCount = 0;
 		
 		List<Instrument> enrichedInstrumentList = new ArrayList<Instrument>();
 
 		// read ONB instrument list
-		File queryResultsFile = getONBInstrumentsFile(ONB_INSTRUMENTS_FILE);
+		File queryResultsFile = getONBInstrumentsFile(inputFilePath);
 		
 		// create parent dirs
 		queryResultsFile.getParentFile().mkdirs();
@@ -704,7 +714,7 @@ public class FreebaseApiClient {
 		}
 		
 	    // parse mid and instrument family and store it in CSV comma separated files
-	    generateInstrumentCsvFile(enrichedInstrumentList, INSTRUMENTS_FILE_EXTENDED);
+	    generateInstrumentCsvFile(enrichedInstrumentList, outputFilePath);
 
     	mappedInstrumetCount = enrichedInstrumentList.size();
 

@@ -18,6 +18,7 @@ import com.google.gson.JsonParser;
 import eu.europeana.dbpedia.connection.DBPediaApiClient;
 import eu.europeana.sounds.definitions.model.WebAnnotationFields;
 import eu.europeana.sounds.definitions.model.concept.Concept;
+import eu.europeana.sounds.definitions.model.vocabulary.MatchTypes;
 import eu.europeana.sounds.skos.BaseSkosTest;
 import eu.europeana.wikidata.connection.WikidataApiClient;
 
@@ -31,7 +32,11 @@ public class SearchWikidataForGenres extends BaseSkosTest {
 	String searchDBPediaAnalysisFodler = "./src/test/resources/dbpedia-analysis/";
 	String MAPPING_FILE = "mapping.csv";
 
+	public final String VARIATIONS_INSTRUMENT_LIST_FILE_PATH = "/Variations instruments of the ONB.csv";
+	public final String INSTRUMENTS_FILE_EXTENDED = "/Enriched variations instruments of the ONB list.csv";
+
 	public final String COMPOSITIONS_CSV_FILE_PATH = "/classical_composition_types.csv";
+	public final String ENRICHED_INSTRUMENTS_CSV_FILE_PATH = "/enriched_insturments.csv";
 	public final String ENRICHED_COMPOSITIONS_CSV_FILE_PATH = "/enriched_classical_composition_types.csv";
 	public final String COMPOSITIONS_SKOS_FILE_PATH = "/compositions_SKOS.xml";
 	public final String DUMP_FILE = "/fb2w.nt";
@@ -265,7 +270,7 @@ public class SearchWikidataForGenres extends BaseSkosTest {
 	 * enriched by Description and Wikidata ID and preferred labels in different languages. 
 	 * @throws IOException
 	 */
-	@Test
+//	@Test
 	public void createSkosRdfFromCompositionCsvByWikidata() throws IOException {
 				
     	List<Concept> concepts = getSkosUtils().retrieveCompositionConceptsFromCsv(
@@ -335,6 +340,48 @@ public class SearchWikidataForGenres extends BaseSkosTest {
 		assertTrue(res);
 	}
 	
+	
+	/**
+	 * 
+	 * VARIATIONS INSTRUMENTS LIST
+	 * 
+	 * Having an ONB variations instrument list we match instrument data by music genre DDB IDs, 
+	 * and enrich instrument list in CSV format, enriched matches. 
+	 * @throws IOException
+	 */
+	@Test
+	public void matchONBInstrumentsVariations() throws IOException {
+		
+		List<Concept> concepts = getSkosUtils().retrieveConceptWithUriFromFile(
+				searchAnalysisFodler + VARIATIONS_INSTRUMENT_LIST_FILE_PATH);		
+		
+    	int count = 0;
+    	Iterator<Concept> itrConcepts = concepts.iterator();
+    	while (itrConcepts.hasNext()) {
+			Concept concept = itrConcepts.next();
+			String label = concept.getUri();
+	    	
+			if(label != null && label.length() > 0) {
+				String description = dbpediaApiClient.queryDBPediaByLanguage(label, getSkosUtils().DE);
+				String dbpediaKey = getSkosUtils().parseDescriptionKey(description);
+				String descriptionStr = getSkosUtils().parseDescriptionStr(description);
+				if (dbpediaKey.length() > 1) { 
+					concept.addCloseMatchInMapping(getSkosUtils().DBPEDIA_ID_KEY, dbpediaKey);
+					if (descriptionStr.length() > 1) {
+						concept.addDefinitionInMapping(getSkosUtils().DE, descriptionStr);
+						addDBPediaDescription(concept, description);
+						count = count + 1;
+//						break;
+					}
+				}
+			}
+			System.out.println("Calculating concept number: " + count);
+		}
+    	
+    	boolean res = getSkosUtils().generateCsvForConcepts(concepts, VARIATIONS_INSTRUMENT_LIST_FILE_PATH,
+				INSTRUMENTS_FILE_EXTENDED, searchAnalysisFodler);	    	    	
+		assertTrue(res);
+	}
 	
 	
 }

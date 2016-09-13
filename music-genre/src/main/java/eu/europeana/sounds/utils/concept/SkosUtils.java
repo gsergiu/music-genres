@@ -56,6 +56,7 @@ public class SkosUtils {
 	public String WIKIDATA_ID_KEY = "wikidataId";
 	public String DBPEDIA_ID_KEY = "dbpediaId";
 	public String EN = "en";
+	public String DE = "de";
 	
 	
     /**
@@ -214,6 +215,57 @@ public class SkosUtils {
 				    	concept.addNarrowMatchInMapping(id, b[NARROW_POS]);
 				    if (!conceptExists(concept, res))
 				    		res.add(concept);
+			    }
+			}
+		    br.close();
+		} catch (FileNotFoundException e1) {
+			log.error("File not found. " + e1.getMessage());
+			e1.printStackTrace();
+		} catch (IOException e) {
+			log.error("IO error. " + e.getMessage());
+			e.printStackTrace();
+		}
+
+		return res;
+	}    
+
+    
+    /**
+     * This method creates concepts with URI based on instrument title.
+     * @param inputFileName
+     * @return A collection of the Concept objects
+     */
+    public List<Concept> retrieveConceptWithUriFromFile(String inputFileName) {
+	        
+		List<Concept> res = new ArrayList<Concept>();
+		
+		int URI_POS = 0; 
+    	String splitBy = ";";
+	    
+	    BufferedReader br;
+		try {
+			br = new BufferedReader(new FileReader(inputFileName));
+			String line = br.readLine();	
+//			boolean isVariation = false;
+			while ((line = br.readLine()) !=null) {
+			    String[] b = line.split(splitBy);
+			    if (b.length >= 1 && StringUtils.isNotEmpty(b[URI_POS])) {
+			    	String label = b[URI_POS];
+//			    	if (uri.equals("Div.")) {
+//			    		isVariation = true;
+//			    		continue;
+//			    	}
+//			    	if (isVariation) {
+//			    		if (uri.equals("")) break;
+			    	String uri = "http://localhost/DDB/music+genres/" + label.replace(" ", "+");
+//			    	uri = uri.replace(" ", "");
+				    	Concept concept = getConcept(uri, res);
+				    	concept.setUri(uri);
+					    if (StringUtils.isNotEmpty(label))
+					    	concept.addPrefLabelInMapping(uri, label);
+					    if (!conceptExists(concept, res))
+					    		res.add(concept);
+//			    	}
 			    }
 			}
 		    br.close();
@@ -661,7 +713,7 @@ public class SkosUtils {
 	
 	public String parseDescriptionStr(String description) {
 		String descriptionStr = "";
-		if (description.length() > 1) {
+		if (description != null && description.length() > 1) {
 			if (description.contains("#") && description.length() > 1) {
 				String[] descriptionParts = description.split("#");
 				int DESCRIPTION_ID = 1;
@@ -676,7 +728,7 @@ public class SkosUtils {
 	
 	public String parseDescriptionKey(String description) {
 		String descriptionKey = "";
-		if (description.length() > 1) {
+		if (description != null && description.length() > 1) {
 			if (description.contains("#") && description.length() > 1) {
 				String[] descriptionParts = description.split("#");
 				int DBPEDIA_ID = 0;
