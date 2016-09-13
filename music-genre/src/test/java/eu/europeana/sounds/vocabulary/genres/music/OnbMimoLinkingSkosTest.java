@@ -48,7 +48,12 @@ public class OnbMimoLinkingSkosTest extends BaseSkosTest {
 	public final String VARIATIONS_INSTRUMENT_LIST_FILE_PATH =
 			"C:/git/music-genres/music-genre/src/test/resources/MIMO/onb/Variations instruments of the ONB.csv";
 	public final String ENRICHED_INSTRUMENT_VARIATIONS_FILE = 
-			"C:/git/music-genres/music-genre/src/test/resources/MIMO/onb/Enriched instrument varioations of the ONB-MIMO list.csv";
+			"C:/git/music-genres/music-genre/src/test/resources/MIMO/onb/Enriched instrument variations of the ONB-MIMO list.csv";
+	
+	public final String SHORTENINGS_INSTRUMENT_LIST_FILE_PATH =
+			"C:/git/music-genres/music-genre/src/test/resources/MIMO/onb/Shortenings for instruments of the ONB.csv";
+	public final String ENRICHED_INSTRUMENT_SHORTENINGS_FILE = 
+			"C:/git/music-genres/music-genre/src/test/resources/MIMO/onb/Enriched instrument shortenings of the ONB-MIMO list.csv";
 	
 
 	EuropeanaSearchApiClient apiClient = new EuropeanaSearchApiClient();
@@ -88,12 +93,31 @@ public class OnbMimoLinkingSkosTest extends BaseSkosTest {
 	 * and enrich instrument list in CSV format, enriched matches. 
 	 * @throws IOException
 	 */
-	@Test
+//	@Test
 	public void matchONBInstrumentsVariations() throws IOException {
 		
 		List<Concept> mimoConceptList = getSkosUtils().retrieveConceptWithUriFromFile(VARIATIONS_INSTRUMENT_LIST_FILE_PATH);
 		
 		int numberOfMappedInstruments = apiClient.mapOnbMimo(mimoConceptList, ENRICHED_INSTRUMENT_VARIATIONS_FILE);
+		
+		assertTrue(numberOfMappedInstruments > 0);
+	}
+	
+	
+	/**
+	 * 
+	 * SHORTENINGS FOR INSTRUMENT LIST
+	 * 
+	 * Having an ONB shortenings instrument list we match instrument data by music genre DDB IDs, 
+	 * and enrich instrument list in CSV format, enriched matches. 
+	 * @throws IOException
+	 */
+	@Test
+	public void matchONBInstrumentsShortenings() throws IOException {
+		
+		List<Concept> mimoConceptList = getSkosUtils().retrieveConceptWithUriFromFile(SHORTENINGS_INSTRUMENT_LIST_FILE_PATH);
+		
+		int numberOfMappedInstruments = apiClient.mapOnbMimo(mimoConceptList, ENRICHED_INSTRUMENT_SHORTENINGS_FILE);
 		
 		assertTrue(numberOfMappedInstruments > 0);
 	}
