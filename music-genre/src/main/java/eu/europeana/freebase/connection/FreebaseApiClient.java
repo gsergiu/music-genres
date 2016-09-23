@@ -11,12 +11,15 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Type;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
@@ -721,4 +724,66 @@ public class FreebaseApiClient {
 	    return mappedInstrumetCount;
 	}
 
+	
+	/*****************************
+	 *       FREEBASE DUMP       *
+	 ****************************/
+	
+	/**
+	 * e.g. <http://rdf.freebase.com/ns/m.01009ly3>	<http://rdf.freebase.com/ns/common.topic.description>
+	 * @param query
+	 * @param dumpFile
+	 * @return
+	 * @throws IOException
+	 */
+	public Map<String, String> queryDescriptionFromDump(List<String> queryList, String dumpFile)
+			throws IOException {
+		
+		Map<String, String> res = new HashMap<String, String>();
+		
+		PrintWriter out = new PrintWriter("output.txt");
+			
+		// Get current time
+		long start = System.currentTimeMillis();
+		
+		int DESCRIPTION_POS = 2;
+    	String splitBy = "\t";	    
+	    BufferedReader br;
+		try {
+			br = new BufferedReader(new FileReader(dumpFile));
+			String line = "";
+			while ((line = br.readLine()) !=null) {
+				for (String query : queryList) {
+					if (line.contains("/" + query + ">")) { // additional syntax to avoid similar IDs
+						System.out.println("query: " + query + ", line: " + line);
+						out.println("query: " + query + ", line: " + line);
+						if (line.contains("description")) {
+						    String[] b = line.split(splitBy);
+						    res.put(query, b[DESCRIPTION_POS]);
+						}
+					}
+				}
+			}
+		    br.close();
+		    out.close();
+		} catch (FileNotFoundException e1) {
+			log.error("File not found. " + e1.getMessage());
+			e1.printStackTrace();
+		} catch (IOException e) {
+			log.error("IO error. " + e.getMessage());
+			e.printStackTrace();
+		}
+
+		// Get elapsed time in milliseconds
+		long elapsedTimeMillis = System.currentTimeMillis()-start;
+
+		// Get elapsed time in minutes
+		float elapsedTimeMin = elapsedTimeMillis/(60*1000F);
+
+		System.out.println("Calculation time: " + elapsedTimeMin);
+		
+		return res;
+	}
+	
+	
 }

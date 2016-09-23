@@ -1,10 +1,15 @@
 package eu.europeana.sounds.vocabulary.genres.music;
 
+import static org.junit.Assert.assertTrue;
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import org.junit.Test;
@@ -15,9 +20,16 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import eu.europeana.freebase.connection.FreebaseApiClient;
+import eu.europeana.sounds.definitions.model.WebAnnotationFields;
+import eu.europeana.sounds.definitions.model.concept.Concept;
+import eu.europeana.sounds.skos.BaseSkosTest;
 
-public class SearchFreebaseForGenres {
+public class SearchFreebaseForGenres extends BaseSkosTest {
 
+	public final String DUMP_FILE = "E:/freebase-rdf-latest/freebase-rdf-latest";
+	public final String ONLY_COMPOSITIONS_CSV_FILE_PATH = "/only_classical_composition_types.csv";
+	public final String ENRICHED_ONLY_COMPOSITIONS_CSV_FILE_PATH = "/enriched_only_classical_composition_types.csv";
+	
 	private String missingGenres = "Albazo,Aliwen,Ambient jazz,Arabesk,Ayarachi,Ayataki,Bailecito,Balada,"
 			+ "Ballads,Ballet,Beguine,Boli,Bomba,Bomba del Chota,Cachua,Carnaval,Carnavalito,Cha-cha-chá,Chakri,"
 			+ "Chamamé,Charleston,Chôro,Concert,Danzón,Dastgah,Epics,Festejo,Filin,Folk Blues,Forró,Fox incaico,"
@@ -55,7 +67,7 @@ public class SearchFreebaseForGenres {
 	}
 
 	// parse search results
-	@Test
+//	@Test
 	public void parseSearchResults() {
 		String[] queries = missingGenres.split(",");
 		String query = null;
@@ -202,4 +214,46 @@ public class SearchFreebaseForGenres {
 		return res;
 	}
 
+	
+	/**
+	 * Having a classical composition list in CSV format, we query Freebase dump 
+	 * for additional data, store this data and extend composition list in CSV format, 
+	 * enriched by Description, Freebase ID and preferred labels in different languages. 
+	 * @throws IOException
+	 */
+	@Test
+	public void retrieveDescriptionsFromDump() throws IOException {
+				
+    	List<Concept> concepts = getSkosUtils().retrieveCompositionConceptsFromCsv(
+    			searchAnalysisFodler + ONLY_COMPOSITIONS_CSV_FILE_PATH);    	
+
+    	List<String> freebaseIdList = new ArrayList<String>();
+    	Iterator<Concept> itrConcepts = concepts.iterator();
+    	while (itrConcepts.hasNext()) {
+			Concept concept = itrConcepts.next();
+			String freebaseId = concept.getUri();
+			System.out.println("freebaseId from CSV file: " + freebaseId);
+			String queryFreebaseId = getSkosUtils().freebaseIdToFileName(freebaseId);
+			freebaseIdList.add(queryFreebaseId);
+		}
+
+		Map<String, String> mapFreebaseIdToDescription = apiClient.queryDescriptionFromDump(freebaseIdList, DUMP_FILE);		    	
+    	while (itrConcepts.hasNext()) {
+			Concept concept = itrConcepts.next();
+			String freebaseId = concept.getUri();
+			String queryFreebaseId = getSkosUtils().freebaseIdToFileName(freebaseId);
+			for (Map.Entry<String, String> entry : mapFreebaseIdToDescription.entrySet()) { 
+				if (queryFreebaseId.equals(entry.getKey()) && entry.getValue().length() > 1) {
+					concept.addDefinitionInMapping(getSkosUtils().EN, entry.getValue());
+					System.out.println("Add Key = " + entry.getKey() + ", Value = " + entry.getValue()); 
+				}
+			}
+		}
+		
+		boolean res = getSkosUtils().generateCsvForConcepts(concepts, ONLY_COMPOSITIONS_CSV_FILE_PATH,
+				ENRICHED_ONLY_COMPOSITIONS_CSV_FILE_PATH, searchAnalysisFodler);	    	    	
+		assertTrue(res);
+	}
+	
+	
 }
