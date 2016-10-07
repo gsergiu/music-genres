@@ -116,6 +116,8 @@ public class EuropeanaSearchApiClient {
 	    	concept.setUri(queryConcept.getUri());
 	    	concept.setPrefLabel(queryConcept.getPrefLabel());
 	    	concept.setAltLabel(queryConcept.getAltLabel());
+	    	concept.setExactMatch(queryConcept.getExactMatch());
+	    	concept.setBroadMatch(queryConcept.getBroadMatch());
 	    	List<String> titleList = new ArrayList<String>(Arrays.asList(pair.getValue().split(";")));
 	    	if (titleList != null && titleList.size() > 0)
 	    		concept.setTitle(titleList);
@@ -139,16 +141,24 @@ public class EuropeanaSearchApiClient {
 	}
     
 	
+    public void generateSearchConceptCsvFile(List<Concept> conceptList, String sFileName) {
+    	generateSearchConceptCsvFile(conceptList, sFileName, false);
+    }
+    
+    
     /**
      * Headers: Searched label; Skos_resource;title; description;europeanaId;
      * @param conceptList
      * @param sFileName
+     * @param withMatches Add matches to the output file
      */
-    public void generateSearchConceptCsvFile(List<Concept> conceptList, String sFileName) {
+    public void generateSearchConceptCsvFile(List<Concept> conceptList, String sFileName, boolean withMatches) {
 
+    	String EN_EXACT_MATCH_ID = "en_exactMatch";
+    	String EN_BROAD_MATCH_ID = "en_broadMatch";
+    	
     	try {
     		FileWriter writer = new FileWriter(sFileName);
-//    		FileWriter writer = new FileWriter(ONB_INSTRUMENTS_FOLDER + "/" + sFileName);
 
     		writer.append("Searched label");
     		writer.append(CSV_DELIMITER);
@@ -159,12 +169,18 @@ public class EuropeanaSearchApiClient {
     		writer.append("description");
     		writer.append(CSV_DELIMITER);
     		writer.append("europeanaId");
+    		if (withMatches) {
+	    		writer.append(CSV_DELIMITER);
+	    		writer.append("exactMatch");
+	    		writer.append(CSV_DELIMITER);
+	    		writer.append("broadMatch");
+    		}
     		writer.append('\n');
 
     		Iterator<Concept> itr = conceptList.iterator();
     		while (itr.hasNext()) {
     			MimoMappingView concept = (MimoMappingView) itr.next();
-    			writer.append(concept.getPrefLabel().values().toString());
+    			writer.append(concept.getPrefLabel().values().toString().replace("[", "").replace("]", ""));
         		writer.append(CSV_DELIMITER);
     			writer.append(concept.getUri());
         		writer.append(CSV_DELIMITER);
@@ -173,6 +189,14 @@ public class EuropeanaSearchApiClient {
         		writer.append(StringUtils.join(concept.getDcDescription(), ','));
         		writer.append(CSV_DELIMITER);
         		writer.append(concept.getEuropeanaId());
+        		if (withMatches) {
+	        		writer.append(CSV_DELIMITER);
+	        		if (concept.getExactMatch() != null)
+	        			writer.append(concept.getExactMatch().get(EN_EXACT_MATCH_ID));
+	        		writer.append(CSV_DELIMITER);
+	        		if (concept.getBroadMatch() != null)
+	        			writer.append(concept.getBroadMatch().get(EN_BROAD_MATCH_ID));
+        		}
     			writer.append('\n');
     		}
     		writer.flush();
@@ -268,11 +292,10 @@ public class EuropeanaSearchApiClient {
 				log.error("Error by mapping ONB - MIMO using Europeana Search API" + e.getMessage());
 	    		notEnrichedConceptList.add(concept);
 			}
-//		    break;
 	    }
 	
 	    // parse mid and Concept family and store it in CSV comma separated files
-	    generateSearchConceptCsvFile(enrichedConceptList, outputFileName);
+	    generateSearchConceptCsvFile(enrichedConceptList, outputFileName, true);
 	    generateNotFoundConceptCsvFile(notEnrichedConceptList, outputFileName.replace("Enriched", "NotEnriched"));
 
     	mappedConceptCount = enrichedConceptList.size();

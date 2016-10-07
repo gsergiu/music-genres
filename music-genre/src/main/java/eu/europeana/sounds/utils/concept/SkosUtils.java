@@ -45,6 +45,9 @@ import eu.europeana.sounds.definitions.model.vocabulary.ConceptTypes;
  */
 public class SkosUtils {
 	
+	public String EXACT_MATCH_FIELD = "exactMatch";
+	public String BROAD_MATCH_FIELD = "broadMatch";
+
 	private static Logger log = Logger.getRootLogger();
 
 	String REGULAR_FREEBASE_PREFIX = "/m/";
@@ -57,7 +60,7 @@ public class SkosUtils {
 	public String DBPEDIA_ID_KEY = "dbpediaId";
 	public String EN = "en";
 	public String DE = "de";
-	
+		
 	
     /**
      * This method performs parsing of the SKOS RDF in XML format to Europeana Annotation Concept object using Jena library.
@@ -229,43 +232,57 @@ public class SkosUtils {
 		return res;
 	}    
 
-    
+
     /**
-     * This method creates concepts with URI based on instrument title.
+     * This method creates concepts with URI based on instrument title. Default position of
+     * the title column in the input file is 0.
      * @param inputFileName
      * @return A collection of the Concept objects
      */
     public List<Concept> retrieveConceptWithUriFromFile(String inputFileName) {
+    	
+    	return retrieveConceptWithUriFromFile(inputFileName, 0, null);
+    	
+    }
+    
+    
+    /**
+     * This method creates concepts with URI based on instrument title.
+     * @param inputFileName
+     * @param columnPos The position of the ID column in the passed input file
+     * @param fields A mapping of positions in an input file for particular Concept fields
+     * @return A collection of the Concept objects
+     */
+    public List<Concept> retrieveConceptWithUriFromFile(
+    		String inputFileName, int columnPos, Map<String,Integer> fields) {
 	        
 		List<Concept> res = new ArrayList<Concept>();
 		
-		int URI_POS = 0; 
     	String splitBy = ";";
 	    
 	    BufferedReader br;
 		try {
 			br = new BufferedReader(new FileReader(inputFileName));
 			String line = br.readLine();	
-//			boolean isVariation = false;
 			while ((line = br.readLine()) !=null) {
 			    String[] b = line.split(splitBy);
-			    if (b.length >= 1 && StringUtils.isNotEmpty(b[URI_POS])) {
-			    	String label = b[URI_POS];
-//			    	if (uri.equals("Div.")) {
-//			    		isVariation = true;
-//			    		continue;
-//			    	}
-//			    	if (isVariation) {
-//			    		if (uri.equals("")) break;
-			    	String uri = "http://localhost/DDB/music+genres/" + label.replace(" ", "+");
-//			    	uri = uri.replace(" ", "");
-				    	Concept concept = getConcept(uri, res);
-				    	concept.setUri(uri);
-					    if (StringUtils.isNotEmpty(label))
-					    	concept.addPrefLabelInMapping(uri, label);
-					    if (!conceptExists(concept, res))
-					    		res.add(concept);
-//			    	}
+			    if (b.length >= 1 && StringUtils.isNotEmpty(b[columnPos])) {
+			    	String label = b[columnPos];
+			    	String uri = "http://localhost/DDB/music+genres/" + label.replace(" ", "+");		    	
+			    	Concept concept = getConcept(uri, res);
+			    	concept.setUri(uri);
+				    if (StringUtils.isNotEmpty(label))
+				    	concept.addPrefLabelInMapping(uri, label);
+				    if (fields != null) {
+					    String exactMatchValue = b[fields.get(EXACT_MATCH_FIELD)];
+						if (StringUtils.isNotEmpty(exactMatchValue)) 
+					    	concept.addExactMatchInMapping(EN, exactMatchValue);
+					    String broadMatchValue = b[fields.get(BROAD_MATCH_FIELD)];
+						if (StringUtils.isNotEmpty(broadMatchValue)) 
+					    	concept.addBroadMatchInMapping(EN, broadMatchValue);
+				    }
+				    if (!conceptExists(concept, res))
+				    	res.add(concept);
 			    }
 			}
 		    br.close();

@@ -1,0 +1,19 @@
+Skos_resource;EXACT;BROAD;term
+http://localhost/DDB/music+genres/Bläser;http://www.mimo-db.eu/InstrumentsKeywords/3730;;Bläser 
+http://localhost/DDB/music+genres/Blasorchester;http://www.mimo-db.eu/InstrumentsKeywords/3730;;Blasorchester
+http://localhost/DDB/music+genres/Cembalo-Begleitung;http://www.mimo-db.eu/InstrumentsKeywords/2251;http://www.mimo-db.eu/InstrumentsKeywords/2239;Cembalo-Begleitung
+http://localhost/DDB/music+genres/Klavierauszug;http://www.mimo-db.eu/InstrumentsKeywords/2299;http://www.mimo-db.eu/InstrumentsKeywords/2273;Klavierauszug
+http://localhost/DDB/music+genres/Klavierbegleitung;http://www.mimo-db.eu/InstrumentsKeywords/2299;http://www.mimo-db.eu/InstrumentsKeywords/2273;Klavierbegleitung
+http://localhost/DDB/music+genres/Klavierfuge;http://www.mimo-db.eu/InstrumentsKeywords/2299;http://www.mimo-db.eu/InstrumentsKeywords/2273;Klavierfuge
+http://localhost/DDB/music+genres/Klavierkonzert;http://www.mimo-db.eu/InstrumentsKeywords/2299;http://www.mimo-db.eu/InstrumentsKeywords/2273;Klavierkonzert
+http://localhost/DDB/music+genres/Klavierskizze;http://www.mimo-db.eu/InstrumentsKeywords/2299;http://www.mimo-db.eu/InstrumentsKeywords/2273;Klavierskizze
+http://localhost/DDB/music+genres/Klavier-Skizze;http://www.mimo-db.eu/InstrumentsKeywords/2299;http://www.mimo-db.eu/InstrumentsKeywords/2273;Klavier-Skizze
+http://localhost/DDB/music+genres/Klavierstück;http://www.mimo-db.eu/InstrumentsKeywords/2299;http://www.mimo-db.eu/InstrumentsKeywords/2273;Klavierstück
+http://localhost/DDB/music+genres/Orgelbegleitung;http://www.mimo-db.eu/InstrumentsKeywords/2266;http://www.mimo-db.eu/InstrumentsKeywords/2264;Orgelbegleitung
+http://localhost/DDB/music+genres/Orgelstimme ;http://www.mimo-db.eu/InstrumentsKeywords/2266;http://www.mimo-db.eu/InstrumentsKeywords/2264;Orgelstimme 
+http://localhost/DDB/music+genres/Pianofortebegleitung;http://www.mimo-db.eu/InstrumentsKeywords/2299;http://www.mimo-db.eu/InstrumentsKeywords/2273;Pianofortebegleitung
+http://localhost/DDB/music+genres/Streicher;http://www.mimo-db.eu/InstrumentsKeywords/3101;;Streicher
+http://localhost/DDB/music+genres/Streichinstrumente;http://www.mimo-db.eu/InstrumentsKeywords/3101;;Streichinstrumente
+http://localhost/DDB/music+genres/Tasteninstr;http://www.mimo-db.eu/InstrumentsKeywords/2230;;Tasteninstr
+http://localhost/DDB/music+genres/Trompeten-Stimme;http://www.mimo-db.eu/InstrumentsKeywords/4446;http://www.mimo-db.eu/InstrumentsKeywords/4370;Trompeten-Stimme
+http://localhost/DDB/music+genres/Violinconcert;http://www.mimo-db.eu/InstrumentsKeywords/3573;http://www.mimo-db.eu/InstrumentsKeywords/3564;Violinconcert
