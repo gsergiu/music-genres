@@ -40,6 +40,10 @@ public class OnbMimoMappingTest extends BaseSkosTest {
 			mappingFolder + "/ONB_MIMO_keyword_mapping_master_variations.csv";
 	public final String ENRICHED_INSTRUMENT_VARIATIONS_FILE_PATH = 
 			mappingFolder + "/Enriched_ONB_MIMO_keyword_mapping_master_variations.csv";
+	public final String SHORTENINGS_INSTRUMENT_LIST_FILE_PATH =
+			mappingFolder + "/ONB_MIMO_keyword_mapping_master_shortenings.csv";
+	public final String ENRICHED_INSTRUMENT_SHORTENINGS_FILE_PATH = 
+			mappingFolder + "/Enriched_ONB_MIMO_keyword_mapping_master_shortenings.csv";
 	
 
 	EuropeanaSearchApiClient apiClient = new EuropeanaSearchApiClient();
@@ -49,11 +53,11 @@ public class OnbMimoMappingTest extends BaseSkosTest {
 	 * 
 	 * ENRICH VARIATIONS FOR INSTRUMENT LIST
 	 * 
-	 * Having an ONB variations instrument list we match instrument data by music genre DDB IDs, 
+	 * Having an ONB variations instrument list we match instrument data by music genre labels, 
 	 * and enrich instrument list in CSV format, enriched matches. 
 	 * @throws IOException
 	 */
-	@Test
+//	@Test
 	public void mapONBInstrumentsVariations() throws IOException {
 		
 		int ID_COLUMN_POS = 3;
@@ -68,6 +72,34 @@ public class OnbMimoMappingTest extends BaseSkosTest {
 		
 		int numberOfMappedInstruments = apiClient.mapOnbMimo(
 				mimoConceptList, ENRICHED_INSTRUMENT_VARIATIONS_FILE_PATH);
+		
+		assertTrue(numberOfMappedInstruments > 0);
+	}
+	
+	
+	/**
+	 * 
+	 * ENRICH SHORTENINGS FOR INSTRUMENT LIST
+	 * 
+	 * Having an ONB shortenings instrument list we match instrument data by music genre labels, 
+	 * and enrich instrument list in CSV format, enriched matches. 
+	 * @throws IOException
+	 */
+	@Test
+	public void mapONBInstrumentsShortenings() throws IOException {
+		
+		int ID_COLUMN_POS = 3;
+		int EXACT_MATCH_COLUMN_POS = 1;
+		int BROAD_MATCH_COLUMN_POS = 2;
+				
+		Map<String, Integer> fields = new HashMap<String, Integer>();
+		fields.put(getSkosUtils().EXACT_MATCH_FIELD, EXACT_MATCH_COLUMN_POS);
+		fields.put(getSkosUtils().BROAD_MATCH_FIELD, BROAD_MATCH_COLUMN_POS);
+		List<Concept> mimoConceptList = getSkosUtils().retrieveConceptWithUriFromFile(
+				SHORTENINGS_INSTRUMENT_LIST_FILE_PATH, ID_COLUMN_POS, fields);
+		
+		int numberOfMappedInstruments = apiClient.mapOnbMimo(
+				mimoConceptList, ENRICHED_INSTRUMENT_SHORTENINGS_FILE_PATH);
 		
 		assertTrue(numberOfMappedInstruments > 0);
 	}
