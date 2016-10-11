@@ -143,6 +143,9 @@ public class OnbMimoMappingTest extends BaseSkosTest {
 			String instrumentIdStr = instrumentsArr[idColPos] + ID_DELIMITER 
 					+ instrumentsArr[matchColPos];
 			if (!enrichedIds.contains(instrumentIdStr)) {
+				if (instrumentIdStr.contains("/2059216/data_item_onb_sounds_AL00115914")) {
+					int i = 77;
+				}
 				enrichedIds.add(instrumentIdStr);
 				mapIdToLine.put(instrumentIdStr, instrumentLine);
 			}
@@ -177,6 +180,7 @@ public class OnbMimoMappingTest extends BaseSkosTest {
 
 		Map<String,String> mapIdToLine = new HashMap<String,String>();
 		List<String> enrichedIds = new ArrayList<String>();
+		List<String> resultingLines = new ArrayList<String>();
 
 		// read variations and extract ID in form <EuropeanaId_matchLink>
 		extractMappingIds(ENRICHED_INSTRUMENT_VARIATIONS_V1_FILE_PATH, enrichedIds, mapIdToLine); 
@@ -199,12 +203,14 @@ public class OnbMimoMappingTest extends BaseSkosTest {
 		
 		// identifying by ID in form <EuropeanaId_matchLink>, write out additional mappings 
 		// from variations and shortenings in output file
+		resultingLines.add(enrichedInstrumentsLines.get(0)); // header
 		for (String enrichedIdLine : enrichedIds) {
-			if (!inputEnrichedIds.contains(enrichedIdLine)) {
-				enrichedInstrumentsLines.add(mapIdToLine.get(enrichedIdLine));
+			if (!inputEnrichedIds.contains(enrichedIdLine) 
+					&& (!resultingLines.contains(mapIdToLine.get(enrichedIdLine)))) {
+				resultingLines.add(mapIdToLine.get(enrichedIdLine));
 			}
 		}
-		FileUtils.writeLines(outputFile, "UTF-8", enrichedInstrumentsLines);
+		FileUtils.writeLines(outputFile, "UTF-8", resultingLines);
 	}
 	
 	
