@@ -143,9 +143,6 @@ public class OnbMimoMappingTest extends BaseSkosTest {
 			String instrumentIdStr = instrumentsArr[idColPos] + ID_DELIMITER 
 					+ instrumentsArr[matchColPos];
 			if (!enrichedIds.contains(instrumentIdStr)) {
-				if (instrumentIdStr.contains("/2059216/data_item_onb_sounds_AL00115914")) {
-					int i = 77;
-				}
 				enrichedIds.add(instrumentIdStr);
 				mapIdToLine.put(instrumentIdStr, instrumentLine);
 			}
@@ -158,9 +155,10 @@ public class OnbMimoMappingTest extends BaseSkosTest {
 	 * @param filePath
 	 * @param enrichedIds
 	 * @param mapIdToLine
+	 * @return header line
 	 * @throws IOException
 	 */
-	private void extractMappingIds(String filePath, List<String> enrichedIds, Map<String,String> mapIdToLine) 
+	private String extractMappingIds(String filePath, List<String> enrichedIds, Map<String,String> mapIdToLine) 
 			 throws IOException {
 		
 		File enrichedFile = new File(filePath);
@@ -172,6 +170,7 @@ public class OnbMimoMappingTest extends BaseSkosTest {
 			noteEnrichedId(instrumentsArr, instrumentLine, enrichedIds, mapIdToLine
 					, EUROPEANA_ID_COL_POS, BROAD_MATCH_COL_POS);
 		}		
+		return instrumentLines.get(0);
 	}
 	
 	
@@ -188,25 +187,17 @@ public class OnbMimoMappingTest extends BaseSkosTest {
 		// read shortenings and extract ID in form <EuropeanaId_matchLink>
 		extractMappingIds(ENRICHED_INSTRUMENT_SHORTENINGS_V1_FILE_PATH, enrichedIds, mapIdToLine); 
 		
-		// write out existing input extentions in the output file
+		// read existing input extentions and extract ID in form <EuropeanaId_matchLink>
 		File outputFile = new File(OUTPUT_ENRICHED_INSTRUMENT_LIST_FILE_PATH);	
-		File inputEnrichedInstrumentsFile = new File(INPUT_ENRICHED_INSTRUMENT_LIST_FILE_PATH);
 		List<String> inputEnrichedIds = new ArrayList<String>();
-		List<String> enrichedInstrumentsLines = FileUtils.readLines(inputEnrichedInstrumentsFile);
-		for (String enrichedInstrumentLine : enrichedInstrumentsLines.subList(1, enrichedInstrumentsLines.size()) ) {
-			String[] enrichedInstrumentArr = enrichedInstrumentLine.split(CSV_LINE_DELIMITER);
-			String enrichedInstrumentIdStr = enrichedInstrumentArr[EUROPEANA_ID_COL_POS] + ID_DELIMITER 
-					+ enrichedInstrumentArr[EXACT_MATCH_COL_POS];
-			if (!inputEnrichedIds.contains(enrichedInstrumentIdStr))
-				inputEnrichedIds.add(enrichedInstrumentIdStr);			
-		}
-		
+		String headerLine = extractMappingIds(INPUT_ENRICHED_INSTRUMENT_LIST_FILE_PATH, inputEnrichedIds, mapIdToLine); 
+
 		// identifying by ID in form <EuropeanaId_matchLink>, write out additional mappings 
 		// from variations and shortenings in output file
-		resultingLines.add(enrichedInstrumentsLines.get(0)); // header
+		resultingLines.add(headerLine); // header
 		for (String enrichedIdLine : enrichedIds) {
 			if (!inputEnrichedIds.contains(enrichedIdLine) 
-					&& (!resultingLines.contains(mapIdToLine.get(enrichedIdLine)))) {
+					&& (!resultingLines.contains(mapIdToLine.get(enrichedIdLine)))) {			
 				resultingLines.add(mapIdToLine.get(enrichedIdLine));
 			}
 		}
