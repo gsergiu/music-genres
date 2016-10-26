@@ -35,6 +35,8 @@ public class WikidataApiClient {
 	private HttpConnector http = new HttpConnector();
 
 	public final static String SEARCH_RESULTS_FOLDER = "./src/test/resources/search/results";
+	
+	String MUSIC_BRAINZ_PROP = "434";
 
 	
 	/**
@@ -58,12 +60,13 @@ public class WikidataApiClient {
 	}
 
 
-	String getJSONResult(String url) throws IOException {
+	public String getJSONResult(String url) throws IOException {
 		log.trace("Call to Europeana API: " + url);
 		return http.getURLContent(url);
 
 	}
 
+	
 	/**
 	 * Returns the Wikidata API URI for JSON calls
 	 * e.g. https://wdq.wmflabs.org/api?q=string[646:%27/m/0557q%27]
@@ -76,6 +79,43 @@ public class WikidataApiClient {
 //		searchUrl += "q=string[646:%27" + URLEncoder.encode(searchString, "UTF-8") + "%27]";
 //		searchUrl += URLEncoder.encode("q=string[646:'" + searchString + "']", "UTF-8");
 		searchUrl += "q=" + URLEncoder.encode("string[646:'" + searchString + "']", "UTF-8");
+		return searchUrl;
+	}
+
+	
+	/**
+	 * Returns the MusicBrainz ID by Wikidata ID
+	 * e.g. https://www.wikidata.org/wiki/Q435330 for 'Kristin Hersh' in browser that has
+	 * MusicBrainz artist ID 0b461f11-c7af-4ddb-a30e-5cb0aabb3e7f
+	 *      https://wdq.wmflabs.org/api?q=items[435330]&props=434 in API
+	 * @param searchWikidataId
+	 * @return MusicBrainz ID
+	 * @throws UnsupportedEncodingException 
+	 */
+	public String getMusicBrainzIdFromWikidataById(String searchWikidataId) throws UnsupportedEncodingException {
+		String searchUrl = getApiUri();
+		searchUrl += "q=" + URLEncoder.encode("items['" + searchWikidataId + "']", "UTF-8") + "&props=" + MUSIC_BRAINZ_PROP;
+		String searchResult = "";
+		try {
+			searchResult = getJSONResult(searchUrl);
+		} catch (IOException e) {
+			log.error(e.getMessage());
+		}
+		return convertJsonStringToPrettyPrintJsonOutput(searchResult);
+	}
+
+	
+	/**
+	 * Returns the Wikidata API URI for passed property number and query string
+	 * e.g. https://wdq.wmflabs.org/api?q=string[724:%27PhilLeshandFriends%27] for Internet Archive ID property
+	 * @param propertyNumber The Wikidata property number
+	 * @param searchString The Internet Archive ID
+	 * @return Wikidata URL
+	 * @throws UnsupportedEncodingException 
+	 */
+	public String getWikidataSearchUrlByProp(String propertyNumber, String searchString) throws UnsupportedEncodingException {
+		String searchUrl = getApiUri();
+		searchUrl += "q=" + URLEncoder.encode("string[" + propertyNumber + ":'" + searchString + "']", "UTF-8");
 		return searchUrl;
 	}
 
@@ -183,6 +223,22 @@ public class WikidataApiClient {
 			throws IOException {
 		
 		String searchUrl = getWikidataSearchUrl(query);
+		String searchResult = getJSONResult(searchUrl);
+		return convertJsonStringToPrettyPrintJsonOutput(searchResult);
+	}
+	
+	
+	/**
+	 * This method queries Wikidata by property number and query string.
+	 * @param propertyNumber
+	 * @param query
+	 * @return
+	 * @throws IOException
+	 */
+	public String queryWikidataByProperty(String propertyNumber, String query)
+			throws IOException {
+		
+		String searchUrl = getWikidataSearchUrlByProp(propertyNumber, query);
 		String searchResult = getJSONResult(searchUrl);
 		return convertJsonStringToPrettyPrintJsonOutput(searchResult);
 	}
