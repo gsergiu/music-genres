@@ -21,19 +21,18 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.List;
 
-//import org.apache.commons.httpclient.URI;
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.http.HttpResponse;
+import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.log4j.Logger;
 import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.junit.Test;
 
-import eu.europeana.api.client.connection.HttpConnector;
-import eu.europeana.search.connection.EuropeanaSearchApiClient;
 import eu.europeana.sounds.skos.BaseSkosTest;
 
 
@@ -52,17 +51,15 @@ public class MimoJsonLdInstruments extends BaseSkosTest {
 	String MIMO_BASE_URI = "http://data.mimo-db.eu/sparql/describe?uri=";
 
 	String mimoFolder = "./src/test/resources/MIMO/onb/mapping";
-	String downloadFolder = mimoFolder + "/instruments-jsonld";
+	String downloadFolder = mimoFolder + "/instruments-jsonld/";
 	
 	public final String INPUT_ENRICHED_INSTRUMENT_LIST_FILE_V1_PATH = 
 			mimoFolder + "/Enrichments_V1.csv";
 	public final String INPUT_ENRICHED_INSTRUMENT_LIST_FILE_V2_PATH = 
 			mimoFolder + "/Enrichments_V2.csv";
 	
-	private HttpConnector http = new HttpConnector();
-	
-	EuropeanaSearchApiClient apiClient = new EuropeanaSearchApiClient();
-	
+	protected Logger log = Logger.getLogger(getClass());
+
 	
 	/**
 	 * 
@@ -77,65 +74,118 @@ public class MimoJsonLdInstruments extends BaseSkosTest {
 		int EXACT_MATCH_COLUMN_POS = 4;
 		int BROAD_MATCH_COLUMN_POS = 5;
 		
+		/**
+		 * Read MIMO instrument IDs from exact and broad match URLs
+		 */
 		File enrichedFile = new File(INPUT_ENRICHED_INSTRUMENT_LIST_FILE_V1_PATH);
 		List<String> instrumentLines = FileUtils.readLines(enrichedFile);
 		File enrichedFile2 = new File(INPUT_ENRICHED_INSTRUMENT_LIST_FILE_V2_PATH);
 		List<String> instrumentLines2 = FileUtils.readLines(enrichedFile2);
 		instrumentLines.addAll(instrumentLines2.subList(1, instrumentLines2.size()));
 		for (String instrumentLine : instrumentLines.subList(1, instrumentLines.size())) {
-			String[] instrumentsArr = instrumentLine.split(CSV_LINE_DELIMITER);
-			String instrumentId = instrumentsArr[EXACT_MATCH_COLUMN_POS];
-			// retrieve data by id e.g. http://data.mimo-db.eu/sparql/describe?
-			//     uri=http%3A%2F%2Fwww.mimo-db.eu%2FInstrumentsKeywords%2F2251&type=Resource&default-graph-uri=data
-			String searchUrl = MIMO_BASE_URI;
-			searchUrl += instrumentId;
-			searchUrl += "&type=Resource&default-graph-uri=data";
-//			log.trace("Call to Europeana API: " + url);
-			
-//			String searchResult = http.getURLContent(searchUrl);
-			
-			DefaultHttpClient httpclient = new DefaultHttpClient();
-//			String url = "http://localhost";
-			HttpGet httpGet = new HttpGet(searchUrl);
-//			HttpPost httpGet = new HttpPost(searchUrl);
-
-			httpGet.addHeader("Accept" , "application/ld+json");
-
-			try {
-				HttpResponse response = httpclient.execute(httpGet);			
-				BufferedReader rd = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
-			      String line = "";
-			      while ((line = rd.readLine()) != null) {
-			    	  System.out.println(line);
-			      }
-
-			    } catch (IOException e) {
-			      e.printStackTrace();
-			    }
-//			URIBuilder builder = new URIBuilder();
-//		    builder.setScheme("http").setPath(searchUrl)
-//		    .setParameter("Access", "application/ld+json");
-
-//		    HttpGet get = getHttpGetMethod(builder.build());
-//		    URI uri;
-//			try {
-//				uri = builder.build();
-//			    HttpGet httpget = new HttpGet(uri);
-//			    System.out.println(httpget.getURI());
-//			} catch (URISyntaxException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-			
-			
-//			String res = convertJsonStringToPrettyPrintJsonOutput(searchResult);
-//			System.out.println(res);
+			queryMimoApiAndSaveResult(instrumentLine, EXACT_MATCH_COLUMN_POS);
+			queryMimoApiAndSaveResult(instrumentLine, BROAD_MATCH_COLUMN_POS);
 		}		
 
-//		int numberOfMappedInstruments = apiClient.mapOnbMimo(
-//				mimoConceptList, ENRICHED_INSTRUMENT_VARIATIONS_FILE_PATH);
-//		
-//		assertTrue(numberOfMappedInstruments > 0);
+	}
+	
+	
+	/**
+	 * @param queryInstrumentLine
+	 * @param columnPos
+	 */
+	private void queryMimoApiAndSaveResult(String queryInstrumentLine, int columnPos) {
+		
+		String[] instrumentsArr = queryInstrumentLine.split(CSV_LINE_DELIMITER);
+		if (instrumentsArr != null && instrumentsArr.length > columnPos) {
+			String instrumentIdUrl = instrumentsArr[columnPos];
+			if (StringUtils.isNotEmpty(instrumentIdUrl)) {
+				String[] instrumentIdArr = instrumentIdUrl.split("/");
+				String instrumentId = instrumentIdArr[instrumentIdArr.length-1];
+				if (!(new File("path/to/file.txt").isFile())) {
+					HttpResponse response;
+					try {
+						response = queryMimoApi(instrumentIdUrl);
+						String jsonLdString = readJsonHttpResponse(response);
+						File recordFile = FileUtils.getFile(downloadFolder + instrumentId + ".json");
+						FileUtils.writeStringToFile(
+							recordFile
+							, convertJsonStringToPrettyPrintJsonOutput(jsonLdString)
+							, "UTF-8"
+						);
+					} catch (ClientProtocolException e) {
+						log.error("Can't read MIMO API response." + e.getMessage());
+					} catch (IOException e) {
+						log.error("Can't read MIMO API response." + e.getMessage());
+					}	
+				}
+			}
+		}
+		
+	}
+	
+	
+	/**
+	 * This method queries MIMO API by ID.
+	 * e.g. retrieve data by id e.g. http://data.mimo-db.eu/sparql/describe?
+	 *     uri=http%3A%2F%2Fwww.mimo-db.eu%2FInstrumentsKeywords%2F2251&type=Resource&default-graph-uri=data
+	 * @param id
+	 * @return HttpResponse
+	 * @throws IOException 
+	 * @throws ClientProtocolException 
+	 */
+	private HttpResponse queryMimoApi(String id) {
+		
+		HttpResponse response = null;
+		
+		try {
+			String searchUrl = MIMO_BASE_URI;
+			searchUrl += id.replace(" ", "");
+			searchUrl += "&type=Resource&default-graph-uri=data";
+			log.trace("Call to MIMO API: " + searchUrl);
+		
+			DefaultHttpClient httpclient = new DefaultHttpClient();
+			HttpGet httpGet = new HttpGet(searchUrl);
+			httpGet.addHeader("Accept" , "application/ld+json");
+	
+			response = httpclient.execute(httpGet);
+		} catch (ClientProtocolException e) {
+			log.error("Can't read MIMO API response." + e.getMessage());
+		} catch (IOException e) {
+			log.error("Can't read MIMO API response." + e.getMessage());
+		}	
+		
+		return response;
+	}
+	
+	
+	/**
+	 * This methods reads JSON content from HTTP response.
+	 * @param response
+	 * @return JSON content string
+	 * @throws IOException
+	 */
+	private String readJsonHttpResponse(HttpResponse response)
+			throws IOException {
+		
+		BufferedReader reader = null;
+		StringBuilder builder = new StringBuilder();
+		String line;
+		try {
+			reader = new BufferedReader(new InputStreamReader(response.getEntity().getContent(), "UTF-8"));
+			while ((line = reader.readLine()) != null)
+				builder.append(line);
+		} finally {
+			try {
+				if (reader != null)
+					reader.close();
+			} catch (IOException e) {
+				log.warn("cannot close results writer for response: "
+						+ response.toString());
+			}
+		}
+
+		return builder.toString();
 	}
 	
 	
