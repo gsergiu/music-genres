@@ -1,0 +1,62 @@
+[ {
+  "@id" : "http://www.mimo-db.eu/HornbostelAndSachs/6473",
+  "http://www.w3.org/2004/02/skos/core#exactMatch" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3561"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3558",
+  "http://www.w3.org/2004/02/skos/core#narrower" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3561"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3561",
+  "@type" : [ "http://www.w3.org/2004/02/skos/core#Concept" ],
+  "http://www.w3.org/2004/02/skos/core#altLabel" : [ {
+    "@language" : "de",
+    "@value" : "Viola"
+  }, {
+    "@value" : "Bratche"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3558"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#closeMatch" : [ {
+    "@id" : "http://dbpedia.org/resource/Violas"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : ""
+  } ],
+  "http://www.w3.org/2004/02/skos/core#exactMatch" : [ {
+    "@id" : "http://www.mimo-db.eu/HornbostelAndSachs/6473"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#inScheme" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
+    "@language" : "en",
+    "@value" : "Viola"
+  }, {
+    "@language" : "fr",
+    "@value" : "Alto"
+  }, {
+    "@language" : "nl",
+    "@value" : "Altviool"
+  }, {
+    "@language" : "pl",
+    "@value" : "Viola"
+  }, {
+    "@language" : "ca",
+    "@value" : "Viola"
+  }, {
+    "@language" : "de",
+    "@value" : "Bratsche"
+  }, {
+    "@value" : "Viola"
+  }, {
+    "@language" : "sv",
+    "@value" : "Viola"
+  }, {
+    "@language" : "it",
+    "@value" : "Viola"
+  } ]
+} ]

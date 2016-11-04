@@ -1,0 +1,77 @@
+[ {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3101",
+  "http://www.w3.org/2004/02/skos/core#narrower" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3108"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3108",
+  "@type" : [ "http://www.w3.org/2004/02/skos/core#Concept" ],
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3101"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#closeMatch" : [ {
+    "@id" : "http://dbpedia.org/resource/Double_basses"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : ""
+  } ],
+  "http://www.w3.org/2004/02/skos/core#inScheme" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#narrower" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4677"
+  }, {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3111"
+  }, {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3112"
+  }, {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3109"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
+    "@language" : "pl",
+    "@value" : "Kontrabasy"
+  }, {
+    "@language" : "de",
+    "@value" : "Kontrabässe"
+  }, {
+    "@language" : "sv",
+    "@value" : "Kontrabasar"
+  }, {
+    "@language" : "it",
+    "@value" : "Contrabbassi"
+  }, {
+    "@language" : "ca",
+    "@value" : "Contrabaixos"
+  }, {
+    "@language" : "fr",
+    "@value" : "Contrebasses"
+  }, {
+    "@language" : "nl",
+    "@value" : "Contrabassen"
+  }, {
+    "@language" : "en",
+    "@value" : "Double basses"
+  }, {
+    "@value" : "Double basses"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3109",
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3108"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3111",
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3108"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3112",
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3108"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4677",
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3108"
+  } ]
+} ]

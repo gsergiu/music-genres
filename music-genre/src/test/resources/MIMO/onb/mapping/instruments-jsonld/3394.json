@@ -1,0 +1,56 @@
+[ {
+  "@id" : "http://www.mimo-db.eu/HornbostelAndSachs/6469",
+  "http://www.w3.org/2004/02/skos/core#exactMatch" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3394"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3313",
+  "http://www.w3.org/2004/02/skos/core#narrower" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3394"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3394",
+  "@type" : [ "http://www.w3.org/2004/02/skos/core#Concept" ],
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3313"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#closeMatch" : [ {
+    "@id" : "http://dbpedia.org/resource/Lutes"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : ""
+  } ],
+  "http://www.w3.org/2004/02/skos/core#exactMatch" : [ {
+    "@id" : "http://www.mimo-db.eu/HornbostelAndSachs/6469"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#inScheme" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
+    "@language" : "ca",
+    "@value" : "Llaüt"
+  }, {
+    "@language" : "it",
+    "@value" : "Liuto"
+  }, {
+    "@language" : "nl",
+    "@value" : "Luit"
+  }, {
+    "@language" : "pl",
+    "@value" : "Lutnia"
+  }, {
+    "@language" : "de",
+    "@value" : "Laute"
+  }, {
+    "@language" : "fr",
+    "@value" : "Luth"
+  }, {
+    "@language" : "en",
+    "@value" : "Lute"
+  }, {
+    "@language" : "sv",
+    "@value" : "Luta"
+  }, {
+    "@value" : "Lute"
+  } ]
+} ]

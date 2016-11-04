@@ -1,0 +1,56 @@
+[ {
+  "@id" : "http://www.mimo-db.eu/HornbostelAndSachs/318",
+  "http://www.w3.org/2004/02/skos/core#exactMatch" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4232"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4164",
+  "http://www.w3.org/2004/02/skos/core#narrower" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4232"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4232",
+  "@type" : [ "http://www.w3.org/2004/02/skos/core#Concept" ],
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4164"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#closeMatch" : [ {
+    "@id" : "http://dbpedia.org/resource/Oboes"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : ""
+  } ],
+  "http://www.w3.org/2004/02/skos/core#exactMatch" : [ {
+    "@id" : "http://www.mimo-db.eu/HornbostelAndSachs/318"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#inScheme" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
+    "@language" : "pl",
+    "@value" : "Obój"
+  }, {
+    "@language" : "fr",
+    "@value" : "Hautbois"
+  }, {
+    "@language" : "sv",
+    "@value" : "Oboe"
+  }, {
+    "@language" : "it",
+    "@value" : "Oboe"
+  }, {
+    "@language" : "de",
+    "@value" : "Oboe"
+  }, {
+    "@language" : "nl",
+    "@value" : "Hobo"
+  }, {
+    "@language" : "en",
+    "@value" : "Oboe"
+  }, {
+    "@value" : "Oboe"
+  }, {
+    "@language" : "ca",
+    "@value" : "Oboè"
+  } ]
+} ]

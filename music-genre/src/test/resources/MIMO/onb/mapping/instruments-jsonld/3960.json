@@ -1,0 +1,60 @@
+[ {
+  "@id" : "http://www.mimo-db.eu/HornbostelAndSachs/268",
+  "http://www.w3.org/2004/02/skos/core#exactMatch" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3960"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3883",
+  "http://www.w3.org/2004/02/skos/core#narrower" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3960"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3960",
+  "@type" : [ "http://www.w3.org/2004/02/skos/core#Concept" ],
+  "http://www.w3.org/2004/02/skos/core#altLabel" : [ {
+    "@language" : "de",
+    "@value" : "Dolzflöte"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3883"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#closeMatch" : [ {
+    "@id" : "http://dbpedia.org/resource/Fl%C3%BBte_d%27amour"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : ""
+  } ],
+  "http://www.w3.org/2004/02/skos/core#exactMatch" : [ {
+    "@id" : "http://www.mimo-db.eu/HornbostelAndSachs/268"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#inScheme" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
+    "@language" : "ca",
+    "@value" : "Flauta d'amor"
+  }, {
+    "@language" : "it",
+    "@value" : "Flauto d'amore"
+  }, {
+    "@language" : "sv",
+    "@value" : "Flûte d'amour"
+  }, {
+    "@language" : "nl",
+    "@value" : "Flûte d'amour"
+  }, {
+    "@language" : "fr",
+    "@value" : "Flûte d'amour"
+  }, {
+    "@language" : "de",
+    "@value" : "Liebesflöte"
+  }, {
+    "@language" : "en",
+    "@value" : "Flûte d'amour"
+  }, {
+    "@value" : "Flûte d'amour"
+  }, {
+    "@language" : "pl",
+    "@value" : "Flet miłosny"
+  } ]
+} ]

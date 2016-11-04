@@ -1,0 +1,56 @@
+[ {
+  "@id" : "http://www.mimo-db.eu/HornbostelAndSachs/195",
+  "http://www.w3.org/2004/02/skos/core#exactMatch" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3501"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3486",
+  "http://www.w3.org/2004/02/skos/core#narrower" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3501"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3501",
+  "@type" : [ "http://www.w3.org/2004/02/skos/core#Concept" ],
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3486"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#closeMatch" : [ {
+    "@id" : "http://dbpedia.org/resource/Lyres"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : ""
+  } ],
+  "http://www.w3.org/2004/02/skos/core#exactMatch" : [ {
+    "@id" : "http://www.mimo-db.eu/HornbostelAndSachs/195"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#inScheme" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
+    "@value" : "Lyre"
+  }, {
+    "@language" : "sv",
+    "@value" : "Lyra"
+  }, {
+    "@language" : "it",
+    "@value" : "Lira"
+  }, {
+    "@language" : "de",
+    "@value" : "Leier"
+  }, {
+    "@language" : "nl",
+    "@value" : "Lier"
+  }, {
+    "@language" : "fr",
+    "@value" : "Lyre"
+  }, {
+    "@language" : "en",
+    "@value" : "Lyre"
+  }, {
+    "@language" : "pl",
+    "@value" : "Lira"
+  }, {
+    "@language" : "ca",
+    "@value" : "Lira"
+  } ]
+} ]

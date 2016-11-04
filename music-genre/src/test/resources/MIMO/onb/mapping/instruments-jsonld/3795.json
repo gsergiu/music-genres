@@ -1,0 +1,56 @@
+[ {
+  "@id" : "http://www.mimo-db.eu/HornbostelAndSachs/318",
+  "http://www.w3.org/2004/02/skos/core#exactMatch" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3795"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3786",
+  "http://www.w3.org/2004/02/skos/core#narrower" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3795"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3795",
+  "@type" : [ "http://www.w3.org/2004/02/skos/core#Concept" ],
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3786"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#closeMatch" : [ {
+    "@id" : "http://dbpedia.org/resource/Bassoons"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : ""
+  } ],
+  "http://www.w3.org/2004/02/skos/core#exactMatch" : [ {
+    "@id" : "http://www.mimo-db.eu/HornbostelAndSachs/318"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#inScheme" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
+    "@language" : "fr",
+    "@value" : "Basson"
+  }, {
+    "@language" : "sv",
+    "@value" : "Fagott"
+  }, {
+    "@language" : "de",
+    "@value" : "Fagott"
+  }, {
+    "@value" : "Bassoon"
+  }, {
+    "@language" : "it",
+    "@value" : "Fagotto"
+  }, {
+    "@language" : "pl",
+    "@value" : "Fagot"
+  }, {
+    "@language" : "en",
+    "@value" : "Bassoon"
+  }, {
+    "@language" : "ca",
+    "@value" : "Fagot"
+  }, {
+    "@language" : "nl",
+    "@value" : "Fagot"
+  } ]
+} ]

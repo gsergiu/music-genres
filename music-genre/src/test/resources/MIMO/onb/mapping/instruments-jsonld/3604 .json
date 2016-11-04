@@ -1,0 +1,71 @@
+[ {
+  "@id" : "http://www.mimo-db.eu/HornbostelAndSachs/6473",
+  "http://www.w3.org/2004/02/skos/core#exactMatch" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3604"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3584",
+  "http://www.w3.org/2004/02/skos/core#narrower" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3604"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3604",
+  "@type" : [ "http://www.w3.org/2004/02/skos/core#Concept" ],
+  "http://www.w3.org/2004/02/skos/core#altLabel" : [ {
+    "@language" : "de",
+    "@value" : "Gambe"
+  }, {
+    "@language" : "ca",
+    "@value" : "Viola d'arc baixa"
+  }, {
+    "@value" : "Bass viol"
+  }, {
+    "@language" : "fr",
+    "@value" : "Basse de viole de gambe"
+  }, {
+    "@language" : "fr",
+    "@value" : "Viole de gambe"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3584"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#closeMatch" : [ {
+    "@id" : "http://dbpedia.org/resource/Viola_da_gamba"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : ""
+  } ],
+  "http://www.w3.org/2004/02/skos/core#exactMatch" : [ {
+    "@id" : "http://www.mimo-db.eu/HornbostelAndSachs/6473"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#inScheme" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
+    "@language" : "fr",
+    "@value" : "Basse de viole"
+  }, {
+    "@language" : "ca",
+    "@value" : "Viola da gamba"
+  }, {
+    "@language" : "sv",
+    "@value" : "Viola da gamba"
+  }, {
+    "@value" : "Viola da gamba"
+  }, {
+    "@language" : "nl",
+    "@value" : "Viola da gamba"
+  }, {
+    "@language" : "de",
+    "@value" : "Viola da gamba"
+  }, {
+    "@language" : "en",
+    "@value" : "Viola da gamba"
+  }, {
+    "@language" : "it",
+    "@value" : "Viola da gamba (IT)"
+  }, {
+    "@language" : "pl",
+    "@value" : "Viola da gamba"
+  } ]
+} ]

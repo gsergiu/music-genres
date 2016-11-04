@@ -1,0 +1,48 @@
+[ {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3509",
+  "http://www.w3.org/2004/02/skos/core#narrower" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3510"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3510",
+  "@type" : [ "http://www.w3.org/2004/02/skos/core#Concept" ],
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3509"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#closeMatch" : [ {
+    "@id" : "http://dbpedia.org/resource/Mandolin"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : ""
+  } ],
+  "http://www.w3.org/2004/02/skos/core#inScheme" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
+    "@language" : "it",
+    "@value" : "Mandolino"
+  }, {
+    "@language" : "de",
+    "@value" : "Mandoline"
+  }, {
+    "@language" : "nl",
+    "@value" : "Mandoline"
+  }, {
+    "@language" : "pl",
+    "@value" : "Mandolina"
+  }, {
+    "@language" : "fr",
+    "@value" : "Mandoline"
+  }, {
+    "@language" : "en",
+    "@value" : "Mandolin"
+  }, {
+    "@value" : "Mandolin"
+  }, {
+    "@language" : "ca",
+    "@value" : "Mandolina"
+  }, {
+    "@language" : "sv",
+    "@value" : "Mandolin"
+  } ]
+} ]

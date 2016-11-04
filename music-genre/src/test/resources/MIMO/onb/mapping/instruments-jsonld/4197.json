@@ -1,0 +1,65 @@
+[ {
+  "@id" : "http://www.mimo-db.eu/HornbostelAndSachs/318",
+  "http://www.w3.org/2004/02/skos/core#exactMatch" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4197"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4164",
+  "http://www.w3.org/2004/02/skos/core#narrower" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4197"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4197",
+  "@type" : [ "http://www.w3.org/2004/02/skos/core#Concept" ],
+  "http://www.w3.org/2004/02/skos/core#altLabel" : [ {
+    "@language" : "de",
+    "@value" : "Englisches Horn"
+  }, {
+    "@language" : "en",
+    "@value" : "English horn"
+  }, {
+    "@value" : "English horn"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4164"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#closeMatch" : [ {
+    "@id" : "http://dbpedia.org/resource/Cor_anglais"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : ""
+  } ],
+  "http://www.w3.org/2004/02/skos/core#exactMatch" : [ {
+    "@id" : "http://www.mimo-db.eu/HornbostelAndSachs/318"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#inScheme" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
+    "@language" : "it",
+    "@value" : "Corno inglese"
+  }, {
+    "@language" : "pl",
+    "@value" : "Rożek angielski"
+  }, {
+    "@language" : "sv",
+    "@value" : "Engelskt horn"
+  }, {
+    "@language" : "ca",
+    "@value" : "Corn anglès"
+  }, {
+    "@language" : "nl",
+    "@value" : "Engelse hoorn"
+  }, {
+    "@language" : "fr",
+    "@value" : "Cor anglais"
+  }, {
+    "@language" : "en",
+    "@value" : "Cor anglais"
+  }, {
+    "@language" : "de",
+    "@value" : "Englischhorn"
+  }, {
+    "@value" : "Cor anglais"
+  } ]
+} ]

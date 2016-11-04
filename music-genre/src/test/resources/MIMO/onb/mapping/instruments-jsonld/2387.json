@@ -1,0 +1,59 @@
+[ {
+  "@id" : "http://www.mimo-db.eu/HornbostelAndSachs/18",
+  "http://www.w3.org/2004/02/skos/core#exactMatch" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/2387"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/2371",
+  "http://www.w3.org/2004/02/skos/core#narrower" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/2387"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/2387",
+  "@type" : [ "http://www.w3.org/2004/02/skos/core#Concept" ],
+  "http://www.w3.org/2004/02/skos/core#altLabel" : [ {
+    "@value" : "Glockenspiel"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/2371"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#closeMatch" : [ {
+    "@id" : "http://dbpedia.org/resource/Carillon"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : ""
+  } ],
+  "http://www.w3.org/2004/02/skos/core#exactMatch" : [ {
+    "@id" : "http://www.mimo-db.eu/HornbostelAndSachs/18"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#inScheme" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
+    "@value" : "Carillon"
+  }, {
+    "@language" : "it",
+    "@value" : "Carillon di campane"
+  }, {
+    "@language" : "pl",
+    "@value" : "Carillon"
+  }, {
+    "@language" : "fr",
+    "@value" : "Carillon"
+  }, {
+    "@language" : "en",
+    "@value" : "Carillon"
+  }, {
+    "@language" : "ca",
+    "@value" : "Carilló"
+  }, {
+    "@language" : "sv",
+    "@value" : "Klockspel"
+  }, {
+    "@language" : "de",
+    "@value" : "Turmglockenspiel"
+  }, {
+    "@language" : "nl",
+    "@value" : "Beiaard"
+  } ]
+} ]

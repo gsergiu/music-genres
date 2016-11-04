@@ -1,0 +1,176 @@
+[ {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3101",
+  "@type" : [ "http://www.w3.org/2004/02/skos/core#Concept" ],
+  "http://www.w3.org/2004/02/skos/core#altLabel" : [ {
+    "@language" : "en",
+    "@value" : "Strings"
+  }, {
+    "@value" : "Strings"
+  }, {
+    "@language" : "fr",
+    "@value" : "Cordes"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#closeMatch" : [ {
+    "@id" : "http://dbpedia.org/resource/Stringed_instruments"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : ""
+  } ],
+  "http://www.w3.org/2004/02/skos/core#narrower" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3584"
+  }, {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3555"
+  }, {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3575"
+  }, {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3610"
+  }, {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3486"
+  }, {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3521"
+  }, {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3558"
+  }, {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3564"
+  }, {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3113"
+  }, {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3313"
+  }, {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3304"
+  }, {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3224"
+  }, {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3102"
+  }, {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3108"
+  }, {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3509"
+  }, {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3516"
+  }, {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3254"
+  }, {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3265"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
+    "@language" : "it",
+    "@value" : "Strumenti a corde"
+  }, {
+    "@language" : "fr",
+    "@value" : "Instruments à cordes"
+  }, {
+    "@language" : "ca",
+    "@value" : "Instruments de corda"
+  }, {
+    "@language" : "sv",
+    "@value" : "Stränginstrument"
+  }, {
+    "@language" : "en",
+    "@value" : "Stringed instruments"
+  }, {
+    "@language" : "nl",
+    "@value" : "Snaren"
+  }, {
+    "@value" : "Stringed instruments"
+  }, {
+    "@language" : "de",
+    "@value" : "Saiteninstrumente"
+  }, {
+    "@language" : "pl",
+    "@value" : "Chordofony"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#topConceptOf" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3102",
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3101"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3108",
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3101"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3113",
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3101"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3224",
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3101"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3254",
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3101"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3265",
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3101"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3304",
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3101"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3313",
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3101"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3486",
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3101"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3509",
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3101"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3516",
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3101"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3521",
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3101"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3555",
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3101"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3558",
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3101"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3564",
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3101"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3575",
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3101"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3584",
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3101"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3610",
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3101"
+  } ]
+} ]

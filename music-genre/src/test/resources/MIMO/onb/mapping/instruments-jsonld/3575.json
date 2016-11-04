@@ -1,0 +1,101 @@
+[ {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3101",
+  "http://www.w3.org/2004/02/skos/core#narrower" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3575"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3575",
+  "@type" : [ "http://www.w3.org/2004/02/skos/core#Concept" ],
+  "http://www.w3.org/2004/02/skos/core#altLabel" : [ {
+    "@language" : "de",
+    "@value" : "Celli"
+  }, {
+    "@value" : "Cellos"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3101"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : ""
+  } ],
+  "http://www.w3.org/2004/02/skos/core#inScheme" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#narrower" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3577"
+  }, {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3576"
+  }, {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3578"
+  }, {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3580"
+  }, {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/6538"
+  }, {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3582"
+  }, {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/5960"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
+    "@language" : "pl",
+    "@value" : "Wiolonczele"
+  }, {
+    "@language" : "sv",
+    "@value" : "Violoncelli"
+  }, {
+    "@language" : "it",
+    "@value" : "Violoncelli"
+  }, {
+    "@language" : "de",
+    "@value" : "Violoncelli"
+  }, {
+    "@language" : "fr",
+    "@value" : "Violoncelles"
+  }, {
+    "@language" : "ca",
+    "@value" : "Violoncels"
+  }, {
+    "@language" : "en",
+    "@value" : "Violoncellos"
+  }, {
+    "@value" : "Violoncellos"
+  }, {
+    "@language" : "nl",
+    "@value" : "Cello's"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3576",
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3575"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3577",
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3575"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3578",
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3575"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3580",
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3575"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3582",
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3575"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/5960",
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3575"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/6538",
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3575"
+  } ]
+} ]

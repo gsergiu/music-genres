@@ -1,0 +1,60 @@
+[ {
+  "@id" : "http://www.mimo-db.eu/HornbostelAndSachs/2160",
+  "http://www.w3.org/2004/02/skos/core#exactMatch" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4446"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4370",
+  "http://www.w3.org/2004/02/skos/core#narrower" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4446"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4446",
+  "@type" : [ "http://www.w3.org/2004/02/skos/core#Concept" ],
+  "http://www.w3.org/2004/02/skos/core#altLabel" : [ {
+    "@language" : "fr",
+    "@value" : "Trompe"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4370"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#closeMatch" : [ {
+    "@id" : "http://dbpedia.org/resource/Trumpet"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : ""
+  } ],
+  "http://www.w3.org/2004/02/skos/core#exactMatch" : [ {
+    "@id" : "http://www.mimo-db.eu/HornbostelAndSachs/2160"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#inScheme" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
+    "@value" : "Trumpet"
+  }, {
+    "@language" : "it",
+    "@value" : "Tromba"
+  }, {
+    "@language" : "ca",
+    "@value" : "Trompeta"
+  }, {
+    "@language" : "fr",
+    "@value" : "Trompette"
+  }, {
+    "@language" : "de",
+    "@value" : "Trompete"
+  }, {
+    "@language" : "sv",
+    "@value" : "Trumpet"
+  }, {
+    "@language" : "pl",
+    "@value" : "Trąbka"
+  }, {
+    "@language" : "en",
+    "@value" : "Trumpet"
+  }, {
+    "@language" : "nl",
+    "@value" : "Trompet"
+  } ]
+} ]

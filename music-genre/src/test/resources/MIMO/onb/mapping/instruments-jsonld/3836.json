@@ -1,0 +1,56 @@
+[ {
+  "@id" : "http://www.mimo-db.eu/HornbostelAndSachs/326",
+  "http://www.w3.org/2004/02/skos/core#exactMatch" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3836"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3827",
+  "http://www.w3.org/2004/02/skos/core#narrower" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3836"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3836",
+  "@type" : [ "http://www.w3.org/2004/02/skos/core#Concept" ],
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3827"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#closeMatch" : [ {
+    "@id" : "http://dbpedia.org/resource/Clarinets"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : ""
+  } ],
+  "http://www.w3.org/2004/02/skos/core#exactMatch" : [ {
+    "@id" : "http://www.mimo-db.eu/HornbostelAndSachs/326"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#inScheme" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
+    "@language" : "it",
+    "@value" : "Clarinetto"
+  }, {
+    "@language" : "nl",
+    "@value" : "Klarinet"
+  }, {
+    "@language" : "ca",
+    "@value" : "Clarinet"
+  }, {
+    "@language" : "pl",
+    "@value" : "Klarnet"
+  }, {
+    "@language" : "de",
+    "@value" : "Klarinette"
+  }, {
+    "@language" : "en",
+    "@value" : "Clarinet"
+  }, {
+    "@value" : "Clarinet"
+  }, {
+    "@language" : "fr",
+    "@value" : "Clarinette"
+  }, {
+    "@language" : "sv",
+    "@value" : "Klarinett"
+  } ]
+} ]

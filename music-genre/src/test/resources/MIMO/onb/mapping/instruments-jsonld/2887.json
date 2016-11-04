@@ -1,0 +1,85 @@
+[ {
+  "@id" : "http://www.mimo-db.eu/HornbostelAndSachs/6425",
+  "http://www.w3.org/2004/02/skos/core#exactMatch" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/2887"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/HornbostelAndSachs/6428",
+  "http://www.w3.org/2004/02/skos/core#exactMatch" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/2887"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/HornbostelAndSachs/6429",
+  "http://www.w3.org/2004/02/skos/core#exactMatch" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/2887"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/HornbostelAndSachs/98",
+  "http://www.w3.org/2004/02/skos/core#exactMatch" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/2887"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/2879",
+  "http://www.w3.org/2004/02/skos/core#narrower" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/2887"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/2887",
+  "@type" : [ "http://www.w3.org/2004/02/skos/core#Concept" ],
+  "http://www.w3.org/2004/02/skos/core#altLabel" : [ {
+    "@value" : "Timpano"
+  }, {
+    "@language" : "fr",
+    "@value" : "Tambour sur cuvette"
+  }, {
+    "@value" : "Kettle drum"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/2879"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#closeMatch" : [ {
+    "@id" : "http://dbpedia.org/resource/Kettledrum"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : ""
+  } ],
+  "http://www.w3.org/2004/02/skos/core#exactMatch" : [ {
+    "@id" : "http://www.mimo-db.eu/HornbostelAndSachs/6429"
+  }, {
+    "@id" : "http://www.mimo-db.eu/HornbostelAndSachs/98"
+  }, {
+    "@id" : "http://www.mimo-db.eu/HornbostelAndSachs/6428"
+  }, {
+    "@id" : "http://www.mimo-db.eu/HornbostelAndSachs/6425"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#inScheme" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
+    "@language" : "en",
+    "@value" : "Kettledrum"
+  }, {
+    "@language" : "de",
+    "@value" : "Pauke"
+  }, {
+    "@language" : "fr",
+    "@value" : "Timbale"
+  }, {
+    "@value" : "Kettledrum"
+  }, {
+    "@language" : "it",
+    "@value" : "Timpano"
+  }, {
+    "@language" : "nl",
+    "@value" : "Keteltrom"
+  }, {
+    "@language" : "ca",
+    "@value" : "Timbala"
+  }, {
+    "@language" : "pl",
+    "@value" : "Kocioł"
+  }, {
+    "@language" : "sv",
+    "@value" : "Puka"
+  } ]
+} ]

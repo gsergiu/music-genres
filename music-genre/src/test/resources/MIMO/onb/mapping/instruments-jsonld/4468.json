@@ -1,0 +1,56 @@
+[ {
+  "@id" : "http://www.mimo-db.eu/HornbostelAndSachs/2165",
+  "http://www.w3.org/2004/02/skos/core#exactMatch" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4468"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4455",
+  "http://www.w3.org/2004/02/skos/core#narrower" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4468"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4468",
+  "@type" : [ "http://www.w3.org/2004/02/skos/core#Concept" ],
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4455"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#closeMatch" : [ {
+    "@id" : "http://dbpedia.org/resource/Wagner_tuba"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : ""
+  } ],
+  "http://www.w3.org/2004/02/skos/core#exactMatch" : [ {
+    "@id" : "http://www.mimo-db.eu/HornbostelAndSachs/2165"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#inScheme" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
+    "@language" : "ca",
+    "@value" : "Tuba de Wagner"
+  }, {
+    "@language" : "en",
+    "@value" : "Wagner tuba"
+  }, {
+    "@value" : "Wagner tuba"
+  }, {
+    "@language" : "sv",
+    "@value" : "Wagnertuba"
+  }, {
+    "@language" : "pl",
+    "@value" : "Tuba wagnerowska"
+  }, {
+    "@language" : "it",
+    "@value" : "Tuba wagneriana"
+  }, {
+    "@language" : "nl",
+    "@value" : "Wagnertuba"
+  }, {
+    "@language" : "fr",
+    "@value" : "Tuba Wagner"
+  }, {
+    "@language" : "de",
+    "@value" : "Wagnertuba"
+  } ]
+} ]

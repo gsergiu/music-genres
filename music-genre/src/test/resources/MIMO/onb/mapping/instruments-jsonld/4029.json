@@ -1,0 +1,66 @@
+[ {
+  "@id" : "http://www.mimo-db.eu/HornbostelAndSachs/268",
+  "http://www.w3.org/2004/02/skos/core#exactMatch" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4029"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3883",
+  "http://www.w3.org/2004/02/skos/core#narrower" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4029"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4029",
+  "@type" : [ "http://www.w3.org/2004/02/skos/core#Concept" ],
+  "http://www.w3.org/2004/02/skos/core#altLabel" : [ {
+    "@language" : "de",
+    "@value" : "Pikkoloquerflöte"
+  }, {
+    "@language" : "de",
+    "@value" : "Pikkolo"
+  }, {
+    "@language" : "fr",
+    "@value" : "Petite flûte"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3883"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#closeMatch" : [ {
+    "@id" : "http://dbpedia.org/resource/Piccolo_flute"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : ""
+  } ],
+  "http://www.w3.org/2004/02/skos/core#exactMatch" : [ {
+    "@id" : "http://www.mimo-db.eu/HornbostelAndSachs/268"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#inScheme" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
+    "@language" : "pl",
+    "@value" : "Flet pikolo"
+  }, {
+    "@value" : "Piccolo flute"
+  }, {
+    "@language" : "nl",
+    "@value" : "Piccolo"
+  }, {
+    "@language" : "sv",
+    "@value" : "Piccolaflöjt"
+  }, {
+    "@language" : "it",
+    "@value" : "Flauto ottavino"
+  }, {
+    "@language" : "fr",
+    "@value" : "Flûte piccolo"
+  }, {
+    "@language" : "en",
+    "@value" : "Piccolo flute"
+  }, {
+    "@language" : "de",
+    "@value" : "Pikkoloflöte"
+  }, {
+    "@language" : "ca",
+    "@value" : "Flautí"
+  } ]
+} ]

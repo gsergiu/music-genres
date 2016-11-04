@@ -1,0 +1,66 @@
+[ {
+  "@id" : "http://www.mimo-db.eu/HornbostelAndSachs/5660",
+  "http://www.w3.org/2004/02/skos/core#exactMatch" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3285"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/HornbostelAndSachs/6478",
+  "http://www.w3.org/2004/02/skos/core#exactMatch" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3285"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3265",
+  "http://www.w3.org/2004/02/skos/core#narrower" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3285"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3285",
+  "@type" : [ "http://www.w3.org/2004/02/skos/core#Concept" ],
+  "http://www.w3.org/2004/02/skos/core#altLabel" : [ {
+    "@value" : "Pedal harp"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3265"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#closeMatch" : [ {
+    "@id" : "http://dbpedia.org/resource/Harps"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : ""
+  } ],
+  "http://www.w3.org/2004/02/skos/core#exactMatch" : [ {
+    "@id" : "http://www.mimo-db.eu/HornbostelAndSachs/5660"
+  }, {
+    "@id" : "http://www.mimo-db.eu/HornbostelAndSachs/6478"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#inScheme" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
+    "@language" : "ca",
+    "@value" : "Arpa"
+  }, {
+    "@value" : "Harp"
+  }, {
+    "@language" : "it",
+    "@value" : "Arpa"
+  }, {
+    "@language" : "fr",
+    "@value" : "Harpe"
+  }, {
+    "@language" : "sv",
+    "@value" : "Harpa"
+  }, {
+    "@language" : "pl",
+    "@value" : "Harfa"
+  }, {
+    "@language" : "de",
+    "@value" : "Harfe"
+  }, {
+    "@language" : "nl",
+    "@value" : "Harp"
+  }, {
+    "@language" : "en",
+    "@value" : "Harp"
+  } ]
+} ]

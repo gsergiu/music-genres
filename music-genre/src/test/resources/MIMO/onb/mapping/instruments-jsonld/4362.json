@@ -1,0 +1,67 @@
+[ {
+  "@id" : "http://www.mimo-db.eu/HornbostelAndSachs/2161",
+  "http://www.w3.org/2004/02/skos/core#exactMatch" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4362"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/HornbostelAndSachs/356",
+  "http://www.w3.org/2004/02/skos/core#exactMatch" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4362"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4360",
+  "http://www.w3.org/2004/02/skos/core#narrower" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4362"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4362",
+  "@type" : [ "http://www.w3.org/2004/02/skos/core#Concept" ],
+  "http://www.w3.org/2004/02/skos/core#altLabel" : [ {
+    "@language" : "de",
+    "@value" : "Baßposaune"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4360"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#closeMatch" : [ {
+    "@id" : "http://dbpedia.org/resource/Bass_trombone#Bass_trombone"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : ""
+  } ],
+  "http://www.w3.org/2004/02/skos/core#exactMatch" : [ {
+    "@id" : "http://www.mimo-db.eu/HornbostelAndSachs/356"
+  }, {
+    "@id" : "http://www.mimo-db.eu/HornbostelAndSachs/2161"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#inScheme" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
+    "@language" : "ca",
+    "@value" : "Trombó baix"
+  }, {
+    "@language" : "sv",
+    "@value" : "Basbasun"
+  }, {
+    "@language" : "nl",
+    "@value" : "Bastrombone"
+  }, {
+    "@language" : "de",
+    "@value" : "Bassposaune"
+  }, {
+    "@language" : "en",
+    "@value" : "Bass trombone"
+  }, {
+    "@language" : "pl",
+    "@value" : "Puzon basowy"
+  }, {
+    "@language" : "it",
+    "@value" : "Trombone basso"
+  }, {
+    "@value" : "Bass trombone"
+  }, {
+    "@language" : "fr",
+    "@value" : "Trombone basse"
+  } ]
+} ]

@@ -1,0 +1,137 @@
+[ {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3730",
+  "http://www.w3.org/2004/02/skos/core#narrower" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4455"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4455",
+  "@type" : [ "http://www.w3.org/2004/02/skos/core#Concept" ],
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3730"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : ""
+  } ],
+  "http://www.w3.org/2004/02/skos/core#inScheme" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#narrower" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4462"
+  }, {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4456"
+  }, {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/5715"
+  }, {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4468"
+  }, {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4465"
+  }, {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4467"
+  }, {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4463"
+  }, {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4464"
+  }, {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4460"
+  }, {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4461"
+  }, {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4458"
+  }, {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4459"
+  }, {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4999"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
+    "@language" : "de",
+    "@value" : "Tuben"
+  }, {
+    "@language" : "it",
+    "@value" : "Tube"
+  }, {
+    "@language" : "fr",
+    "@value" : "Tubas"
+  }, {
+    "@language" : "en",
+    "@value" : "Tubas"
+  }, {
+    "@language" : "pl",
+    "@value" : "Tuby"
+  }, {
+    "@value" : "Tubas"
+  }, {
+    "@language" : "sv",
+    "@value" : "Tubor"
+  }, {
+    "@language" : "nl",
+    "@value" : "Tuba's"
+  }, {
+    "@language" : "ca",
+    "@value" : "Tubes"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4456",
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4455"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4458",
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4455"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4459",
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4455"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4460",
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4455"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4461",
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4455"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4462",
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4455"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4463",
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4455"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4464",
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4455"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4465",
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4455"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4467",
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4455"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4468",
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4455"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4999",
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4455"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/5715",
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4455"
+  } ]
+} ]

@@ -1,0 +1,60 @@
+[ {
+  "@id" : "http://www.mimo-db.eu/HornbostelAndSachs/354",
+  "http://www.w3.org/2004/02/skos/core#exactMatch" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3868"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3866",
+  "http://www.w3.org/2004/02/skos/core#narrower" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3868"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3868",
+  "@type" : [ "http://www.w3.org/2004/02/skos/core#Concept" ],
+  "http://www.w3.org/2004/02/skos/core#altLabel" : [ {
+    "@language" : "de",
+    "@value" : "Krummer Zink"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3866"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#closeMatch" : [ {
+    "@id" : "http://dbpedia.org/resource/Cornett"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : ""
+  } ],
+  "http://www.w3.org/2004/02/skos/core#exactMatch" : [ {
+    "@id" : "http://www.mimo-db.eu/HornbostelAndSachs/354"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#inScheme" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
+    "@language" : "fr",
+    "@value" : "Cornet à bouquin"
+  }, {
+    "@language" : "nl",
+    "@value" : "Zink"
+  }, {
+    "@language" : "de",
+    "@value" : "Zink"
+  }, {
+    "@language" : "ca",
+    "@value" : "Corneta"
+  }, {
+    "@language" : "it",
+    "@value" : "Cornetto"
+  }, {
+    "@language" : "sv",
+    "@value" : "Sinka"
+  }, {
+    "@language" : "pl",
+    "@value" : "Cynk"
+  }, {
+    "@language" : "en",
+    "@value" : "Cornett"
+  }, {
+    "@value" : "Cornett"
+  } ]
+} ]

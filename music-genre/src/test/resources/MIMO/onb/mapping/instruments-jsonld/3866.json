@@ -1,0 +1,95 @@
+[ {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3730",
+  "http://www.w3.org/2004/02/skos/core#narrower" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3866"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3866",
+  "@type" : [ "http://www.w3.org/2004/02/skos/core#Concept" ],
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3730"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : ""
+  } ],
+  "http://www.w3.org/2004/02/skos/core#inScheme" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#narrower" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3873"
+  }, {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3874"
+  }, {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3871"
+  }, {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3868"
+  }, {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3872"
+  }, {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3867"
+  }, {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3869"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
+    "@value" : "Cornetts"
+  }, {
+    "@language" : "pl",
+    "@value" : "Cynki"
+  }, {
+    "@language" : "sv",
+    "@value" : "Zinkor"
+  }, {
+    "@language" : "nl",
+    "@value" : "Zinken"
+  }, {
+    "@language" : "de",
+    "@value" : "Zinken"
+  }, {
+    "@language" : "ca",
+    "@value" : "Corns"
+  }, {
+    "@language" : "it",
+    "@value" : "Cornetti"
+  }, {
+    "@language" : "fr",
+    "@value" : "Cornets à bouquin"
+  }, {
+    "@language" : "en",
+    "@value" : "Cornetts"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3867",
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3866"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3868",
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3866"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3869",
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3866"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3871",
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3866"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3872",
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3866"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3873",
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3866"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3874",
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3866"
+  } ]
+} ]

@@ -1,0 +1,88 @@
+[ {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3730",
+  "http://www.w3.org/2004/02/skos/core#narrower" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4136"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4136",
+  "@type" : [ "http://www.w3.org/2004/02/skos/core#Concept" ],
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3730"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : ""
+  } ],
+  "http://www.w3.org/2004/02/skos/core#inScheme" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#narrower" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4138"
+  }, {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4141"
+  }, {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4137"
+  }, {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/6719"
+  }, {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/6718"
+  }, {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4142"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
+    "@language" : "en",
+    "@value" : "Hunting horns"
+  }, {
+    "@language" : "pl",
+    "@value" : "Rogi myśliwskie"
+  }, {
+    "@language" : "de",
+    "@value" : "Jagdhörner"
+  }, {
+    "@language" : "nl",
+    "@value" : "Jachthoorns"
+  }, {
+    "@value" : "Hunting horns"
+  }, {
+    "@language" : "fr",
+    "@value" : "Trompes de chasse"
+  }, {
+    "@language" : "ca",
+    "@value" : "Trompes de caça"
+  }, {
+    "@language" : "sv",
+    "@value" : "Jakthorn"
+  }, {
+    "@language" : "it",
+    "@value" : "Corni da caccia"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4137",
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4136"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4138",
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4136"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4141",
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4136"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4142",
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4136"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/6718",
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4136"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/6719",
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4136"
+  } ]
+} ]

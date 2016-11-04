@@ -1,0 +1,62 @@
+[ {
+  "@id" : "http://www.mimo-db.eu/HornbostelAndSachs/205",
+  "http://www.w3.org/2004/02/skos/core#exactMatch" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3473"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3313",
+  "http://www.w3.org/2004/02/skos/core#narrower" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3473"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3473",
+  "@type" : [ "http://www.w3.org/2004/02/skos/core#Concept" ],
+  "http://www.w3.org/2004/02/skos/core#altLabel" : [ {
+    "@language" : "de",
+    "@value" : "Chitarrone"
+  }, {
+    "@value" : "Chitarrone"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3313"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#closeMatch" : [ {
+    "@id" : "http://dbpedia.org/resource/Theorbo"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : ""
+  } ],
+  "http://www.w3.org/2004/02/skos/core#exactMatch" : [ {
+    "@id" : "http://www.mimo-db.eu/HornbostelAndSachs/205"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#inScheme" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
+    "@value" : "Theorbo"
+  }, {
+    "@language" : "de",
+    "@value" : "Theorbe"
+  }, {
+    "@language" : "fr",
+    "@value" : "Théorbe"
+  }, {
+    "@language" : "pl",
+    "@value" : "Teorban"
+  }, {
+    "@language" : "nl",
+    "@value" : "Theorbo"
+  }, {
+    "@language" : "ca",
+    "@value" : "Tiorba"
+  }, {
+    "@language" : "en",
+    "@value" : "Theorbo"
+  }, {
+    "@language" : "sv",
+    "@value" : "Teorb"
+  }, {
+    "@language" : "it",
+    "@value" : "Tiorba"
+  } ]
+} ]

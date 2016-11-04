@@ -1,0 +1,70 @@
+[ {
+  "@id" : "http://www.mimo-db.eu/HornbostelAndSachs/344",
+  "http://www.w3.org/2004/02/skos/core#exactMatch" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4138"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/HornbostelAndSachs/347",
+  "http://www.w3.org/2004/02/skos/core#exactMatch" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4138"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4136",
+  "http://www.w3.org/2004/02/skos/core#narrower" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4138"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4138",
+  "@type" : [ "http://www.w3.org/2004/02/skos/core#Concept" ],
+  "http://www.w3.org/2004/02/skos/core#altLabel" : [ {
+    "@language" : "fr",
+    "@value" : "Corne de chasse"
+  }, {
+    "@language" : "fr",
+    "@value" : "Cor de chasse"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4136"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#closeMatch" : [ {
+    "@id" : "http://dbpedia.org/resource/Hunting_horn"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : ""
+  } ],
+  "http://www.w3.org/2004/02/skos/core#exactMatch" : [ {
+    "@id" : "http://www.mimo-db.eu/HornbostelAndSachs/347"
+  }, {
+    "@id" : "http://www.mimo-db.eu/HornbostelAndSachs/344"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#inScheme" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
+    "@value" : "Hunting horn"
+  }, {
+    "@language" : "fr",
+    "@value" : "Trompe de chasse"
+  }, {
+    "@language" : "sv",
+    "@value" : "Jakthorn"
+  }, {
+    "@language" : "pl",
+    "@value" : "Róg myśliwski"
+  }, {
+    "@language" : "it",
+    "@value" : "Corno da caccia"
+  }, {
+    "@language" : "de",
+    "@value" : "Jagdhorn"
+  }, {
+    "@language" : "nl",
+    "@value" : "Jachthoorn"
+  }, {
+    "@language" : "ca",
+    "@value" : "Trompa de caça"
+  }, {
+    "@language" : "en",
+    "@value" : "Hunting horn"
+  } ]
+} ]

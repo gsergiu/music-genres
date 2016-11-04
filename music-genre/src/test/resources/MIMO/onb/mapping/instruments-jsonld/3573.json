@@ -1,0 +1,60 @@
+[ {
+  "@id" : "http://www.mimo-db.eu/HornbostelAndSachs/6472",
+  "http://www.w3.org/2004/02/skos/core#exactMatch" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3573"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3564",
+  "http://www.w3.org/2004/02/skos/core#narrower" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3573"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3573",
+  "@type" : [ "http://www.w3.org/2004/02/skos/core#Concept" ],
+  "http://www.w3.org/2004/02/skos/core#altLabel" : [ {
+    "@language" : "de",
+    "@value" : "Geige"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3564"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#closeMatch" : [ {
+    "@id" : "http://dbpedia.org/resource/Violins"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : ""
+  } ],
+  "http://www.w3.org/2004/02/skos/core#exactMatch" : [ {
+    "@id" : "http://www.mimo-db.eu/HornbostelAndSachs/6472"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#inScheme" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
+    "@language" : "it",
+    "@value" : "Violino"
+  }, {
+    "@language" : "nl",
+    "@value" : "Viool"
+  }, {
+    "@language" : "ca",
+    "@value" : "Violí"
+  }, {
+    "@language" : "pl",
+    "@value" : "Skrzypce"
+  }, {
+    "@language" : "fr",
+    "@value" : "Violon"
+  }, {
+    "@language" : "de",
+    "@value" : "Violine"
+  }, {
+    "@language" : "sv",
+    "@value" : "Violin"
+  }, {
+    "@language" : "en",
+    "@value" : "Violin"
+  }, {
+    "@value" : "Violin"
+  } ]
+} ]

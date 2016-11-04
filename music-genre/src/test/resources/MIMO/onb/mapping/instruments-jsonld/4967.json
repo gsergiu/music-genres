@@ -1,0 +1,55 @@
+[ {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3558",
+  "http://www.w3.org/2004/02/skos/core#narrower" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4967"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4967",
+  "@type" : [ "http://www.w3.org/2004/02/skos/core#Concept" ],
+  "http://www.w3.org/2004/02/skos/core#altLabel" : [ {
+    "@language" : "de",
+    "@value" : "Tenorgeige"
+  }, {
+    "@language" : "de",
+    "@value" : "Tenor-Viola da braccio"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3558"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#closeMatch" : [ {
+    "@id" : "http://dbpedia.org/resource/Tenor_viola"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : ""
+  } ],
+  "http://www.w3.org/2004/02/skos/core#inScheme" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
+    "@language" : "en",
+    "@value" : "Tenor viola"
+  }, {
+    "@language" : "pl",
+    "@value" : "Viola tenorowa"
+  }, {
+    "@language" : "sv",
+    "@value" : "Tenorviola"
+  }, {
+    "@language" : "fr",
+    "@value" : "Alto ténor"
+  }, {
+    "@language" : "ca",
+    "@value" : "Viola tenor"
+  }, {
+    "@language" : "it",
+    "@value" : "Viola tenore"
+  }, {
+    "@value" : "Tenor viola"
+  }, {
+    "@language" : "nl",
+    "@value" : "Tenoraltviool"
+  }, {
+    "@language" : "de",
+    "@value" : "Tenorbratsche"
+  } ]
+} ]

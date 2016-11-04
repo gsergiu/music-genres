@@ -1,0 +1,97 @@
+[ {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/2230",
+  "@type" : [ "http://www.w3.org/2004/02/skos/core#Concept" ],
+  "http://www.w3.org/2004/02/skos/core#closeMatch" : [ {
+    "@id" : "http://dbpedia.org/resource/Keyboard_instruments"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : ""
+  } ],
+  "http://www.w3.org/2004/02/skos/core#narrower" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/2239"
+  }, {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/2273"
+  }, {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/2270"
+  }, {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/2231"
+  }, {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/2264"
+  }, {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/2316"
+  }, {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/2233"
+  }, {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4479"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
+    "@language" : "fr",
+    "@value" : "Instruments à clavier"
+  }, {
+    "@language" : "it",
+    "@value" : "Strumenti a tastiera"
+  }, {
+    "@language" : "nl",
+    "@value" : "Klavieren"
+  }, {
+    "@language" : "pl",
+    "@value" : "Instrumenty klawiszowe"
+  }, {
+    "@language" : "sv",
+    "@value" : "Klaverinstrument"
+  }, {
+    "@language" : "de",
+    "@value" : "Tasteninstrumente"
+  }, {
+    "@language" : "ca",
+    "@value" : "Instruments de teclat"
+  }, {
+    "@language" : "en",
+    "@value" : "Keyboard instruments"
+  }, {
+    "@value" : "Keyboard instruments"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#topConceptOf" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/2231",
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/2230"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/2233",
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/2230"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/2239",
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/2230"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/2264",
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/2230"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/2270",
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/2230"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/2273",
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/2230"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/2316",
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/2230"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4479",
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/2230"
+  } ]
+} ]

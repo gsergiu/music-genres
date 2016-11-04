@@ -1,0 +1,63 @@
+[ {
+  "@id" : "http://www.mimo-db.eu/HornbostelAndSachs/268",
+  "http://www.w3.org/2004/02/skos/core#exactMatch" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4093"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3883",
+  "http://www.w3.org/2004/02/skos/core#narrower" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4093"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4093",
+  "@type" : [ "http://www.w3.org/2004/02/skos/core#Concept" ],
+  "http://www.w3.org/2004/02/skos/core#altLabel" : [ {
+    "@language" : "fr",
+    "@value" : "Flûte à bouche latérale"
+  }, {
+    "@language" : "fr",
+    "@value" : "Flûte à embouchure latérale"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3883"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#closeMatch" : [ {
+    "@id" : "http://dbpedia.org/resource/Transverse_flute"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : ""
+  } ],
+  "http://www.w3.org/2004/02/skos/core#exactMatch" : [ {
+    "@id" : "http://www.mimo-db.eu/HornbostelAndSachs/268"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#inScheme" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
+    "@value" : "Transverse flute"
+  }, {
+    "@language" : "fr",
+    "@value" : "Flûte traversière"
+  }, {
+    "@language" : "pl",
+    "@value" : "Flet poprzeczny"
+  }, {
+    "@language" : "sv",
+    "@value" : "Traversflöjt"
+  }, {
+    "@language" : "nl",
+    "@value" : "Dwarsfluit"
+  }, {
+    "@language" : "it",
+    "@value" : "Flauto traverso"
+  }, {
+    "@language" : "ca",
+    "@value" : "Flauta travessera"
+  }, {
+    "@language" : "de",
+    "@value" : "Querflöte"
+  }, {
+    "@language" : "en",
+    "@value" : "Transverse flute"
+  } ]
+} ]

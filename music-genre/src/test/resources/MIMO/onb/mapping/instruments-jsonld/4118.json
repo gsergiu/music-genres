@@ -1,0 +1,66 @@
+[ {
+  "@id" : "http://www.mimo-db.eu/HornbostelAndSachs/347",
+  "http://www.w3.org/2004/02/skos/core#exactMatch" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4118"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4116",
+  "http://www.w3.org/2004/02/skos/core#narrower" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4118"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4118",
+  "@type" : [ "http://www.w3.org/2004/02/skos/core#Concept" ],
+  "http://www.w3.org/2004/02/skos/core#altLabel" : [ {
+    "@language" : "fr",
+    "@value" : "Corne"
+  }, {
+    "@language" : "de",
+    "@value" : "Waldhorn"
+  }, {
+    "@language" : "fr",
+    "@value" : "Cornet de chasse"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/4116"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#closeMatch" : [ {
+    "@id" : "http://dbpedia.org/resource/Horn_(instrument)"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : ""
+  } ],
+  "http://www.w3.org/2004/02/skos/core#exactMatch" : [ {
+    "@id" : "http://www.mimo-db.eu/HornbostelAndSachs/347"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#inScheme" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
+    "@language" : "it",
+    "@value" : "Corno"
+  }, {
+    "@value" : "Horn"
+  }, {
+    "@language" : "nl",
+    "@value" : "Hoorn"
+  }, {
+    "@language" : "fr",
+    "@value" : "Cor"
+  }, {
+    "@language" : "pl",
+    "@value" : "Róg"
+  }, {
+    "@language" : "ca",
+    "@value" : "Trompa"
+  }, {
+    "@language" : "sv",
+    "@value" : "Horn"
+  }, {
+    "@language" : "de",
+    "@value" : "Horn"
+  }, {
+    "@language" : "en",
+    "@value" : "Horn"
+  } ]
+} ]

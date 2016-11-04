@@ -1,0 +1,62 @@
+[ {
+  "@id" : "http://www.mimo-db.eu/HornbostelAndSachs/6473",
+  "http://www.w3.org/2004/02/skos/core#exactMatch" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3582"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3575",
+  "http://www.w3.org/2004/02/skos/core#narrower" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3582"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3582",
+  "@type" : [ "http://www.w3.org/2004/02/skos/core#Concept" ],
+  "http://www.w3.org/2004/02/skos/core#altLabel" : [ {
+    "@value" : "Cello"
+  }, {
+    "@language" : "de",
+    "@value" : "Cello"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3575"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#closeMatch" : [ {
+    "@id" : "http://dbpedia.org/resource/Violoncello"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : ""
+  } ],
+  "http://www.w3.org/2004/02/skos/core#exactMatch" : [ {
+    "@id" : "http://www.mimo-db.eu/HornbostelAndSachs/6473"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#inScheme" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
+    "@language" : "sv",
+    "@value" : "Violoncell"
+  }, {
+    "@value" : "Violoncello"
+  }, {
+    "@language" : "nl",
+    "@value" : "Cello"
+  }, {
+    "@language" : "ca",
+    "@value" : "Violoncel"
+  }, {
+    "@language" : "it",
+    "@value" : "Violoncello"
+  }, {
+    "@language" : "pl",
+    "@value" : "Wiolonczela"
+  }, {
+    "@language" : "de",
+    "@value" : "Violoncello"
+  }, {
+    "@language" : "en",
+    "@value" : "Violoncello"
+  }, {
+    "@language" : "fr",
+    "@value" : "Violoncelle"
+  } ]
+} ]

@@ -1,0 +1,48 @@
+[ {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3584",
+  "http://www.w3.org/2004/02/skos/core#narrower" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/5717"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/5717",
+  "@type" : [ "http://www.w3.org/2004/02/skos/core#Concept" ],
+  "http://www.w3.org/2004/02/skos/core#altLabel" : [ {
+    "@value" : "Violetta all inglese"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3584"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : ""
+  } ],
+  "http://www.w3.org/2004/02/skos/core#inScheme" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
+    "@value" : "English violet"
+  }, {
+    "@language" : "de",
+    "@value" : "Englisches Violett"
+  }, {
+    "@language" : "fr",
+    "@value" : "Violette"
+  }, {
+    "@language" : "nl",
+    "@value" : "Engelse violet"
+  }, {
+    "@language" : "it",
+    "@value" : "Violetta inglese"
+  }, {
+    "@language" : "ca",
+    "@value" : "Violeta anglesa"
+  }, {
+    "@language" : "pl",
+    "@value" : "English violet"
+  }, {
+    "@language" : "sv",
+    "@value" : "English violet"
+  }, {
+    "@language" : "en",
+    "@value" : "English violet"
+  } ]
+} ]

@@ -1,0 +1,60 @@
+[ {
+  "@id" : "http://www.mimo-db.eu/HornbostelAndSachs/6473",
+  "http://www.w3.org/2004/02/skos/core#exactMatch" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3597"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3584",
+  "http://www.w3.org/2004/02/skos/core#narrower" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3597"
+  } ]
+}, {
+  "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3597",
+  "@type" : [ "http://www.w3.org/2004/02/skos/core#Concept" ],
+  "http://www.w3.org/2004/02/skos/core#altLabel" : [ {
+    "@language" : "de",
+    "@value" : "Viola da gamba"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords/3584"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#closeMatch" : [ {
+    "@id" : "http://dbpedia.org/resource/Viol"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : ""
+  } ],
+  "http://www.w3.org/2004/02/skos/core#exactMatch" : [ {
+    "@id" : "http://www.mimo-db.eu/HornbostelAndSachs/6473"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#inScheme" : [ {
+    "@id" : "http://www.mimo-db.eu/InstrumentsKeywords"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
+    "@language" : "it",
+    "@value" : "Viola da gamba"
+  }, {
+    "@language" : "pl",
+    "@value" : "Viola"
+  }, {
+    "@language" : "en",
+    "@value" : "Viol"
+  }, {
+    "@language" : "de",
+    "@value" : "Gambe"
+  }, {
+    "@language" : "ca",
+    "@value" : "Viola d'arc"
+  }, {
+    "@value" : "Viol"
+  }, {
+    "@language" : "sv",
+    "@value" : "Gamba"
+  }, {
+    "@language" : "fr",
+    "@value" : "Viole"
+  }, {
+    "@language" : "nl",
+    "@value" : "Gamba"
+  } ]
+} ]
