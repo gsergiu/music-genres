@@ -20,6 +20,14 @@ import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
 
+import com.hp.hpl.jena.query.ParameterizedSparqlString;
+import com.hp.hpl.jena.query.QueryExecution;
+import com.hp.hpl.jena.query.QueryExecutionFactory;
+import com.hp.hpl.jena.query.QuerySolution;
+import com.hp.hpl.jena.query.ResultSet;
+import com.hp.hpl.jena.query.ResultSetFactory;
+import com.hp.hpl.jena.query.ResultSetFormatter;
+
 import eu.europeana.api.client.connection.HttpConnector;
 
 
@@ -36,8 +44,11 @@ public class WikidataApiClient {
 
 	public final static String SEARCH_RESULTS_FOLDER = "./src/test/resources/search/results";
 	
-	String MUSIC_BRAINZ_PROP = "434";
+	public final String MUSIC_BRAINZ_PROP = "434";
+	public final String INSTRUMENT_PROP = "1303";
 
+	public final String SPARQL_ENDPOINT = "https://query.wikidata.org/";
+	
 	
 	/**
 	 * Create a new connection to the Wikidata API.
@@ -95,6 +106,31 @@ public class WikidataApiClient {
 	public String getMusicBrainzIdFromWikidataById(String searchWikidataId) throws UnsupportedEncodingException {
 		String searchUrl = getApiUri();
 		searchUrl += "q=" + URLEncoder.encode("items['" + searchWikidataId + "']", "UTF-8") + "&props=" + MUSIC_BRAINZ_PROP;
+		String searchResult = "";
+		try {
+			searchResult = getJSONResult(searchUrl);
+		} catch (IOException e) {
+			log.error(e.getMessage());
+		}
+		return convertJsonStringToPrettyPrintJsonOutput(searchResult);
+	}
+
+	
+	/**
+	 * Returns the instrument ID by Wikidata ID
+	 * e.g. https://www.wikidata.org/wiki/Q435330 for 'Kristin Hersh' in browser that has
+	 * instrument ID 6607
+	 *      https://wdq.wmflabs.org/api?q=items[435330]&props=1303 in API
+	 * 
+	 * !!! This method suffers an Gateway timeout from Wikidata side.
+	 * 
+	 * @param searchWikidataId
+	 * @return MusicBrainz ID
+	 * @throws UnsupportedEncodingException 
+	 */
+	public String getInstrumentIdFromWikidataById(String searchWikidataId) throws UnsupportedEncodingException {
+		String searchUrl = getApiUri();
+		searchUrl += "q=" + URLEncoder.encode("items['" + searchWikidataId + "']", "UTF-8") + "&props=" + INSTRUMENT_PROP;
 		String searchResult = "";
 		try {
 			searchResult = getJSONResult(searchUrl);
@@ -289,6 +325,20 @@ public class WikidataApiClient {
     }
 	
 
+    public String getEntity(String id) {
+
+    	String res = "";
+    	try {
+	    	if(id != null && id.length() > 0) {
+	    		res = getHtmlContent(id);
+	    	}
+		} catch (IOException e) {
+			log.error("Error during Wikidata search by ID: " + id + ". " + e.getMessage());
+		}
+		return res;
+	    	
+	}
+    
 
 	public String getSearchResultFromFile(String query) throws IOException {
 		String localFolder = SEARCH_RESULTS_FOLDER;
@@ -350,4 +400,61 @@ public class WikidataApiClient {
 				+ ".json");
 		return queryResultsFile;
 	}
+	
+	
+    /**
+     * Sample query: "https://www.wikidata.org/wiki/Q6607" for guitar
+     * @param id
+     * @return DBPedia response
+     */
+    public String getWikidataLabelById(String id) {
+    	
+    	String res = "";
+    	
+        ParameterizedSparqlString qs = new ParameterizedSparqlString( "" +
+                "prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#>\n" +
+                "prefix wd: <http://www.wikidata.org/entity/>\n" +
+                "\n" +
+                "select *\n" +
+                "where {\n" +
+				"         wd:Q" + id + " rdfs:label ?label .\n" +
+                "	      FILTER (LANG(?label) = 'en') .\n" + 
+                "      }\n" + 
+                "LIMIT 1" 
+                );
+
+//        Literal labelLiteral = ResourceFactory.createLangLiteral( label, "en" );
+//        qs.setParam("label", labelLiteral);
+
+        log.debug( qs );
+
+        QueryExecution exec = QueryExecutionFactory.sparqlService(SPARQL_ENDPOINT, qs.asQuery());
+
+        ResultSet resultSet = exec.execSelect();
+        
+        // Normally you'd just do results = exec.execSelect(), but I want to 
+        // use this ResultSet twice, so I'm making a copy of it.  
+        ResultSet results = ResultSetFactory.copyResults( resultSet );
+
+        while ( results.hasNext() ) {
+            // As RobV pointed out, don't use the `?` in the variable
+            // name here. Use *just* the name of the variable.
+//            System.out.println( results.next().get( "resource" ));
+        	QuerySolution resQs = results.next();
+            res = res + resQs.get( "resource" ) + "#";
+            res = res + resQs.get( "description" );
+//            System.out.println( resQs.get( "resource" ));
+//            System.out.println( resQs.get( "description" ));
+        }
+
+        // A simpler way of printing the results.
+        ResultSetFormatter.out( results );
+//        return results.toString();
+        if (res.equals(""))
+        	res = "#";
+        return res;
+    }
+	    
+	    
+	
 }

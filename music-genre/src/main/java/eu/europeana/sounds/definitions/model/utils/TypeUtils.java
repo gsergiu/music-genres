@@ -327,4 +327,84 @@ public class TypeUtils {
 	            return false;
 	    return true;
 	}	
+
+
+	/**
+	 * This method extracts string from content between passed prefix and ending.
+	 * @param content string
+	 * @param prefix
+	 * @param ending
+	 * @return resulting string
+	 */
+	public static String extractStringBetweenPrefixAndEnding(String content, String prefix, String ending) {
+		String res = "";
+		if (StringUtils.isNotEmpty(content) && content.contains(prefix) && content.contains(ending)) {
+			Pattern pattern = Pattern.compile(prefix + "(.*?)" + ending);
+			Matcher matcher = pattern.matcher(content);
+			if (matcher.find()) {
+			    res = matcher.group(1);
+			}		
+		}
+		return res;
+	}
+	
+
+	/**
+	 * This method extracts multiple strings from content between passed prefix and ending.
+	 * @param content string
+	 * @param prefix
+	 * @param ending
+	 * @return resulting string
+	 */
+	public static List<String> extractMultipleStringsBetweenPrefixAndEnding(
+			String content, String prefix, String ending) {
+
+		List<String> res = new ArrayList<String>();
+		if (StringUtils.isNotEmpty(content) && content.contains(prefix) && content.contains(ending)) {
+			Pattern pattern = Pattern.compile(prefix + "(.*?)" + ending);
+			Matcher matcher = pattern.matcher(content);
+			while (matcher.find()) {
+			    String value = matcher.group(1);
+			    if (!res.contains(value)) {
+			    	res.add(value);
+			    }
+			}			
+		}
+		return res;
+	}
+	
+	
+	/**
+	 * @param str
+	 * @return
+	 */
+	public static String removeLastCharacterInString(String str) {	
+		
+	    if (str != null && str.length() > 0 && str.charAt(str.length()-1)=='#') {
+	        str = str.substring(0, str.length()-1);
+	    }	
+	    
+	    return str;
+	}
+	
+
+	/**
+	 * @param list
+	 * @param delimiter
+	 * @return resulting string
+	 */
+	public static String convertListToString(List<String> list, String delimiter) {
+		
+		StringBuilder sb = new StringBuilder();
+	
+		for (Object obj : list) {
+		  sb.append(obj.toString());
+		  sb.append(delimiter);
+		}
+		
+		String res = sb.toString();
+		
+		return removeLastCharacterInString(res);
+	}
+
 }
