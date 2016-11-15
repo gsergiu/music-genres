@@ -407,4 +407,22 @@ public class TypeUtils {
 		return removeLastCharacterInString(res);
 	}
 
+	
+	/**
+	 * @param list
+	 * @param delimiter
+	 * @return resulting string
+	 */
+	public static List<String> convertStringToList(String str, String delimiter) {
+		
+		List<String> res = new ArrayList<String>();
+	    if (!StringUtils.isBlank(str)) { 
+	        String[] tokens = str.split(delimiter);
+	        for(String t : tokens) {
+	        	res.add(t);
+	        }
+		}
+	    return res;		
+	}
+
 }

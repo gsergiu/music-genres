@@ -5,20 +5,14 @@ import static org.junit.Assert.fail;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.HashMap;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.LineIterator;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 import org.junit.Test;
 
 import eu.europeana.musicbrainz.connection.MusicbrainzApiClient;
@@ -34,6 +28,7 @@ public class SearchInstrumentsForDataset extends BaseSkosTest {
 
 	String EXTENDED_IA_WIKIDATA_MUSICBRAINZ_OVERVIEW_CSV = "extended-ia-wikidata-musicbrainz-overview.csv"; 
 	String INSTRUMENTS_OVERVIEW_CSV = "instruments-overview.csv"; 
+	String UNIQUE_INSTRUMENTS_CSV = "unique-instruments.csv"; 
 	
 	int EUROPEANA_ID_COL_POS    = 0;
 	int TITLE_COL_POS           = 1;
@@ -43,11 +38,13 @@ public class SearchInstrumentsForDataset extends BaseSkosTest {
 	int IA_ID_COL_POS           = 5;
 	int WIKIDATA_ID_COL_POS     = 6;
 	int MUSICBRAINZ_ID_COL_POS  = 7;
+	int MUSICBRAINZ_INSTRUMENT_ID_COL_POS    = 8;
+	int MUSICBRAINZ_INSTRUMENT_NAME_COL_POS  = 9;
 	
 	String MUSICBRAINZ_INSTRUMENT_NAME_STR = "Musicbrainz Instrument Name";
-	String MUSICBRAINZ_INSTRUMENT_ID_STR    = "Musicbrainz Instrument ID";
-	String WIKIDATA_INSTRUMENT_NAME_STR = "Wikidata Instrument Name";
-	String WIKIDATA_INSTRUMENT_ID_STR    = "Wikidata Instrument ID";
+	String MUSICBRAINZ_INSTRUMENT_ID_STR   = "Musicbrainz Instrument ID";
+	String WIKIDATA_INSTRUMENT_NAME_STR    = "Wikidata Instrument Name";
+	String WIKIDATA_INSTRUMENT_ID_STR      = "Wikidata Instrument ID";
 	
 	WikidataApiClient wikidataApiClient = new WikidataApiClient();
 	MusicbrainzApiClient musicbrainzApiClient = new MusicbrainzApiClient();
@@ -114,7 +111,7 @@ public class SearchInstrumentsForDataset extends BaseSkosTest {
 	}
 
 	
-	@Test
+//	@Test
 	public void searchInstrumentsForDataset() throws IOException {
 		
 		Map<String, InstrumentIds> cacheMap = new HashMap<String, InstrumentIds>();
@@ -128,7 +125,6 @@ public class SearchInstrumentsForDataset extends BaseSkosTest {
 		int cnt = 0;
 		final String cellSeparator = ";"; 
 		final String lineBreak = "\n"; 
-//        JSONParser parser = new JSONParser();
 		
 		File recordFile = FileUtils.getFile(searchAnalysisFodler + INSTRUMENTS_OVERVIEW_CSV);
 		
@@ -196,22 +192,7 @@ public class SearchInstrumentsForDataset extends BaseSkosTest {
 								wikidataInstrumentName = TypeUtils.extractStringBetweenPrefixAndEnding(
 										wikidataHtmlResponse, "<title>", "<") ;
 			                    log.info("wikidataInstrumentId: " + wikidataInstrumentId);
-			                    log.info("wikidataInstrumentName: " + wikidataInstrumentName);						}
-	//						String wikidataJsonResponse = wikidataApiClient.getInstrumentIdFromWikidataById(wikidataId);
-	//		                try {
-	//		                    Object obj = parser.parse(wikidataJsonResponse);
-	//		                    JSONObject jsonObject = (JSONObject) obj;
-	//		                    JSONObject o1 = (JSONObject) jsonObject.get("props");
-	//		            		JSONArray arr = (JSONArray) o1.get(wikidataApiClient.INSTRUMENT_PROP);							
-	//		            		wikidataInstrumentId = (String) arr.get(0).toString().split(",")[2].replace("\"", "").replace("]", "");		                    
-	//		                    log.info("wikidataInstrumentId: " + wikidataInstrumentId);
-	//		                    wikidataInstrumentName = wikidataApiClient.getWikidataLabelById(wikidataInstrumentId);
-	//		                    log.info("wikidataInstrumentName: " + wikidataInstrumentName);
-	//		                } catch (ParseException pe) {
-	//		                    log.error(pe.getMessage());
-	//		                } catch (Exception e) {
-	//		                    log.error(e.getMessage());
-	//		                }						
+			                    log.info("wikidataInstrumentName: " + wikidataInstrumentName);						}				
 						}
 	
 						if (!StringUtils.isEmpty(musicbrainzId)) {
@@ -278,6 +259,67 @@ public class SearchInstrumentsForDataset extends BaseSkosTest {
 			}
 		}		
 		log.info("Successfully enriched items: " + cnt);		
+	}
+	
+
+	@Test
+	public void createUniqueInstrumentList() throws IOException {
+		
+		Map<String, String> instrumentMap = new HashMap<String, String>();
+		
+		File datasetFile = FileUtils.getFile(searchAnalysisFodler + INSTRUMENTS_OVERVIEW_CSV);
+		if(!datasetFile.exists())
+			fail("required dataset file doesn't exist" + datasetFile);
+		
+		LineIterator iterator = FileUtils.lineIterator(datasetFile);
+		String line;
+		int cnt = 0;
+		final String cellSeparator = ";"; 
+		final String lineBreak = "\n"; 
+		
+		File recordFile = FileUtils.getFile(searchAnalysisFodler + UNIQUE_INSTRUMENTS_CSV);
+		
+		while (iterator.hasNext()) {
+			
+			String musicbrainzInstrumentId = ""; 
+			String musicbrainzInstrumentName = ""; 
+
+			line = (String) iterator.next();
+			String[] items = line.split(cellSeparator);
+			if (items != null && items.length >= CREATOR_ID_COL_POS && items[CREATOR_ID_COL_POS] != null) {
+				if (cnt > 0) {
+					if (items != null && items.length > MUSICBRAINZ_INSTRUMENT_ID_COL_POS) {
+						musicbrainzInstrumentId = items[MUSICBRAINZ_INSTRUMENT_ID_COL_POS];
+						List<String> curInstruments = TypeUtils.convertStringToList(musicbrainzInstrumentId, "#");
+						if (items != null && items.length > MUSICBRAINZ_INSTRUMENT_NAME_COL_POS) {
+							musicbrainzInstrumentName = items[MUSICBRAINZ_INSTRUMENT_NAME_COL_POS];
+						}
+						List<String> curInstrumentNames = TypeUtils.convertStringToList(musicbrainzInstrumentName, "#");
+						int count = 0;
+						for (String instrumentId : curInstruments) {
+							if (!instrumentMap.containsKey(instrumentId)) {
+								instrumentMap.put(instrumentId, curInstrumentNames.get(count));
+							}
+							count = count +1;
+						}
+					}
+				}
+				cnt++;
+			}
+		}
+
+		String row = new StringBuilder()
+				.append(MUSICBRAINZ_INSTRUMENT_ID_STR).append(cellSeparator)
+				.append(MUSICBRAINZ_INSTRUMENT_NAME_STR).append(lineBreak).toString();
+		FileUtils.writeStringToFile(recordFile, row, "UTF-8", true);
+
+		for (String key: instrumentMap.keySet()) {
+			row = new StringBuilder()
+				.append(key).append(cellSeparator)
+				.append(instrumentMap.get(key)).append(lineBreak)
+				.toString();
+			FileUtils.writeStringToFile(recordFile, row, "UTF-8", true);
+		}		
 	}
 	
 
