@@ -30,7 +30,8 @@ public class MusicbrainzApiClient {
 	private static final Log log = LogFactory.getLog(MusicbrainzApiClient.class);
 
 	public final static String DEFAULT_MUSICBRAINZ_SEARCH_URI = "http://musicbrainz.org/ws/2/";
-	public final String BASE_ARTIST_URL = "https://musicbrainz.org/artist/";
+	public final String BASE_ARTIST_URL = "https://musicbrainz.org/artist/"; 
+	public final String BASE_INSTRUMENT_URL = "https://musicbrainz.org/instrument/"; 
 	public final String RELATIONSHIPS = "/relationships";	
 	public final String INSTRUMENT = "/instrument";	
 	

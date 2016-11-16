@@ -1,5 +1,6 @@
 package eu.europeana.sounds.vocabulary.genres.music;
 
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import java.io.File;
@@ -16,6 +17,9 @@ import org.apache.log4j.Logger;
 import org.junit.Test;
 
 import eu.europeana.musicbrainz.connection.MusicbrainzApiClient;
+import eu.europeana.skos.SkosApiClient;
+import eu.europeana.sounds.definitions.model.concept.Concept;
+import eu.europeana.sounds.definitions.model.concept.impl.MimoMappingView;
 import eu.europeana.sounds.definitions.model.utils.TypeUtils;
 import eu.europeana.sounds.skos.BaseSkosTest;
 import eu.europeana.wikidata.connection.WikidataApiClient;
@@ -29,6 +33,7 @@ public class SearchInstrumentsForDataset extends BaseSkosTest {
 	String EXTENDED_IA_WIKIDATA_MUSICBRAINZ_OVERVIEW_CSV = "extended-ia-wikidata-musicbrainz-overview.csv"; 
 	String INSTRUMENTS_OVERVIEW_CSV = "instruments-overview.csv"; 
 	String UNIQUE_INSTRUMENTS_CSV = "unique-instruments.csv"; 
+	String UNIQUE_INSTRUMENTS_SKOS_XML = "unique-instruments-skos.xml"; 
 	
 	int EUROPEANA_ID_COL_POS    = 0;
 	int TITLE_COL_POS           = 1;
@@ -41,6 +46,9 @@ public class SearchInstrumentsForDataset extends BaseSkosTest {
 	int MUSICBRAINZ_INSTRUMENT_ID_COL_POS    = 8;
 	int MUSICBRAINZ_INSTRUMENT_NAME_COL_POS  = 9;
 	
+	int INSTRUMENT_ID_COL_POS   = 0;
+	int INSTRUMENT_NAME_COL_POS = 1;
+
 	String MUSICBRAINZ_INSTRUMENT_NAME_STR = "Musicbrainz Instrument Name";
 	String MUSICBRAINZ_INSTRUMENT_ID_STR   = "Musicbrainz Instrument ID";
 	String WIKIDATA_INSTRUMENT_NAME_STR    = "Wikidata Instrument Name";
@@ -48,6 +56,7 @@ public class SearchInstrumentsForDataset extends BaseSkosTest {
 	
 	WikidataApiClient wikidataApiClient = new WikidataApiClient();
 	MusicbrainzApiClient musicbrainzApiClient = new MusicbrainzApiClient();
+	SkosApiClient skosApiClient = new SkosApiClient();
 
 	protected Logger log = Logger.getLogger(getClass());	
 	
@@ -69,32 +78,16 @@ public class SearchInstrumentsForDataset extends BaseSkosTest {
 			return musicbrainzInstrumentId;
 		}
 
-		public void setMusicbrainzInstrumentId(String musicbrainzInstrumentId) {
-			this.musicbrainzInstrumentId = musicbrainzInstrumentId;
-		}
-
 		public String getMusicbrainzInstrumentName() {
 			return musicbrainzInstrumentName;
-		}
-
-		public void setMusicbrainzInstrumentName(String musicbrainzInstrumentName) {
-			this.musicbrainzInstrumentName = musicbrainzInstrumentName;
 		}
 
 		public String getWikidataInstrumentId() {
 			return wikidataInstrumentId;
 		}
 
-		public void setWikidataInstrumentId(String wikidataInstrumentId) {
-			this.wikidataInstrumentId = wikidataInstrumentId;
-		}
-
 		public String getWikidataInstrumentName() {
 			return wikidataInstrumentName;
-		}
-
-		public void setWikidataInstrumentName(String wikidataInstrumentName) {
-			this.wikidataInstrumentName = wikidataInstrumentName;
 		}
 
 		public InstrumentIds (			
@@ -262,7 +255,7 @@ public class SearchInstrumentsForDataset extends BaseSkosTest {
 	}
 	
 
-	@Test
+//	@Test
 	public void createUniqueInstrumentList() throws IOException {
 		
 		Map<String, String> instrumentMap = new HashMap<String, String>();
@@ -320,6 +313,50 @@ public class SearchInstrumentsForDataset extends BaseSkosTest {
 				.toString();
 			FileUtils.writeStringToFile(recordFile, row, "UTF-8", true);
 		}		
+	}
+	
+
+	@Test
+	public void generateUniqueInstrumentSkosXml() throws IOException {
+		
+		File datasetFile = FileUtils.getFile(searchAnalysisFodler + UNIQUE_INSTRUMENTS_CSV);
+		if(!datasetFile.exists())
+			fail("required dataset file doesn't exist" + datasetFile);
+		
+    	List<Concept> conceptList = new ArrayList<Concept>();
+
+    	LineIterator iterator = FileUtils.lineIterator(datasetFile);
+		String line;
+		int cnt = 0;
+		final String cellSeparator = ";"; 
+		
+		File recordFile = FileUtils.getFile(searchAnalysisFodler + UNIQUE_INSTRUMENTS_SKOS_XML);
+		
+		while (iterator.hasNext()) {
+			
+			String instrumentId = ""; 
+			String instrumentName = ""; 
+
+			line = (String) iterator.next();
+			String[] items = line.split(cellSeparator);
+			if (items != null && items.length >= INSTRUMENT_NAME_COL_POS && items[INSTRUMENT_NAME_COL_POS] != null) {
+				if (cnt > 0) {
+					instrumentId = items[INSTRUMENT_ID_COL_POS];
+					instrumentName = items[INSTRUMENT_NAME_COL_POS];
+			        
+			    	MimoMappingView concept = new MimoMappingView();
+			    	concept.setUri(instrumentId);
+			    	concept.addInScheme(musicbrainzApiClient.BASE_INSTRUMENT_URL);
+			    	concept.addPrefLabelInMapping(skosApiClient.EN, instrumentName);
+			        conceptList.add(concept);
+				}
+				cnt++;
+			}
+		}
+
+		int numberOfSkosInstruments = skosApiClient.generateSkosRdfFile(conceptList, recordFile);
+		assertTrue(numberOfSkosInstruments > 0);
+		
 	}
 	
 
