@@ -24,7 +24,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import eu.europeana.freebase.connection.FreebaseApiClient;
-import eu.europeana.sounds.definitions.model.WebAnnotationFields;
+import eu.europeana.freebase.connection.FreebaseApiClient.SupportedLanguages;
 import eu.europeana.sounds.definitions.model.concept.Concept;
 import eu.europeana.sounds.skos.BaseSkosTest;
 
@@ -33,6 +33,7 @@ public class SearchFreebaseForGenres extends BaseSkosTest {
 	public final String DUMP_FILE = "E:/freebase-rdf-latest/freebase-rdf-latest";
 	public final String ONLY_COMPOSITIONS_CSV_FILE_PATH = "/only_classical_composition_types.csv";
 	public final String ENRICHED_ONLY_COMPOSITIONS_CSV_FILE_PATH = "/enriched_only_classical_composition_types.csv";
+	public final String MULTILINGUAL_ONLY_COMPOSITIONS_CSV_FILE_PATH = "/multilingual_only_classical_composition_types.csv";
 	public final String FREEBASE_DUMP_OUTPUT_FILE_PATH = "/freebaseDumpOutput.txt";
 	
 	private String missingGenres = "Albazo,Aliwen,Ambient jazz,Arabesk,Ayarachi,Ayataki,Bailecito,Balada,"
@@ -47,6 +48,10 @@ public class SearchFreebaseForGenres extends BaseSkosTest {
 			+ "Shan'ge,Shimmy,Shomyo,Sicuri,Sinawe,Sonata,Soulblues,Symphony,Tambora,Taquirari,Tonada";
 
 	String searchAnalysisFodler = "./src/test/resources/analysis";
+	
+	String DESCRIPTION_FIELD  = "description";
+	String ALIAS_FIELD        = "alias";
+	String TITLE_FIELD        = "title";
 
 	FreebaseApiClient apiClient = new FreebaseApiClient();
 	String MUSIC_GENRE = "/music/genre";
@@ -304,7 +309,7 @@ public class SearchFreebaseForGenres extends BaseSkosTest {
 	}
 
 	
-	@Test
+//	@Test
 	public void extractDBPediaDescriptionsFromFreebaseOutput() throws IOException {
 	
     	List<Concept> concepts = getSkosUtils().retrieveCompositionConceptsFromCsv(
@@ -349,5 +354,81 @@ public class SearchFreebaseForGenres extends BaseSkosTest {
 		}
 		
 	}
+	
+	
+	/**
+	 * Having a classical composition list in CSV format, we query Freebase dump 
+	 * for additional data, store this data and extend composition list in CSV format, 
+	 * enriched by Description, Freebase ID and preferred labels in different languages. 
+	 * @throws IOException
+	 */
+	@Test
+	public void retrieveMultilingualDescriptionsFromDump() throws IOException {
+				
+    	List<Concept> concepts = getSkosUtils().retrieveCompositionConceptsFromCsv(
+    			searchAnalysisFodler + ONLY_COMPOSITIONS_CSV_FILE_PATH);    	
+
+    	List<String> freebaseIdList = new ArrayList<String>();
+    	Iterator<Concept> itrConcepts = concepts.iterator();
+    	while (itrConcepts.hasNext()) {
+			Concept concept = itrConcepts.next();
+			String freebaseId = concept.getUri();
+			String queryFreebaseId = getSkosUtils().freebaseIdToFileName(freebaseId);
+			freebaseIdList.add(queryFreebaseId);
+		}
+    	
+		for (SupportedLanguages sl : SupportedLanguages.values()) {
+	    	enrichConceptByFieldValueFromLocalDump(concepts, freebaseIdList, DESCRIPTION_FIELD, sl.name().toLowerCase());
+	    	enrichConceptByFieldValueFromLocalDump(concepts, freebaseIdList, ALIAS_FIELD, sl.name().toLowerCase());
+	    	enrichConceptByFieldValueFromLocalDump(concepts, freebaseIdList, TITLE_FIELD, sl.name().toLowerCase());
+		}	
+
+		boolean res = getSkosUtils().generateCsvForConceptsMultilingual(concepts, ONLY_COMPOSITIONS_CSV_FILE_PATH,
+				MULTILINGUAL_ONLY_COMPOSITIONS_CSV_FILE_PATH, searchAnalysisFodler);	    	    	
+		assertTrue(res);
+	}
+	
+
+	/**
+	 * This method enriches Concept fields for particular field name and given language
+	 * from a local dump. Local dump is an extraction from the Freebase dump for given
+	 * Freebase IDs.
+	 * @param concepts
+	 * @param freebaseIdList
+	 * @param fieldName
+	 * @param language
+	 * @throws IOException
+	 */
+	private void enrichConceptByFieldValueFromLocalDump(
+			List<Concept> concepts, List<String> freebaseIdList, String fieldName, String language)
+			throws IOException {
+
+		String fieldStr = fieldName;
+		if (fieldName.equals(TITLE_FIELD))
+			fieldStr = language + "_" + fieldName;
+		
+		Map<String, String> mapFreebaseIdToDescription = 
+				apiClient.queryFieldFromLocalDumpByLanguage(freebaseIdList, fieldStr, language);		    	
+    	
+    	Iterator<Concept> itrDescConcepts = concepts.iterator();
+		while (itrDescConcepts.hasNext()) {
+			Concept concept = itrDescConcepts.next();
+			String freebaseId = concept.getUri();
+			String queryFreebaseId = getSkosUtils().freebaseIdToFileName(freebaseId);
+			for (Map.Entry<String, String> entry : mapFreebaseIdToDescription.entrySet()) { 
+				if (queryFreebaseId.equals(entry.getKey()) && entry.getValue().length() > 1) {
+					if (fieldName.equals(DESCRIPTION_FIELD))
+						concept.addDefinitionInMapping(language, entry.getValue());
+					else if (fieldName.equals(ALIAS_FIELD))
+						concept.addAltLabelInMapping(language, entry.getValue());
+					else if (fieldName.equals(TITLE_FIELD))
+						concept.addPrefLabelInMapping(language, entry.getValue() + "@" + language);
+					System.out.println("Add " + language + " " + fieldName + ": Key = " 
+						+ entry.getKey() + ", Value = " + entry.getValue()); 
+				}
+			}
+		}
+	}
+	
 	
 }

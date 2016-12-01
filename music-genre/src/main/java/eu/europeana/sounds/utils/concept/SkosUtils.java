@@ -60,6 +60,7 @@ public class SkosUtils {
 	public String DBPEDIA_ID_KEY = "dbpediaId";
 	public String EN = "en";
 	public String DE = "de";
+	public String IT = "it";
 		
 	
     /**
@@ -858,6 +859,103 @@ public class SkosUtils {
 					}
 					writer.write(line + ";" + wikidataId + ";" 
 							+ parseDescriptionKey(description) + ";" + parseDescriptionStr(description) + ";\n");
+				}
+			}
+		} finally {
+			try {
+				writer.close();
+			} catch (IOException e) {
+				log.warn("cannot close results writer for file: "
+						+ queryResultsFile);
+			}
+			res = true;
+		}
+		return res;
+	}
+	
+	
+	/**
+	 * This method extends existing composition CSV file by multilingual description and Wikidata ID.
+	 * @param concepts The list of concepts
+	 * @param inputFilePath The original CSV file
+	 */
+	public boolean generateCsvForConceptsMultilingual(
+			List<Concept> concepts, String inputFileName, String outputFileName, String pathToAnalysisFolder) 
+				throws IOException {
+			
+		boolean res = false;
+		
+    	String splitBy = ";";
+	    
+    	List<String> originalLines = new ArrayList<String>();
+	    BufferedReader br;
+		try {
+			br = new BufferedReader(new FileReader(pathToAnalysisFolder + inputFileName));
+			String headerLine = br.readLine();	
+			originalLines.add(headerLine);
+			String line = "";
+			while ((line = br.readLine()) !=null) {
+				originalLines.add(line);
+			}
+		    br.close();
+		} catch (FileNotFoundException e1) {
+			log.error("File not found. " + e1.getMessage());
+			e1.printStackTrace();
+		} catch (IOException e) {
+			log.error("IO error. " + e.getMessage());
+			e.printStackTrace();
+		}
+
+		
+		File queryResultsFile = new File(pathToAnalysisFolder, outputFileName);
+		// create parent dirs
+		queryResultsFile.getParentFile().mkdirs();
+		BufferedWriter writer = null;
+		try {
+			writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(pathToAnalysisFolder + outputFileName), "UTF-8"));            
+			Iterator<String> itrOrigLines = originalLines.iterator();
+			int MID_POS = 0; 
+			int count = 0;
+			while (itrOrigLines.hasNext()) {
+				String line = itrOrigLines.next();
+				if (count == 0) {
+					writer.write(line + ";Multilingual Description;Alias;Multilingual Title\n");
+					count = count + 1;
+				} else {
+				    String description = "";
+				    String alias = "";
+				    String title = "";
+					for (Concept concept : concepts) {
+						BaseConcept currentConcept = (BaseConcept) concept;
+					    String[] b = line.split(splitBy);
+					    String freebaseId = "";
+					    if (b.length >= 1 && StringUtils.isNotEmpty(b[MID_POS])) {
+					    	freebaseId = b[MID_POS];
+							if (currentConcept.getUri().equals(freebaseId)) {
+								if (currentConcept.getDefinition() != null) {
+									description = 
+										currentConcept.getDefinition().get(EN + "_" + WebAnnotationFields.DEFINITION) +
+										"," + currentConcept.getDefinition().get(DE + "_" + WebAnnotationFields.DEFINITION) +
+										"," + currentConcept.getDefinition().get(IT + "_" + WebAnnotationFields.DEFINITION);
+								}
+								if (currentConcept.getAltLabel() != null) { 
+									alias = 
+										currentConcept.getAltLabel().get(EN + "_" + WebAnnotationFields.ALT_LABEL) +
+										"," + currentConcept.getAltLabel().get(DE + "_" + WebAnnotationFields.ALT_LABEL) +
+										"," + currentConcept.getAltLabel().get(IT + "_" + WebAnnotationFields.ALT_LABEL);
+								}
+								if (currentConcept.getPrefLabel() != null) { 
+									title = 
+										currentConcept.getPrefLabel().get(EN + "_" + WebAnnotationFields.PREF_LABEL) +
+										"," + currentConcept.getPrefLabel().get(DE + "_" + WebAnnotationFields.PREF_LABEL) +
+										"," + currentConcept.getPrefLabel().get(IT + "_" + WebAnnotationFields.PREF_LABEL);
+								}
+							}
+					    }
+					}
+					writer.write(line + ";" + parseDescriptionStr(description)  
+						+ ";" + parseDescriptionStr(alias)
+						+ ";" + parseDescriptionStr(title) + ";\n");
 				}
 			}
 		} finally {

@@ -70,8 +70,16 @@ public class FreebaseApiClient {
 	public final static String INSTRUMENTS_FILE_EXTENDED = "Enriched instruments of the ONB list.csv";
 	
 	public final static String CSV_DELIMITER = ";";
+	
+	public final static String LOCAL_TXT_DUMP_PATH = "output.txt";
 	 
+	public enum SupportedLanguages {
+		EN
+		, DE
+		, IT
+	}
 
+	
 	/**
 	 * Create a new connection to the Freebase API.
 	 * 
@@ -738,10 +746,24 @@ public class FreebaseApiClient {
 	 */
 	public Map<String, String> queryDescriptionFromDump(List<String> queryList, String dumpFile)
 			throws IOException {
+		return queryFieldFromDump(queryList, dumpFile, "description");
+	}
+	
+	
+	/**
+	 * e.g. <http://rdf.freebase.com/ns/m.01009ly3>	<http://rdf.freebase.com/ns/common.topic.description>
+	 * @param query
+	 * @param dumpFile
+	 * @param field
+	 * @return
+	 * @throws IOException
+	 */
+	public Map<String, String> queryFieldFromDump(List<String> queryList, String dumpFile, String field)
+			throws IOException {
 		
 		Map<String, String> res = new HashMap<String, String>();
 		
-		PrintWriter out = new PrintWriter("output.txt");
+		PrintWriter out = new PrintWriter(LOCAL_TXT_DUMP_PATH);
 			
 		// Get current time
 		long start = System.currentTimeMillis();
@@ -757,7 +779,7 @@ public class FreebaseApiClient {
 					if (line.contains("/" + query + ">")) { // additional syntax to avoid similar IDs
 						System.out.println("query: " + query + ", line: " + line);
 						out.println("query: " + query + ", line: " + line);
-						if (line.contains("description")) {
+						if (line.contains(field)) {
 						    String[] b = line.split(splitBy);
 						    res.put(query, b[DESCRIPTION_POS]);
 						}
@@ -783,6 +805,79 @@ public class FreebaseApiClient {
 		System.out.println("Calculation time: " + elapsedTimeMin);
 		
 		return res;
+	}
+	
+	
+	/**
+	 * e.g. <http://rdf.freebase.com/ns/m.01009ly3>	<http://rdf.freebase.com/ns/common.topic.description>
+	 * from output.txt
+	 * @param query
+	 * @param field
+	 * @param language
+	 * @return
+	 * @throws IOException
+	 */
+	public Map<String, String> queryFieldFromLocalDumpByLanguage(
+			List<String> queryList, String field, String language)
+			throws IOException {
+		
+		Map<String, String> res = new HashMap<String, String>();
+		
+		// Get current time
+		long start = System.currentTimeMillis();
+		
+		int DESCRIPTION_POS = 2;
+    	String splitBy = "\t";	    
+	    BufferedReader br;
+		try {
+			br = new BufferedReader(new FileReader(LOCAL_TXT_DUMP_PATH));
+			String line = "";
+			while ((line = br.readLine()) !=null) {
+				for (String query : queryList) {
+					if (line.contains("/" + query + ">")) { // additional syntax to avoid similar IDs
+//						System.out.println("query: " + query + ", line: " + line);
+						if (line.contains(field)) {
+							if (line.contains("@" + language) || field.contains("title") ) {
+							    String[] b = line.split(splitBy);
+							    res.put(query, b[DESCRIPTION_POS]);
+							}
+						}
+					}
+				}
+			}
+		    br.close();
+		} catch (FileNotFoundException e1) {
+			log.error("File not found. " + e1.getMessage());
+			e1.printStackTrace();
+		} catch (IOException e) {
+			log.error("IO error. " + e.getMessage());
+			e.printStackTrace();
+		}
+
+		// Get elapsed time in milliseconds
+		long elapsedTimeMillis = System.currentTimeMillis()-start;
+
+		// Get elapsed time in minutes
+		float elapsedTimeMin = elapsedTimeMillis/(60*1000F);
+
+		System.out.println("Calculation time: " + elapsedTimeMin);
+		
+		return res;
+	}
+	
+	
+	/**
+	 * e.g. <http://rdf.freebase.com/ns/m.01009ly3>	<http://rdf.freebase.com/ns/common.topic.description>
+	 * from output.txt
+	 * @param query
+	 * @param field
+	 * @return
+	 * @throws IOException
+	 */
+	public Map<String, String> queryFieldFromLocalDump(List<String> queryList, String field)
+			throws IOException {
+		
+		return queryFieldFromLocalDumpByLanguage(queryList, field, SupportedLanguages.EN.name().toLowerCase());
 	}
 	
 	
