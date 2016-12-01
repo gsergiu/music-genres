@@ -830,12 +830,13 @@ public class FreebaseApiClient {
     	String splitBy = "\t";	    
 	    BufferedReader br;
 		try {
-			br = new BufferedReader(new FileReader(LOCAL_TXT_DUMP_PATH));
+			br = new BufferedReader(
+					   new InputStreamReader(
+			                      new FileInputStream(LOCAL_TXT_DUMP_PATH), "UTF8"));
 			String line = "";
 			while ((line = br.readLine()) !=null) {
 				for (String query : queryList) {
 					if (line.contains("/" + query + ">")) { // additional syntax to avoid similar IDs
-//						System.out.println("query: " + query + ", line: " + line);
 						if (line.contains(field)) {
 							if (line.contains("@" + language) || field.contains("title") ) {
 							    String[] b = line.split(splitBy);
