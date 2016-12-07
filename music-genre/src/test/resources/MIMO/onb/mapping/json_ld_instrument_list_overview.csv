@@ -1,0 +1,60 @@
+Instrument ID;PrefLabel;AltLabel
+http://www.mimo-db.eu/InstrumentsKeywords/2230;Strumenti a tastiera@it,Tasteninstrumente@de,Keyboard instruments@en;
+http://www.mimo-db.eu/InstrumentsKeywords/2239;Cembali@it,Harpsichords@en,Cembali@de;Kielflügel@de
+http://www.mimo-db.eu/InstrumentsKeywords/2251;Cembalo@de,Harpsichord@en,Clavicembalo@it;Kielflügel@de
+http://www.mimo-db.eu/InstrumentsKeywords/2264;Organs@en,Orgeln@de,Organi@it;
+http://www.mimo-db.eu/InstrumentsKeywords/2266;Orgel@de,Organo@it,Organ@en;
+http://www.mimo-db.eu/InstrumentsKeywords/2273;Pianofortes@en,Pianoforti@it,Klaviere@de;Hammerklaviere@de
+http://www.mimo-db.eu/InstrumentsKeywords/2299;Pianoforte@it,Hammerklavier@de,Pianoforte@en;Klavier@de,Hammerflügel@de
+http://www.mimo-db.eu/InstrumentsKeywords/2371;Bells@en,Glocken@de,Campane@it;
+http://www.mimo-db.eu/InstrumentsKeywords/2387;Carillon di campane@it,Carillon@en,Turmglockenspiel@de;
+http://www.mimo-db.eu/InstrumentsKeywords/2879;Kesseltrommeln@de,Kettledrums@en,Tamburi a caldaia@it;
+http://www.mimo-db.eu/InstrumentsKeywords/2887;Kettledrum@en,Pauke@de,Timpano@it;
+http://www.mimo-db.eu/InstrumentsKeywords/3101;Strumenti a corde@it,Stringed instruments@en,Saiteninstrumente@de;Strings@en
+http://www.mimo-db.eu/InstrumentsKeywords/3108;Kontrabässe@de,Contrabbassi@it,Double basses@en;
+http://www.mimo-db.eu/InstrumentsKeywords/3265;Arpe@it,Harps@en,Harfen@de;
+http://www.mimo-db.eu/InstrumentsKeywords/3285;Arpa@it,Harfe@de,Harp@en;
+http://www.mimo-db.eu/InstrumentsKeywords/3313;Liuti@it,Lutes@en,Lauten@de;
+http://www.mimo-db.eu/InstrumentsKeywords/3394;Liuto@it,Laute@de,Lute@en;
+http://www.mimo-db.eu/InstrumentsKeywords/3473;Theorbe@de,Theorbo@en,Tiorba@it;Chitarrone@de
+http://www.mimo-db.eu/InstrumentsKeywords/3486;Lire@it,Leiern@de,Lyres@en;
+http://www.mimo-db.eu/InstrumentsKeywords/3509;Mandolinen@de,Mandolini@it,Mandolins@en;
+http://www.mimo-db.eu/InstrumentsKeywords/3510;Mandolino@it,Mandoline@de,Mandolin@en;
+http://www.mimo-db.eu/InstrumentsKeywords/3558;Bratschen@de,Violas@en,Viole@it;Violas@de
+http://www.mimo-db.eu/InstrumentsKeywords/3559;Tenor violin@en,Violino tenore@it,Bratsche@de;
+http://www.mimo-db.eu/InstrumentsKeywords/3561;Viola@en,Bratsche@de,Viola@it;Viola@de
+http://www.mimo-db.eu/InstrumentsKeywords/3564;Violins@en,Violini@it,Violinen@de;
+http://www.mimo-db.eu/InstrumentsKeywords/3573;Violino@it,Violine@de,Violin@en;Geige@de
+http://www.mimo-db.eu/InstrumentsKeywords/3575;Violoncelli@it,Violoncelli@de,Violoncellos@en;Celli@de
+http://www.mimo-db.eu/InstrumentsKeywords/3582;Violoncello@it,Violoncello@de,Violoncello@en;Cello@de
+http://www.mimo-db.eu/InstrumentsKeywords/3584;Gamben@de,Viole da gamba@it,Viols@en;Violen da Gamba@de
+http://www.mimo-db.eu/InstrumentsKeywords/3597;Viola da gamba@it,Viol@en,Gambe@de;Viola da gamba@de
+http://www.mimo-db.eu/InstrumentsKeywords/3608;Viola d'amore@de,Viola d'amore@en,Viola d'amore@it;
+http://www.mimo-db.eu/InstrumentsKeywords/3730;Blasinstrumente@de,Strumenti ad aria@it,Wind instruments@en;
+http://www.mimo-db.eu/InstrumentsKeywords/3786;Bassoons@en,Fagotte@de,Fagotti@it;
+http://www.mimo-db.eu/InstrumentsKeywords/3795;Fagott@de,Fagotto@it,Bassoon@en;
+http://www.mimo-db.eu/InstrumentsKeywords/3827;Klarinetten@de,Clarinets@en,Clarinetti@it;
+http://www.mimo-db.eu/InstrumentsKeywords/3836;Clarinetto@it,Klarinette@de,Clarinet@en;
+http://www.mimo-db.eu/InstrumentsKeywords/3866;Zinken@de,Cornetti@it,Cornetts@en;
+http://www.mimo-db.eu/InstrumentsKeywords/3868;Zink@de,Cornetto@it,Cornett@en;Krummer Zink@de
+http://www.mimo-db.eu/InstrumentsKeywords/3883;Flöten@de,Flutes@en,Flauti@it;
+http://www.mimo-db.eu/InstrumentsKeywords/3955;Flute@en,Flöte@de,Flauto@it;
+http://www.mimo-db.eu/InstrumentsKeywords/3960;Flauto d'amore@it,Liebesflöte@de,Flûte d'amour@en;Dolzflöte@de
+http://www.mimo-db.eu/InstrumentsKeywords/4029;Flauto ottavino@it,Piccolo flute@en,Pikkoloflöte@de;Pikkoloquerflöte@de,Pikkolo@de
+http://www.mimo-db.eu/InstrumentsKeywords/4093;Flauto traverso@it,Querflöte@de,Transverse flute@en;
+http://www.mimo-db.eu/InstrumentsKeywords/4116;Hörner@de,Horns@en,Corni@it;
+http://www.mimo-db.eu/InstrumentsKeywords/4118;Corno@it,Horn@de,Horn@en;Waldhorn@de
+http://www.mimo-db.eu/InstrumentsKeywords/4136;Hunting horns@en,Jagdhörner@de,Corni da caccia@it;
+http://www.mimo-db.eu/InstrumentsKeywords/4138;Corno da caccia@it,Jagdhorn@de,Hunting horn@en;
+http://www.mimo-db.eu/InstrumentsKeywords/4164;Oboes@en,Oboen@de,Oboi@it;
+http://www.mimo-db.eu/InstrumentsKeywords/4197;Corno inglese@it,Cor anglais@en,Englischhorn@de;Englisches Horn@de,English horn@en
+http://www.mimo-db.eu/InstrumentsKeywords/4232;Oboe@it,Oboe@de,Oboe@en;
+http://www.mimo-db.eu/InstrumentsKeywords/4360;Tromboni@it,Trombones@en,Posaunen@de;
+http://www.mimo-db.eu/InstrumentsKeywords/4362;Bassposaune@de,Bass trombone@en,Trombone basso@it;Baßposaune@de
+http://www.mimo-db.eu/InstrumentsKeywords/4369;Trombone@en,Posaune@de,Trombone@it;
+http://www.mimo-db.eu/InstrumentsKeywords/4370;Trumpets@en,Trompeten@de,Trombe@it;
+http://www.mimo-db.eu/InstrumentsKeywords/4446;Tromba@it,Trompete@de,Trumpet@en;
+http://www.mimo-db.eu/InstrumentsKeywords/4455;Tuben@de,Tube@it,Tubas@en;
+http://www.mimo-db.eu/InstrumentsKeywords/4468;Wagner tuba@en,Tuba wagneriana@it,Wagnertuba@de;
+http://www.mimo-db.eu/InstrumentsKeywords/4967;Tenor viola@en,Viola tenore@it,Tenorbratsche@de;Tenorgeige@de,Tenor-Viola da braccio@de
+http://www.mimo-db.eu/InstrumentsKeywords/5717;Englisches Violett@de,Violetta inglese@it,English violet@en;
