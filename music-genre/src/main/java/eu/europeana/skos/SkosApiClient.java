@@ -25,6 +25,7 @@ public class SkosApiClient {
 	final String tab = "\t"; 
 	public final String EN = "en";
 	public final String PREF_LABEL = "_prefLabel";
+	public final String ALT_LABEL = "_altLabel";
 		
 
 	/**
@@ -49,11 +50,12 @@ public class SkosApiClient {
 		
 		try {
 			String header = new StringBuilder()
-					.append("<rdf:RDF xml:base=\"").append(conceptList.get(0).getInScheme().get(0))
-					.append("\">").append(lineBreak)
-					.append(tab).append("<skos:ConceptScheme rdf:about=\"")
-					.append(conceptList.get(0).getInScheme().get(0))
-					.append("\"/>").append(lineBreak)
+					.append("<?xml version=\"1.0\" encoding=\"utf-8\"?>").append(lineBreak)
+					.append("<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"").append(lineBreak)
+					.append(tab).append("xmlns:skos=\"http://www.w3.org/2004/02/skos/core#\"").append(lineBreak)
+					.append(tab).append("xml:base=\"").append(conceptList.get(0).getInScheme().get(0))
+					.append("\"").append(lineBreak)
+					.append(tab).append(">").append(lineBreak)
 					.toString();
 			FileUtils.writeStringToFile(recordFile, header, "UTF-8", true);
 					

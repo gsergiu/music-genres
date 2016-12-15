@@ -38,6 +38,9 @@ public class WikidataApiClient {
 
 	private String apiKey;
 	public static final String DEFAULT_WIKIDATA_SEARCH_URI = "https://wdq.wmflabs.org/api?";
+	
+	public final String BASE_URI = "www.wikidata.org/wiki/Q";
+	public final String HTTP_BASE_URI = "http://www.wikidata.org/wiki/Q";
 
 	private String wikidataApiUri = "";
 	private HttpConnector http = new HttpConnector();

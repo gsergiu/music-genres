@@ -169,6 +169,14 @@ public class MusicbrainzApiClient {
     }
 	
 
+    public String getInstrumentHtmlContent(String query) throws IOException {
+
+    	HttpConnector httpConnection = new HttpConnector();
+    	String url = BASE_INSTRUMENT_URL + query;
+    	return httpConnection.getURLContent(url);
+    }
+	
+
     public String getEntity(String id) {
 
     	String res = "";
