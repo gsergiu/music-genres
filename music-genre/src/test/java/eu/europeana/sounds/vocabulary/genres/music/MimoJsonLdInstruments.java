@@ -17,7 +17,6 @@ package eu.europeana.sounds.vocabulary.genres.music;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -35,11 +34,11 @@ import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.junit.Test;
 
-import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
+import eu.europeana.mimo.connection.MimoApiClient;
 import eu.europeana.sounds.skos.BaseSkosTest;
 
 
@@ -66,16 +65,7 @@ public class MimoJsonLdInstruments extends BaseSkosTest {
 			mimoFolder + "/Enrichments_V2.csv";
 
 	public final String OUTPUT_JSON_LD_INSTRUMENT_LIST_OVERVIEW = "/json_ld_instrument_list_overview.csv";
-	
-	final String cellSeparator = ";"; 
-	final String lineBreak = "\n"; 
-	
-	final String ID         = "@id";
-	final String LANGUAGE   = "@language";
-	final String VALUE      = "@value";
-	final String PREF_LABEL = "http://www.w3.org/2004/02/skos/core#prefLabel";
-	final String ALT_LABEL  = "http://www.w3.org/2004/02/skos/core#altLabel";
-	
+		
 	protected Logger log = Logger.getLogger(getClass());
 
 	public enum SupportedLanguages {
@@ -83,6 +73,8 @@ public class MimoJsonLdInstruments extends BaseSkosTest {
 		, DE
 		, IT
 	}
+	
+	MimoApiClient mimoApiClient = new MimoApiClient();
 	
 	
 	/**
@@ -126,9 +118,9 @@ public class MimoJsonLdInstruments extends BaseSkosTest {
 		int cnt = 0;
 		
 		// create header
-		String row = new StringBuilder().append("Instrument ID").append(cellSeparator)
-			.append("PrefLabel").append(cellSeparator)
-			.append("AltLabel").append(lineBreak).toString();
+		String row = new StringBuilder().append("Instrument ID").append(mimoApiClient.cellSeparator)
+			.append("PrefLabel").append(mimoApiClient.cellSeparator)
+			.append("AltLabel").append(mimoApiClient.lineBreak).toString();
 		FileUtils.writeStringToFile(recordFile, row, "UTF-8");					
 
 		File[] files = new File(downloadFolder).listFiles();
@@ -138,7 +130,7 @@ public class MimoJsonLdInstruments extends BaseSkosTest {
 	        	log.info("Read JsonLd File: " + file.getName());
 
 	        	try {
-	        		String parsingRes = parseJsonLdFile(file.getAbsolutePath());
+	        		String parsingRes = mimoApiClient.parseJsonLdFile(file.getAbsolutePath());
 					FileUtils.writeStringToFile(recordFile, parsingRes, "UTF-8", true);
 				} catch (Throwable e) {
 					log.error("Cannot read JSON-LD file:" + file.getName() + ". " + e.getMessage());
@@ -149,81 +141,6 @@ public class MimoJsonLdInstruments extends BaseSkosTest {
 
 	}
 	
-	
-	/**
-	 * This method reads a given field from JSON file to String.
-	 * @param fileName
-	 * @param fieldName The name of a field in JSON object
-	 * @return The value of the given field
-	 * @throws Throwable
-	 */
-	public String parseJsonLdFile(String fileName) throws Throwable {
-		
-		String res = "";
-		
-        try {
-            JsonParser parser = new JsonParser();
-            JsonElement jsonElement = parser.parse(
-            		new InputStreamReader(new FileInputStream(fileName), "UTF8"));            		
-            JsonArray jsonArray = jsonElement.getAsJsonArray();
-            for (final JsonElement elem : jsonArray) {
-                JsonObject jsonObject = elem.getAsJsonObject();
-                String id = jsonObject.get(ID).getAsString();
-                String [] filePathArr = fileName.split("\\\\");
-                String fileNameStr = filePathArr[filePathArr.length - 1];
-                String fileNameId = fileNameStr.replace(".json", "");
-                if (id.contains(fileNameId)) {
-                	String prefLabelStr = extractLabelsFromJsonConcept(jsonObject, PREF_LABEL);
-                	String altLabelStr = extractLabelsFromJsonConcept(jsonObject, ALT_LABEL);
-					res = new StringBuilder().append(id).append(cellSeparator)
-						.append(prefLabelStr).append(cellSeparator)
-						.append(altLabelStr).append(lineBreak)
-						.toString();
-                }
-            }
-		} catch (Throwable th) {
-			th.printStackTrace();
-		}
-		return res;
-	}
-
-
-	/**
-	 * This method presents Concept labels as a string.
-	 * @param jsonObject
-	 * @param type e.g. prefLabel
-	 * @return label string
-	 */
-	private String extractLabelsFromJsonConcept(JsonObject jsonObject, String type) {
-		
-		String labelStr = "";
-		
-	    if (jsonObject.has(type)) {
-			JsonArray labelArray = jsonObject.get(type).getAsJsonArray();
-			for (final JsonElement subElem : labelArray) {
-			    JsonObject subElemJsonObject = subElem.getAsJsonObject();
-			    if (subElemJsonObject.has(LANGUAGE)) {
-				    String language = subElemJsonObject.get(LANGUAGE).getAsString();
-					for (SupportedLanguages sl : SupportedLanguages.values()) {
-						if (sl.name().toLowerCase().equals(language)) {
-						    if (subElemJsonObject.has(VALUE)) {
-					            String value = subElemJsonObject.get(VALUE).getAsString();
-					            labelStr = labelStr + value + "@" + language + ",";
-						    }
-						}
-					}
-			    }
-			}
-			
-			// remove last comma
-			if (labelStr != null && labelStr.length() > 0 && labelStr.charAt(labelStr.length()-1)==',') {
-				labelStr = labelStr.substring(0, labelStr.length()-1);
-			}	
-	    }
-	    
-		return labelStr;
-	}
-
 	
 	/**
 	 * This method reads a given field from JSON file to String.
