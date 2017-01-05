@@ -504,6 +504,13 @@ public class SearchInstrumentsForDataset extends BaseSkosTest {
 					if (items != null && items.length > MUSICBRAINZ_INSTRUMENT_NAME_COL_POS) {
 						musicbrainzInstrumentName = items[MUSICBRAINZ_INSTRUMENT_NAME_COL_POS];
 					}
+					if (items != null && items.length > WIKIDATA_INSTRUMENT_ID_COL_POS) {
+						wikidataInstrumentId = items[WIKIDATA_INSTRUMENT_ID_COL_POS];
+					}
+					if (items != null && items.length > WIKIDATA_INSTRUMENT_NAME_COL_POS) {
+						wikidataInstrumentName = items[WIKIDATA_INSTRUMENT_NAME_COL_POS];
+					}
+					
 					row = new StringBuilder().append(europeanaId).append(cellSeparator)
 							.append(title).append(cellSeparator)
 							.append(description).append(cellSeparator)
