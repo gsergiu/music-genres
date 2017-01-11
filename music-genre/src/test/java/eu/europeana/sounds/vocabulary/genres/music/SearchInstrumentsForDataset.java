@@ -39,8 +39,9 @@ public class SearchInstrumentsForDataset extends BaseSkosTest {
 	String UNIQUE_INSTRUMENTS_SKOS_XML = "unique-musicbrainz-instruments-skos.xml"; 
 	String UNIQUE_WIKIDATA_INSTRUMENTS_SKOS_XML = "unique-wikidata-instruments-skos.xml"; 
 	String MIMO_INSTRUMENTS_OVERVIEW_CSV = "mimo-instruments-overview.csv"; 
-	String EUROPEANA_MIMO_INSTRUMENTS_CSV = "europeana-mimo-instruments.csv"; 
 	String CULTUURLINK_INSTRUMENTS_RDF = "mimo-instruments-musicbrainz.rdf"; 
+	String EUROPEANA_MIMO_INSTRUMENTS_CSV = "europeana-mimo-instruments.csv"; 
+	String BAND_MIMO_INSTRUMENTS_CSV = "band-mimo-instruments.csv"; 
 	
 	int EUROPEANA_ID_COL_POS    = 0;
 	int TITLE_COL_POS           = 1;
@@ -542,7 +543,7 @@ public class SearchInstrumentsForDataset extends BaseSkosTest {
 	}
 	
 	
-	@Test
+//	@Test
 	public void createEnrichmentEuropenaIdMimoInstruments() throws IOException {
 		
 		// file to save enrichment results
@@ -602,6 +603,66 @@ public class SearchInstrumentsForDataset extends BaseSkosTest {
 					}
 				} else {
 					String row = new StringBuilder().append("europeanaId;title;MIMO match;MIMO prefLabel").append(lineBreak).toString();
+					FileUtils.writeStringToFile(targetFile, row, "UTF-8");					
+					cnt++;
+				}
+			}
+			
+		}		
+		log.info("Successfully enriched items: " + cnt);	
+		
+	}
+	
+	
+	@Test
+	public void createEnrichmentBandMimoInstruments() throws IOException {
+		
+		// file to save enrichment results
+		File targetFile = FileUtils.getFile(searchAnalysisFodler + BAND_MIMO_INSTRUMENTS_CSV);
+		if(!targetFile.exists())
+			fail("required dataset file doesn't exist" + targetFile);
+		
+		String line;
+		int cnt = 0;
+		final String cellSeparator = ";"; 
+		final String lineBreak = "\n"; 
+		
+        // the original instruments file that should be enriched
+		File recordFile = FileUtils.getFile(searchAnalysisFodler + MIMO_INSTRUMENTS_OVERVIEW_CSV);
+		LineIterator iterator = FileUtils.lineIterator(recordFile);
+		
+		while (iterator.hasNext()) {
+			
+			String europeanaId = "";
+			String title = "";
+			String musicbrainzId = ""; 
+			String mimoInstrumentId = ""; 
+
+			line = (String) iterator.next();
+			String[] items = line.split(cellSeparator);
+			if (items != null && items.length > MIMO_INSTRUMENT_ID_COL_POS && items[MIMO_INSTRUMENT_ID_COL_POS] != null) {
+			
+				if (cnt > 0) {
+					europeanaId = items[EUROPEANA_ID_COL_POS];		
+					//ignore comments
+					if(europeanaId.isEmpty() || !europeanaId.startsWith("/"))
+						continue;
+
+	                title = items[TITLE_COL_POS];
+					if (items != null && items.length > MUSICBRAINZ_ID_COL_POS) {
+						musicbrainzId = items[MUSICBRAINZ_ID_COL_POS];
+					}
+					mimoInstrumentId = items[MIMO_INSTRUMENT_ID_COL_POS];
+					log.info("Count: " + cnt + ", band Musicbrainz ID: " + musicbrainzId);	
+					String row = new StringBuilder().append(europeanaId).append(cellSeparator)
+							.append(title).append(cellSeparator)
+							.append(musicbrainzId).append(cellSeparator)
+							.append(mimoInstrumentId).append(lineBreak)
+							.toString();
+					FileUtils.writeStringToFile(targetFile, row, "UTF-8", true);
+					cnt++;
+				} else {
+					String row = new StringBuilder().append("europeanaId;title;musicbrainz ID;MIMO matches").append(lineBreak).toString();
 					FileUtils.writeStringToFile(targetFile, row, "UTF-8");					
 					cnt++;
 				}
