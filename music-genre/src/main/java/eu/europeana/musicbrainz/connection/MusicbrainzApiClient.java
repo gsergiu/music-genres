@@ -34,6 +34,7 @@ public class MusicbrainzApiClient {
 	public final String BASE_INSTRUMENT_URL = "https://musicbrainz.org/instrument/"; 
 	public final String RELATIONSHIPS = "/relationships";	
 	public final String INSTRUMENT = "/instrument";	
+	public final String TAG = "/tag";	
 	public final String BDI_TAG_BEGIN = "<bdi>";	
 	public final String BDI_TAG_END = "</bdi>";	
 	public final String VIAF_POINTER = "VIAF: ";	
