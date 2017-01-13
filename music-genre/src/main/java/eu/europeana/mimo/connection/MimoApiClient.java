@@ -155,13 +155,8 @@ public class MimoApiClient {
 			for (String key: matchMap.keySet()) {
 				if (key.contains(matchKey)) {
 					String mimoId = matchMap.get(key);
-					HttpResponse response = queryMimoApi(mimoId);
-					try {
-						String jsonLdString = readJsonHttpResponse(response);
-						res.add(jsonLdString);
-					} catch (IOException e) {
-						log.error("Can't read JSON HTTP response for MIMO. " + e.getMessage());
-					}
+					String jsonLdString = extractMimoJsonContentFromId(mimoId);
+					res.add(jsonLdString);
 				}
 			}
     	}
@@ -169,6 +164,26 @@ public class MimoApiClient {
 		return res;
     }
         
+
+    /**
+     * @param id
+     * @return
+     */
+    public String extractMimoJsonContentFromId(String id) {
+    	
+    	String res = "";
+    	
+		HttpResponse response = queryMimoApi(id);
+		try {
+			String jsonLdString = readJsonHttpResponse(response);
+			res = jsonLdString;
+		} catch (IOException e) {
+			log.error("Can't read JSON HTTP response for MIMO id: " + id + ". " + e.getMessage());
+		}
+		
+		return res;    
+    }
+    
     
 	/**
 	 * This method queries MIMO API by ID.
@@ -300,6 +315,29 @@ public class MimoApiClient {
 	}
 
 	
+	public String parsePrefLabelAnyLanguageJsonLdString(String content) {
+		
+		String res = "";
+		
+        try {
+            JsonParser parser = new JsonParser();
+            JsonElement jsonElement = parser.parse(content);            		
+            JsonArray jsonArray = jsonElement.getAsJsonArray();
+            for (final JsonElement elem : jsonArray) {
+                JsonObject jsonObject = elem.getAsJsonObject();
+                String id = jsonObject.get(ID).getAsString();
+            	String prefLabelStr = extractLabelsAnyLanguageFromJsonConcept(jsonObject, PREF_LABEL);
+				res = new StringBuilder().append(id).append(cellSeparator)
+					.append(prefLabelStr)
+					.toString();
+            }
+		} catch (Throwable th) {
+			th.printStackTrace();
+		}
+		return res;
+	}
+
+	
 	/**
 	 * This method presents Concept labels as a string.
 	 * @param jsonObject
@@ -324,6 +362,33 @@ public class MimoApiClient {
 						    }
 						}
 					}
+			    }
+			}
+			
+			// remove last comma
+			if (labelStr != null && labelStr.length() > 0 && labelStr.charAt(labelStr.length()-1)==',') {
+				labelStr = labelStr.substring(0, labelStr.length()-1);
+			}	
+	    }
+	    
+		return labelStr;
+	}
+	
+	
+	private String extractLabelsAnyLanguageFromJsonConcept(JsonObject jsonObject, String type) {
+		
+		String labelStr = "";
+		
+	    if (jsonObject.has(type)) {
+			JsonArray labelArray = jsonObject.get(type).getAsJsonArray();
+			for (final JsonElement subElem : labelArray) {
+			    JsonObject subElemJsonObject = subElem.getAsJsonObject();
+			    if (subElemJsonObject.has(LANGUAGE)) {
+				    String language = subElemJsonObject.get(LANGUAGE).getAsString();
+				    if (subElemJsonObject.has(VALUE)) {
+			            String value = subElemJsonObject.get(VALUE).getAsString();
+			            labelStr = labelStr + value + "@" + language + ",";
+				    }
 			    }
 			}
 			

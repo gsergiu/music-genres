@@ -41,6 +41,7 @@ public class SearchInstrumentsForDataset extends BaseSkosTest {
 	String MIMO_INSTRUMENTS_OVERVIEW_CSV = "mimo-instruments-overview.csv"; 
 	String CULTUURLINK_INSTRUMENTS_RDF = "mimo-instruments-musicbrainz.rdf"; 
 	String EUROPEANA_MIMO_INSTRUMENTS_CSV = "europeana-mimo-instruments.csv"; 
+	String ENRICHED_BY_LABELS_EUROPEANA_MIMO_INSTRUMENTS_CSV = "enriched-by-labels-europeana-mimo-instruments.csv"; 
 	String BAND_MIMO_INSTRUMENTS_CSV = "band-mimo-instruments.csv"; 
 	String MUSIKBRAINZ_ARTIST_TAGS_CSV = "musikbrainz-artist-tags.csv"; 
 	
@@ -675,7 +676,7 @@ public class SearchInstrumentsForDataset extends BaseSkosTest {
 	}
 	
 	
-	@Test
+//	@Test
 	public void retrieveMusikbrainzInstrumentTags() throws IOException {
 		
 		int MUSICBRAINZ_BAND_COL_POS = 2;
@@ -743,6 +744,103 @@ public class SearchInstrumentsForDataset extends BaseSkosTest {
 					cnt++;
 				} else {
 					String row = new StringBuilder().append("europeanaId;title;musicbrainz ID;tags").append(lineBreak).toString();
+					FileUtils.writeStringToFile(targetFile, row, "UTF-8");					
+					cnt++;
+				}
+			}
+			
+		}		
+		log.info("Successfully enriched items: " + cnt);	
+		
+	}
+	
+	
+	@Test
+	public void enrichEuropeanaMimoMappingByMissingPrefLabels() throws IOException {
+		
+		int MIMO_ID_MAPPING_COL_POS = 2;
+		int MIMO_PREFLABEL_MAPPING_COL_POS = 3;
+		
+		List<String> mimoCache = new ArrayList<String>();
+				
+		// file to save enrichment results
+		File targetFile = FileUtils.getFile(searchAnalysisFodler + ENRICHED_BY_LABELS_EUROPEANA_MIMO_INSTRUMENTS_CSV);
+		if(!targetFile.exists())
+			fail("required dataset file doesn't exist" + targetFile);
+		
+		String line;
+		int cnt = 0;
+		final String cellSeparator = ";"; 
+		final String lineBreak = "\n"; 
+		
+        // the original instruments file that should be enriched
+		File recordFile = FileUtils.getFile(searchAnalysisFodler + EUROPEANA_MIMO_INSTRUMENTS_CSV);
+		LineIterator iterator = FileUtils.lineIterator(recordFile);
+		
+		while (iterator.hasNext()) {
+			
+			String europeanaId = "";
+			String title = "";
+			String mimoInstrumentId = ""; 
+			String mimoPrefLabel = ""; 
+
+			line = (String) iterator.next();
+			String[] items = line.split(cellSeparator);
+			if (items != null && items.length > MIMO_ID_MAPPING_COL_POS && items[MIMO_ID_MAPPING_COL_POS] != null) {
+			
+				if (cnt > 0) {
+					europeanaId = items[EUROPEANA_ID_COL_POS];		
+					if(europeanaId.isEmpty() || !europeanaId.startsWith("/"))
+						continue;
+
+	                title = items[TITLE_COL_POS];
+					String mimoId = items[MIMO_ID_MAPPING_COL_POS];
+					if (!mimoCache.contains(mimoId)) {
+//						String mimoPrefLabel = "";
+						if (items.length > MIMO_PREFLABEL_MAPPING_COL_POS) {
+							mimoPrefLabel = items[MIMO_PREFLABEL_MAPPING_COL_POS];
+						}
+						log.info("Count: " + cnt + ", MIMO ID: " + mimoId);	
+	
+						if (!StringUtils.isEmpty(mimoId) && mimoPrefLabel.length() == 0) {
+							String mimoJsonContentResponse = mimoApiClient.extractMimoJsonContentFromId(mimoId);
+							String contentPrefLabel = mimoApiClient.parsePrefLabelAnyLanguageJsonLdString(
+									mimoJsonContentResponse);
+							String[] contentArr = contentPrefLabel.split(cellSeparator);
+							if (mimoInstrumentId.length() == 0) {
+								mimoInstrumentId = contentArr[0];
+							} else {
+								mimoInstrumentId = mimoInstrumentId + ID_DELIMITER + contentArr[0];
+							}
+							if (contentArr.length > 1) {
+								String prefLabel = contentArr[1];
+								if (mimoPrefLabel.length() == 0) {
+									mimoPrefLabel = prefLabel;
+								} else {
+									mimoPrefLabel = mimoPrefLabel + ID_DELIMITER + prefLabel;
+								}
+							}
+
+							// if prefLabel still not found parse narrower content
+							if (mimoPrefLabel.length() == 0) { 
+								String mimoPrefLabelStr = TypeUtils.extractStringBetweenPrefixAndEnding(
+										mimoJsonContentResponse, "prefLabel", "}");	
+								String[] prefStrArr = mimoPrefLabelStr.split("\"");
+								mimoPrefLabel = prefStrArr[prefStrArr.length - 2];
+							}
+						}
+						
+						String row = new StringBuilder().append(europeanaId).append(cellSeparator)
+								.append(title).append(cellSeparator)
+								.append(mimoInstrumentId).append(cellSeparator)
+								.append(mimoPrefLabel).append(lineBreak)
+								.toString();
+						FileUtils.writeStringToFile(targetFile, row, "UTF-8", true);
+						mimoCache.add(mimoId);
+						cnt++;
+					}
+				} else {
+					String row = new StringBuilder().append(line).append(lineBreak).toString();
 					FileUtils.writeStringToFile(targetFile, row, "UTF-8");					
 					cnt++;
 				}
