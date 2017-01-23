@@ -36,6 +36,7 @@ public class SearchInstrumentsForDataset extends BaseSkosTest {
 	String EXTENDED_IA_WIKIDATA_MUSICBRAINZ_OVERVIEW_CSV = "extended-ia-wikidata-musicbrainz-overview.csv"; 
 	String INSTRUMENTS_OVERVIEW_CSV = "instruments-overview.csv"; 
 	String UNIQUE_INSTRUMENTS_CSV = "unique-instruments.csv"; 
+	String UNIQUE_INSTRUMENTS_MANUAL_EXT_CSV = "unique-instruments-manual-ext.csv"; 
 	String UNIQUE_INSTRUMENTS_SKOS_XML = "unique-musicbrainz-instruments-skos.xml"; 
 	String UNIQUE_WIKIDATA_INSTRUMENTS_SKOS_XML = "unique-wikidata-instruments-skos.xml"; 
 	String MIMO_INSTRUMENTS_OVERVIEW_CSV = "mimo-instruments-overview.csv"; 
@@ -44,6 +45,7 @@ public class SearchInstrumentsForDataset extends BaseSkosTest {
 	String ENRICHED_BY_LABELS_EUROPEANA_MIMO_INSTRUMENTS_CSV = "enriched-by-labels-europeana-mimo-instruments.csv"; 
 	String BAND_MIMO_INSTRUMENTS_CSV = "band-mimo-instruments.csv"; 
 	String MUSIKBRAINZ_ARTIST_TAGS_CSV = "musikbrainz-artist-tags.csv"; 
+	String NISV_MIMO_ENRICHMENT_MANUAL_CSV = "nisv-mimo-enrichment-manual.csv"; 
 	
 	int EUROPEANA_ID_COL_POS    = 0;
 	int TITLE_COL_POS           = 1;
@@ -755,7 +757,7 @@ public class SearchInstrumentsForDataset extends BaseSkosTest {
 	}
 	
 	
-	@Test
+//	@Test
 	public void enrichEuropeanaMimoMappingByMissingPrefLabels() throws IOException {
 		
 		int MIMO_ID_MAPPING_COL_POS = 2;
@@ -852,4 +854,83 @@ public class SearchInstrumentsForDataset extends BaseSkosTest {
 	}
 	
 	
+	@Test
+	public void createNisvMimoEnrichmentForInstruments() throws IOException {
+		
+		// file to save enrichment results
+		File targetFile = FileUtils.getFile(searchAnalysisFodler + NISV_MIMO_ENRICHMENT_MANUAL_CSV);
+		if(!targetFile.exists())
+			fail("required dataset file doesn't exist" + targetFile);
+		
+		String line;
+		String manualLine;
+		int cnt = 0;
+		int MANUAL_MUSICBRAINZ_INSTRUMENT_ID_POS = 0;
+		int MANUAL_MIMO_INSTRUMENT_ID_POS = 2;
+		int MANUAL_MIMO_INSTRUMENT_PREFLABEL_POS = 3;
+		int ORIG_MUSICBRAINZ_INSTRUMENT_ID_POS = 8;
+		final String cellSeparator = ";"; 
+		final String lineBreak = "\n"; 
+		
+        // the manually created Musicbrainz to MIMO mapping for instruments 
+		File manualFile = FileUtils.getFile(searchAnalysisFodler + UNIQUE_INSTRUMENTS_MANUAL_EXT_CSV);
+		LineIterator iteratorManual = FileUtils.lineIterator(manualFile);
+		
+		// iterate over manually evaluated MIMO IDs
+		while (iteratorManual.hasNext()) {
+			
+			manualLine = (String) iteratorManual.next();
+			String[] manualItems = manualLine.split(cellSeparator);
+			String musicbrainzInstrumentId = manualItems[MANUAL_MUSICBRAINZ_INSTRUMENT_ID_POS];
+			String mimoInstrumentId = manualItems[MANUAL_MIMO_INSTRUMENT_ID_POS];
+			String mimoInstrumentPrefLabel = manualItems[MANUAL_MIMO_INSTRUMENT_PREFLABEL_POS];
+
+			// the original instruments file that should be enriched
+			File recordFile = FileUtils.getFile(searchAnalysisFodler + MIMO_INSTRUMENTS_OVERVIEW_CSV);
+			LineIterator iterator = FileUtils.lineIterator(recordFile);
+			
+			while (iterator.hasNext()) {
+				
+				String europeanaId = "";
+				String title = "";
+//				String musicbrainzId = ""; 
+	
+				line = (String) iterator.next();
+				String[] items = line.split(cellSeparator);
+				if (items != null && items.length > ORIG_MUSICBRAINZ_INSTRUMENT_ID_POS 
+						&& items[ORIG_MUSICBRAINZ_INSTRUMENT_ID_POS] != null) {
+				
+					if (cnt > 0) {
+						if (line.contains(musicbrainzInstrumentId)) {					
+							europeanaId = items[EUROPEANA_ID_COL_POS];		
+							if(europeanaId.isEmpty() || !europeanaId.startsWith("/"))
+								continue;
+		
+			                title = items[TITLE_COL_POS];
+	//						if (items != null && items.length > ORIG_MUSICBRAINZ_INSTRUMENT_ID_POS) {
+	//							musicbrainzId = items[ORIG_MUSICBRAINZ_INSTRUMENT_ID_POS];
+	//						}
+							log.info("Count: " + cnt + ", Musicbrainz ID: " + musicbrainzInstrumentId);	
+							String row = new StringBuilder().append(europeanaId).append(cellSeparator)
+									.append(title).append(cellSeparator)
+									.append(mimoInstrumentId).append(cellSeparator)
+									.append(mimoInstrumentPrefLabel).append(lineBreak)
+									.toString();
+							FileUtils.writeStringToFile(targetFile, row, "UTF-8", true);
+							cnt++;
+//							break;
+						}
+					} else {
+						String row = new StringBuilder().append("europeanaId;title;MIMO match;MIMO prefLabel").append(lineBreak).toString();
+						FileUtils.writeStringToFile(targetFile, row, "UTF-8");					
+						cnt++;
+					}
+				}
+				
+			}		
+			log.info("Successfully enriched items: " + cnt);	
+			
+		}
+	}	
+		
 }
